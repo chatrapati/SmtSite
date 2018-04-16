@@ -115,6 +115,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
       
             $scope.leavingInput = function(cartObj){
+                // alert('1')
                 if(cartObj.qty == '' || cartObj.qty == undefined){
                     alert('Please enter quantity')
                     cartObj.qty =1;
@@ -131,7 +132,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
            //val123=cartObj.qty;
            
 
-            if (cartObj.qty.length > 0) {
+            // if (cartObj.qty.length > 0) {
                 if (cartObj.qty > 0) {
                     if (window.localStorage['token']) {
 
@@ -243,7 +244,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
                     $scope.viewCartItems();
                 }
                 }
-            }
+            // }
 
 
         }
@@ -363,7 +364,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
         }
 
          $scope.restrictMinus = function(e){
-             //alert(e)
+           //  alert('e')
 	
 	console.log(e)
     // if(!((e.keyCode > 95 && e.keyCode < 106)
@@ -396,10 +397,10 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
         //   $window.open("http://toolsomg.com/#!/productDetailPage");
 
-         $window.open(DOMAIN_URL+"#!/productDetailPage");
+        //  $window.open(DOMAIN_URL+"#!/productDetailPage");
 
 
-            //  $location.path("productDetailPage")
+              $location.path("productDetailPage")
 
         }
 

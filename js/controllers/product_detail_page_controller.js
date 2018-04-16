@@ -70,7 +70,7 @@ shopMyToolsApp.controller('product_detailed_controller',
     //     return false;
 	// }
 
-	if (e.keyCode == 45 || e.keyCode ==0 ||(e.keyCode > 31 && (e.keyCode < 48 || e.keyCode > 57))) e.preventDefault();
+	if (e.which == 45 || e.which ==0 ||(e.which > 31 && (e.which < 48 || e.which > 57))) e.preventDefault();
 	
   }
 
