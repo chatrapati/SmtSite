@@ -1217,11 +1217,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #main_img_effects{
 	height: 200px !important;
+	cursor:pointer;
 }
-#main_img_effects img{
-	height:100%;
-}
-
 
 /***    zoom styles  12-1-2018    ****/
 
@@ -1229,15 +1226,14 @@ input[type=number]::-webkit-outer-spin-button {
     height: 100%;
     border: 1px solid #ddd;
     width: 100%;
+	cursor:pointer;
 }
 #img_effects img{
 /*width: 30%; */
 	width:25%;
     float: left;
 }
-#img_effects{
-    height: 50px;
-}
+
 .validation_msgs{
     margin-bottom: 10px;
 }
