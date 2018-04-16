@@ -49,7 +49,7 @@
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price | currency:'&#8377;'}}</td>
 												<td style="text-align:center;padding-top: 45px;"><input type="number" min="1" name="qty" 
 													value="{{cartItem.qty}}" id="cartQty" ng-model="cartItem.qty" ng-change="changeQty(cartItem)" title="Quantity" class="" maxlength="12" 
-													style="text-align:center;width:60px;" ng-blur="leavingInput(cartItem,$event)" ng-keypress="restrictMinus($event)"></td>
+													style="text-align:center;width:60px;"  ng-enter="doBlur($event)" ng-blur="leavingInput(cartItem,$event)" ng-keypress="restrictMinus($event)"></td>
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price*cartItem.qty | currency:'&#8377;'}}</td>
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax}}</td>
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax_amount | currency:'&#8377;'}}</td>

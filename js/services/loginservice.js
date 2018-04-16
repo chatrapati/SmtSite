@@ -287,7 +287,7 @@ shopMyToolsApp.service('dashBoardOrdersCountService', function ($q, $http, LOGIN
 
 shopMyToolsApp.service('saveOrderService', function ($q, $http, LOGIN_URL) {
 	this.saveOrderMethod = function (orderArray) {
-		alert(orderArray)
+		// alert(orderArray)
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
