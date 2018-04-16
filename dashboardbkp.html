@@ -1,0 +1,101 @@
+<div class="container" ng-controller="homeController">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			<!--  account dashboard page start here -->
+			<div class="block_account_dashboard">
+				<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+					<div class="account_left_content_title">
+						<h1>My Account</h1>
+						<hr/ style="margin-top:5px;margin-bottom:10px;border: 0;border-top: 0px solid #eee;">
+					</div>
+					<div class="block_account_right_content">
+						<ul>
+							<li class="current"><strong>Account Dashboard</strong></li>
+							<li><a href="#" >Account Information</a></li>
+							<li ng-click="goToAddressBook()"><a href="">Address Book</a></li>
+							<li><a href="#">My Orders</a></li>
+							<li><a href="#">My Product Reviews</a></li>
+							<li><a href="#">My Tags</a></li>
+							<li class="last"><a href="#">My Wishlist</a></li>
+							<!-- <li><a href="#">Newsletter Subscriptions</a></li> -->
+							<!-- <li class="last"><a href="#">My Product Stock Subscriptions</a></li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9 col-lg-9 col-sm-9 col-xs-12">
+					<div class="basic_dashboard">
+					
+						<div class="block_title_dashboard">
+							<h1>My Dashboard</h1>
+						</div>
+						
+						<div class="verify_mobile">
+							<div class="notverify_yet"><span>*</span>Please verify your mobile with OTP code.</div>	
+								<div><label class="verify_lbl">Please Enter verification code</label></div>
+								<input type="text" id="code" name="code" placeholder="Enter verification code" class="verify">
+								<input type="button" id="verify_mobile_link" value="Verify Mobile" class="button verify"><br>
+								<a href="#" id="resend_mobile_code" class="resendcode">Resend Code</a>								
+						</div>
+						
+						<div class="welcome-msg">
+							<p class="hello"><strong>Hello, Santosh kumar!</strong></p>
+							<p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
+						</div>
+						
+						<div class="box-head"><h2>Account Information</h2></div>
+						
+						<div class="row">
+							<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+								<div class="box">
+									<div class="contactInfo_box_title">
+										<span>Contact Information</span>
+										<a href="" style="float:right;" ng-click="goToEdit()">Edit</a>
+									</div>
+									<div class="contactInfo_address_info">
+										<p>Santosh kumar<br>
+										   pnani197@gmail.com<br>
+										</p>
+										<a href="#" id="contactInfo_chnge_pwd">Change Password</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+								<div class="box">
+									<div class="newsltrInfo_box_title">
+										<span>news letters</span>
+										<a href="#" style="float:right;">Edit</a>
+									</div>
+									<div class="newsletter_address_info">
+										<p>You are currently subscribed to 'General Subscription'</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+								<div class="addressbook_box">
+									<div class="addressbook_box_title">
+										<span>address book</span>
+										<a href="#" style="float:right;text-transform:uppercase;font-size:11px;">manage addresses</a>
+									</div>
+									<div class="addressbook_box_address_info">
+										<p><b>Default Billing Address</b></p>
+										<p>Santosh kumar<br>
+										   pnani197@gmail.com<br>
+										</p>
+										<a href="#" id="contactInfo_chnge_pwd">Edit Address</a>
+									</div>
+									<div class="addressbook_default_info">
+										<p><b>Default Shipping Address</b></p>
+										<p>You have not set a default shipping address.</p>
+										<a href="#" id="contactInfo_chnge_pwd">Edit Address</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!--  account dashboard page end here -->
+		</div>
+	</div>

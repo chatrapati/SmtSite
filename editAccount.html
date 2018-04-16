@@ -1,0 +1,136 @@
+<div class="container" ng-controller="dashboardController">
+
+	 <ul class="bredcrumb_ul margin_left">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">	Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a ng-click="pageNavigate()">Dashboard</a>
+    </li>
+    	<li  class="bredcrumb_li">
+			<a>Edit Account</a>
+		</li>
+	</ul>
+	<div class="row" id="edit_row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			<!--  account dashboard page start here -->
+			<div class="block_account_dashboard">
+				<!-- <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+					<div class="account_left_content_title">
+						<h1>My Account</h1>
+						<hr/ style="margin-top:5px;margin-bottom:10px;border: 0;border-top: 0px solid #eee;">
+					</div>
+					<div class="block_account_right_content">
+						<ul>
+                            <li><a href="#">Account Dashboard</a></li>
+							 <li><a href="#">Account Information</a></li>
+                            <li class="current"><strong>Address Book</strong></li>
+							<li><a href="#">My Orders</a></li>
+							<li><a href="#">My Product Reviews</a></li>
+							<li><a href="#">My Tags</a></li>
+							<li class="last"><a href="#">My Wishlist</a></li>
+							
+						</ul>
+					</div>
+				</div> -->
+				<!-- edit account information start here -->
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="basic_dashboard">
+								<div class="box-head">
+									<h2>Edit Account Information</h2>
+								</div>
+								<div class="edit_information_page_block">
+									<div class="acunt_info_haeding">
+										<h2>ACCOUNT INFORMATION</h2>
+									</div>
+									<form name="editForm">
+										<div class="row">
+
+											<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12">
+
+												<label for="firstname">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>First Name</label>
+
+												<input type="text" name="first_name" required id="eai_firstNmae" class="form-control" id="first_name" ng-model="customerData.first_name"
+												 placeholder="Enter First Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/"
+												 autofocus="true">
+
+												<!-- <span class="validationError errorMsg" style="color:red" ng-show="editForm.first_name.$dirty && editForm.first_name.$invalid"
+												 class="ng-hide">
+													Please Enter Valid First Name.
+												</span> -->
+
+												<div ng-messages="editForm.first_name.$error ">
+															<p class="validationError errorMsg" ng-show="submitted" ng-message="required">Enter Firstname</p>
+															<p class="validationError errorMsg" ng-message="minlength">Firstname must be min 3 characters</p>
+															<p class="validationError errorMsg" ng-message="maxlength">Firstname must be max 50 characters</p>
+															<p class="validationError errorMsg" ng-message="pattern">Enter characters only</p>
+												</div>
+												<!-- <span class="validationError errorMsg" style="color:red" ng-show="editForm.first_name.minlength" class="ng-hide">
+														Please Minimum 3 characters.
+													</span> -->
+
+											</div>
+
+											<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12">
+
+												<label for="lastname">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Last Name</label>
+
+												<input type="text" name="last_name" required="" id="eai_firstNmae" class="form-control" id="last_name" ng-model="customerData.last_name"
+												 placeholder="Enter Last Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
+
+												<!-- <span class="validationError errorMsg" style="color:red" ng-show="editForm.last_name.$dirty && editForm.last_name.$invalid"
+												 class="ng-hide">
+													Please Enter Valid Last Name.
+												</span> -->
+												<div ng-messages="editForm.last_name.$error ">
+															<p class="validationError errorMsg" ng-show="submitted" ng-message="required">Enter Lastname</p>
+															<p class="validationError errorMsg" ng-message="minlength">Lastname must be min 3 characters</p>
+															<p class="validationError errorMsg" ng-message="maxlength">Lastname must be max 50 characters</p>
+															<p class="validationError errorMsg" ng-message="pattern">Enter characters only</p>
+												</div>
+
+											</div>
+
+											<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12">
+
+													<label for="mobile">
+														<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
+
+													<input type="text" name="mobile" class="form-control" id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
+													 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/">
+
+													<!-- <span class="validationError errorMsg" style="color:red" ng-show="editForm.user_mobile.$dirty && editForm.user_mobile.$invalid" class="ng-hide">
+														Please Enter Valid Mobile.
+													</span> -->
+													<div ng-messages="editForm.mobile.$error ">
+															<p class="validationError errorMsg" ng-show="submitted" ng-message="required">Enter Lastname</p>
+															<p class="validationError errorMsg" ng-message="minlength">MobileNo should be 10 digits</p>
+															<p class="validationError errorMsg" ng-message="maxlength">MobileNo should be 10 digits</p>
+															<p class="validationError errorMsg" ng-message="pattern">Enter Numbers only</p>
+												</div>
+
+												</div>
+
+
+											<div class="form-group  col-md-12 col-xs-12 col-lg-12 col-sm-12">
+												<button type="submit" class="btn btn-default" id="back_edit_info" ng-click="goback()">&lt;&lt; Back</button>
+												<button type="submit" class="btn btn-default" id="save_edit_info" ng-disabled="editForm.$invalid" ng-click="updateEditDetails(customerData)">Save</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- edit account information start here -->
+			</div>
+			<!--  account dashboard page end here -->
+
+		</div>
+	</div>
+</div>

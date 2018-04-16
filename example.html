@@ -1,0 +1,1827 @@
+<div class="container-fulid" id="categoryPage" ng-controller="homeController" dw-loading="sample-1">
+
+  <div class="container mbl_side_mar">
+
+    <div class="row">
+
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding-right:1px;padding-left: 1px;">
+        <!-- Carousel -->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div ng-repeat="img in firstCarouselImages" ng-class="$index===1?'item active':'item'">
+              <img ng-src="{{img}}">
+              <div class="header-text hidden-xs">
+                <div class="col-md-12 text-center">
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        </div>
+        <!-- /carousel -->
+      </div>
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right:7px !important;padding-left:0 !important">
+
+        <div id="carouselexample" class="carousel slide" data-ride="carousel">
+
+          <div class="carousel-inner">
+
+            <div ng-repeat="img in secondCarouselImages" ng-class="$index===1?'item active':'item'">
+
+              <img ng-src="{{img}}" id="homeimageid" alt="click-me" class="image-height">
+
+              <div class="header-text hidden-xs">
+
+                <div class="col-md-12 text-center"> </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="main-collections-wrap collections-wrap" style="margin-bottom: -3px;">
+
+        <div class="block-title">
+
+          <h1 class="allHeaders">Collections</h1>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6 collection-page-temp" ng-repeat="collection in collections|limitTo:6">
+
+        <div class="coll-gallery">
+
+          <div class="coll-gallery_img img mg-image">
+
+            <a>
+
+            <img ng-src="{{collection.imagelink}}" ng-click="gotoCategory(collection)" title="{{collection.name}}" alt="{{collection.name}}">
+
+          </a>
+
+          </div>
+
+          <div class="coll-gallery_text">
+
+            <a class="coll-view_collection coll-view-collection-moreinfo" ng-click="gotoCategory(collection)" href="javascript:void(0)">{{collection.name}}</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="all-collections-shoe-more-btn" ng-click="goToCollections()" class="allhomebtn">
+
+        <a>All Collections</a>
+
+      </div>
+
+    </div>
+    <div loading></div>
+    <!-- top brand -->
+
+    <div class='row'>
+      <div class="collections-wrap">
+        <div class="block-title" style="width:100%;">
+          <h1>Top Brands</h1>
+        </div>
+
+      </div>
+      <!-- <div class="regular slider"> -->
+      <div>
+
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="brand in topbrands|limitTo:6">
+
+          <div class="emerging-item emerging-gallery">
+
+            <div class="emerging-gallery_img img mg-image">
+
+              <div>
+
+                <a ng-href="">
+
+                <img ng-src="{{brand.brandurl}}" class="img-responsive" ng-click="getCategoryBasedOnBrands(brand)" alt="{{brand.brandname}}" title="{{brand.brandname}}">
+
+              </a>
+
+                <!-- <div class="emerging-gallery_text">
+
+                <div class="emerging-top-brands-gallery-text-content">
+
+                  <a ng-href="{{brand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+
+                </div>
+
+              </div> -->
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div id="all-collections-shoe-more-btn" ng-click="goToTopBrands()" class="allhomebtn"><a style="margin-top:1px !important;">All Top Brands</a></div>
+
+    </div>
+
+    <!-- /top brand -->
+
+    <!-- emerging brand -->
+
+    <div class='row'>
+
+      <div class="collections-wrap">
+
+        <div class="block-title">
+
+          <h1>EMERGING BRANDS</h1>
+        </div>
+
+      </div>
+
+      <!-- <div class="emergingbrand1">  -->
+
+      <div>
+
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="ebrand in emergingbrands|limitTo:6">
+
+          <div class="emerging-item emerging-gallery">
+
+            <div class="emerging-gallery_img img mg-image">
+
+              <div>
+
+                <a ng-href="">
+
+                <img ng-src="{{ebrand.brandurl}}" class="img-responsive" ng-click="getCategoryBasedOnBrands(ebrand)" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
+
+              </a>
+
+                <!--<div class="emerging-gallery_text">
+
+                <div class="emerging-top-brands-gallery-text-content">
+
+                  <a ng-href="{{ebrand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+
+                </div>
+
+              </div> -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="all-collections-shoe-more-btn" ng-click="goToEmergingBrands()" class="allhomebtn">
+
+        <a style="margin-top:1px !important;margin-bottom: 10px;">All EMERGING BRANDS</a>
+
+      </div>
+
+    </div>
+
+    <!-- emerging brand -->
+
+
+
+    <div class="row">
+
+      <div class="collections-wrap" id="offerswrap">
+
+        <div class="block-title">
+
+          <h1 id="all_ofers">OFFERS</h1>
+
+          <tabset class="nav nav-tabs" style="margin-top:-6px;">
+
+            <tab class="active pull-right tabPane" heading="ALL PRODUCTS" style="margin-right:35%;" ng-click="getOffers('')">
+
+              <div class="tab-pane fade in active" id="allproducts">
+
+                <div class="container">
+
+                  <div class="row">
+                    <!-- <div style="padding:10px;">
+                      <carousel interval="myInterval">
+                        <slide ng-repeat="RelatedProductArray in offersArray" active="RelatedProductArray.active">
+
+                          <div class="item active">
+                            <div class="row">
+
+                              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12">
+                                <div class="col-item_lak">
+                                  <div class="photo_lak">
+                                    <img ng-src="{{RelatedProductArray.upload_photo}}" ng-click="getProductDetailsaa(RelatedProductArray)" class="img-responsive"
+                                      title="{{RelatedProductArray.upload_name}}" />
+
+
+                                  </div>
+
+                                  <div class="info_lak">
+
+                                    <div class="row">
+
+                                      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-122">
+
+                                        <div ng-init="limit = 32">
+                                          <h5 class="product-name">
+                                            <a ng-click="getProductDetailsaa(RelatedProductArray)" title="{{RelatedProductArray.upload_name}}">{{RelatedProductArray.upload_name | limitTo: limit}}{{RelatedProductArray.upload_name .length
+                              > limit ? ' . . .' : ''}}</a>
+                                          </h5>
+                                        </div>
+                                         <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in RelatedProductArray.prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                      </div>
+
+                                    </div>
+
+                                    <div class="clear-left_detailed">
+
+                                    
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(RelatedProductArray)" style="">
+                          <span>
+                            <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                        </a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(RelatedProductArray)"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(RelatedProductArray)"></a>
+                                        <div class="revdiv">
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(RelatedProductArray, 'review')"
+                                            style="padding: 6px 10px !important;">
+                            <span>
+                              <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span>
+                          </a>
+                                        </div>
+                                      </div>
+                                   
+
+                                    </div>
+
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12" ng-show="offersArray[($index+1) % 4]">
+                                <div class="col-item_lak">
+                                  <div class="photo_lak">
+                                    <img ng-src="{{offersArray[($index+1) % 4].upload_photo}}" ng-click="getProductDetailsaa(offersArray[($index+1) % 4])" class="img-responsive"
+                                      title="{{offersArray[($index+1) % 4].upload_name}}" />
+
+
+                                  </div>
+
+                                  <div class="info_lak">
+
+                                    <div class="row">
+
+                                      <div class="price_lak col-md-12 col-lg-12 col-sm-12 col-xs-122">
+
+                                        <div ng-init="limit = 32">
+                                          <h5 class="product-name">
+                                            <a ng-click="getProductDetailsaa(offersArray[($index+1) % 4])" title="{{offersArray[($index+1) % 4].upload_name}}">{{offersArray[($index+1) % 4].upload_name | limitTo: limit}}{{offersArray[($index+1)
+                              % 4].upload_name .length > limit ? ' . . .' : ''}}</a>
+                                          </h5>
+                                        </div>
+                                          <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+1) % 4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                     
+                                      </div>
+
+                                    </div>
+
+                                    <div class="clear-left_detailed">
+
+                                     
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+1) % 4])">
+                          <span>
+                            <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                        </a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+1) % 4])"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+1) % 4])"></a>
+                                        <div class="revdiv">
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(offersArray[($index+1) % 4], 'review')"
+                                            style="padding: 6px 10px !important;">
+                            <span>
+                              <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span>
+                          </a>
+                                        </div>
+                                      </div>
+                                    
+
+                                    </div>
+
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                              <div class="col-sm-3 col-md-3 col-lg-3 col-xs-12" ng-show="offersArray[($index+2) % 4]">
+                                <div class="col-item_lak">
+                                  <div class="photo_lak">
+                                    <img ng-src="{{offersArray[($index+2) % 4].upload_photo}}" ng-click="getProductDetailsaa(offersArray[($index+2) % 4])" class="img-responsive"
+                                      title="{{offersArray[($index+2) % 4].upload_name}}" />
+
+
+                                  </div>
+
+                                  <div class="info_lak">
+
+                                    <div class="row">
+
+                                      <div class="price_lak col-md-12 col-lg-12 col-sm-12 col-xs-122">
+
+                                        <div ng-init="limit = 32">
+                                          <h5 class="product-name">
+                                            <a ng-click="getProductDetailsaa(offersArray[($index+2) % 4])" title="{{offersArray[($index+2) % 4].upload_name}}">{{offersArray[($index+2) % 4].upload_name | limitTo: limit}}{{offersArray[($index+2)
+                              % 4].upload_name .length > limit ? ' . . .' : ''}}</a>
+                                          </h5>
+                                        </div>
+                                            <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+2) % 4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                      
+
+                                      </div>
+
+                                    </div>
+
+                                    <div class="clear-left_detailed">
+
+                                    
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+2) % 4])" style="">
+                          <span>
+                            <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                        </a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+2) % 4])"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+2) % 4])"></a>
+                                        <div class="revdiv">
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(offersArray[($index+2) % 4], 'review')"
+                                            style="padding: 6px 10px !important;">
+                            <span>
+                              <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span>
+                          </a>
+                                        </div>
+                                      </div>
+                                     
+
+                                    </div>
+
+                                    <div class="clearfix">
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+                               <div class="row" ng-show="offersArray[($index+3) % 4]">
+                              <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" >
+                                <div class="sub-item respl-item">
+                                    <div class="item-inner">
+                                  <div class="product-image">
+                                    <img ng-src="{{offersArray[($index+3) % 4].upload_photo}}" ng-click="getProductDetailsaa(offersArray[($index+3) % 4])" class="img-responsive"
+                                      title="{{offersArray[($index+3) % 4].upload_name}}" />
+                                  </div>
+                                  
+                                      <div class="product-info">
+                                        <div class="product-name" ng-init="limit = 32">
+                                         
+                                            <a ng-click="getProductDetailsaa(offersArray[($index+3) % 4])" title="{{offersArray[($index+3) % 4].upload_name}}">{{offersArray[($index+3) % 4].upload_name | limitTo: limit}}{{offersArray[($index+3)
+                              % 4].upload_name .length > limit ? ' . . .' : ''}}</a>
+                                         
+                                        </div>
+                                          <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+3) % 4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                      </div>
+                                    <div class="clear-left_detailed">
+
+                                  
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+3) % 4])" style="">
+                          <span>
+                            <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                        </a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+3) % 4])"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+3) % 4])"></a>
+                                        <div class="revdiv">
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(offersArray[($index+3) % 4], 'review')"
+                                            style="padding: 6px 10px !important;">
+                            <span>
+                              <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span>
+                          </a>
+                                        </div>
+                                      </div>
+                                     </div>
+
+                                    <div class="clearfix">
+
+                                    </div>
+
+                              
+                                </div>
+
+                              </div>
+
+                              </div>
+                            </div>
+                            </div>
+
+                          </div>
+
+
+                        </slide>
+                      </carousel>
+                    </div> -->
+
+                    <div id="carousel-example">
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                             <carousel interval="myInterval">
+                        <slide ng-repeat="product in offersArray" active="product.active">
+                           <div class="item active">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" >
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(product)" ng-right-click="rightClickTab(product)" class="product-img" title="{{product.upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}" title="{{product.upload_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                      <a ng-click="getProductDetails(product)" href="" ng-right-click="newTab(product)" title="{{product.upload_name}}">{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}}
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in product.prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="clear-left_detailed">   
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(product)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>							
+                      	<div class="revdiv" >
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="product.avgrating == 0"  ng-click="productReview(product, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                       <a ng-click="productReview(product, 'review')" title="Write Your Review" ng-if="product.avgrating != 0">  <star-rating ng-model="product.avgrating" readonly="isReadonly" ></star-rating></a>
+											</div>
+										</div>
+                                    </div>
+                   <div class="clearfix">
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                             <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-show="offersArray[($index+1) % 4]">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(offersArray[($index+1)%4])" ng-right-click="rightClickTab(offersArray[($index+1)%4])" class="product-img" title="{{offersArray[($index+1)%4].upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{offersArray[($index+1)%4].upload_photo}}" alt="{{offersArray[($index+1)%4].upload_name}}" title="{{offersArray[($index+1)%4].upload_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                      <a ng-click="getProductDetails(offersArray[($index+1)%4])" href="" ng-right-click="newTab(offersArray[($index+1)%4])" title="{{offersArray[($index+1)%4].upload_name}}">{{offersArray[($index+1)%4].upload_name | limitTo: limit}}{{offersArray[($index+1)%4].upload_name .length > limit ? ' . . .' : ''}}
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+1)%4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="clear-left_detailed">   
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+1)%4])"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+1)%4])"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+1)%4])"></a>							
+                      	<div class="revdiv" >
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="offersArray[($index+1)%4].avgrating == 0"  ng-click="productReview(offersArray[($index+1)%4], 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                       <a ng-click="productReview(offersArray[($index+1)%4], 'review')" title="Write Your Review" ng-if="offersArray[($index+1)%4].avgrating != 0">  <star-rating ng-model="offersArray[($index+1)%4].avgrating" readonly="isReadonly" ></star-rating></a>
+											</div>
+										</div>
+                                    </div>
+                   <div class="clearfix">
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                                 <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-show="offersArray[($index+2) % 4]">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(offersArray[($index+2) % 4])" ng-right-click="rightClickTab(offersArray[($index+2) % 4])" class="product-img" title="{{offersArray[($index+2) % 4].upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{offersArray[($index+2) % 4].upload_photo}}" alt="{{offersArray[($index+2) % 4].upload_name}}" title="{{offersArray[($index+2) % 4].upload_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                      <a ng-click="getProductDetails(offersArray[($index+2) % 4])" href="" ng-right-click="newTab(offersArray[($index+2) % 4])" title="{{offersArray[($index+2) % 4].upload_name}}">{{offersArray[($index+2) % 4].upload_name | limitTo: limit}}{{offersArray[($index+2) % 4].upload_name .length > limit ? ' . . .' : ''}}
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+2) % 4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="clear-left_detailed">   
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+2) % 4])"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+2) % 4])"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+2) % 4])"></a>							
+                      	<div class="revdiv" >
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="offersArray[($index+2) % 4].avgrating == 0"  ng-click="productReview(offersArray[($index+2) % 4], 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                       <a ng-click="productReview(offersArray[($index+2) % 4], 'review')" title="Write Your Review" ng-if="offersArray[($index+2) % 4].avgrating != 0">  <star-rating ng-model="offersArray[($index+2) % 4].avgrating" readonly="isReadonly" ></star-rating></a>
+											</div>
+										</div>
+                                    </div>
+                   <div class="clearfix">
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                                 <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-show="offersArray[($index+3) % 4]">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(offersArray[($index+3) % 4])" ng-right-click="rightClickTab(offersArray[($index+3) % 4])" class="product-img" title="{{offersArray[($index+3) % 4].upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{offersArray[($index+3) % 4].upload_photo}}" alt="{{offersArray[($index+3) % 4].upload_name}}" title="{{offersArray[($index+3) % 4].upload_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                      <a ng-click="getProductDetails(offersArray[($index+3) % 4])" href="" ng-right-click="newTab(offersArray[($index+3) % 4])" title="{{offersArray[($index+3) % 4].upload_name}}">{{offersArray[($index+3) % 4].upload_name | limitTo: limit}}{{offersArray[($index+3) % 4].upload_name .length > limit ? ' . . .' : ''}}
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in offersArray[($index+3) % 4].prices">
+                                        <div class="offer">
+                                          <br>
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+                                            {{price.percentage}} %
+                                          </p>
+                                          <span class="special-price">
+                                              <span class="special-price" id="product-price-507_b">
+                                                 <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                             <span class="price" id="old-price-507_b">
+                                                 {{price.enduser_price | currency:'&#8377;'}}
+                                                                  </span>
+                                          </span>
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="clear-left_detailed">   
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(offersArray[($index+3) % 4])"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(offersArray[($index+3) % 4])"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(offersArray[($index+3) % 4])"></a>							
+                      	<div class="revdiv" >
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="offersArray[($index+3) % 4].avgrating == 0"  ng-click="productReview(offersArray[($index+3) % 4], 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                       <a ng-click="productReview(offersArray[($index+3) % 4], 'review')" title="Write Your Review" ng-if="offersArray[($index+3) % 4].avgrating != 0">  <star-rating ng-model="offersArray[($index+3) % 4].avgrating" readonly="isReadonly" ></star-rating></a>
+											</div>
+										</div>
+                                    </div>
+                   <div class="clearfix">
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+                              </slide>
+                      </carousel>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </tab>
+
+            <tab heading="ELECTRIC DRILL" class="pull-right tabPane" style="margin-right: -23%;" ng-click="getOffers('Electric Drill')">
+
+              <div class="tab-pane" id="electricdrill">
+
+                <div class="container">
+
+                  <div class="row">
+                    <div ng-if="offersArray.length == 0" style="text-align: center;margin-top: 25px;">
+                      <img src="images/noproducts.png">
+                      <br>
+                    </div>
+                    <div>
+
+                      <!-- Wrapper for slides -->
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="row">
+
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="electricdrill in offersArray | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+
+                                  </div>
+
+                                  <div class="product-image">
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(electricdrill)" class="product-img" title="{{anglegrinder.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{electricdrill.upload_photo}}" alt="{{anglegrinder.upload_name}}" title="{{anglegrinder.upload_name}}">
+
+                                  </a>
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+                                      <a ng-click="getProductDetails(electricdrill)" title="{{electricdrill.upload_name}}">
+
+                                                               {{electricdrill.upload_name | limitTo: limit}}{{electricdrill.upload_name .length > limit ? ' . . .' : ''}} <!-- <span ng-repeat="attribute in electricdrill.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span> -->
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product-price">
+
+                                      <div class="price-box" ng-repeat="price in electricdrill.prices">
+
+                                        <div class="offer">
+
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+
+                                            {{price.percentage}} %
+
+                                          </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price |  currency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                               {{price.enduser_price |  currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+                                        </div>
+
+                                      </div>
+                                      <div class="clear-left_detailed">
+
+                                        <!--<div class="cart_items">-->
+                                        <div class="cartdiv">
+                                          <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(electricdrill)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+                                        </div>
+                                        <div class="wishcompdiv">
+                                          <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(electricdrill)"></a>
+                                          <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(electricdrill)"></a>
+                                          <!-- <div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(electricdrill, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                      </div> -->
+
+                                          <div class="revdiv">
+
+                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="electricdrill.avgrating == 0" ng-click="productReview(electricdrill, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                                            <a ng-click="productReview(electricdrill, 'review')" title="Write Your Review" ng-if="electricdrill.avgrating != 0">
+                                              <star-rating ng-model="electricdrill.avgrating" readonly="isReadonly"></star-rating>
+                                            </a>
+                                          </div>
+
+
+                                        </div>
+
+                                        <!-- </div>-->
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+
+              </div>
+
+            </tab>
+
+            <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="margin-right: -35%;" ng-click="getOffers('Angle Grinder')">
+
+              <div class="tab-pane" id="anglegrinder">
+
+                <div>
+
+                  <div class="row">
+
+                    <div>
+
+                      <!-- Wrapper for slides -->
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="">
+
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="anglegrinder in offersArray | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="product-image">
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(anglegrinder)" class="product-img" title="{{anglegrinder.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{anglegrinder.upload_photo}}" alt="{{anglegrinder.upload_name}}" title="{{anglegrinder.upload_name}}">
+
+                                  </a>
+
+
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+                                      <a ng-click="getProductDetails(anglegrinder)" title="{{anglegrinder.upload_name}}">
+
+                                                               {{anglegrinder.upload_name | limitTo: limit}}{{anglegrinder.upload_name .length > limit ? ' . . .' : ''}} <!--<span ng-repeat="attribute in anglegrinder.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product- ">
+
+                                      <div class="price-box" ng-repeat="price in anglegrinder.prices">
+
+                                        <div class="offer">
+
+                                          <!-- <div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+
+                                            {{price.percentage}} %
+
+                                          </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price |  currency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                               {{price.enduser_price |  currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+
+                                        </div>
+
+                                      </div>
+
+                                      <div class="clear-left_detailed">
+
+                                        <!--<div class="cart_items">-->
+                                        <div class="cartdiv">
+                                          <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(anglegrinder)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+                                        </div>
+                                        <div class="wishcompdiv">
+                                          <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(anglegrinder)"></a>
+                                          <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(anglegrinder)"></a>
+                                          <!-- <div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(anglegrinder, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                      </div> -->
+
+                                          <div class="revdiv">
+
+                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="anglegrinder.avgrating == 0" ng-click="productReview(anglegrinder, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                                            <a ng-click="productReview(anglegrinder, 'review')" title="Write Your Review" ng-if="anglegrinder.avgrating != 0">
+                                              <star-rating ng-model="anglegrinder.avgrating" readonly="isReadonly"></star-rating>
+                                            </a>
+                                          </div>
+                                        </div>
+                                        <!-- </div>-->
+
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </tab>
+
+            <tab heading="IMPACT DRILL" class="pull-right tabPane" style="margin-right: -45%;" ng-click="getOffers('Impact Drill')">
+
+              <div class="tab-pane" id="impactdrill">
+
+                <div class="container">
+
+                  <div class="row">
+
+                    <div>
+
+                      <!-- Wrapper for slides -->
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="row">
+
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="impactdrill in offersArray | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="product-image">
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(impactdrill)" class="product-img" title="{{impactdrill.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{impactdrill.upload_photo}}" alt="{{impactdrill.upload_name}}" title="{{impactdrill.upload_name}}">
+
+                                  </a>
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+                                      <a ng-click="getProductDetails(impactdrill)" title="{{impactdrill.upload_name}}">
+
+                                                             {{impactdrill.upload_name | limitTo: limit}}{{impactdrill.upload_name .length > limit ? ' . . .' : ''}}<!-- <span ng-repeat="attribute in impactdrill.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span> --> 
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product-info">
+
+                                      <div class="product-price">
+
+                                        <div class="price-box" ng-repeat="price in impactdrill.prices">
+
+                                          <div class="offer">
+
+                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                            <p class="special-price yousave" style="padding:4px 0px;">
+
+                                              {{price.percentage}} %
+
+
+
+                                            </p>
+
+
+
+                                            <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+
+                                            </span>
+
+                                            </span>
+
+                                            <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                               {{price.enduser_price | currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                            </span>
+
+                                            <p id="exclgstttt">(Excluding-GST)</p>
+
+                                          </div>
+
+
+
+                                        </div>
+                                        <div class="clear-left_detailed">
+
+                                          <!--<div class="cart_items">-->
+                                          <div class="cartdiv">
+                                            <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(impactdrill)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+                                          </div>
+                                          <div class="wishcompdiv">
+                                            <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(impactdrill)"></a>
+                                            <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(impactdrill)"></a>
+                                            <!-- <div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(impactdrill, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                      </div> -->
+                                            <div class="revdiv">
+
+                                              <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="impactdrill.avgrating == 0" ng-click="productReview(impactdrill, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                                              <a ng-click="productReview(impactdrill, 'review')" title="Write Your Review" ng-if="impactdrill.avgrating != 0">
+                                                <star-rating ng-model="impactdrill.avgrating" readonly="isReadonly"></star-rating>
+                                              </a>
+                                            </div>
+                                          </div>
+                                          <!-- </div>-->
+
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </tab>
+          </tabset>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="collections-wrap">
+
+        <div class="block-title">
+          <!-- <h1 id="all_ofersNewArrivals">NEW ARRIVALS</h1> -->
+          <h1 id="all_ofers">NEW ARRIVALS</h1>
+
+          <tabset class="nav nav-tabs">
+
+            <tab class="active pull-right tabPane" style="margin-right: 16%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
+
+              <div class="tab-pane fade in active" id="allProducts1">
+
+                <div class="container">
+
+                  <div class="row">
+
+                    <div>
+
+                      <!-- Wrapper for slides -->
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="row">
+
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="newarrival in newarrivalsArray | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+
+                                  </div>
+
+                                  <div class="product-image">
+
+
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(newarrival)" class="product-img" title="{{newarrival.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}" title="{{newarrival.upload_name}}">
+
+                                  </a>
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+
+
+                                      <a ng-click="getProductDetails(newarrival)" title="{{newarrival.upload_name}}">
+
+                                                                      {{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}} <!--{{newarrival.atrname}} {{newarrival.atrvalue}} -->
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product-price">
+
+                                      <div class="price-box" ng-repeat="price in newarrival.prices">
+
+                                        <div class="offer">
+
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+
+                                            {{price.percentage}} %
+
+                                          </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                              {{price.enduser_price | currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+                                    <div class="clear-left_detailed">
+
+                                      <!--<div class="cart_items">-->
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(newarrival)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(newarrival)"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>
+                                        <!-- <div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(newarrival, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                      </div> -->
+                                        <div class="revdiv">
+
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="newarrival.avgrating == 0" ng-click="productReview(newarrival, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                                          <a ng-click="productReview(newarrival, 'review')" title="Write Your Review" ng-if="newarrival.avgrating != 0">
+                                            <star-rating ng-model="newarrival.avgrating" readonly="isReadonly"></star-rating>
+                                          </a>
+                                        </div>
+                                      </div>
+                                      <!-- </div>-->
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </tab>
+
+
+            <tab heading="DEMOLITION HAMMER" class="pull-right tabPane" style="margin-right: -27%;" ng-click="getNewArrivals('Demolition Hammer')">
+
+              <div class="tab-pane " id="demoltionHammer">
+
+                <div class="container">
+
+                  <div class="row">
+
+                    <div>
+
+                      <!-- Wrapper for slides -->
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="row">
+
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="demolitionhammer in newarrivalsArray | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+
+                                  </div>
+
+                                  <div class="product-image">
+
+
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(demolitionhammer)" class="product-img" title="{{demolitionhammer.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{demolitionhammer.upload_photo}}" alt="{{demolitionhammer.upload_name}}" title="{{demolitionhammer.upload_name}}">
+
+                                  </a>
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+
+
+                                      <a ng-click="getProductDetails(demolitionhammer)" title="{{demolitionhammer.upload_name}}">
+
+                                                                      {{demolitionhammer.upload_name | limitTo: limit}}{{demolitionhammer.upload_name .length > limit ? ' . . .' : ''}} <!--{{demolitionhammer.atrname}} {{demolitionhammer.atrvalue}} -->
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product-price">
+
+                                      <div class="price-box" ng-repeat="price in demolitionhammer.prices">
+
+                                        <div class="offer">
+
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                          <p class="special-price yousave" style="padding:4px 0px;">
+
+                                            {{price.percentage}} %
+
+                                          </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                              {{price.enduser_price | currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+                                    <div class="clear-left_detailed">
+                                      <!--<div class="cart_items">-->
+                                      <div class="cartdiv">
+                                        <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(demolitionhammer)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+                                      </div>
+                                      <div class="wishcompdiv">
+                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(demolitionhammer)"></a>
+                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(demolitionhammer)"></a>
+                                        <!-- <div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(demolitionhammer, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                      </div> -->
+                                        <div class="revdiv">
+
+                                          <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="demolitionhammer.avgrating == 0" ng-click="productReview(demolitionhammer, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                                          <a ng-click="productReview(demolitionhammer, 'review')" title="Write Your Review" ng-if="demolitionhammer.avgrating != 0">
+                                            <star-rating ng-model="demolitionhammer.avgrating" readonly="isReadonly"></star-rating>
+                                          </a>
+                                        </div>
+                                      </div>
+                                      <!-- </div>-->
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </tab>
+          </tabset>
+        </div>
+      </div>
+      <!-- tab content -->
+    </div>
+    <!-- DEALS  -->
+
+    <!-- <div class='row'>
+
+      <div class="collections-wrap">
+
+        <div class="block-title">
+
+          <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">DEALS</h1>
+
+       
+     
+	
+
+                    <div>
+
+                    
+
+                      <div class="carousel-inner" style="padding:10px;">
+
+                        <div>
+
+                          <div class="row">
+
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="deal in deals | limitTo:4 track by $index ">
+
+                              <div class="sub-item respl-item" style="opacity: 1;">
+
+                                <div class="item-inner">
+
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+
+                                  </div>
+
+                                  <div class="product-image">
+
+
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(deal)" class="product-img" title="{{deal.upload_name}}">
+
+                                    <img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}">
+
+                                  </a>
+
+                                  </div>
+
+                                  <div class="product-info">
+
+                                    <div class="product-name" ng-init="limit = 32">
+
+
+
+                                      <a ng-click="getProductDetails(deal)" title="{{deal.upload_name}}">
+
+                                                                      {{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}} 
+
+                                                                    </a>
+
+                                    </div>
+
+                                    <div class="product-price">
+
+                                      <div class="price-box" ng-repeat="price in deal.prices">
+
+                                        <div class="offer">
+
+                                         
+
+                                          <p class="special-price yousave" style="padding:4px 0px;margin-right: 2px;">
+
+                                            {{price.percentage}} %
+
+                                          </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                              {{price.enduser_price | currency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                          <p id="exclgstttt">(Excluding-GST)</p>
+
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+
+                                    <div class="clear-left_detailed">
+
+                                     
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(deal)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(deal)"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(deal)"></a>							
+										
+                          	<div class="revdiv" >
+
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-if="deal.avgrating == 0"  ng-click="productReview(deal, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                       <a ng-click="productReview(deal, 'review')" title="Write Your Review" ng-if="deal.avgrating != 0">  <star-rating ng-model="deal.avgrating" readonly="isReadonly" ></star-rating></a>
+											</div>
+										</div>
+									
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+
+
+                      </div>
+
+                    </div>
+
+
+				<div  ng-if="dealsCount > 2" class="deals_more">
+					<div id="all-collections-shoe-more-btn" ng-click="gotomoredeal()" class="deals_div">All Deals</div>
+				</div>
+
+</div>
+
+  </div>
+
+ 
+
+</div>
+
+
+ 
+
+ -->
+
+
+
+    <div id="addedToCart" class="modal fade" ng-controller="homeController">
+
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header"></div>
+
+          <div class="modal-body" align="middle">
+
+            Added to Cart Successfully!
+
+          </div>
+
+
+
+          <div class="modal-footer">
+
+            <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="addedToCompareProducts" class="modal fade" ng-controller="homeController">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body" align="middle">
+            Added to Compare Products Successfully!
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="outOfQty" class="modal fade" ng-controller="homeController">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"></div>
+          <div class="modal-body" align="middle">
+            Only {{avlQty}} are left!
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="addedToWishList" class="modal fade" ng-controller="homeController">
+
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header"></div>
+
+          <div class="modal-body" align="middle">
+
+            Added to Wish List Successfully!
+
+          </div>
+
+
+
+          <div class="modal-footer">
+
+            <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!-- <div class="modal fade" id="addedToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" cache="false">
+
+							<div class="modal-dialog" role="document">
+
+								<div class="modal-content">
+
+									<div class="modal-header">
+
+										<button type="button" class="close" aria-label="Close" ng-click="closeVerifyAlert()"><span aria-hidden="true">×</span></button>
+
+
+
+									</div>
+
+
+
+									<div class="modal-body" id="modal-body">
+
+
+
+									 Added to Cart Successfully!
+
+
+
+									</div>
+
+
+
+									<div class="modal-footer">
+
+										<button class="btn btn-green  flat-box-btn waves-effect waves-button " ng-click="closeModal()">OK</button>
+
+									</div>
+
+
+
+								</div>
+
+							</div>
+
+						</div> -->

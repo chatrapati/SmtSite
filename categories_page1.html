@@ -1,0 +1,508 @@
+<style>
+  .product-image a {
+
+    cursor: pointer;
+  }
+
+  .mg-image a {
+
+    cursor: pointer;
+  }
+</style>
+<!--<meta http-equiv="refresh" content= "0" />-->
+
+<div class="container mbl_side_mar" id="categoryPage" ng-controller="productCategoriesCtrl">
+  <div class="row">
+    <ul class="bredcrumb_ul" style="margin-top: 10px;">
+      <li class="bredcrumb_li">
+        <a ng-click="goToHome()"> Home</a>
+      </li>
+      <li class="bredcrumb_li">
+        <a ng-click="pageNavigate(breadCrumb)">{{breadCrumb}}</a>
+      </li>
+      <li ng-if="breadCrumb1" class="bredcrumb_li">
+        <a>{{breadCrumb1}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="row">
+    <div ng-switch="x">
+      <div style="margin-top:10px;">
+        <div class="row">
+          <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <!--start of side filter-->
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 subcatdiv">
+              <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse"
+                data-target="#subcategory" ng-if="categories.length > 1">
+                <b>SUB-CATEGORY</b>
+              </div>
+              <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="subcategory" class="subcatcheck">
+                <div ng-repeat="category in categories track by $index">
+                  <!-- <input type="checkbox" value="value"> -->
+                  <label>
+                    <input type="checkbox" class="branCheck checkbox" ng-selected="category" ng-checked="selectedArray.subcategory.indexOf(category) > -1"
+                      name="category" ng-value="'{{category}}'" ng-click="getCategorywiseProductcheck('cat',category,'left')" ng-model="selected">{{category}}</label>
+                </div>
+              </div>
+              <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
+                <b>PRICE</b>
+              </div>
+              <div class="cat_radio_checks">
+                <input type="radio" ng-model="price" ng-value="'0-1000'" ng-change="getCategorywiseProductcheck('price','0-1000','left')">
+                <span>₹0 - ₹1,000</span>
+                <br>
+                <input type="radio" ng-model="price" ng-value="'1000-10000'" ng-change="getCategorywiseProductcheck('price','1000-10000','left')">
+                <span>₹1,000 - ₹10,000</span>
+                <br>
+                <input type="radio" ng-model="price" ng-value="'10000-30000'" ng-change="getCategorywiseProductcheck('price','10000-30000','left')">
+                <span>₹10,000 - ₹30,000</span>
+                <br>
+                <input type="radio" ng-model="price" ng-value="'30000-50000'" ng-change="getCategorywiseProductcheck('price','30000-50000','left')">
+                <span>₹30,000 - ₹50,000</span>
+                <br>
+                <!-- <input type="radio" ng-model="price" ng-value="'20000-40000'" ng-change="getCategorywiseProductcheck('price','10000-40000')" > ₹20,000 - ₹40,000<br> -->
+                <!-- <input type="radio" > ₹40,000 - ₹100,000<br> -->
+                <input type="radio" ng-model="price" ng-value="'50000-2000000'" ng-change="getCategorywiseProductcheck('price','50000-100000000','left')">
+                <span>₹50,000 and above</span>
+              </div>
+
+
+
+              <!-- <input type="radio" ng-model="price" ng-value="'0-1000'" ng-if= "totalMinVal<=1000" ng-change="getCategorywiseProductcheck('price','0-1000')">
+              <span ng-if= "totalMinVal<=1000">₹0 - ₹1,000</span> 
+              <br> 
+              <input type="radio" ng-model="price" ng-value="'1000-10000'" ng-if= "totalMaxVal>10000 || totalMaxVal>1000" ng-change="getCategorywiseProductcheck('price','1000-10000')">
+              <span ng-if= "totalMaxVal>10000 || totalMaxVal>1000">₹1,000 - ₹10,000</span>
+              <br>
+              <input type="radio" ng-model="price" ng-value="'10000-30000'" ng-if= "totalMaxVal>=30000 || totalMaxVal > 10000" ng-change="getCategorywiseProductcheck('price','10000-30000')">
+              <span ng-if= "totalMaxVal>=30000 || totalMaxVal>10000">₹10,000 - ₹30,000</span>
+              <br>
+              <input type="radio" ng-model="price" ng-value="'30000-50000'" ng-if= "totalMaxVal>=50000 || totalMaxVal > 30000" ng-change="getCategorywiseProductcheck('price','30000-50000')">
+              <span ng-if= "totalMaxVal>=50000 || totalMaxVal > 30000">₹30,000 - ₹50,000</span>
+              <br>
+              
+              <input type="radio" ng-model="price" ng-value="'50000'" ng-if= "totalMaxVal>50000" ng-change="getCategorywiseProductcheck('price','50000-100000000')">
+              <span ng-if= "totalMaxVal>50000">₹50,000 and above</span> -->
+              <!-- <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <input type="text" ng-value="{{minrange}}" ng-model="minrange" class="col-sm-5 col-xs-5 form-control pricerang">
+                    <div ng-if="maxrange && !maxrange1">
+                      <input type="text" ng-value="{{maxrange}}" ng-model="rangeVal" class="col-sm-5 col-xs-5 form-control text-right pricerang">
+                    </div>
+                    <div ng-if="maxrange1">
+                      <input type="text" ng-value="{{maxrange1}}" ng-model="rangeVal" class="col-sm-5 col-xs-5 form-control text-right pricerang">
+                    </div>
+                    <input type="range" min="{{minrange}}" max="{{maxrange}}" ng-model="rangeVal"  class="slider" id="myRange"  ng-click="getCategorywiseProductcheck('price',rangeVal)">
+                  </div>
+                </div>
+              </div> -->
+              <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
+                <b>BRAND</b>
+              </div>
+              <div style="margin-top: 8px;border-bottom: 1px solid #eee;">
+                <div ng-repeat="brandArry in brandsData track by $index">
+                  <label>
+                    <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry" ng-checked="selectedArray.brand.indexOf(brandArry) > -1"
+                      ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry)">{{brandArry}}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!--end of side filter -->
+            <!--start of body grid-->
+            <div class="col-md-9 col-lg-9 col-sm-9 col-xs-12" style="margin-top: -6px;">
+              <div class="row" id="pageshowsort">
+                <div>
+                  <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 subcatSortheaddiv">
+                    <label for="name" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 pageshowlabel" id="ViewLbl">View</label>
+                    <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+                      <select ng-model="x" ng-change="selectLayout(x)">
+
+                  <option value="Grid">Grid</option>
+
+                  <option value="List">List</option>
+
+                </select>
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12 subcatSortheaddiv">
+                    <label for="name" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 pageshowlabel">Show</label>
+                    <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+                      <select ng-model="viewby" ng-change="setpage(viewby)">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                      </select>
+                      <!-- <select name="type" ng-model="viewby" ng-dropdown required ng-change="setpage(viewby)" ng-options="option for option in show_by_list">
+
+                </select>-->
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 subcatSortheaddiv">
+                    <div class="form-group">
+                      <label for="name" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 pagesortlabel">Sort</label>
+                      <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
+                        <select ng-model="sort_by" ng-change="sortby(sort_by)">
+                          <option value="popularty">Popularity</option>
+                          <option value="topselling">Topselling</option>
+                          <option value="namefilter">Name</option>
+                          <option value="price_low_high">Price:Low to High</option>
+                          <option value="price_high_low">Price:High to Low</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="" id="paginaView">
+                      <div class="pagination" ng-if="pagination.numPages == 0" id="pagin">
+            <ul>
+                <li>
+                    <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page == 0" ng-click="processPagination(-1)" >
+                   Previous           
+                    </button>
+                </li>
+                <li>
+                    <label  ng-show="pageList[0] > 0 ">...</label>
+                </li>
+                <li  ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                    <a href=""  ng-click="processPagination(n)">1</a>
+                </li>
+                <li>
+                    <label  ng-show="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+                </li>
+                <li>
+                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)" >
+                     Next
+                    </button>
+                </li>
+            </ul>
+        </div>
+                     <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
+            <ul>
+                <li>
+                    <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page == 0" ng-click="processPagination(-1)" >
+                   Previous           
+                    </button>
+                </li>
+                <li>
+                    <label  ng-show="pageList[0] > 0 ">...</label>
+                </li>
+                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                    <a href=""  ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+                </li>
+                <li>
+                    <label  ng-show="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+                </li>
+                <li>
+                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)" >
+                     Next
+                    </button>
+                </li>
+            </ul>
+        </div>
+                    <!-- <div class="form-group">
+                      <div class="buttons-countrows">
+                        <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
+                          ng-click="previousPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
+                          Prev </button>
+                        <span class="countpages" ng-cloak id="pag_cat_neww"> {{currentPageNumber}}</span>
+                        <button type="button" class="btn-next btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="nextBtn == 'false' || products.length == 0"
+                          ng-click="nextPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
+                          Next
+                        </button>
+                      </div>
+                    </div> -->
+                  </div>
+
+                </div>
+              </div>
+
+              <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
+                <img src="images/noproducts.png">
+                <br>
+              </div>
+              <!-- grid row -->
+              <div loading style="margin-right: 446px;margin-top: 190px;"></div>
+              <div class="row">
+
+                <div ng-if="layout == 'Grid'">
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner ">
+
+                    <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage"
+                      style="margin-top:10px;">
+                      <div class="sub-item respl-item" style="opacity: 1;">
+                        <div class="item-inner">
+                          <div class="product-image">
+                            <a style="padding:10px 0;" ng-click="getProductDetailsCat(productsdata)" class="product-img" title="{{productsdata.brand_name}}">
+                              <img class="small-image pdt-img-small" ng-src="{{productsdata.upload_photo}}" alt="{{productsdata.brand_name}}">
+                            </a>
+                          </div>
+                          <div class="product-info">
+                            <div class="product-name" ng-init="limit = 30;" style="margin-bottom: -15px;">
+                              <a ng-click="getProductDetailsCat(productsdata)" href="" ng-right-click="newTab(productsdata)" title="{{productsdata.upload_name}}">
+                                {{productsdata.upload_name | limitTo: limit}}{{productsdata.upload_name .length > limit ? ' . . .' : ''}}
+                                <!-- <span ng-repeat="attribute in product.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+                              </a>
+                            </div>
+                            <div class="product-price productpricediv" style="margin-bottom: 18px;">
+                              <div class="price-box" ng-repeat="price in productsdata.prices|limitTo:1">
+                                <div class="offer">
+
+                                  <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+                                  <br>
+                                  <p class="special-price yousave" id="spyousave">
+                                    {{price.percentage+0.00|number:2}} %
+                                  </p>
+                                  <span class="special-price">
+                                    <span class="special-price" id="product-price-507_b">
+                                      <span class="price" style="padding-left: 0px;padding-right: 3px;">{{price.offer_price | currency:'&#8377;' }}</span>
+                                    </span>
+                                  </span>
+                                  <span class="old-price">
+                                    <span class="price" id="old-price-507_b">
+                                      {{price.enduser_price | currency:'&#8377;' }}
+                                    </span>
+                                  </span>
+                                  <p id="exclgstttt">(Excluding-GST)</p>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+                            <!-- <div class="clear-left_detailed">
+                              <div class="cartdiv">
+                                <a href="" class="ad_cart_lak categoryaddcart" title="Add To Cart" ng-click="addToCart(productsdata)">
+                                  <span>
+                                    <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                                </a>
+                              </div>
+                              <div class="wishcompdiv" id="catwishcompdiv">
+                                <a href="" class="whishlist_lak" id="catwhishlist_lak" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                                <a href="" class="compare_lak" id="catwhishlist_lak" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
+                                <div class="revdiv reviewDiv" id="catrevdiv">
+                                  <a href="" class="ad_cart_lak" title="Write Your Review" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
+                                    <span>
+                                      <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;">
+                                      </i> REVIEW</span>
+                                  </a>
+                                  <a ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
+                                    <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
+                                  </a>
+                                </div>
+                              </div>
+                            </div> -->
+
+
+                            <div class="clear-left_detailed" id="homecarts">
+                              <div class="cartdiv">
+                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(productsdata)">
+                                  <span>
+                                    <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
+                                    <span class="cart_style_new">ADD TO CART</span>
+                                  </span>
+                                </a>
+                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
+                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
+                                  ng-click="productReview(productsdata, 'review')">
+                                  <span>
+                                    <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
+                                    <span class="hidden-xs">REVIEW</span>
+                                  </span>
+                                </a>
+                                <a class="btn addreview" id="strRev" ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
+                                  <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
+                                </a>
+                              </div>
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br/>
+                </div>
+              </div>
+              <!-- /grid row -->
+
+              <!-- list row -->
+              <div class="row">
+                <div style="margin-top: 10px;" ng-if="layout == 'List'" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list">
+                  <div ng-repeat="productsdata in products| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-bottom:10px;">
+                    <div class="col-item carousel-inner">
+                      <div class="col-md-4">
+                        <div class="listitem-inner">
+                          <div class="product-image">
+                            <a style="padding:10px 0;" ng-click="getProductDetailsCat(productsdata)" class="product-img" title="{{productsdata.brand_name}}">
+                              <img class="small-image pdt-img-small" ng-src="{{productsdata.upload_photo}}" alt="{{productsdata.brand_name}}">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="price col-md-8">
+                        <div class="product-info">
+                          <div class="product-name" ng-init="limit = 100;">
+                            <a ng-click="getProductDetailsCat(productsdata)" href="" ng-right-click="newTab(productsdata)" title="{{productsdata.brand_name}}">
+                              {{productsdata.upload_name | limitTo: limit}}{{productsdata.upload_name .length > limit ? ' . . .' : ''}}
+                              <!-- <span ng-repeat="attribute in product.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+                            </a>
+                          </div>
+                          <div class="product-price" style="margin-bottom: 18px;">
+                            <div class="price-box" ng-repeat="price in productsdata.prices">
+                              <div class="offer">
+                                <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+                                <br>
+                                <p class="special-price yousave">
+                                  {{price.percentage+0.00|number:2}} %
+                                </p>
+                                <span class="special-price">
+                                  <span class="special-price" id="product-price-507_b">
+                                    <span class="price">{{price.offer_price | currency:'&#8377;' }}</span>
+                                  </span>
+                                </span>
+                                <span class="old-price">
+                                  <span class="price" id="old-price-507_b">
+                                    {{price.enduser_price | currency:'&#8377;' }}
+                                  </span>
+                                </span>
+                                <br/>
+                                <p id="exclgstttt" class="new_exclgstttt">(Excluding-GST)</p>
+                              </div>
+                            </div>
+                          </div>
+
+
+
+                          <!-- <div class="cartdiv" style="margin-top: 1px !important;">
+                            <a href="" class="ad_cart_lak categoryaddcart" title="Add To Cart" ng-click="addToCart(productsdata)">
+                              <span>
+                                <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+                            </a>
+                          </div>
+                          <div class="wishcompdiv" id="catwishcompdiv" style="margin-top: 0 !important;">
+                            <a href="" class="whishlist_lak" id="catwhishlist_lak" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                            <a href="" class="compare_lak" id="catwhishlist_lak" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
+                            <div class="revdiv reviewDiv" id="catrevdiv">
+                              <a href="" class="ad_cart_lak" title="Write Your Review" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
+                                <span>
+                                  <i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;">
+                                  </i> REVIEW</span>
+                              </a>
+                              <a ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
+                                <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
+                              </a>
+                            </div>
+                          </div> -->
+
+
+                          <div class="clear-left_detailed" id="homecarts">
+                            <div class="cartdiv">
+                              <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(productsdata)">
+                                <span>
+                                  <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
+                                  <span class="cart_style_new">ADD TO CART</span>
+                                </span>
+                              </a>
+                              <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                              <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
+                              <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
+                                ng-click="productReview(productsdata, 'review')">
+                                <span>
+                                  <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
+                                  <span class="hidden-xs">REVIEW</span>
+                                </span>
+                              </a>
+                              <a class="btn addreview" id="strRev" ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
+                                <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
+                              </a>
+                            </div>
+                          </div>
+
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="addedToCart" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Added to Cart Successfully!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Added to Wish List Successfully!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="addedToCompareProducts" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Added to Compare Products Successfully!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="outOfQty" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Only {{avlQty}} are left!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function myFunction(x) {
+    x.classList.toggle("fa-chevron-down");
+  }
+
+</script>

@@ -1,0 +1,283 @@
+<div class="container" ng-controller="homeController" dw-loading="sample-1"> 
+ <!-- DEALS  -->
+    <div class='row'>
+      <div class="collections-wrap">
+        <div class="block-title">
+			 <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">DEALS</h1>                              
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                          <div class="row">
+
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="deal in deals">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">                               
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(deal)" class="product-img" title="{{deal.upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{deal.upload_photo}}" alt="{{deal.upload_name}}" title="{{deal.upload_name}}">   </a>                            
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name" ng-init="limit = 32" id="searchProname">
+                                      <a ng-click="getProductDetails(deal)" title="{{deal.upload_name}}">
+                                                                      {{deal.upload_name | limitTo: limit}}{{deal.upload_name .length > limit ? ' . . .' : ''}} <!--{{deal.atrname}} {{deal.atrvalue}} -->
+                                                                    </a>
+                                    </div>
+                                       <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in deal.prices">
+                                        <div class="offer" style="margin-top: -24px;">                                      
+                                          <br>
+
+                                          <p class="special-price yousave" style="padding:4px 0px;margin-right: 2px;">
+
+                                          {{price.percentage+0.00|number:2}} %
+
+                                        </p>
+
+
+
+                                          <span class="special-price">
+
+                                                                            <span class="special-price" id="product-price-507_b">
+
+                                                                                <span class="price" style="padding-left: 2px;margin: 0 auto;">{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+
+                                          </span>
+
+                                          </span>
+
+                                          <span class="old-price">
+
+                                                                            <span class="price" id="old-price-507_b">
+
+                                                                            {{price.enduser_price | noFractionCurrency:'&#8377;'}}
+
+                                                                            </span>
+
+                                          </span>
+
+                                            <p id="exclgstttt">(Excluding-GST)</p>
+
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+					
+                                    <div class="clear-left_detailed">
+
+                                       <!--<div class="cart_items">-->
+										<div class="cartdiv">
+											<a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(deal)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
+										</div>
+										<div class="wishcompdiv">
+												<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(deal)"></a>
+												<a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(deal)"></a>							
+											<div class="revdiv">
+												<a href="" class="ad_cart_lak btn addreview" title="Write Your Review"   ng-click="productReview(deal, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+											</div>
+										</div>
+										<!-- </div>-->
+
+                                    </div>
+                                  </div>
+
+
+
+                                </div>
+
+
+
+                              </div>
+
+
+
+                            </div>
+
+
+
+                          </div>
+
+
+
+                        </div>
+
+                     
+                    </div>
+
+
+
+
+
+
+
+                
+
+
+
+ 
+
+    <!-- DEALS  -->
+
+</div>
+
+</div>
+
+
+
+<div id="addedToCart" class="modal fade" ng-controller="homeController">
+
+
+
+  <div class="modal-dialog">
+
+
+
+    <div class="modal-content">
+
+
+
+      <div class="modal-header"></div>
+
+
+
+      <div class="modal-body" align="middle">
+
+
+
+        Added to Cart Successfully!
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="modal-footer">
+
+
+
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+<div id="addedToCompareProducts" class="modal fade" ng-controller="homeController">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header"></div>
+
+      <div class="modal-body" align="middle">
+
+        Added to Compare Products Successfully!
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div id="outOfQty" class="modal fade" ng-controller="homeController">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header"></div>
+
+      <div class="modal-body" align="middle">
+
+      Only {{avlQty}} are left!
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+
+
+
+  <div class="modal-dialog">
+
+
+
+    <div class="modal-content">
+
+
+
+      <div class="modal-header"></div>
+
+
+
+      <div class="modal-body" align="middle">
+
+
+
+        Added to Wish List Successfully!
+
+
+
+      </div>
+
+
+
+
+
+
+
+      <div class="modal-footer">
+
+
+
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+

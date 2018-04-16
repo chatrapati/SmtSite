@@ -1,0 +1,53 @@
+
+		<div class="container" ng-controller="invoiceOrdersController">
+
+			 <ul class="bredcrumb_ul margin_left" style="margin-bottom: 33px;">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">	Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a ng-click="pageNavigate()">Dashboard</a>
+    </li>
+    	<li  class="bredcrumb_li">
+			<a>Invoice Orders</a>
+		</li>
+	</ul>
+			<!--  account dashboard Invoice orders page start here -->
+			<div class="block_account_dashboard" id="edit_row">
+					<div loading   style="margin-right: 600px;"></div>
+				<div class="row" ng-if="invoiceOrderlist!=''">
+					<div class="box-head" style="margin-top: 25px;"><h2>Orders</h2></div>
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">	
+						<div class="row">
+						<div class="table-responsive" style="height: 281px;">
+							<table class="table table-bordered" id="smt_Orders_table">
+								<thead>
+									<tr>
+										<th style="text-align:center;">S.No</th>
+										<th style="text-align:left;">Invoice ID</th>
+										<th style="text-align:right;">Order No</th>
+                                        <th style="text-align:center;">Total Amount</th>
+                                        <th style="text-align:center;">Options</th>
+									</tr>
+								</thead>
+								<tbody id="smt_Orders_table_Data">
+									<tr ng-repeat="order in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+										<td style="text-align:center;">{{itemsPerPage *(currentPage-1)+$index+1}}</td>
+										<td style="text-align:left;">{{order.invoiceid}}</td>
+										<td style="text-align:right;">{{order.orderid}}</td>
+										<td style="text-align:right;">{{order.totalamount|currency:'&#8377;'}}</td>
+                                        <td style="text-align:center;" ng-click="gotoInvoiceOrdersList(order.orderid)"><a href="" class="view_ordr_tbl"><i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a></td>												
+									</tr>
+										
+								</tbody>										
+							</table>
+							<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-head" ng-if="invoiceOrderlist==''"><h2>No Records Found!!!</h2></div>
+			</div>
+			<!--  account dashboard Invoice orders page end here -->
+		</div>
+	

@@ -1,0 +1,152 @@
+
+
+<div class="container" ng-controller="homeController" > 
+
+<div class='row'>
+
+
+
+      <div class="collections-wrap">
+
+
+
+        <div class="block-title" ng-controller="homeController">
+
+
+
+          <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">coupons</h1>
+
+
+
+       
+
+
+
+                  <div class="">
+
+
+
+                    <div>
+
+
+
+                      <!-- Wrapper for slides -->
+
+
+
+                      <div class="carousel-inner" style="padding:15px;">
+
+
+
+                        <div>
+
+
+
+                          <div class="row">
+
+
+
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3 couponDiv"  ng-repeat="img in homesliderimage " style="margin-bottom:10px !important;">
+
+
+
+                              <div class="sub-item respl-item"style="border: 1px solid;">
+
+                                   <div id="" class="" data-ride="">
+
+
+
+          <div class="">
+
+
+
+            <div  ng-class="$index===2?'item active':'item'">
+
+
+
+              <img ng-src="{{img.imageurl}}" class="img-responsive bannerimg" alt="">
+
+			
+
+				<div class="coupon centered1"> {{img.coupon_code}}</div>
+
+             
+
+            </div>
+
+
+
+          </div>
+
+
+
+      
+
+
+
+                              
+
+
+
+                              </div>
+
+
+
+                            </div>
+
+
+
+                          </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                      </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                  </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+

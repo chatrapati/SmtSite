@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cloud Zoom</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <!-- Include jQuery. -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+ 
+        <!-- Include Cloud Zoom CSS. -->
+        <link rel="stylesheet" type="text/css" href="css/cloud-zoom-styles.css">
+        <link rel="stylesheet" type="text/css" href="css/thumbelina.css">
+        
+        <!-- Include Cloud Zoom script. -->
+		<script src="js/cloudzoom.js"></script>
+        <script src="js/thumbelina.js"></script>
+        
+        <!-- Call quick start function. -->
+        <script type="text/javascript">
+            CloudZoom.quickStart();
+        </script> 
+   
+    </head>
+    
+    <body>
+        <img class = "cloudzoom" src = "images/small/image1.jpg"
+             data-cloudzoom = "zoomImage: 'images/large/image1.jpg'" />
+        <br/>
+        <div id="slider1">
+            <div class="thumbelina-but horiz left">&#706;</div>
+            <ul>
+                <li><img class = 'cloudzoom-gallery' src="images/thumbs/image1.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image1.jpg', zoomImage: 'images/large/image1.jpg' ,galleryEvent:'mouseover' " ></li>
+               <li><img class = 'cloudzoom-gallery' src="images/thumbs/image2.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image2.jpg', zoomImage: 'images/large/image2.jpg' ,galleryEvent:'mouseover' " ></li>
+                <li><img class = 'cloudzoom-gallery' src="images/thumbs/image3.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image3.jpg', zoomImage: 'images/large/image3.jpg' ,galleryEvent:'mouseover' " ></li>
+                <li><img class = 'cloudzoom-gallery' src="images/thumbs/image4.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image4.jpg', zoomImage: 'images/large/image4.jpg' ,galleryEvent:'mouseover' " ></li>
+                <li><img class = 'cloudzoom-gallery' src="images/thumbs/image5.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image5.jpg', zoomImage: 'images/large/image5.jpg' ,galleryEvent:'mouseover' " ></li>
+                <li><img class = 'cloudzoom-gallery' src="images/thumbs/image6.jpg" data-cloudzoom = "useZoom: '.cloudzoom', image: 'images/small/image6.jpg', zoomImage: 'images/large/image6.jpg' ,galleryEvent:'mouseover' " ></li>
+            </ul>
+            <div class="thumbelina-but horiz right">&#707;</div>
+        </div>
+        
+    </body>
+    <script src="js/cloud-zoom-app.js"></script>
+     <!-- Create sliders. -->
+        <script type="text/javascript">
+            $(function(){
+                
+                $('#slider1').Thumbelina({
+                    $bwdBut:$('#slider1 .left'),    // Selector to left button.
+                    $fwdBut:$('#slider1 .right')    // Selector to right button.
+                });
+
+            })
+        </script>    
+</html>

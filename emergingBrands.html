@@ -1,0 +1,65 @@
+ <div class="container-fulid" ng-controller="homeController">
+   
+    <div class="container">      
+      <!-- emerging brand -->
+      <div class='row' id="edit_row">
+        <div class="collections-wrap">
+          <div class="block-title">
+            <h1>EMERGING BRANDS</h1>
+
+          </div>
+               <div loading style="margin-right: 446px;margin-top: 190px;"></div>
+        </div>
+        <!-- <div class="emergingbrand1">  -->
+        <div>
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 top-brandbox" ng-repeat="ebrand in emergingbrands">
+            <div class="emerging-item emerging-gallery">
+              <div class="emerging-gallery_img img mg-image">
+                <div>
+                  <a >
+                    <img ng-src="{{ebrand.brandurl}}" ng-click="getCategoryBasedOnBrands(ebrand)" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
+                  </a>
+                <!--  <div class="emerging-gallery_text">
+                    <div class="emerging-top-brands-gallery-text-content">
+                      <a ng-href="{{ebrand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+       
+      </div>
+      <!-- emerging brand -->
+   
+  </div>
+
+  <!-- <div class="container-fulid" ng-controller="homeController">
+  
+    <div class="container">
+     
+      <div class="row">
+        <div class="main-collections-wrap collections-wrap">
+          <div class="block-title">
+            <h1 class="allHeaders">Collections</h1>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 collection-page-temp" ng-repeat="ebrand in emergingbrands">
+          <div class="coll-gallery">
+            <div class="coll-gallery_img img mg-image">
+              <a href="{{ebrand.brandurl}}">
+                <img  ng-src="{{ebrand.brandurl}}" title="{{ebrand.brandname}}" alt="{{ebrand.brandname}}">
+              </a>
+            </div>
+            <div class="coll-gallery_text">
+              <a class="coll-view_collection coll-view-collection-moreinfo" href="javascript:void(0)">{{collection.name}}</a>
+            </div>
+          </div>
+        </div>
+  </div>
+     <br />
+    <br />
+</div> -->

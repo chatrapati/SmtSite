@@ -1,0 +1,104 @@
+.exgst{
+    font-weight: bold;
+    color: #0487A1;
+    font-size: 11px;
+	margin-left:10px;
+}
+.list .price-box .price {
+    margin-top: 2px !important;
+}
+.contactDiv{
+	margin-top:7px !important;
+}
+
+@media screen and (max-width:468px) and (min-width:200px) {
+	
+}
+
+@media screen and (max-width:768px) and (min-width:469px) {
+	
+}
+
+@media screen and (max-width:1024px) and (min-width:769px) {
+	.pageshowlabel{
+
+margin-top: 6px !important;
+}
+.pagesortlabel{
+margin-top: 6px !important;
+}	
+}
+
+@media screen and (max-width:1200px) and (min-width:1024px) {
+#cart_items_cat {
+   
+    margin-top: 45px;
+}
+#review_new_cat {
+    padding: 3px 2px 8px 2px !important;
+}
+a#compare_cat {
+	    width: 25px !important;
+		
+    background-position: -30px center !important;
+}
+a#whishlist_cat {
+
+    width: 25px !important;
+	
+    background-position: 5px center !important;
+}
+#ad_cart_cat {
+    padding: 7px 1px 9px 1px !important;
+}
+#spyousave{
+	font-size: 10px !important;
+    margin-top: 5px !important;
+}
+.pageshowlabel{
+font-size: 11px !important;
+margin-top: 5px !important;
+}
+.pagesortlabel{
+	font-size: 11px !important;
+margin-top: 5px !important;
+}
+#pageshowsort select {
+    padding: 0px 0px 3px 2px !important;
+	    font-size: 11px !important;
+}
+.btnpageprevnext{
+	padding: 1px 12px !important;
+	font-size: 11px !important;
+	
+}
+.buttons-countrows{
+	margin-top:9px !important;
+	font-size: 11px !important;
+}
+.subcatcheck label{
+	font-size:11px !important;
+}
+.subcatcheck input{
+    margin: 3px 3px 0px !important;
+}
+#pag_cat_neww {
+    padding: 1px 7px 5px 6px !important;
+}
+}
+@media screen and (max-width:1300px) and (min-width:1201px) {
+}
+@media (min-width: 1300px){
+.pageshowlabel{
+margin-top: 6px !important;
+}
+.pagesortlabel{
+margin-top: 6px !important;
+}	
+.buttons-countrows{
+	margin-top:4px !important;
+}
+}
+
+
+

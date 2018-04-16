@@ -1,0 +1,630 @@
+
+<div class="container" ng-controller="myOrderDetailsCtrl">
+ <ul class="bredcrumb_ul" style="margin-top: 5px;margin-left:-15px;">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a ng-click="pageNavigate()">Dashboard</a>
+    </li>
+    	<li  class="bredcrumb_li" ng-if="showInvoice == 'true'">
+			<a ng-click="invoicebredcrumb()">Invoice Orders</a>
+		</li>
+		<li  class="bredcrumb_li" ng-if="showMyOrders == 'true'">
+			<a ng-click="test()">Orders</a>
+		</li>
+		 <li class="bredcrumb_li" ng-if="showPendingOrders == 'true'">
+			<a ng-click="pendingOrdersbredcrumb()">Pending Orders</a>
+		</li> 
+		<li  class="bredcrumb_li">
+			<a>Invoice</a>
+		
+		</li>
+	</ul>
+	</div>
+<div class="container" ng-controller="myOrderDetailsCtrl">
+	
+
+	<div class="row" id="edit_row">
+
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+
+			<!--  account dashboard page start here -->
+
+			<div class="block_account_dashboard">
+
+
+				<div class="row">
+
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+
+						<div class="row">
+
+							<div class="basic_dashboard">
+
+
+
+								<div class="block_title_dashboard_vieworder">
+
+									<h1 class="b_head">Order #{{orderId}} </h1>
+
+									<!-- <span>- Pending></span> -->
+
+								</div>
+
+
+								<div class="myaccount_section12_vieworder">
+
+
+
+									<div class="box-head_vieworder">
+
+										<div id="textId" ng-hide="showPrintSection == 'false'">
+											<div class="col-md-12">
+												<h4> Your Order ID is {{orderId}}</h4>
+											</div>
+											<div class="col-md-12">
+												<table style="margin-bottom:5px;" border=1 width="100%">
+
+													<thead>
+
+														<tr>
+
+															<th style="text-align:left;">Product Name</th>
+															<!-- <th style="text-align:left;">SKU</th> -->
+															<th style="text-align:right;">Unit Price</th>
+																<th style="text-align:right;">Qty</th>
+																	<th style="text-align:right;">Total Price</th>
+															<th style="text-align:right;">Tax(%)</th>
+															<th style="text-align:right;">Tax Amount</th>
+															<th style="text-align:right;">Subtotal</th>
+
+														</tr>
+
+													</thead>
+
+													<tbody id="myViewOrdersData">
+
+														<tr ng-repeat="orderData in orderDetails">
+
+															<td style="text-align:left;">{{orderData.productdescription}}</td>
+															<!-- <td style="text-align:left;">{{orderData.productdescription}}</td> -->
+															<td style="text-align:right;">
+																<span>{{orderData.unitprice|currency:'&#8377;'}}</span>
+															</td>
+															<td style="text-align:right;">
+																<strong>{{orderData.qty}}</strong>
+															</td>
+															<td style="text-align:right;">{{orderData.unitprice*orderData.qty|currency:'&#8377;'}}</td>
+															<td style="text-align:right;">{{orderData.tax}}</td>
+															<td style="text-align:right;">{{orderData.tax_amount|currency:'&#8377;'}}</td>
+															<td style="text-align:right;">
+																<span>{{orderData.sub_total|currency:'&#8377;'}}</span>
+															</td>
+														</tr>
+
+													</tbody>
+
+													<tfoot>
+
+														<tr>
+
+															<td colspan="6" class="tft_head" style="text-align:right;">Shipping Charges</td>
+
+															<td class="tft_data" style="text-align:right;">₹0.00</td>
+
+														</tr>
+
+
+														 <tr>
+
+															<td colspan="6" class="tft_head" style="text-align:right;">Grand Total (Incl.Tax)</td>
+
+															<td class="tft_data" style="text-align:right;">{{amtPayable|currency:'&#8377;'}}</td>
+
+														</tr> 
+
+														<tr>
+
+															<td colspan="6" class="tft_head" style="text-align:right;">Coupon Amount</td>
+
+															<td class="tft_data" style="text-align:right;">{{discountAmt|currency:'&#8377;'}}</td>
+
+														</tr>
+
+
+														<tr>
+
+															<td colspan="6" class="tft_head" style="text-align:right;">Amount Payable</td>
+
+															<td class="tft_data" style="text-align:right;">{{grandTotal|currency:'&#8377;'}}</td>
+
+														</tr>
+
+													</tfoot>
+
+												</table>
+											</div>
+											<div class="col-md-12" ng-if="shippingtype == 'Pickup'">
+												<div class="col-md-6" style="border:1px solid #cfcfcf;padding:2px 2px; width:47%;float:left;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Shop Name</b> {{shop_name}}
+													</div>
+
+
+												</div>
+												<div class="col-md-6" style="float:right; width:48%;border:1px solid #cfcfcf;padding:2px 2px;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Shop Address</b> {{shopAddress}}
+													</div>
+
+
+												</div>
+
+											</div>
+											<div class="col-md-12" >
+												<div class="col-md-6" style="border:1px solid #cfcfcf;padding:2px 2px; width:47%;float:left;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Company GST Number-</b> 36AAGCG4402R1ZA
+													</div>
+
+
+												</div>
+												<div class="col-md-6" style="float:right; width:48%;border:1px solid #cfcfcf;padding:2px 2px;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Customer GST Number-</b> {{gstnumber}}
+													</div>
+
+
+												</div>
+
+											</div>
+											<div class="col-md-12" ng-if="shippingtype == 'Delivery'">
+												<div class="col-md-6" style="border:1px solid #cfcfcf;padding:2px 2px; width:47%;float:left;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Shipping Address</b>
+
+													</div>
+
+													<div class="shipping_address_viewmore">
+
+														<span>{{shippingaddress.firstname}}&nbsp;&nbsp;{{shippingaddress.lastname}}</span>
+														<br>
+														<span>{{shippingaddress.mobile}}/{{shippingaddress.alt_mobile}}</span>
+														<br>
+														<span>{{shippingaddress.house_no}},&nbsp;&nbsp;{{shippingaddress.street_address}}</span>
+														<br>
+														<span>{{shippingaddress.city}},&nbsp;&nbsp;{{shippingaddress.postal_code}}</span>
+														<br>
+														<span>{{shippingaddress.state}}</span>
+														<br>
+														<span>{{shippingaddress.country}}</span>
+													</div>
+												</div>
+												<div class="col-md-6" style="float:right; width:48%;border:1px solid #cfcfcf;padding:2px 2px;">
+													<div class="" style="border-bottom:1px solid #cfcfcf;">
+
+														<b>Billing Address</b>
+
+													</div>
+
+													<div class="shipping_address_viewmore">
+
+														<span>{{billingaddress.firstname}}&nbsp;&nbsp;{{billingaddress.lastname}}</span>
+														<br>
+														<span>{{billingaddress.mobile}}/{{billingaddress.alt_mobile}}</span>
+														<br>
+														<span>{{billingaddress.house_no}},&nbsp;&nbsp;{{billingaddress.street_address}}</span>
+														<br>
+														<span>{{billingaddress.city}},&nbsp;&nbsp;{{billingaddress.postal_code}}</span>
+														<br>
+														<span>{{billingaddress.state}}</span>
+														<br>
+														<span>{{billingaddress.country}}</span>
+													</div>
+												</div>
+
+											</div>
+											<div class="col-md-12" style="margin-left: 45%;margin-right: 45%">
+												<button type="submit" onclick="window.print();" style="width:60px;height:34px;margin-top:10px;cursor:pointer;" id="printBtn">Print</button>
+											</div>
+										</div>
+										<!-- <a href="#" class="orderDetails_viewmore">Reorder</a>
+
+										<span class="myOrderPipe_viewmore">|</span> -->
+
+										<a ng-click="printSection(textId)" class="orderDetails_viewmore" style="cursor:pointer;">Print Order <span><i class="fa fa-print" aria-hidden="true"></i></span></a>
+
+									</div>
+
+
+
+
+									<div class="row" style="margin-bottom:10px;" ng-if="shippingtype == 'Delivery'">
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder" ng-if="shippingaddress">
+
+												<div class="shipping_viewmore">
+
+													<span>Shipping Address</span>
+
+												</div>
+
+												<div class="shipping_address_viewmore">
+
+													<span>{{shippingaddress.firstname}}&nbsp;&nbsp;{{shippingaddress.lastname}}</span>
+													<br>
+													<span>{{shippingaddress.mobile}}/{{shippingaddress.alt_mobile}}</span>
+													<br>
+													<span>{{shippingaddress.house_no}},&nbsp;&nbsp;{{shippingaddress.street_address}}</span>
+													<br>
+													<span>{{shippingaddress.city}},&nbsp;&nbsp;{{shippingaddress.postal_code}}</span>
+													<br>
+													<span>{{shippingaddress.state}}</span>
+													<br>
+													<span>{{shippingaddress.country}}</span>
+												</div>
+
+											</div>
+
+										</div>
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder" ng-if="billingaddress">
+
+												<div class="shipping_viewmore">
+
+													<span>Billing Address</span>
+
+												</div>
+
+												<div class="shipping_address_viewmore">
+
+													<span>{{billingaddress.firstname}}&nbsp;&nbsp;{{billingaddress.lastname}}</span>
+													<br>
+													<span>{{billingaddress.mobile}}/{{billingaddress.alt_mobile}}</span>
+													<br>
+													<span>{{billingaddress.house_no}},&nbsp;&nbsp;{{billingaddress.street_address}}</span>
+													<br>
+													<span>{{billingaddress.city}},&nbsp;&nbsp;{{billingaddress.postal_code}}</span>
+													<br>
+													<span>{{billingaddress.state}}</span>
+													<br>
+													<span>{{billingaddress.country}}</span>
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="row" style="margin-bottom:10px;" ng-if="shippingtype == 'Pickup'">
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="shipping_viewmore">
+
+													<b>Shop Name</b>
+
+
+												</div>
+
+												<div class="shipping_address_viewmore">
+
+													{{shop_name}}
+												</div>
+
+											</div>
+
+										</div>
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="shipping_viewmore">
+
+													<b>Shop Address</b>
+
+
+												</div>
+
+												<div class="shipping_address_viewmore">
+
+													{{shopAddress}}
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="row" style="margin-bottom:10px;" ng-if="shippingtype!=''">
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="shippingmet_viewmore">
+
+													<span>Shipping Method</span>
+
+												</div>
+
+												<div class="shipping_method_viewmore">
+
+													<p> {{shippingtype}} </p>
+
+												</div>
+
+											</div>
+
+										</div>
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" ng-if="paymenttype!=''" id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="paymentmet_viewmore">
+
+													<span>Payment Method</span>
+
+												</div>
+
+												<div class="payment_method_viewmore">
+
+													<p>
+
+														<b> {{paymenttype|titleCase}} </b>
+
+													</p>
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="row" style="margin-bottom:10px;" >
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="shippingmet_viewmore">
+
+													<span>Company GST Number</span>
+
+												</div>
+
+												<div class="shipping_method_viewmore">
+
+													<p>36AAGCG4402R1ZA  </p>
+
+												</div>
+
+											</div>
+
+										</div>
+
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12"  id="invoice_mbl_padd">
+
+											<div class="box_vieworder">
+
+												<div class="paymentmet_viewmore">
+
+													<span>Customer GST Number</span>
+
+												</div>
+
+												<div class="payment_method_viewmore">
+
+													<p>
+
+														<p> {{gstnumber}} </p>
+
+													</p>
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="box-head" style="margin-bottom:7px;" ng-if="orderDetails!=''" id="invoice_mbl_padd">
+
+										<h2>Items Ordered</h2>
+
+									</div>
+
+									<div class="myvieworders-tbl-new1 table-responsive" ng-if="orderDetails!=''">
+
+										<table class="table table-bordered" id="myViewOrders">
+
+											<thead>
+
+												<tr>
+
+													<th style="text-align:left;">Product Name</th>
+													<th style="text-align:right;">Unit Price</th>
+														<th style="text-align:right;">Qty</th>
+															<th style="text-align:right;">Total Price</th>
+													<th style="text-align:right;">Tax (%)</th>
+													 <th style="text-align:right;">Tax Amount</th> 
+													<th style="text-align:right;">Subtotal</th>
+
+												</tr>
+
+											</thead>
+
+											<tbody id="myViewOrdersData">
+
+												<tr ng-repeat="orderData in orderDetails">
+
+													<td style="text-align:left;">{{orderData.productdescription}}</td>
+
+													<!-- <td style="text-align:left;">{{orderData.productdescription}}</td> -->
+
+													<td style="text-align:right;">
+
+														<span>{{orderData.unitprice|currency:'&#8377;'}}</span>
+
+													</td>
+																	<td style="text-align:right;">
+
+
+
+														<strong>{{orderData.qty}}</strong>
+
+
+
+													</td>
+													<td style="text-align:right;">
+
+														<span>{{orderData.unitprice*orderData.qty|currency:'&#8377;'}}</span>
+
+													</td>
+													<td style="text-align:right;">
+
+														<span>{{orderData.tax}}</span>
+
+													</td>
+													 <td style="text-align:right;">
+
+														<span>{{orderData.tax_amount|currency:'&#8377;'}}</span>
+
+													</td> 
+
+									
+
+													<td style="text-align:right;">
+
+														<span>{{orderData.sub_total|currency:'&#8377;'}}</span>
+
+													</td>
+
+												</tr>
+
+											</tbody>
+
+											<tfoot>
+
+												<tr>
+
+													<td colspan="6" class="tft_head">Shipping Charges</td>
+
+													<td class="tft_data">₹0.00</td>
+
+												</tr>
+
+
+												 <tr>
+
+													<td colspan="6" class="tft_head">Grand Total (Incl.Tax)</td>
+
+													<td class="tft_data">{{amtPayable|currency:'&#8377;'}}</td>
+
+												</tr> 
+
+												<tr>
+
+													<td colspan="6" class="tft_head">Coupon Amount</td>
+
+													<td class="tft_data">{{discountAmt|currency:'&#8377;'}}</td>
+
+												</tr>
+
+
+												<tr>
+
+													<td colspan="6" class="tft_head">Amount Payable</td>
+
+													<td class="tft_data">{{grandTotal|currency:"₹":2}}</td>
+
+												</tr>
+
+											</tfoot>
+
+										</table>
+
+									</div>
+
+
+
+									<button type="submit" class="btn btn-default" id="myViewOrdersBack" ng-click="gotoOrders()">&lt;&lt;&nbsp; Back to My Orders</button>
+
+									<button ng-if="status == 'Accepted'" type="submit" class="btn btn-default" id="myViewOrdersBack" style="float:right;" ng-click="cancelOrder(orderId)">Cancel Order</button>
+
+
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+			<!--  account dashboard page end here -->
+
+		</div>
+
+	</div>
+
+
+</div>
+
+	 <div id="cancelOrderModal" class="modal" ng-controller="myOrderDetailsCtrl">
+
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="closeCancelModal()" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+
+          <div class="modal-body" align="middle">
+
+           Order# {{orderId}} has been cancelled successfully
+
+          </div>
+
+
+
+          <div class="modal-footer">
+
+            <button class="btn btn-primary modalBtn" ng-click="closeCancelModal()">OK</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>

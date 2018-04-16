@@ -1,0 +1,106 @@
+
+
+ <div class="details_container packerdivtopheight" ng-controller="checkOutController">
+
+         <div class="submit_right">
+
+            <!--***************************--> 
+
+            <div class="submit_right">
+
+               <div class="addporperty_from" align="middle">
+					<!-- <div class="edit_information_page_block"  style="width:60%;margin-top:10px;"> -->
+                  <form id="msform" ng-submit="payuMoneyFunc()" action="https://secure.payu.in/_payment"  method="post" name="payuForm">
+
+                    <fieldset>
+
+								<input type="hidden" name="key" ng-model="merchant_key" value="{{merchant_key}}" />
+
+								<input type="hidden" name="hash" value="{{hash}}" ng-model="hash" />
+
+								<input type="hidden" name="txnid" ng-model="txnId" value="{{txnId}}"  />
+
+								<input type="hidden" id="amount" name="amount"  ng-model="amount" value="{{amount}}" placeholder="Amount" />
+
+								
+
+								<input type="hidden" id="firstname" name="firstname" value="{{firstname}}"  ng-model="firstname" placeholder="Your Name" required/>
+
+								
+
+								<input type="hidden" name="email" ng-model="email" value="{{email}}"  placeholder="Email id" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+
+								/>
+							
+
+								<input type="hidden" id="phone"  value="{{phone}}" ng-minlength="10" ng-maxlength="10" name="phone" ng-model="phone" placeholder="Phone Number"
+
+								 required pattern="[789][0-9]{9}" />
+
+								<p style="color:red" ng-show="onSubmit && (payuForm.phone.$error.required)">Please Enter your number.</p>
+
+								<p style="color:red" ng-show="onSubmit && (payuForm.phone.$error.pattern || payuForm.phone.$error.minlength || payuForm.phone.$error.maxlength)">Invalid mobile number.</p>
+
+								<input type="hidden" id="productinfo" name="productinfo" ng-model="productinfo" ng-init="productinfo = 'propertyPost'" value="propertyPost"
+
+								/>
+
+								<input type="hidden" style="visibility:hidden;" id="surl" name="surl" ng-model="surl" value="http://www.shopmytools.com/success.html"
+
+								 placeholder="Address" />
+
+								<input type="hidden" style="visibility:hidden;" id="furl" name="furl" ng-model="furl" value="http://www.shopmytools.com/error.html"
+
+								 placeholder="Address" />
+
+								<p style="color:red" ng-show="onSubmit && (payuForm.address.$error.required)">Please enter Address</p>
+
+								<center>
+
+									<input type="hidden" style="width:158px !important;display: -webkit-box;" class="next action-button" value="Confirm">
+
+									<span ng-show="searchButtonText == 'Please Wait...'">
+
+										<img style="width: 21px !important;" src="view/images/loading.gif">
+
+									</span>{{ searchButtonText }}</center>
+
+							
+
+									 <input type="submit" id="payment_conti" style="background-color:#0487a1;border-color:#0487a1;" class="next action-button" value="Go To Payu" > 
+
+							</fieldset>
+
+				  </form>
+						<!-- </div> -->
+
+               </div>
+
+            </div>
+
+         </div>
+
+         <!--***************************-->
+
+       
+
+        
+
+         <!--close submitfromcontainer-->
+
+      </div>
+
+
+
+      <!-- <script>
+
+window.onload()
+
+
+
+</script> -->
+
+
+
+     
+

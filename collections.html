@@ -1,0 +1,28 @@
+<div class="container-fulid" ng-controller="homeController" id="categoryPage">
+  
+    <div class="container" id="all_collect">
+     
+      <div class="row" id="edit_row">
+        <div class="main-collections-wrap collections-wrap">
+       
+          <div class="block-title">
+            <h1 class="allHeaders">Collections</h1>
+          </div>
+              <div loading style="margin-right: 446px;margin-top: 190px;"></div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 collection-page-temp" ng-repeat="collection in collections">
+          <div class="coll-gallery">
+            <div class="coll-gallery_img img mg-image" id="collections_image_res">
+              <a >
+                <img  ng-src="{{collection.imagelink}}" ng-click="gotoCategory(collection)" title="{{collection.name}}" alt="{{collection.name}}">
+              </a>
+            </div>
+            <div class="coll-gallery_text">
+              <a class="coll-view_collection coll-view-collection-moreinfo" ng-click="gotoCategory(collection)" href="javascript:void(0)">{{collection.name}}</a>
+            </div>
+          </div>
+        </div>
+  </div>
+     <br />
+    <br />
+</div>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Home</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <!-- // js -->
+
+  <!--  angular links -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <!-- Bootstrap core CSS -->
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/brand_Detail_Page_Styles.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="./css/top_header_styles_page.css" type="text/css" media="all" />
+  <link href="./css/site/home-page.css" rel="stylesheet">
+  <link href="./css/site/collections.css" rel="stylesheet">
+  <link href="./css/site/all-top-brands.css" rel="stylesheet">
+  <link href="./css/site/smt-theme.css" rel="stylesheet">
+  <link href="./css/site/emerging-brand.css" rel="stylesheet">
+  <link href="./css/site/top-brand-style.css" rel="stylesheet">
+  <link href="./css/site/header-menu-style.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/loginpage.css" rel="stylesheet">
+  <link href="./css/dashboard.css" rel="stylesheet">
+  <link href="./css/view.css" rel="stylesheet">
+  <link href="./css/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen" />
+  <link rel="stylesheet" href="./css/categoryPage.css" type="text/css" media="all" />
+  <script src="./js/angular_app.js"></script>
+  <script src="./js/angular_loading.js"></script>
+  <script src="./js/config/config.js"></script>
+
+  <script src="./js/magiczoomplus.js" type="text/javascript"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.css"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+  <script src="./js/controllers/searchController.js"></script>
+  <script src="./js/controllers/homeController.js"></script>
+  <script src="./js/controllers/headercontroller.js"></script>
+  <script src="./js/services/service.js"></script>
+  <script src="./js/controllers/logincontroller.js"></script>
+  <script src="./js/controllers/categoryPageCtrl.js"></script>
+  <script src="./js/controllers/cartcontroller.js"></script>
+  <script src="./js/services/loginservice.js"></script>
+  <script src="./js/services/categoryService.js"></script>
+
+
+  <script src="./js/brand_Detail_Page_app.js" type="text/javascript"></script>
+  <script src="./js/services/product_detail_page_service.js" type="text/javascript"></script>
+  <script src="./js/controllers/product_detail_page_controller.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+
+  <style type="text/css">
+    .yt-menu-nav>#nav>li>a>span,
+    .language-currency ul li a,
+    .sm-serachbox-pro .sm-searbox-content,
+    .sm-serachbox-pro .jqTransformInputWrapper input.input-text,
+    #custom_popular_search .sm-searchbox-popular-title,
+    .banner-policy a,
+    .yt-header-bottom .more-wrap .more-view,
+    .toolbar .select-inner ul li a.selected,
+    .category-products .item .product-name a,
+    .yt-product-detail .tab-product-detail .yt-tab-navi>li>a,
+    .yt-product-detail .tab-product-detail .yt-tab-navi>li>a:hover,
+    .sm_quickview_handler,
+    .yt-tab-listing .respl-tabs-wrap ul li.respl-tab .respl-tab-label,
+    .yt-tab-listing .title-text,
+    .block-title span,
+    .spotlight .block-title,
+    .spotlight4,
+    .footer-links-w,
+    .toolbar,
+    .sm-categories .cat-title,
+    .breadcrumbs,
+    #narrow-by-list dt,
+    .yt-product-detail .product-name h1,
+    .yt-product-detail .short-description h2,
+    .postTitle h2 a,
+    #yt_wrapper h1.page-title,
+    #yt_wrapper .page-title h1 {
+      color: #444444;
+    }
+    
+    body.sm_market {
+      color: #666666;
+    }
+    
+    body.sm_market {
+      background-color: #FFFFFF;
+    }
+    
+    a {
+      color: #666666;
+    }
+    
+    a:focus,
+    a:hover {
+      color: #0487A1;
+    }
+    /*titleColor  hover*/
+    
+    .more-wrap .more-view:hover,
+    .postTitle h2 a:hover,
+    .category-products .item .product-name a:hover,
+    .yt-tab-listing .respl-tabs-wrap ul li.respl-tab .respl-tab-label:hover,
+    .yt-product-detail .tab-product-detail .yt-tab-navi>li>a:hover {
+      color: #0487A1;
+    }
+    
+    #yt_header .head-quicklink_links .inner {
+      float: right;
+    }
+    
+    .cloud-zoom-big {
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    
+    #yttotop {
+      background: url(images/backtotop.png) no-repeat scroll center center;
+      -moz-transition: all .3s;
+      -webkit-transition: all .3s;
+      bottom: 15px;
+      color: #fff;
+      height: 9px;
+      padding: 53px 0 35px;
+      position: fixed;
+      text-align: center;
+      text-decoration: none;
+      transition: all .3s;
+      width: 49px;
+      z-index: 1040;
+      right: 0px;
+    }
+    
+    .product-name {
+      margin-top: 5px;
+      margin-bottom: 7px;
+      line-height: 100%;
+      padding-right: 15px;
+      height: 50px !important;
+    }
+    
+    #img_effects {
+      height: 50px;
+      margin: 0 5px;
+    }
+    
+    #img_effects img {
+      height: 100%;
+    }
+    
+    #main_img_effects {
+      height: 200px !important;
+    }
+    
+    #main_img_effects img {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body ng-app="shopMyTools" class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage">
+  <!--     Header part start here -->
+  <header ng-controller="homeController">
+    <div id="smt-navbar">
+
+      <!--   Top Header styles start here -->
+      <div class="container-fluid" id="smt_top_header">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" id="welNameee">
+              <span class="welcome-msg welcome-msg_top" ng-if="!userName">
+						{{headerArray.headername}}
+					</span>
+              <span class="welcome-msg welcome-msg_top" ng-if="userName">
+						Welcome, {{userName}}!
+					</span>
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" id="welcall">
+              <div class="phone-contact">
+                <div class="inner-info">
+                  <span>Support : {{headerArray.headercontactno}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-12 col-xs-12">
+              <div class="inner sup-inner-link" id="suppResell" ng-if="!userName">
+                <span class="supplier-reg-link" style="margin: 0 0 2px;">
+							<a href="" class="supp-reg-link" title="Redirect to SMT-HUB" onclick=" window.open('http://hub.shopmytools.com/','_blank')"> Supplier/Reseller </a>
+						</span>
+              </div>
+              <div class="inner" id="suppResell2" ng-if="userName">
+                <span class="supplier-reg-link" style="margin: 0 0 2px;">
+							<a href="" style="color: white;" class="supp-reg-link" title="Redirect to SMT-HUB" onclick=" window.open('http://hub.shopmytools.com/','_blank')"> Supplier/Reseller </a>
+						</span>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" id="all_accounts_header">
+              <a href="" ng-click="goToDashboard()" style="padding: 8px;border: 1px solid;" title="My Account"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="" style="padding: 8px;border: 1px solid;" title="My Wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+              <a href="" style="padding: 8px;border: 1px solid;" title="Checkout"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
+              <a href="login.html" style="padding: 8px;border: 1px solid;" ng-if="!token" title="Login"><i class="fa fa-lock" aria-hidden="true"></i></a>
+              <a href="" ng-click="goToLogout()" style="padding: 8px;border: 1px solid;" ng-if="token" title="Logout"><i class="fa fa-lock" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--   Top Header styles end here -->
+
+
+      <!--   middle Header styles start here -->
+      <div class="container-fluid" id="middle_logo_headr">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="mlogoo">
+              <div class="row">
+                <img src="{{headerArray.headerlogo}}" ng-click="goToHome()" id="header_logooo">
+              </div>
+            </div>
+            <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12" id="header_searchhh">
+	
+              <input class="smt-navbar-input col-xs-12" type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more" id="srach_textt" ng-change="showHint(searchKey)">
+              <button class="smt-navbar-button pull-right" ng-click="searchProducts(searchKey)" id="serch_btnnn"><span class="glyphicon glyphicon-search"></span></button>
+
+              <ul class="data-ctrl" style="display:block;margin-top: 31%;width: 94%;" outside-click="hideDiv();" ng-if="showHintFlag == 'true'">
+                <li ng-if="searchedProducts.length == 0">
+                  <div class="col-md-12">No Results Found</div>
+                  <br>
+                </li>
+                <li ng-repeat="product in searchedProducts | filter:searchKey | limitTo:6" style="padding:5px;">
+                  <div class="col-md-12" ng-click="getProductDetails(product)">{{product.upload_name}}</div>
+                  <br>
+                </li>
+                <li style="background-color: lightgrey;"><b>Recommended</b>
+                  <br>
+                </li>
+                <li ng-repeat="recommended in recommendedList">
+                  <div class="col-md-12">{{recommended.upload_category | titleCase}}</div>
+                  <br>
+                </li>
+                <li align="right">
+                  <b style="color:#0487a1;" ng-click="searchProductsMore(searchKey)">More</b>
+                </li>
+              </ul>
+
+            </div>
+
+
+
+            <!--    addto cart and compare part start here   -->
+
+            <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12" id="csrt_comppp">
+              <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+                  <ul class="">
+                    <li class="dropdown">
+                      <div class="topnav">
+                        <a href="#" style="margin-left: -4px;"><i class="fa fa-shopping-basket" aria-hidden="true" id="viewCartttIcon"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="viewCarttt">
+                          <span style="margin-left: 73px;font-weight:bold;" class="hidden-xs"> Shopping Items</span>
+                          <br/>
+                          <span style="margin-left: 73px;" ng-if="cartArray.length == 0" class="hidden-xs"> 0 Items&nbsp;&nbsp;&nbsp;&nbsp;</span><span ng-if="cartArray.length == 0" class="hidden-xs">0.00</span>
+                          <span style="margin-left: 72px;" ng-if="cartArray.length > 0" class="hidden-xs"> {{totalItems}} Items&nbsp;&nbsp;&nbsp;&nbsp;</span><span ng-if="cartArray.length > 0" class="hidden-xs">{{totalAmount}}</span></a>
+                        <!-- <a href="#" style="float: right;"><b class="caret"></b></a> -->
+                      </div>
+                      <ul class="dropdown-menu" ng-if="cartArray.length > 0" style="margin-left: -35%;margin-top: -28%;">
+                        <li class="dropdown button" ng-repeat="category in cartArray">
+                          <a href="#" class="dropdown-toggle" ng-if="category.productdescription" data-toggle="dropdown">{{category.productdescription}}</a>
+                          <a href="#" class="dropdown-toggle" ng-if="category.upload_name" data-toggle="dropdown">{{category.upload_name}}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </a>
+                          <br>
+
+                        </li>
+                        <div class="col-md-12" align="middle">
+                          <div class="col-md-6">
+                            <button class="button cancelBtn" style="margin-left: -50%;">CANCEL</button>
+                          </div>
+                          <div class="col-md-6">
+                            <button class="button viewBtn" ng-click="gotoCartPage()">VIEW</button>
+                          </div>
+                        </div>
+
+                      </ul>
+                    </li>
+
+                  </ul>
+                </div>
+
+                <ul class="col-md-6 col-lg-6 col-sm-6 col-xs-6" style="padding-right: 0px;padding-left: 0px;">
+                  <li class="dropdown">
+                    <div class="topnav">
+                      <a href="#"><i class="glyphicon glyphicon-list" aria-hidden="true" id="compProdIcon"></i></a>
+                      <a href="#" class="dropdown-toggle hidden-xs" data-toggle="dropdown" id="compProd"> Compare <br/>Products</a>
+                      <!-- <a href="#" style="float: right;"><b class="caret"></b></a> -->
+                    </div>
+                    <ul class="dropdown-menu" ng-if="compareProducts.length > 0" style="margin-left: -135%;">
+                      <li class="dropdown button" ng-repeat="category in compareProducts">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{category}}
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <br>
+
+                      </li>
+                      <div class="col-md-12" align="middle">
+                        <div class="col-md-6">
+                          <button class="button" style="margin-left: -50%;">CANCEL</button>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="button" ng-click="compareProductsMethod()">VIEW</button>
+                        </div>
+                      </div>
+
+                    </ul>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+            <!--    addto cart and compare part end here   -->
+
+            <!--    addto cart and compare part start here my code 4-1-2018  -->
+
+            <!--<div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" id="whish_compare">
+						<div class="row">
+							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+								<ul class="nav navbar-nav">
+									<li class="dropdown">
+
+										<div class="topnav_lakki top_whishNav">
+											<span><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true" id="whissshhh"></i></a></span>
+											<span>
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" id="whishlist_blck">
+													<span style="font-weight:bold;">Shopping Items</span>
+													<span style="" ng-if="cartArray.length == 0"> 0 Items&nbsp;&nbsp;&nbsp;&nbsp;</span><span ng-if="cartArray.length == 0">0.00</span>
+													<span style="" ng-if="cartArray.length > 0"> {{totalItems}} Items&nbsp;&nbsp;&nbsp;&nbsp;</span><span ng-if="cartArray.length > 0">{{totalAmount}}</span>
+												</a>
+											</span>
+										</div>
+
+									<ul class="dropdown-menu" ng-if="cartArray.length > 0" style="margin-left: -35%;margin-top: -4%;">
+									  <li class="dropdown button" ng-repeat="category in cartArray">
+										<a href="#" class="dropdown-toggle" ng-if="category.productdescription" data-toggle="dropdown">{{category.productdescription}}
+										   <span class="glyphicon glyphicon-remove" ng-click="removeCartItem(category)"></span>
+										</a>
+
+										<br>
+
+									  </li>
+									  <div class="col-md-12" align="middle">
+										<div class="col-md-6">
+										  <button class="button cancelBtn" style="margin-left: -50%;">CANCEL</button>
+										</div>
+										<div class="col-md-6">
+										  <button class="button viewBtn" ng-click="gotoCartPage()">VIEW</button>
+										</div>
+									  </div>
+
+									</ul>
+									<ul class="dropdown-menu" ng-if="localCartArray.length > 0" style="margin-left: -35%;margin-top: -4%;">
+									  <li class="dropdown button" ng-repeat="category in localCartArray">
+
+										<a href="#" class="dropdown-toggle" ng-if="category.upload_name" data-toggle="dropdown">{{category.upload_name}}
+											 <span class="glyphicon glyphicon-remove" ng-click="removeCartItem(category)"></span>
+										  </a>
+										<br>
+
+									  </li>
+									  <div class="col-md-12" align="middle">
+										<div class="col-md-6">
+										  <button class="button cancelBtn" style="margin-left: -50%;">CANCEL</button>
+										</div>
+										<div class="col-md-6">
+										  <button class="button viewBtn" ng-click="gotoCartPage()">VIEW</button>
+										</div>
+									  </div>
+
+									</ul>
+									</li>
+
+								</ul>
+							</div>
+							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">	
+								<ul class="nav navbar-nav">
+									<li class="dropdown">
+									  <div class="topnav_lakki top_whishNav" >
+										<span><a href="#"><i class="glyphicon glyphicon-list" aria-hidden="true" id="compareee"></i></a></span>
+										<span><a href="#" class="dropdown-toggle" data-toggle="dropdown" id="comparee_blck"> Compare Products</a></span>
+									  </div>
+									  <ul class="dropdown-menu" ng-if="compareProducts.length > 0" style="margin-left: -135%;">
+										<li class="dropdown button" ng-repeat="category in compareProducts">
+										  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{category}}
+											  <i class="fa fa-trash" aria-hidden="true"></i>
+											</a>
+										  <br>
+										</li>
+										<div class="col-md-12" align="middle">
+										  <div class="col-md-6">
+											<button class="button" style="margin-left: -50%;">CANCEL</button>
+										  </div>
+										  <div class="col-md-6">
+											<button class="button" ng-click="compareProductsMethod()">VIEW</button>
+										  </div>
+										</div>
+
+									  </ul>
+									</li>
+								</ul>
+							</div>
+					</div>
+					</div>
+					</div>-->
+
+            <!--    addto cart and compare part end here my code 4-1-2018  -->
+
+          </div>
+        </div>
+      </div>
+      <!--   middle Header styles end here -->
+
+      <!--   header Menu part start here   -->
+      <div class="container-fluid" id="menu_sri_header">
+        <nav class="navbar navbar-inverse srinavbarmenu" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="margin-left: -15px;">
+             <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>-->
+            <div class="navbar-brand navbar-brand-centered" id="nav_menu_cat">
+                <ul class="nav navbar-nav">
+					<li class="dropdown cat-link">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
+								<span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="margin-left: 96px;color:#fff;"></b>
+							</a>
+
+						<ul class="dropdown-menu" id="id_menu_sub">
+							<li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
+								<a href="" ng-click="categoryBasedProducts(category.categoryname)" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+								<ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0">
+									<li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
+										<a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					
+					</li>
+                </ul>
+            </div>
+        </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="collapse navbar-collapse" id="navbar-brand-centered">
+              <ul class="nav navbar-nav">
+                <li> <a href="#" style="color:white;">Deals</a></li>
+                <li style="color:white;"><a href="#" style="color:white;"> New Arrivals</a></li>
+                <li style="color:white;"><a href="#" style="color:white;"> Offers</a></li>
+              </ul>
+            </div>-->
+            <!-- /.navbar-collapse -->
+
+          </div>
+          <!-- /.container -->
+        </nav>
+      </div>
+
+      <!--   header Menu part end here   -->
+
+
+      <!--<div class="container" style="background-color:#666; width:100%;">
+        <div class="row" style="background-color:#666;margin-left:2px;">
+
+          <div class="col-md-3" style="margin-left: 6%;">
+            <ul class="nav navbar-nav">
+              <li class="dropdown" id="mainDropDown">
+                <div class="topnav">
+                  <a href="#"><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  
+                  CATEGORIES </a>
+                  <a href="#" style="float: right;"><b class="caret"></b></a>
+                </div>
+                <ul class="dropdown-menu" style="width: 100% !important;">
+                  <li class="dropdown dropdown-submenu button" ng-repeat="category in categoryArray">
+                    <a href="" ng-click="categoryBasedProducts(category.categoryname)" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+                    <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0">
+                      <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)"><a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a></li>
+
+                    </ul>
+                  </li>
+
+
+                </ul>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="nav navbar-nav">
+            <li style="color:white;padding:10px;"> Deals</li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li style="color:white;padding:10px;"> New Arrivals</li>
+          </ul>
+
+          <ul class="nav navbar-nav">
+            <li style="color:white;padding:10px;"> Offers</li>
+          </ul>
+
+        </div>
+      </div>-->
+
+
+
+    </div>
+  </header>
+  <!--     Header part end here -->
+
+
+  <!--     Footer part start here -->
+  <ng-view></ng-view>
+  <footer ng-controller="homeController" class="footerbar footer">
+	
+    <div class="container">	
+		<div class="row">	
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div class="row">
+						  <a id="yttotop" href="#" title="Go to Top" style="display: block;"></a>
+						  <div class="row row1" id="ftr_ss">
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+							  <ul>
+								<h5 id="footer_linksss"><b>SHOPMYTOOLS</b></h5>
+								<li ng-repeat="smtData in shopMyToolsArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText">&gt;&gt; &nbsp; {{smtData.footername}}</a></li>
+
+							  </ul>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+							  <ul>
+								<h5 id="footer_linksss"><b>CUSTOMER SERVICE</b></h5>
+								<li ng-repeat="smtData in custServiceArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText">&gt;&gt; &nbsp; {{smtData.footername}}</a></li>
+
+							  </ul>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+							  <ul>
+								<h5 id="footer_linksss"><b>PAYMENT METHODS</b></h5>
+								<li ng-repeat="smtData in paymentArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText">&gt;&gt; &nbsp; {{smtData.footername}}</a></li>
+
+							  </ul>
+							</div>		
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+							  <ul>
+								<h5 id="footer_linksss"><b>CONTACT US</b></h5>
+								
+								<li id="footer_links_valuess">
+									<span style="padding-right:5px;"><i class="fa fa-map-marker" aria-hidden="true" id="enve"></i></span>
+									<span class="footerText1 footer_links_addere">
+										{{addressArray.plotno}}&nbsp;&nbsp;{{addressArray.building_name}}, 
+										{{addressArray.near_by}},<br/>	
+										{{addressArray.pincode}},<br/>
+										{{addressArray.city}},<br/>
+										{{addressArray.state}}.</br>
+									</span>
+								</li>
+								<li id="footer_links_valuess">			
+										<span style="padding-right:5px;"><i class="fa fa-envelope" aria-hidden="true" id="enve"></i></span>
+										<span><b>EMAIL: </b><a href="#" class="footerText" style="text-transform:lowercase;"> support@gmail.com </a></span>				
+								</li>
+								<li id="footer_links_valuess">
+									<span style="padding-right:5px;"><i class="fa fa-phone" aria-hidden="true" id="enve"></i></span>
+									<span><b>PHONE: </b><a href="#" class="footerText" style="text-transform:lowercase;"> 040-46161234 </a></span>	
+								</li>
+										
+							  </ul>
+							</div>
+
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 </footer>
+	  <footer ng-controller="homeController" class="footerbar1 footer">
+	<div class="container">
+		<div class="row row1" style="padding:10px 0;color:white;">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div class="row">
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+				  © 2017 ShopMyTools. All Rights Reserved. Designed by ShopMyTools.
+				</div>
+				<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" id="cards">
+				  <i class="fa fa-cc-visa" id="cards_styleee" aria-hidden="true"></i>
+				  <i class="fa fa-cc-mastercard" id="cards_styleee" aria-hidden="true"></i>
+				  <i class="fa fa-cc-amex" id="cards_styleee" aria-hidden="true"></i>
+				  <i class="fa fa-cc-paypal" id="cards_styleee" aria-hidden="true"></i>
+				  <i class="fa fa-cc-discover" id="cards_styleee" aria-hidden="true"></i>
+				</div>
+			</div>
+			</div>
+		</div>
+    </div>
+  </footer>
+  <!--     Footer part end here -->
+  <script>
+    var amountScrolled = 300;
+
+    $(window).scroll(function() {
+      if ($(window).scrollTop() > amountScrolled) {
+        $('#yttotop').fadeIn('slow');
+      } else {
+        $('#yttotop').fadeOut('slow');
+      }
+    });
+
+    $('#yttotop').click(function() {
+      $('html, body').animate({
+        scrollTop: 0
+      }, 700);
+      return false;
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<div class="container" ng-controller="searchPageController">
+  <div class="row"></div><br><br>
+  <div class="col-md-12">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-8">
+
+      <div class="container">
+
+        <div class="col-sm-3 col-xs-6 col-lg-3" ng-repeat="newarrival in searchedProducts">
+          <div class="sub-item respl-item" style="opacity: 1;">
+            <div class="item-inner">
+              <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+              </div>
+              <div class="product-image">
+                <div id="brandex">
+                  <p></p>
+                </div>
+                <a style="padding:10px 0;" ng-href="{{newarrival.brand_link}}" class="product-img" title="{{newarrival.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.brand_name}}" title="{{newarrival.brand_name}}">
+                                  </a>
+                <div class="prod-modelNo prod-modelNo-gift-list prod-modelno-img">
+                </div>
+                <!--<span class="sale-product have-ico">Sale</span>
+                                <a class="sm_quickview_handler" title="Quick View" href="">Quick View</a> -->
+              </div>
+              <div class="product-info">
+                <div class="product-name">
+                  <a> </a>
+                  <a ng-href="{{newarrival.brand_link}}" title="{{newarrival.brand_name}}">
+                                                                        {{newarrival.upload_name}} {{newarrival.atrname}} {{newarrival.atrvalue}}
+                                                                    </a>
+                </div>
+
+
+                <div class="product-review">
+                  <p class="no-rating">
+                    <a title="Write Your Review" href="https://www.shopmytools.com/review/product/list/id/507/#review-form">Write Your Review</a></p>
+                </div>
+                <div class="product-price">
+                  <style>
+                    .prod-modelNo {
+                      font-size: 13px;
+                      font-weight: 600;
+                      margin-bottom: 10px;
+                    }
+                  </style>
+                  <div class="price-box">
+                    <div class="prod-modelNo">
+                      <div id="prod-modelNo">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="offer">
+                      <div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>
+                      <br>
+                      <p class="special-price yousave">
+                        {{newarrival.percentage}} %
+
+                      </p>
+                    </div>
+                    <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{newarrival.offer_price}}</span>
+                    </span>
+                    </span>
+                    <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{newarrival.enduser_price}}
+                                                                            </span>
+                    </span>
+                  </div>
+                  <div class="offer">
+                  </div>
+                </div>
+                <div class="product-addto-wrap">
+                  <div class="button-action item-addcart">
+                    <div class="productaddcart">
+                      <a class="btn-cart btn btn-default btncart" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                    </div>
+                    <div class="wishlist-compare">
+                      <a class="btn-cart btn btn-default btnwishlist" title="Add To Cart" href="javascript:void(0);" style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                      <a class="btn-cart btn btn-default btnwishlist" title="Add To Compare" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                      <!--	<input class="pdt-quant" placeholder="Qty" type="number" min="1" />	-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+
+</div>

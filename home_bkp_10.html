@@ -1,0 +1,965 @@
+<div class="container-fulid" id="categoryPage" ng-controller="homeController" dw-loading="sample-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding-right:1px;padding-left: 1px;">
+        <!-- Carousel -->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          </ol>
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div ng-repeat="img in firstCarouselImages" ng-class="$index===1?'item active':'item'">
+              <img ng-src="{{img}}">
+              <div class="header-text hidden-xs">
+                <div class="col-md-12 text-center">
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        </div>
+        <!-- /carousel -->
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="padding-right:1px;padding-left: 1px;">
+        <div id="carouselexample" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div ng-repeat="img in secondCarouselImages" ng-class="$index===1?'item active':'item'">
+              <img ng-src="{{img}}" alt="click-me" class="image-height">
+              <div class="header-text hidden-xs">
+                <div class="col-md-12 text-center"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="main-collections-wrap collections-wrap" style="margin-bottom: -3px;">
+        <!-- <div class="block-title">
+        <h1 class="allHeaders">Collections</h1>
+      </div> -->
+      </div>
+      <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6 collection-page-temp" ng-repeat="collection in collections|limitTo:6">
+        <div class="coll-gallery">
+          <div class="coll-gallery_img img mg-image">
+            <a href="{{collection.imagelink}}">
+            <img ng-src="{{collection.imagelink}}" title="{{collection.name}}" alt="{{collection.name}}">
+          </a>
+          </div>
+          <div class="coll-gallery_text">
+            <a class="coll-view_collection coll-view-collection-moreinfo" href="javascript:void(0)">{{collection.name}}</a>
+          </div>
+        </div>
+      </div>
+      <div id="all-collections-shoe-more-btn" ng-click="goToCollections()" style="margin-right:-10px;">
+        <a>All Collections</a>
+      </div>
+    </div>
+    <!-- top brand -->
+    <div class='row'>
+      <div class="collections-wrap">
+        <div class="block-title" style="width:100%;margin-left: 4px;">
+          <h1>Top Brands</h1>
+        </div>
+      </div>
+
+      <!-- <div class="regular slider"> -->
+      <div class="regular slider">
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="brand in topbrands|limitTo:6">
+          <div class="emerging-item emerging-gallery">
+            <div class="emerging-gallery_img img mg-image">
+              <div>
+                <a ng-href="{{brand.brandurl}}">
+                <img ng-src="{{brand.brandurl}}" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
+              </a>
+                <!-- <div class="emerging-gallery_text">
+                <div class="emerging-top-brands-gallery-text-content">
+                  <a ng-href="{{brand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+                </div>
+              </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div id="all-collections-shoe-more-btn" ng-click="goToTopBrands()" style="margin-right: -10px;"><a style="margin-top:1px !important;">All Top Brands</a></div>
+    </div>
+    <!-- /top brand -->
+    <!-- emerging brand -->
+    <div class='row'>
+      <div class="collections-wrap">
+       <div class="block-title">
+          <h1>EMERGING BRANDS</h1>
+
+        </div>
+      </div>
+      <!-- <div class="emergingbrand1">  -->
+      <div>
+        <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="ebrand in emergingbrands|limitTo:6">
+          <div class="emerging-item emerging-gallery">
+            <div class="emerging-gallery_img img mg-image">
+              <div>
+                <a ng-href="{{ebrand.brandurl}}">
+                <img ng-src="{{ebrand.brandurl}}" class="img-responsive" alt="{{ebrand.brandname}}" title="{{ebrand.brandname}}">
+              </a>
+                <!--<div class="emerging-gallery_text">
+                <div class="emerging-top-brands-gallery-text-content">
+                  <a ng-href="{{ebrand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+                </div>
+              </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="all-collections-shoe-more-btn" ng-click="goToEmergingBrands()" style="margin-right:-10px;">
+        <a style="margin-top:1px !important;margin-bottom: 0px;">All EMERGING BRANDS</a>
+      </div>
+    </div>
+    <!-- emerging brand -->
+
+    <div class="row">
+      <div class="collections-wrap">
+        <div class="block-title">
+          <h1 id="all_ofers">OFFERS</h1>
+          <tabset class="nav nav-tabs" style="margin-top:-6px;">
+            <tab class="active pull-right tabPane" heading="ALL PRODUCTS" style="margin-right:35%;" ng-click="getOffers('')">
+              <div class="tab-pane fade in active" id="allproducts">
+                <div class="container">
+                  <div class="row">
+                    <div id="carousel-example">
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3"  ng-repeat="product in offersArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(product)" class="product-img" title="{{product.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.brand_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+                                      <a ng-click="getProductDetails(product)" href="" ng-right-click="newTab(product)" title="{{product.brand_name}}" >
+                                                               {{product.upload_name}} <!-- <span ng-repeat="attribute in product.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+
+                                      <div class="price-box" ng-repeat="price in product.prices">
+                                        <div class="offer">
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+                                          <br>
+                                          <p class="special-price yousave">
+                                          {{price.percentage}} %
+                                        </p>
+
+                                          <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                          </span>
+                                          <span id="exclgstttt">(Ex-GST)</span>
+                                        </div>
+                                      </div>
+                                    </div>
+									
+									
+									<div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(product)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(product)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+									
+									
+                                   <!-- <div class="product-addto-wrap">
+                                      <div class="button-action item-addcart">
+                                        <div class="productaddcart">
+                                          <a class="btn-cart btn btn-default btncart" ng-click="addToCart(product)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                            style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(product)" title="Add To Compare" href="javascript:void(0);"
+                                            style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                        </div>
+                                      </div>
+                                    </div>-->
+									
+									
+									
+									
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="ELECTRIC DRILL" class="pull-right tabPane" style="margin-right: -23%;" ng-click="getOffers('Electric Drill')">
+              <div class="tab-pane" id="electricdrill">
+                <div class="container">
+                  <div class="row">
+                    <div>
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="electricdrill in offersArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(electricdrill)" class="product-img" title="{{anglegrinder.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{electricdrill.upload_photo}}" alt="{{anglegrinder.brand_name}}" title="{{anglegrinder.brand_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+                                      <a ng-click="getProductDetails(electricdrill)" title="{{electricdrill.brand_name}}">
+                                                               {{electricdrill.upload_name}} <!-- <span ng-repeat="attribute in electricdrill.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span> -->
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in electricdrill.prices">
+                                        <div class="offer">
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                          <p class="special-price yousave">
+                                          {{price.percentage}} %
+                                        </p>
+
+                                          <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                          </span>
+                                          <span id="exclgstttt">(Ex-GST)</span>
+
+                                        </div>
+                                      </div>
+									  
+									  
+									  
+									  
+									  <div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(electricdrill)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(electricdrill)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+									  
+                                      <!--<div class="product-addto-wrap">
+                                        <div class="button-action item-addcart">
+                                          <div class="productaddcart">
+                                            <a class="btn-cart btn btn-default btncart" ng-click="addToCart(electricdrill)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                          </div>
+                                          <div class="wishlist-compare">
+                                            <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                              style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                            <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(electricdrill)" title="Add To Compare" href="javascript:void(0);"
+                                              style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                            <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                          </div>
+                                        </div>
+                                      </div>-->
+									  
+									  
+									  
+									  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </tab>
+            <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="margin-right: -35%;" ng-click="getOffers('Angle Grinder')">
+              <div class="tab-pane" id="anglegrinder">
+                <div>
+                  <div class="row">
+                    <div>
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="anglegrinder in offersArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(anglegrinder)" class="product-img" title="{{anglegrinder.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{anglegrinder.upload_photo}}" alt="{{anglegrinder.brand_name}}">
+                                  </a>
+
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+                                      <a ng-click="getProductDetails(anglegrinder)" title="{{anglegrinder.brand_name}}">
+                                                               {{anglegrinder.upload_name}} <!--<span ng-repeat="attribute in anglegrinder.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in anglegrinder.prices">
+                                        <div class="offer">
+                                          <!-- <div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                          <p class="special-price yousave">
+                                          {{price.percentage}} %
+                                        </p>
+
+                                          <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                          </span>
+                                          <span id="exclgstttt">(Ex-GST)</span>
+                                        </div>
+                                      </div>
+									  
+									  
+									<div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(anglegrinder)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(anglegrinder)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+									  
+                                      <!--<div class="product-addto-wrap">
+                                        <div class="button-action item-addcart">
+                                          <div class="productaddcart">
+                                            <a class="btn-cart btn btn-default btncart" ng-click="addToCart(anglegrinder)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                          </div>
+                                          <div class="wishlist-compare">
+                                            <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                              style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                            <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(anglegrinder)" title="Add To Compare" href="javascript:void(0);"
+                                              style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                            <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                          </div>
+                                        </div>
+                                      </div>-->
+									  
+									  
+									  
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="IMPACT DRILL" class="pull-right tabPane" style="margin-right: -45%;" ng-click="getOffers('Impact Drill')">
+              <div class="tab-pane" id="impactdrill">
+                <div class="container">
+                  <div class="row">
+                    <div>
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="impactdrill in offersArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(impactdrill)" class="product-img" title="{{impactdrill.upload_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{impactdrill.upload_photo}}" alt="{{impactdrill.upload_name}}" title="{{impactdrill.upload_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+                                      <a ng-click="getProductDetails(impactdrill)" title="{{impactdrill.brand_name}}">
+                                                               {{impactdrill.upload_name}} <!-- <span ng-repeat="attribute in impactdrill.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span> --> 
+                                                                    </a>
+                                    </div>
+                                    <div class="product-info">
+                                      <div class="product-price">
+                                        <div class="price-box" ng-repeat="price in impactdrill.prices">
+                                          <div class="offer">
+                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                            <p class="special-price yousave">
+                                          {{price.percentage}} %
+
+                                        </p>
+
+                                            <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                            </span>
+                                            </span>
+                                            <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                            </span>
+                                            <span id="exclgstttt">(Ex-GST)</span>
+                                          </div>
+
+                                        </div>
+										
+										
+									<div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(impactdrill)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(impactdrill)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+										
+										
+										
+                                        <!--div class="product-addto-wrap">
+                                          <div class="button-action item-addcart">
+                                            <div class="productaddcart">
+                                              <a class="btn-cart btn btn-default btncart" ng-click="addToCart(impactdrill)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                            </div>
+                                            <div class="wishlist-compare">
+                                              <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                                style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                              <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(impactdrill)" title="Add To Compare" href="javascript:void(0);"
+                                                style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                              <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                            </div>
+                                          </div>
+                                        </div>-->
+										
+										
+										
+										
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+            </tab>
+          </tabset>
+          </div>
+        </div>
+      </div>
+
+      <div class="collections-wrap">
+         <div class="block-title">
+          <h1 id="all_ofersNewArrivals">NEW ARRIVALS</h1>
+          <tabset class="nav nav-tabs">
+            <tab class="active pull-right tabPane" style="margin-right: 16%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
+              <div class="tab-pane fade in active" id="allProducts1">
+                <div class="container">
+                  <div class="row">
+                    <div>
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="newarrival in newarrivalsArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                  </div>
+                                  <div class="product-image">
+
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(newarrival)" class="product-img" title="{{newarrival.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.brand_name}}" title="{{newarrival.brand_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+
+                                      <a ng-click="getProductDetails(newarrival)" title="{{newarrival.brand_name}}">
+                                                                        {{newarrival.upload_name}} <!--{{newarrival.atrname}} {{newarrival.atrvalue}} -->
+                                                                    </a>
+                                    </div>
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in newarrival.prices">
+                                        <div class="offer">
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                          <p class="special-price yousave">
+                                          {{price.percentage}} %
+                                        </p>
+
+                                          <span class="special-price">
+                                                                            <span class="special-price" id="product-price-507_b">
+                                                                                <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                          </span>
+                                          <span id="exclgstttt">(Ex-GST)</span>
+                                        </div>
+                                      </div>
+                                    </div>
+									
+									
+									<div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(newarrival)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+									
+                                    <!--<div class="product-addto-wrap">
+                                      <div class="button-action item-addcart">
+                                        <div class="productaddcart">
+                                          <a class="btn-cart btn btn-default btncart" ng-click="addToCart(newarrival)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                            style="margin-left:4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(newarrival)" title="Add To Compare" href="javascript:void(0);"
+                                            style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                        </div>
+                                      </div>
+                                    </div>-->
+									
+									
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab heading="DEMOLITION HAMMER" class="pull-right tabPane" style="margin-right: -27%;" ng-click="getNewArrivals('Demolition Hammer')">
+              <div class="tab-pane " id="demoltionHammer">
+                <div class="container">
+                  <div class="row">
+                    <div id="carousel-example" class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner" style="padding:10px;">
+                        <div>
+                          <div class="row">
+                            <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="demolitionhammer in newarrivalsArray | limitTo:4 track by $index ">
+                              <div class="sub-item respl-item" style="opacity: 1;">
+                                <div class="item-inner">
+                                  <div class="product-image">
+                                    <a style="padding:10px 0;" ng-click="getProductDetails(demolitionhammer)" class="product-img" title="{{demolitionhammer.brand_name}}">
+                                    <img class="small-image pdt-img-small" ng-src="{{demolitionhammer.upload_photo}}" alt="{{demolitionhammer.brand_name}}" title="{{demolitionhammer.brand_name}}">
+                                  </a>
+                                  </div>
+                                  <div class="product-info">
+                                    <div class="product-name">
+                                      <a> </a>
+                                      <a ng-click="getProductDetails(demolitionhammer)" title="{{demolitionhammer.brand_name}}"> 
+                                                                        {{demolitionhammer.upload_name}} <!--{{demolitionhammer.atrname}} {{demolitionhammer.atrvalue}} -->
+                                                                    </a>
+                                    </div>
+
+                                    <div class="product-price">
+                                      <div class="price-box" ng-repeat="price in demolitionhammer.prices">
+                                        <div class="offer">
+                                          <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                          <p class="special-price yousave">
+                                          {{price.percentage}} %
+                                        </p>
+
+
+                                          <span class="special-price">  
+									                       <span class="special-price" id="product-price-507_b">
+                                      <span class="price"><i class="fa fa-inr"></i>{{price.offer_price}}</span>
+                                          </span>
+                                          </span>
+                                          <span class="old-price">
+                                                                            <span class="price" id="old-price-507_b">
+                                                                              <i class="fa fa-inr"></i> {{price.enduser_price}}
+                                                                            </span>
+                                          </span>
+                                          <span id="exclgstttt">(Ex-GST)</span>
+                                        </div>
+                                      </div>
+                                    </div>
+									
+									
+									<div class="clear-left_detailed">
+										<div class="cart_items">
+											<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(demolitionhammer)"><span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size: 13px"></span> ADD TO CART</a>
+											<a href="" class="whishlist_lak" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+											<a href="" class="compare_lak" title="Add To Compare" ng-click="addToCompare(demolitionhammer)"></a>	
+											<a href="" class="review_new_lak" title="Add To Review"><span class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top:3px !important;right:-3px !important;"></span></a>
+										</div>
+									</div>
+									
+									
+                                    <!--<div class="product-addto-wrap">
+                                      <div class="button-action item-addcart">
+                                        <div class="productaddcart">
+                                          <a class="btn-cart btn btn-default btncart" ng-click="addToCart(demolitionhammer)" title="Add To Cart" href="javascript:void(0);">
+                                          <i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+                                        </a>
+                                        </div>
+                                        <div class="wishlist-compare">
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Add To WishList" ng-click="addToWishList(product)" href="javascript:void(0);"
+                                            style="margin-left:4px;margin-top:-1px;padding:6px 6px;">
+                                          <i class="glyphicon glyphicon-heart"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" ng-click="addToCompare(demolitionhammer)" title="Add To Compare" href="javascript:void(0);"
+                                            style="margin-left: 4px;margin-top:-1px;padding:6px 6px;">
+                                          <i class="glyphicon glyphicon-list"></i>
+                                        </a>
+                                          <a class="btn-cart btn btn-default btnwishlist" title="Write Your Review" href="javascript:void(0);" style="margin-left: 4px;margin-top:-1px;padding:6px 6px;">
+                                          <i class="glyphicon glyphicon-star"></i>
+                                        </a>
+                                        </div>
+                                      </div>
+                                    </div>-->
+									
+									
+									
+									
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </tab>
+
+          </tabset>
+
+        </div>
+      </div>
+
+      <!-- tab content -->
+    </div>
+  </div>
+  <div class="brand-directory">
+    <div class="container">
+      <!-- top brand -->
+      <div class='row'>
+        <div class="collections-wrap">
+          <div class="block-title" >
+            <h1>Brands Directory</h1>
+          </div>
+        </div>
+        <div class="regular1 slider">
+          <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 brandDiretcory" ng-repeat="brandImg in brandImages ">
+            <div class="">
+              <a href="">
+                <img src="{{brandImg.footerimageurl}}" class="footer_imgeffect" height="50px"></a>
+            </div>
+          </div>
+          <!-- <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/1884455707_powertex123.png" class="footer_imgeffect" height="50px"></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="https://www.shopmytools.com/manufacturer/index/showroom_detail/id/21">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/1415087006_8168455509_Black_Decker_150_X_50.png" class="footer_imgeffect" height="50px"></a>
+            </div>
+          </div>
+         <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="https://www.shopmytools.com/manufacturer/index/showroom_detail/id/21">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/2701510286_1762512503_150_x_50_new_copy.png" class="footer_imgeffect" height="50px"></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="https://www.shopmytools.com/manufacturer/index/showroom_detail/id/21">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/6016556856_Artboard_5.png" class="footer_imgeffect" height="50px"></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="https://www.shopmytools.com/manufacturer/index/showroom_detail/id/21">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/1504138870_8491029439_Company_Logos-07.png" class="footer_imgeffect" ,height="50px"></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 brandDiretcory">
+            <div class="">
+              <a href="https://www.shopmytools.com/manufacturer/index/showroom_detail/id/21">
+                <img src="https://shopmytools-tifk2ao.netdna-ssl.com/media//Manufacturer/5542701018_3499149342_Company_Logos-02.png" class="footer_imgeffect" ,height="50px"></a>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+      <!-- /top brand -->
+    </div>
+  </div>
+</div>
+
+
+<div id="addedToCart" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Added to Cart Successfully!
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+    </div>
+  </div>
+</div>
+
+<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+        Added to Wish List Successfully!
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal fade" id="addedToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" cache="false">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" aria-label="Close" ng-click="closeVerifyAlert()"><span aria-hidden="true">×</span></button>
+
+									</div>
+
+									<div class="modal-body" id="modal-body">
+
+									 Added to Cart Successfully!
+
+									</div>
+
+									<div class="modal-footer">
+										<button class="btn btn-green  flat-box-btn waves-effect waves-button " ng-click="closeModal()">OK</button>
+									</div>
+
+								</div>
+							</div>
+						</div> -->
+
+<script type="text/javascript">
+  $(document).on('ready', function () {
+    $(".regular1").slick({
+      // dots: true,
+      // infinite: true,
+      //slidesToShow: 3,
+      // slidesToScroll: 3,
+      //slidesToShow: 6,
+      //slidesToScroll: 3,
+      //autoplay: true,
+      // autoplaySpeed: 2000
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      responsive: [{
+        breakpoint: 1200,
+        settings: {
+          arrows: true,
+          slidesToShow: 4
+        }
+      }, {
+        breakpoint: 768,
+        settings: {
+          arrows: true,
+          slidesToShow: 3
+        }
+      }, {
+        breakpoint: 480,
+        settings: {
+          arrows: true,
+          slidesToShow: 2
+        }
+      }, {
+        breakpoint: 350,
+        settings: {
+          arrows: true,
+          slidesToShow: 1
+        }
+      }, {
+        breakpoint: 240,
+        settings: {
+          arrows: true,
+          slidesToShow: 1
+        }
+      }]
+    });
+    /* $(".emergingbrand").slick({
+       // dots: true,
+       // infinite: true,
+       //slidesToShow: 3,
+       // slidesToScroll: 3,
+       //slidesToShow: 6,
+       //slidesToScroll: 3,
+       //autoplay: true,
+       // autoplaySpeed: 2000
+       slidesToShow: 6,
+       slidesToScroll: 1,
+       autoplay: true,
+       autoplaySpeed: 3000,
+       responsive: [{
+         breakpoint: 1200,
+         settings: {
+           arrows: true,
+           slidesToShow: 4
+         }
+       }, {
+         breakpoint: 768,
+         settings: {
+           arrows: true,
+           slidesToShow: 3
+         }
+       }, {
+         breakpoint: 480,
+         settings: {
+           arrows: true,
+           slidesToShow: 2
+         }
+       }, {
+         breakpoint: 350,
+         settings: {
+           arrows: true,
+           slidesToShow: 1
+         }
+       }, {
+         breakpoint: 240,
+         settings: {
+           arrows: true,
+           slidesToShow: 1
+         }
+       }]
+     }); */
+    $('.carousel').carousel({
+
+    });
+  });
+</script>

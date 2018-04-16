@@ -1,0 +1,107 @@
+
+<div class="container" ng-controller="cartController" id="categoryPage">
+	
+	<div class="row" id="edit_row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			
+			<div class="block_account_dashboard">
+				
+				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+
+					<div ng-if="cartArray.length == 0" align="middle">
+						<img src="images/Empty-Shopping-Cart.png">
+					 <h3>Your Shopping Cart is Empty
+						 
+					 </h3>
+					  <button type="submit" class="btn btn-default "  id="cartContinueBtn"  ng-click="goToHomeFromCart()">Continue Shopping</button>
+
+					</div>
+
+					<div class="row" ng-if="cartArray.length > 0">
+					<div class="basic_dashboard">
+											
+						<div class="myaccount_section12_goToCart">	
+							<div class="row">
+							<div class="box-head" style="margin-bottom:7px;"><h2>Shopping Cart</h2></div>
+								<div class="myvieworders-tbl-new1 table-responsive">
+									<table class="table table-bordered" id="myViewOrders">
+										<thead>
+											<tr>
+												<th style="text-align:center;">S.No</th>
+												<th style="text-align:center;">Product Image</th>
+												<th style="text-align:center;">Product Name</th>
+												<!-- <th style="text-align:center;">Move to Wishlist</th> -->
+												<th style="text-align:right;">Unit Price</th>
+												<th style="text-align:center;">Qty</th>
+												<th style="text-align:center;">Total Price</th>
+												<th style="text-align:right;">Tax (%)</th>
+												<th style="text-align:right;">Tax-Amount</th>												
+												<th style="text-align:right;">Subtotal</th>
+												<th style="text-align:center;">Remove</th>
+											</tr>
+										</thead>
+										<tbody id="myViewOrdersData">
+											<tr ng-repeat="cartItem in cartArray">
+												<td style="text-align:center;padding-top: 50px;">{{$index+1}}</td>
+												<td style="text-align:center;"><img src="{{cartItem.image}}" style="width: 50%;"></td>
+												<td style="text-align:center;cursor:pointer;padding-top: 50px;" ng-click="getProductDetails(cartItem)">{{cartItem.productdescription}}</td>
+												<!-- <td style="text-align:center;"><a href="#">Move</a></td> -->
+												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price | currency:'&#8377;'}}</td>
+												<td style="text-align:center;padding-top: 45px;"><input type="number" min="1" name="qty" 
+													value="{{cartItem.qty}}" id="cartQty" ng-model="cartItem.qty" ng-change="changeQty(cartItem)" title="Quantity" class="" maxlength="12" 
+													style="text-align:center;width:60px;" ng-blur="leavingInput(cartItem,$event)" ng-keypress="restrictMinus($event)"></td>
+												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price*cartItem.qty | currency:'&#8377;'}}</td>
+												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax}}</td>
+												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax_amount | currency:'&#8377;'}}</td>
+												<td style="text-align:right;padding-top: 50px;">{{cartItem.sub_total|currency:'&#8377;'}}</td>
+												<td style="text-align:center;padding-top: 50px;"><span class="glyphicon glyphicon-remove" ng-click="removeCartItem(cartItem)"></span></td>												
+											</tr>	
+											<tr>
+												<!-- <td colspan="4" class="cart_head tft_head">Shipping Charges</td>
+												<td class="cart_des tft_head">₹ 0</td> -->
+												<td colspan="9" class="cart_head tft_head">Shipping Charges</td>
+												<td class="cart_des tft_head">₹ 0.00</td>
+											</tr>									
+											<tr>
+												<!-- <td colspan="6" class="cart_head tft_head">Grand Total</td>
+												<td class="cart_des tft_head">{{subTotal|currency:'&#8377;'}}</td> -->
+												<td colspan="9" class="cart_head tft_head">Grand Total</td>
+												<td class="cart_des tft_head">{{subTotal|currency:'&#8377;'}}</td>
+											</tr>
+										</tbody>										
+									</table>
+							
+									
+								</div>
+								
+								<div class="cart_btns">
+										<button type="submit" class="btn btn-default" id="mywhishlistShare" ng-click="goToHomeFromCart()">Continue Shopping</button>
+										<button type="submit" class="btn btn-default" id="mywhishlistaddCart" ng-click="gotoCheckOut()">Proceed to Checkout</button>
+										<button type="submit" class="btn btn-default clearShopBtn" id="mywhishlistaddCart" ng-click="clearCart()" style="margin-bottom: -5px !important;">Clear Shopping Cart</button>	
+									</div>
+														
+						</div>
+						</div>
+										
+					</div>
+				</div>
+				</div>
+			</div>
+			<!--  account dashboard page end here -->
+		</div>
+	</div>
+	</div>
+
+	<div id="outOfQty" class="modal fade" ng-controller="cartController">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"></div>
+      <div class="modal-body" align="middle">
+      Only {{avlQty}} are left!
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

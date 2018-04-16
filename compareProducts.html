@@ -1,0 +1,248 @@
+
+<div class="container" ng-controller="compareProductsCtrl">
+	<div class="row" id="edit_row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+			<!--  account dashboard page start here -->
+			<div class="block_account_dashboard">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="basic_dashboard">
+
+								<div class="box-head" style="margin-bottom:7px;">
+									<h2> Compare Products </h2>
+								</div>
+								<div class="myaccount_section12_vieworder table-responsive">
+									<!-- <div class="orderDetails_compare">
+										<a href="#" class=""> Print This Page </a>
+									</div> -->
+
+									<div ng-if="compareProductData.length == 0" align="middle">
+										<img src="images/noproducts.png">
+									</div>
+
+
+									<table class="table table-bordered" ng-if="compareProductData.length > 0" id="compare_orders">
+
+										<tbody id="compare_data_orders">
+											<tr>
+												<td colspan="4" class="tby_head">Product Details</td>
+												<td ng-repeat="data in compareProductData" class="tby_data1">
+													<span class="glyphicon glyphicon-remove" ng-click="removeCompareItem(data)"></span>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="4" class="tby_head">Product Image</td>
+												<td class="tby_data" ng-repeat="data in compareProductData">
+													<div class="compare_info1">
+														<div class="row">
+															<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+																<div class="compare_prod_photo">
+																	<img src="{{data.upload_photo}}" class="img-responsive" alt="a" />
+																</div>
+																<h5 class="compare_product_name">
+																	<a href="" ng-bind="data.upload_name" ng-click="getProductDetails(data)"></a>
+																</h5>
+																<div class="compare_price_box">
+																	<div class="compare_offer">
+																		<div class="compare_page_price" ng-repeat="price in data.prices">
+																			<span class="compare_special_price">
+																				<span class="price" style="padding-left: 0px;">
+																					{{price.offer_price|currency:'&#8377;'}}
+																				</span>
+																			</span>
+																			<span class="compare_old_price">
+																				<span class="price">
+																					{{price.enduser_price|currency:'&#8377;'}}
+																				</span>
+																			</span>
+																			<p class="comparespecial-price yousave" style="margin-top:0px;">{{price.percentage+0.00|number:2}}%</p>
+
+																			<p class="compare_exclude_gst" >(Excluding-GST)</p>
+																		</div>
+
+																	</div>
+																</div>
+																<!-- <div class="compare_percentage">
+																	<p class="comparespecial-price yousave" style="margin-top:12px !important;">{{data.upload_discount+0.00|number:2}}%</p>
+
+																	</div>									 -->
+
+																</div>
+																<!-- <div class="compare_percentage">
+																		<p class="comparespecial-price yousave" style="margin-top:12px !important;">{{data.upload_discount}}%</p>
+																	</div> -->
+
+
+
+																<!-- <div class="clear-left_detailed">
+																	<div class="cart_items">
+																		<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(data)">
+																			<span>
+																				<i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
+																		</a>
+																		<a href="" class="whishlist_lak1" title="Add To Wishlist" ng-click="addToWishList(data)"></a>
+																	</div>
+																</div> -->
+
+																<!-- <div class="compre_addcartDiv">
+																	<a href="" class="compre_addcart" ng-click="addToCart(data)">ADD TO CART </a>
+																</div>
+																<br/>
+																<div class="compre_addwhishlistDiv">
+																	<a href="" class="compre_addwhishlist">ADD TO WISHLIST </a>
+																</div> -->
+
+																<div class="clear-left_detailed homecrt" id="homecarts">
+																	<div class="cartdiv">
+																		<a href="" class="ad_cart_lak btn addcartbtn compare_hover" id="newcart_style" title="Add To Cart" ng-click="addToCart(data)">
+																			<span>
+																				<i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
+																				<span class="cart_style_new">ADD TO CART</span>
+																			</span>
+																		</a>
+																		<a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(data)"></a>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+
+												<td colspan="4" class="tby_head">Description</td>
+
+												<td ng-repeat="data in compareProductData" class="tby_data description"><p ng-bind="data.description" class="desc"></p></td>
+
+											</tr>
+											<tr>
+												<td colspan="4" class="tby_head">Short Description</td>
+												<td ng-repeat="data in compareProductData" class="tby_data description"><p ng-bind="data.description" class="desc"></p></td>
+
+											</tr>
+											<!-- <tr>
+												<td colspan="4" class="tby_head">SKU</td>
+												<td ng-repeat="data in compareProductData" class="tby_data">Bosch Angle Grinder GWS 750-100</td>
+
+											</tr> -->
+											<tr>
+												<td colspan="4" class="tby_head">Weight (Kgs)</td>
+												<td ng-repeat="data in compareProductData" class="tby_data" ng-bind="data.upload_netWeight"></td>
+
+											</tr>
+											<tr>
+												<td colspan="4" class="tby_head">Brands</td>
+												<td ng-repeat="data in compareProductData" class="tby_data" ng-bind="data.upload_brand"></td>
+
+											</tr>
+											<tr>
+												<td colspan="4" class="tby_head">Model No</td>
+												<td ng-repeat="data in compareProductData" class="tby_data" ng-bind="data.upload_modelno"></td>
+
+											</tr>
+											<td colspan="4" class="tby_head">Specifications</td>
+											<td class="tby_data" ng-repeat="data in compareProductData">
+												<div ng-repeat="attrs in data.attributes" style="margin-bottom:5px;">
+													<span>
+														{{attrs.atrname}}
+													</span> :
+													<span style="float: right;">
+														{{attrs.atrvalue}}
+													</span>
+												</div>
+											</td>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  account dashboard page end here -->
+		</div>
+	</div>
+</div>
+
+<div id="delCompareItem" class="modal fade" ng-controller="compareProductsCtrl">
+
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+
+			<div class="modal-header"></div>
+
+			<div class="modal-body" align="middle">
+
+				"{{removedProduct}}" Deleted from Compare List!
+
+			</div>
+
+
+
+			<div class="modal-footer">
+
+				<button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div id="addedToCart" class="modal fade" ng-controller="homeController">
+
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+
+			<div class="modal-header"></div>
+
+			<div class="modal-body" align="middle">
+
+				Added to Cart Successfully!
+
+			</div>
+
+
+
+			<div class="modal-footer">
+
+				<button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+
+	<div class="modal-dialog">
+
+		<div class="modal-content">
+
+			<div class="modal-header"></div>
+
+			<div class="modal-body" align="middle">
+
+				Added to Wish List Successfully!
+
+			</div>
+
+
+
+			<div class="modal-footer">
+
+				<button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

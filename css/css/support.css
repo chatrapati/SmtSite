@@ -1,0 +1,37 @@
+
+/*- FILTER OPTIONS -*/
+ul#filterOptions {
+	margin: 10px 0 5px 0;
+	overflow: hidden;
+	
+}
+ul#filterOptions li { height: 52px; margin-right: 2px; float: left;list-style: none; }
+ul#filterOptions li a {
+	height: 40px;
+	padding: 0 20px;
+	border: 1px solid #999;
+	background: #cfcfcf;
+	color: #fff;
+	font-weight: bold;
+	line-height: 40px;
+	text-decoration: none;
+	display: block;
+}
+ul#filterOptions li a:hover { background: #c9c9c9; }
+ul#filterOptions li.active a { background: #0487A1;border:1px solid #0487A1;}
+
+.support_head{
+	background:#0487A1;
+	color:#fff;
+}
+/*.table tr th{
+	text-align:center;
+}
+.table tr td{
+	text-align:center;
+}*/
+.phn-img img{
+	width: 3%;
+    float: right;
+	cursor: pointer;
+}

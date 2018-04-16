@@ -1,0 +1,219 @@
+
+/*css strat here*/
+/*.container{
+	width:auto;
+	max-width:1170px;
+	}*/
+
+/*gallery starts here*/
+
+.all-patren_box {
+	/*background: #e9e4d2;*/
+	padding: 10px 0 0px 0;
+	clear: both;
+}
+.emerging-gallery{
+	background: #f5f4f4;
+	overflow: hidden;
+	/*box-shadow: 3px 3px 3px #ccc;*/
+	padding-bottom: 9px;
+	/*min-height: 280px;*//*10-10-2017 modified for width and height*/
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+}
+.all-gallery{
+	background: #f5f4f4;
+	overflow: hidden;
+	margin-bottom:15px;
+	/*min-height: 280px;*//*10-10-2017 modified for width and height*/
+	/*margin-bottom: 10px;*/
+	border: 1px solid #ddd;
+}
+/*.all-gallery{
+	background: #fff;
+	overflow: hidden;
+	padding-bottom: 12px;
+	min-height: 280px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+}*/
+.all-gallery:hover{
+	box-shadow: 3px 3px 3px #ccc;
+}
+.all-patren_box .col-md-3, .all-patren_box .col-sm-3, .all-patren_box .col-xs-6 {
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+/*.patren_box .row {
+	margin-left: -10px;
+	margin-right: -10px;
+}*/
+.all-gallery_img img { 
+	width: 100%; 
+	/*padding:7px;*/
+	border:1px solid #ccc;
+	box-shadow:0px 3px 3px #c4c1c1;
+}
+.all-gallery_img{
+	padding:5px;
+}
+.all-gallery_text {
+	padding: 0px 10px;
+	/*padding: 10px 20px;*/
+	text-align: center;
+}
+.all-gallery_text .all-brand-name{
+	float:left;
+	/*padding-top:10px;*/
+	}
+.all-gallery_text .all-establish-year{
+	float:right;
+	/*padding-top:10px;*/
+	}
+.all-gallery_text p {
+	line-height: 20px;
+	font-size: 12px;
+	/*padding:0;
+	float:left;
+	text-align:justify;*/
+	text-align:left;
+}
+a.viewlink {
+	 color: #d1a22b;
+	  }
+.all-gallery_text .all-view_collection {
+	font-size: 12px;
+	/*padding: 0 23px;*/
+	/*padding: 0 15px;*/
+}
+.all-gallery_text .all-view-collection-brand{
+	float:left;
+	margin-left:-10px;
+	}
+.all-gallery_text .all-view-collection-moreinfo{
+	float:right;
+	}
+	
+a.all-view_collection {
+	float: left;
+    width: 190px;
+    margin-right: -5px;
+    font-size: 12px;
+    color: #5d5d5d;
+    padding: 5px 0;
+    background: #d1d2d1;
+    margin-left: -10px;
+	margin-top:-3px;
+}
+	
+	
+	
+/*a.all-view_collection {
+	display: inline-block;
+	font-size: 12px;
+	color: #5d5d5d;
+	border: 1px solid #ddd;
+	position: relative;
+	border-radius: 0px;
+	margin: 0 auto;
+	line-height: 25px;
+	padding: 0 5px;
+	text-decoration:none;
+	background: #fff;
+	box-shadow:3px 3px 3px #b5b2af;
+	margin-right: -3px;
+}*/
+a.all-view_collection:hover {
+	text-decoration:none;
+	background:#0487A1;
+	/*border:1px solid #0487A1;*/
+	color:#fff;
+	text-decoration:none;	
+}
+a.all-view_collection:focus {
+	text-decoration:none;
+	background:#0487A1;
+	/*border:1px solid #0487A1;*/
+	color:#fff;
+	text-decoration:none;	
+}
+.all-gallery_text h5{
+	font-weight:bold;
+	color:#0487A1;
+	font-size:15px;
+	}
+/*gallery ends here*/
+.all-gallery .mg-image img {
+	-webkit-transition: all 1s ease; /* Safari and Chrome */
+	-moz-transition: all 1s ease; /* Firefox */
+	-o-transition: all 1s ease; /* IE 9 */
+	-ms-transition: all 1s ease; /* Opera */
+	transition: all 1s ease;
+	max-width: 100%;
+	background: #f7f7f7;
+}
+.all-gallery .mg-image:hover img {
+	-webkit-transform: scale(0.8); /* Safari and Chrome */
+	-moz-transform: scale(0.8); /* Firefox */
+	-ms-transform: scale(0.8); /* IE 9 */
+	-o-transform: scale(0.8); /* Opera */
+	transform: scale(0.8);
+}
+
+.collections-wrap .block-title h1 {
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 14px;
+	position: relative;
+	/*display: inline-block;*/
+	padding-bottom:0;
+	/*padding-bottom: 10px; */
+	color: #444;
+	/*margin-bottom: -31px;
+	padding-left: 20px;*/
+}
+
+.collections-wrap .block-title {
+	border-bottom: 1px solid #ddd;
+	line-height: 100%;
+}
+
+.all-top-brands-gallery-text-content{
+	float:left;
+	width:100%;
+	padding-top:5px;
+	margin-bottom:-3px;
+}
+.all-top-brands-gallery-text-content p a{
+	color: #0a0a0a;
+    font-weight: bold;
+}
+.all-top-brands-gallery-text-content p a:hover{
+	color: #0487A1;
+}
+/*.all-top-emerging-image-box{
+	width:167px; 
+	height:163px;
+}*/
+.cont1{
+	height: 20px;
+	}
+.cont2{
+	height: 70px;
+	}
+.cont3{
+	height: 39px;
+	}
+	
+	
+@media screen and (max-width: 1200px) and (min-width: 992px){
+.cont1{
+	height: 20px !important;
+	}
+.cont2{
+	height: 110px !important;
+	}
+.cont3{
+	height: 39px !important;
+	}
+}

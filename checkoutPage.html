@@ -1,0 +1,877 @@
+<style>
+	#dealer_addr {
+		border: 1px solid #ddd;
+		padding: 15px;
+		border-radius: 10px;
+		background: #eeedf1;
+		margin-bottom: 10px;
+		height: 240px;
+	}
+
+	#dealer_shp_name {
+		color: #0487a1;
+		font-size: 15px;
+		font-weight: bold;
+	}
+
+	#shop_add_part {
+		margin-left: 25px;
+	}
+</style>
+
+
+<div class="container" ng-controller="checkOutController">
+	<div class="row" id="edit_row">
+		<div class="col-md-8 col-lg-8 col-sm-8 col-xs-12" style="background-color: white;margin-top: 15px;" id="categoryPage">
+			<div class="row">
+
+				<!--   shipping address start here -->
+
+
+				<div class="shipping_addr_part">
+					<div style="background-color:gray;padding:5px;" ng-click="shippingAddress1()">
+						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">1</span>
+						<h4 class="checkout-step-title">
+							<a role="button" style="color:#fff;">Shipping Address</a>
+						</h4>
+					</div>
+					<div class="" style="border:1px solid #ddd;margin-bottom: 10px;" ng-show="orderType">
+
+						<div class="" style="padding:10px;" ng-show="showShippingDetails">
+							<input type="radio" ng-change="shippingMethod('Pickup')" name="method" ng-model="checkoutData.shippingType" ng-value="'Pickup'"
+							/>
+							<p>Pick Up</p>
+
+							<input type="radio" ng-change="shippingMethod('Delivery')" name="method" ng-model="checkoutData.shippingType" ng-value="'Delivery'"
+							/>
+							<p>Delivery</p>
+
+						</div>
+
+						<form name="pickupForm" ng-show="showShippingDetails">
+							<div ng-if="checkoutData.shippingType == 'Pickup' " style="padding: 10px;">
+
+								<div style="margin-top: -19px;">
+									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12" id="c_page_bottom">
+
+										<div>
+											<label for="gstnumber">Enter GST Number</label>
+										</div>
+
+										<input type="text" ng-model="gstnumber" ng-pattern="/^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[1-9A-Z]{1}[0-9A-Za-z]{1}[0-9A-Za-z]{1}$/"
+										 placeholder="Enter GST Number" name="gstnumber" id="gstnumber">
+										<div ng-messages="pickupForm.gstnumber.$error">
+											<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number</p>
+										</div>
+
+									</div>
+									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12" id="c_page_bottom">
+
+										<div><label for="alt_mobile"><sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Enter Mobile</label></div>
+
+										<input type="text" ng-model="alt_mobile" placeholder="Enter Mobile" name="alt_mobile" id="alt_mobile" ng-minlength="10" ng-maxlength="10"
+										 maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
+										<p class="validationError errorMsg" style="color:red;" ng-show="pickupForm.alt_mobile.$dirty && pickupForm.alt_mobile.$invalid"
+										 class="ng-hide">
+											Please Enter Valid Mobile.
+										</p>
+
+									</div>
+
+									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12" id="c_page_bottom">
+
+										<div><label for="postal_code"><sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>PINCODE</label></div>
+
+										<input type="text" name="postal_code" ng-model="postal_code" ng-change="pincodeChange(postal_code)" placeholder="Enter Postal code"
+										 id="postal_code_chekot" required maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
+										<p class="validationError errorMsg" style="color:red" ng-show="pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid"
+										 class="ng-hide">
+											Please Enter postal code.
+										</p>
+
+									</div>
+									<!-- <input type="text" ng-model="alt_mobile" placeholder="Alternate Mobile" name="alt_mobile" id="alt_mobile" ng-minlength="10"
+									 ng-maxlength="10" maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/">
+									<p  class="validationError errorMsg" style="color:red;" ng-show="pickupForm.alt_mobile.$dirty && pickupForm.alt_mobile.$invalid" class="ng-hide">
+										Please Enter Valid Mobile.
+									</p>
+									<input type="text" name="postal_code" ng-model="postal_code" placeholder="Enter Postal code" id="postal_code_chekot" required
+									 maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
+									<p class="validationError errorMsg" style="color:red" ng-show="pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid" class="ng-hide">
+										Please Enter postal_code.
+									</p> -->
+									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12">
+										<button class="btn btn_get_pickup ad_cart" id="checkout_page_shipping_btn" ng-disabled="pickupForm.$invalid" ng-click="getPincodeStatus(postal_code,alt_mobile,gstnumber)">GET</button>
+									</div>
+								</div>
+
+								<div loading></div>
+
+								<div class="row" style="margin-top: 20px;clear: both;">
+
+									<div class="InnerPage" style="margin-top: 20px;">
+										<div class="listedContent">
+											<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom: 26px;margin-top: -10px;">
+												<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" ng-repeat="dealer in dealersList" id="dealer_addr">
+													<span id="dealer_shp_name">
+														<input type="radio" name="address" ng-model="selected" ng-value="'{{dealer}}'" ng-change="saveDealerAddress(dealer)" />{{dealer.shop_name}}
+													</span>
+													<br>
+													<div id="shop_add_part">
+														<b>Shop Name</b>: {{dealer.shop_name}}
+														<br>
+														<b>Address</b>: {{dealer.shop_address}}
+														<br>
+														<b>Contact Person</b>: {{dealer.dealer_name}}
+														<br>
+														<b>Contact Number</b>: {{dealer.phone}}
+														<br>
+														<b>Postal Code</b>: {{dealer.pincode}}
+														<br>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- <a class="btn btn-default btn_conti123" ng-disabled="disableShippingbtn" role="button" ng-click="nextStepPayment()">Continueee</a> -->
+								</div>
+
+
+
+
+								<button type="submit" class="btn btn-default register_submit ad_cart" style="margin-top:-30px;margin-right: 20px;" ng-disabled="disableShippingbtn"
+								 id="save_edit_info" ng-click="nextStepPayment(checkoutData.shippingType)">Continue</button>
+							</div>
+
+						</form>
+						<form name="deliveryAddressForm" id="checkoutForm" ng-show="showShippingDetails">
+
+							<div class="row" ng-if="checkoutData.shippingType == 'Delivery'" style="padding: 10px;margin-bottom: 25px;">
+
+
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="firstname">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>First Name </label>
+											<input type="text" name="firstname" required class="form-control" id="firstname" ng-model="checkoutData.firstname" placeholder="Enter First Name"
+											 ng-minlength="3" ng-maxlength="50" maxlength="50" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/" autofocus="true">
+											<!-- <span class="validationError errorMsg" style="color:red" ng-show="deliveryAddressForm.firstname.$dirty && deliveryAddressForm.firstname.$invalid" class="ng-hide">
+												Please Enter Valid First Name.
+											</span> -->
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.firstname.$error.required">Enter First Name</p>
+
+											<div ng-messages="deliveryAddressForm.firstname.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid First Name</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+											</div>
+											<br>
+
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="lastname">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub> Last Name</label>
+											<input type="text" name="lastname" required="" class="form-control" id="lastname" ng-model="checkoutData.lastname" placeholder="Enter Last Name"
+											 ng-minlength="3" ng-maxlength="50" maxlength="50" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.lastname.$error.required">Enter Last Name</p>
+
+											<div ng-messages="deliveryAddressForm.lastname.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Last Name</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="house_no">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>House No.</label>
+											<input type="text" name="house_no" required class="form-control" id="house_no" ng-model="checkoutData.house_no" placeholder="Enter House No."
+											 ng-minlength="3" ng-maxlength="15" maxlength="15" required ng-pattern="/^[a-zA-Z0-9/ - # -]*$/" />
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.house_no.$error.required">Enter House Number</p>
+
+											<div ng-messages="deliveryAddressForm.house_no.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid House Number</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+
+
+											</div>
+											<br>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="street_address">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Street Address Name</label>
+											<input type="text" name="street_address" class="form-control" id="street_address" ng-model="checkoutData.street_address"
+											 placeholder="Enter Street Address Name" ng-minlength="3" ng-maxlength="150" maxlength="150" required ng-pattern="/^[^`~!@#$%^&*()+={}|[\]'<>?]*$/">
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.street_address.$error.required">Enter Street Address</p>
+
+											<div ng-messages="deliveryAddressForm.street_address.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Street Address</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 150 Characters</p>
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="city">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>City</label>
+											<input type="text" name="city" required class="form-control" id="city" ng-model="checkoutData.city" placeholder="Enter City Name"
+											 ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
+
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.city.$error.required">Enter City Name</p>
+
+											<div ng-messages="deliveryAddressForm.city.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid City Name</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+											</div>
+											<br>
+
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="state">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>State/Province</label>
+											<input type="text" name="state" class="form-control" id="state" ng-model="checkoutData.state" placeholder="Enter State Name"
+											 ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
+
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.state.$error.required">Enter State Name</p>
+
+											<div ng-messages="deliveryAddressForm.state.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid State Name</p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="postal_code">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Zip/Postal Code</label>
+											<input type="text" name="postal_code" class="form-control" id="postal_code" ng-model="checkoutData.postal_code" placeholder="Enter Zip/Postal Code"
+											 required maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.postal_code.$error.required">Enter Valid Postal Code</p>
+
+											<div ng-messages="deliveryAddressForm.postal_code.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Postal code</p>
+
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 6 Numbers only</p>
+											</div>
+											<br>
+
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="country">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Country</label>
+											<input type="text" name="country" class="form-control" id="country" ng-model="checkoutData.country" placeholder="Enter Country"
+											 required ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
+
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.country.$error.required">Enter Country </p>
+
+											<div ng-messages="deliveryAddressForm.country.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Country </p>
+												<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+
+												<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 6 Numbers only</p>
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="mobile">
+												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
+											<input type="text" name="mobile" class="form-control" id="mobile" ng-model="checkoutData.mobile" placeholder="Enter Mobile Number"
+											 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
+
+											<!-- <input type="text" name="mobile" class="form-control" ng-if="checkoutData.mobile.length > 10" id="mobile" ng-model="checkoutData.mobile | slice:0:2" placeholder="Enter Mobile Number"
+											 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/"> -->
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.mobile.$error.required">Enter Mobile Number </p>
+
+											<div ng-messages="deliveryAddressForm.mobile.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number </p>
+												<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
+
+												<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
+											</div>
+											<br>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="alt_mobile">
+												<!-- <sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub> -->
+												Alternate Mobile Number</label>
+											<input type="text" name="alt_mobile" class="form-control" id="alt_mobile" ng-model="checkoutData.alt_mobile" placeholder="Enter Alternate Mobile Number"
+											 ng-minlength="10" ng-maxlength="10" maxlength="10" ng-pattern="/^[6-9][0-9]{9}$/">
+
+											<p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.alt_mobile.$error.required">Enter Alternate Mobile Number </p>
+
+											<div ng-messages="deliveryAddressForm.alt_mobile.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Alternate Mobile Number</p>
+												<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
+
+												<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
+											</div>
+											<br>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+										<div class="form-group" style="padding-bottom:5px;">
+											<label for="gstnumber">GST Number</label>
+											<input type="text" name="gstnumber" class="form-control" id="gstnumber" ng-pattern="/^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[1-9A-Za-z]{1}[0-9A-Za-z]{1}[0-9A-Za-z]{1}$/"
+											 ng-model="gstnumber" placeholder="Enter GST Number">
+
+											<!-- <input type="text" name="mobile" class="form-control" ng-if="checkoutData.mobile.length > 10" id="mobile" ng-model="checkoutData.mobile | slice:0:2" placeholder="Enter Mobile Number"
+											 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/"> -->
+
+											<!-- <p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.mobile.$error.required">Enter GST Number </p> -->
+
+											<div ng-messages="deliveryAddressForm.gstnumber.$error ">
+
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number </p>
+
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<div class="checkbox">
+										<label id="default_billing_haeding">
+											<input type="checkbox" name="remember" ng-model="checkoutData.remember">
+											<span>Use as my default billing address</span>
+										</label>
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<!-- <a class="btn btn-default pull-right btn_conti" role="button" ng-click="deliveryAddressForm.$valid && nextStepPayment(checkoutData)">Continue</a> -->
+									<button type="submit" class="btn btn-default register_submit pull-right ad_cart" id="checkOutShippingBtn" ng-click="submitted=true;deliveryAddressForm.$valid && nextStepPayment(checkoutData)">Continue</button>
+								</div>
+							</div>
+						</form>
+
+						<!-- <a class="btn btn-default pull-right btn_conti" role="button" ng-click="nextStepPayment(editAddressInfo)">Continue</a> -->
+
+					</div>
+				</div>
+
+				<!--   shipping address end here -->
+
+
+
+				<div class="shipping_addr_part">
+					<div style="background-color:gray;padding:5px;margin-bottom: 10px;" ng-click="ShowHide()">
+						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">2</span>
+						<h4 class="checkout-step-title">
+							<a role="button" style="color:#fff;">Billing Address</a>
+						</h4>
+					</div>
+					<div ng-show="showBillingDetails">
+						<form name="billindAddressForm" id="contactForm">
+							<div class="" style="border:1px solid #ddd;margin-bottom: 10px;" id="contctform">
+
+								<div class="row" style="padding: 10px;margin-bottom: 39px;">
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="firstname">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>First Name </label>
+												<input type="text" name="firstname" required class="form-control" id="firstname" ng-model="billingAddress.firstname" placeholder="Enter First Name"
+												 ng-minlength="3" ng-maxlength="50" maxlength="50" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/" autofocus="true">
+
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.firstname.$error.required">Enter First Name</p>
+
+												<div ng-messages="billindAddressForm.firstname.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid First Name</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+												</div>
+												<br>
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="lastname">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub> Last Name</label>
+												<input type="text" name="lastname" required="" class="form-control" id="lastname" ng-model="billingAddress.lastname" placeholder="Enter Last Name"
+												 ng-minlength="3" ng-maxlength="50" maxlength="50" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
+												<span class="validationError errorMsg" style="color:red" ng-show="billindAddressForm.lastname.$dirty && billindAddressForm.lastname.$invalid"
+												 class="ng-hide">
+													Please Enter Valid Last Name.
+												</span>
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.lastname.$error.required">Enter Last Name</p>
+
+												<div ng-messages="billindAddressForm.lastname.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Last Name</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="house_no">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>House No.</label>
+												<input type="text" name="house_no" class="form-control" id="house_no" ng-model="billingAddress.house_no" placeholder="Enter House No."
+												 required ng-pattern="/^[a-zA-Z0-9/ - # -]*$/" ng-minlength="3">
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.house_no.$error.required">Enter House Number</p>
+
+												<div ng-messages="billindAddressForm.house_no.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid House Number</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+
+												</div>
+												<br>
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="street_address">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Street Address Name</label>
+												<input type="text" name="street_address" class="form-control" id="street_address" ng-model="billingAddress.street_address"
+												 placeholder="Enter Street Name" ng-minlength="3" ng-maxlength="150" maxlength="150" required ng-pattern="/^[^`~!@#$%^&*()+={}|[\]'<>?]*$/">
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.street_address.$error.required">Enter Street Address Name</p>
+
+												<div ng-messages="billindAddressForm.street_address.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Street Address Name</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 150 Characters</p>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="city">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>City</label>
+												<input type="text" name="city" class="form-control" id="city" ng-model="billingAddress.city" placeholder="Enter city" ng-minlength="3"
+												 ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.city.$error.required">Enter City Name</p>
+
+												<div ng-messages="deliveryAddressForm.city.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid City Name</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 50 Characters</p>
+												</div>
+												<br>
+
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="state">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>State/Province</label>
+												<input type="text" name="state" class="form-control" id="state" ng-model="billingAddress.state" placeholder="Enter state/Province"
+												 ng-minlength="3" ng-maxlength="20" maxlength="20" required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.state.$error.required">Enter State/Province</p>
+
+												<div ng-messages="billindAddressForm.state.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid State Name</p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 20 Characters</p>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="postal_code">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Zip/Postal Code</label>
+												<input type="text" name="postal_code" class="form-control" id="postal_code" ng-model="billingAddress.postal_code" placeholder="Enter Zip/Postal Code"
+												 required ng-pattern="/^[1-9][0-9]{5}$/" maxlength="6">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.postal_code.$error.required">Enter Valid Postal Code</p>
+
+												<div ng-messages="billindAddressForm.postal_code.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Postal code</p>
+
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 6 Numbers only</p>
+												</div>
+												<br>
+
+
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="country">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Country</label>
+												<input type="text" name="country" class="form-control" id="country" ng-model="billingAddress.country" placeholder="Enter Country"
+												 required ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,20}$/">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.country.$error.required">Enter Country </p>
+
+												<div ng-messages="billindAddressForm.country.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Country </p>
+													<p class="validationError errorMsg" ng-message="minlength">Enter Minimum 3 Characters</p>
+
+													<p class="validationError errorMsg" ng-message="maxlength">Enter Maximum 6 Numbers only</p>
+												</div>
+												<br>
+
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="mobile">
+													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
+												<input type="text" name="mobile" class="form-control" id="mobile" ng-model="billingAddress.mobile" placeholder="Enter Mobile Number"
+												 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.mobile.$error.required">Enter Mobile Number </p>
+
+												<div ng-messages="billindAddressForm.mobile.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number </p>
+													<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
+
+													<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
+												</div>
+												<br>
+											</div>
+										</div>
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="alt_mobile">
+													<!-- <sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub> -->
+													Alternate Mobile Number</label>
+												<input type="text" name="alt_mobile" class="form-control" id="alt_mobile" ng-model="billingAddress.alt_mobile" placeholder="Enter Alternate Mobile Number"
+												 ng-minlength="10" ng-maxlength="10" maxlength="10" ng-pattern="/^[6-9][0-9]{9}$/">
+
+												<p class="validationError errorMsg" ng-show="submitted && billindAddressForm.alt_mobile.$error.required">Enter Alternate Mobile Number </p>
+
+												<div ng-messages="billindAddressForm.alt_mobile.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number </p>
+													<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
+
+													<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+											<div class="form-group" style="padding-bottom:5px;">
+												<label for="gstnumber">GST Number</label>
+												<input type="text" name="gstnumber" class="form-control" id="gstnumber" ng-pattern="/^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[1-9A-Za-z]{1}[0-9A-Za-z]{1}[0-9A-Za-z]{1}$/"
+												 ng-model="gstnumber" placeholder="Enter GST Number">
+
+												<!-- <input type="text" name="mobile" class="form-control" ng-if="checkoutData.mobile.length > 10" id="mobile" ng-model="checkoutData.mobile | slice:0:2" placeholder="Enter Mobile Number"
+											 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[7-9][0-9]{9}$/"> -->
+
+												<!-- <p class="validationError errorMsg" ng-show="submitted && deliveryAddressForm.mobile.$error.required">Enter  GST Number </p> -->
+
+												<div ng-messages="billindAddressForm.gstnumber.$error ">
+
+													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number </p>
+													<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
+
+													<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+									<a class="btn btn-default pull-right btn_conti pull-right ad_cart" role="button" ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(billingAddress,gstnumber)">Continue</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!--   billing address end here -->
+
+
+
+				<div class="payment_method_part">
+					<div style="background-color: gray;color:white;padding:5px;margin-bottom: 10px;" ng-click="ShowHidePayment()">
+						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">3</span>
+						<h4 class="checkout-step-title">
+							<a role="button" style="color:#fff;">Payment Method</a>
+						</h4>
+					</div>
+
+					<div ng-show="showPaymentDetails" style="border:1px solid #ddd;margin-bottom: 10px;margin-top:-10px;">
+
+
+						<div class="" style="padding:10px;">
+							<input type="radio" ng-change="checkPaymentType(payment)" name="payment_method" ng-model="payment.paymentType" ng-value="'payu'"
+							/>
+							<p>Pay Online</p>
+							<input type="radio" name="payment_method" ng-change="checkPaymentType(payment)" ng-model="payment.paymentType" ng-value="'cashondelivery'"
+							/>
+							<p>Cash On Delivery</p>
+							<a class="btn btn-default pull-right btn_conti ad_cart" role="button" ng-click="paymentMethod(payment.paymentType)" style="float:right;">Continue</a>
+
+						</div>
+					</div>
+				</div>
+
+				<!--   Payment Method end here -->
+
+				<!--   Order Review start here -->
+
+				<div class="order_review_part">
+					<div style="background-color: gray;padding:5px;margin-bottom: 10px;">
+						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">4</span>
+						<h4 class="checkout-step-title">
+							<a role="button" style="color:#fff;">Order Review</a>
+						</h4>
+					</div>
+
+					<div ng-show="showOrderDetails" class="table-responsive" style="border:1px solid #ddd;margin-bottom: 10px;">
+						<table class="table table-bordered" id="myViewOrders">
+							<thead>
+								<tr>
+									<th style="text-align:left;">Product Name</th>
+									<th style="text-align:right;">Unit Price</th>
+									<th style="text-align:right;">Qty</th>
+									<th style="text-align:right;">Total Price</th>
+									<th style="text-align:right;">Tax (%)</th>
+									<th style="text-align:right;">Tax-Amount</th>
+									<th style="text-align:right;">Subtotal</th>
+
+								</tr>
+							</thead>
+							<tbody id="myViewOrdersData">
+								<tr ng-repeat="cartItem in cartArray">
+									<td style="text-align:left;">{{cartItem.productdescription}}</td>
+									<td style="text-align:right;">{{cartItem.offer_price | currency:'&#8377;'}}</td>
+									<td style="text-align:right;">{{cartItem.qty}}</td>
+									<td style="text-align:right;">{{cartItem.offer_price*cartItem.qty|currency:'&#8377;'}}</td>
+									<td style="text-align:right;">{{cartItem.tax}}</td>
+									<td style="text-align:right;">{{cartItem.tax_amount|currency:'&#8377;'}}</td>
+									<td style="text-align:right;">{{cartItem.sub_total|currency:'&#8377;'}}</td>
+								</tr>
+								<!-- <tr>
+									<td colspan="5" class="cart_head tft_head">Tax Total</td>
+									<td class="cart_des tft_head">{{taxAmount|currency:'&#8377;'}}</td>
+								</tr> -->
+								<tr>
+									<td colspan="6" class="cart_head tft_head">Shipping Charges</td>
+									<td class="cart_des tft_head">₹0.00</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="cart_head tft_head">Grand Total</td>
+									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
+								</tr>
+								<tr ng-if="couponAmt">
+									<td colspan="6" class="cart_head tft_head">Coupon Amount</td>
+									<td class="cart_des tft_head">{{couponAmt|currency:'&#8377;'}}</td>
+								</tr>
+								<!-- <tr ng-if="couponAmt && !dealerAddress">
+									<td colspan="6" class="cart_head tft_head">Grand Total</td>
+									<td class="cart_des tft_head">{{amount-couponAmt|currency:'&#8377;'}}</td>
+								</tr>
+								<tr ng-if="couponAmt && couponShop == dealerAddress">
+									<td colspan="6" class="cart_head tft_head">Grand Total</td>
+									<td class="cart_des tft_head">{{amount-couponAmt|currency:'&#8377;'}}</td>
+								</tr>
+
+								<tr ng-if="couponAmt && couponShop != dealerAddress">
+									<td colspan="6" class="cart_head tft_head">Grand Total</td>
+									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
+								</tr> -->
+
+								<tr ng-if="couponAmt">
+									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
+									<td class="cart_des tft_head">{{amount-couponAmt|currency:'&#8377;'}}</td>
+								</tr>
+
+							</tbody>
+						</table>
+						<div class="col-md-12">
+							<div class="row">
+								<div class="productShipping">
+									<div class="discCodes">
+										<p class="discCodes_head">
+											<i class="fa fa-star" aria-hidden="true" style="padding-right:5px;color:red;"></i>Discount Codes</p>
+										<p class="discCodes_text">Enter your coupon code if you have one.</p>
+										<input type="text" ng-model="coupon" placeholder="Enter Coupon Code" ng-change="getCouponText(coupon)" class="cart_code"
+										 my-enter="getCoupon(coupon)">
+										<button type="submit" class="btn btn-default pull-right" ng-disabled="couponShopMsg == 'true'" id="discCodesBtn" ng-click="getCoupon(coupon)">Apply Coupon</button>
+									</div>
+									<div style="margin-left: 10px;">
+										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
+										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
+										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
+										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a class="btn btn-default ad_cart" role="button" ng-click="proceed(cartItem)" style="float:right;margin: 10px;">Proceed to Checkout</a>
+					</div>
+				</div>
+
+				<!--   Order Review end here -->
+
+			</div>
+
+
+
+		</div>
+
+		<!--   your checkout progress start here -->
+
+
+		<div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
+			<div class="row">
+				<div class="checkout_progress">
+					<div class="shipping_mthd">
+						<p class="shipping_mthd_head">Shipping Address</p>
+						<p class="shipping_mthd_addr" ng-if="checkoutData">
+							<span>{{checkoutData.firstname}}</span>&nbsp;&nbsp;
+							<span>{{checkoutData.lastname}}</span>
+
+							<br/>
+							<span>{{checkoutData.house_no}}</span>
+
+							<br/>
+							<span>{{checkoutData.street_address}}</span>
+
+							<br/>
+							<span>{{checkoutData.city}}</span>
+
+							<br/>
+							<span>{{checkoutData.state}}</span>
+
+							<br/>
+							<span>{{checkoutData.postal_code}}</span>
+
+							<br/>
+							<span>{{checkoutData.country}}</span>
+
+							<br/>
+							<span ng-if="checkoutData.mobile">
+								<b>mobile No : </b>
+							</span>
+							<span>{{checkoutData.mobile}}</span>
+							<br/>
+							<span ng-if="checkoutData.alt_mobile">
+								<b>Alt mobile No : </b>
+							</span>
+							<span>{{checkoutData.alt_mobile}}</span>
+						</p>
+					</div>
+
+					<div class="shipping_mthd">
+						<p class="shipping_mthd_head">Billing Address</p>
+						<p class="shipping_mthd_addr" ng-if="billingAddress">
+							<span>{{billingAddress.firstname}}</span>&nbsp;&nbsp;
+							<span>{{billingAddress.lastname}}</span>
+
+							<br/>
+							<span>{{billingAddress.house_no}}</span>
+
+							<br/>
+							<span>{{billingAddress.street_address}}</span>
+
+							<br/>
+							<span>{{billingAddress.city}}</span>
+
+							<br/>
+							<span>{{billingAddress.state}}</span>
+
+							<br/>
+							<span>{{billingAddress.postal_code}}</span>
+
+							<br/>
+							<span>{{billingAddress.country}}</span>
+
+							<br/>
+							<span ng-if="billingAddress.mobile">
+								<b>mobile No : </b>
+							</span>
+							<span>{{billingAddress.mobile}}</span>
+							<br/>
+							<span ng-if="billingAddress.alt_mobile">
+								<b>Alt mobile No : </b>
+							</span>
+							<span>{{billingAddress.alt_mobile}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<!--   your checkout progress end here -->
+		</div>
+	</div>
+</div>
+
+
+
+
+<!---------------------------------------  end   ------------------------------------------------------>

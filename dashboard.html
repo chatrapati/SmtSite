@@ -1,0 +1,87 @@
+
+	<div class="container" id="dashboardBody" ng-controller="dashboardController">
+	
+		 <ul class="bredcrumb_ul margin_left">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">	Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a >Dashboard</a>
+    </li>
+    
+	</ul>
+			<!--  account dashboard page start here -->
+			<div class="block_account_dashboard">
+				<div class="row" id="edit_row">
+					<div class="box-head" style="margin-top:25px;"><h2>Account Information</h2></div>
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">	
+						<div class="row">
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+								<div class="row">
+									<div class="dashboard_billing_addr" id="dashbord_Address">
+										<p><span>Name : </span><span> {{customerData.first_name}} {{customerData.last_name}} </span></p>
+										<p><span>Mobile : </span><span>{{customerData.mobile}}  </span></p>
+										<p><span>Email : </span><span> {{customerData.email}} </span></p>
+										<!-- <p><span>Address : </span><span> {{addressInfo.street_address}} </span>,<br>
+											<span style="margin-left:24%;"> {{addressInfo.city}}</span>,<br>
+											<span style="margin-left:24%;">{{addressInfo.state}}</span>,<br>
+											<span style="margin-left:24%;">{{addressInfo.country}}</span>,<br>
+											<span style="margin-left:24%;">{{addressInfo.postal_code}} </span>. </span></p> -->
+										<button type="submit" style="float:left !important;" id="change_pwd" ng-click="changePassword()">Change Password</button>
+											<button type="submit" id="edit_add" ng-click="goToEdit()">Edit</button>
+									</div>
+								
+								</div>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+								<div class="dashboard_billing_addr" id="your_orders_dashbord" ng-click="getOrders()">
+									<div class="ord">
+										<p style="margin-top:50px;">{{yourOrdersCountItems}}</p>
+										<p>Your Orders</p>
+									</div>
+								</div>
+								<div class="dashboard_billing_addr" id="pending_orders_dashbord" ng-click="gotoPendingOrders()">
+									<div class="ord">
+										<p style="margin-top:50px;">{{pendingOrderCountItems}}</p>
+										<p>Pending Orders</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+								<div class="dashboard_billing_addr" id="invoices_dashbord" ng-click="gotoInvoice()">
+									<div class="ord">
+										<p style="margin-top:50px;">{{invoiceCountItems}}</p>
+										<p>Invoices</p>
+									</div>
+								</div>
+								<div class="dashboard_billing_addr" id="whishlist_dashbord" ng-click="gotoWishList()">
+									<div class="ord">
+										<p style="margin-top:50px;">{{wishListCountItems}}</p>
+										<p>Wishlist</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
+							<div class="row">
+								<div class="dashboard_billing_addr" id="offer_reward">
+									<div class="reward_points_dahbord">
+										<p style="margin-bottom:0px;">{{rewardPoints}}</p>
+										<p>Reward Points</p>
+										<p style="font-size: 12px;">You can redeem points from coupon code</p>
+									</div>
+									<h3> Offer only for you </h3>
+									<div class="smt_div_bord" ng-if="couponCode != ''">
+										{{couponCode}}
+									</div>
+									<div class="smt_div_bord" ng-if="couponCode == ''">
+									<p>...</p>
+									</div>
+								</div>
+							</div>
+							</div>						
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  account dashboard page end here -->
+	</div>

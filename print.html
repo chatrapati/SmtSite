@@ -1,0 +1,119 @@
+<div class="textId" ng-controller="myOrderDetailsCtrl">
+									<div class="col-md-12">
+										<h4> Your Order ID is {{orderId}}</h4>
+									</div>
+									<table class="table table-bordered" id="myViewOrders">
+
+										<thead>
+
+											<tr>
+
+												<th style="text-align:left;">Product Name</th>
+
+												<th style="text-align:left;">SKU</th>
+
+												<th style="text-align:right;">Price</th>
+
+												<th style="text-align:right;">Qty</th>
+
+												<th style="text-align:right;">Subtotal</th>
+
+											</tr>
+
+										</thead>
+
+										<tbody id="myViewOrdersData">
+
+											<tr ng-repeat="orderData in orderDetails">
+
+												<td style="text-align:left;">{{orderData.productdescription}}</td>
+
+												<td style="text-align:left;">{{orderData.productdescription}}</td>
+
+												<td style="text-align:right;">
+
+													<span>₹{{orderData.unitprice|currency:""}}</span>
+
+												</td>
+
+												<td style="text-align:right;">
+
+													<span>Ordered:
+
+													<strong>{{orderData.qty}}</strong>
+
+												</span>
+
+												</td>
+
+												<td style="text-align:right;">
+
+													<span>₹{{orderData.total|currency:""}}</span>
+
+												</td>
+
+											</tr>
+
+										</tbody>
+
+										<tfoot>
+
+
+											<tr>
+
+												<td colspan="4" class="tft_head">Total Tax</td>
+
+												<td class="tft_data">₹{{taxAmount|currency:""}}</td>
+
+											</tr>
+
+											<tr>
+
+												<td colspan="4" class="tft_head">Grand Total (Incl.Tax)</td>
+
+												<td class="tft_data">₹{{grandTotal|currency:""}}</td>
+
+											</tr>
+
+										</tfoot>
+
+									</table>
+									<div class="col-md-12">
+										<div class="col-md-6">
+											<div class="">
+
+												<span>Shipping Address</span>
+
+											</div>
+
+											<div class="shipping_address_viewmore" ng-repeat="address in shippingaddress">
+
+												<span>{{address.firstname}}&nbsp;&nbsp;{{address.lastname}}</span><br>
+												<span>{{address.mobile}}</span><br>
+												<span>{{address.alt_mobile}}</span><br>
+												<span>{{address.house_no}},&nbsp;&nbsp;{{address.street_address}}</span><br>
+												<span>{{address.city}},&nbsp;&nbsp;{{address.postal_code}}</span><br>
+												<span>{{address.state}}</span><br>
+												<span>{{address.country}}</span>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="">
+
+												<span>Billing Address</span>
+
+											</div>
+
+											<div class="shipping_address_viewmore" ng-repeat="address in billingaddress">
+
+												<span>{{address.firstname}}&nbsp;&nbsp;{{address.lastname}}</span><br>
+												<span>{{address.mobile}}</span><br>
+													<span>{{address.alt_mobile}}</span><br>
+												<span>{{address.house_no}},&nbsp;&nbsp;{{address.street_address}}</span><br>
+												<span>{{address.city}},&nbsp;&nbsp;{{address.postal_code}}</span><br>
+												<span>{{address.state}}</span><br>
+												<span>{{address.country}}</span>
+											</div>
+										</div>
+									</div>
+								</div>

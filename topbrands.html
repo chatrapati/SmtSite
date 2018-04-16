@@ -1,0 +1,42 @@
+<div class="container-fulid" ng-controller="homeController" id="categoryPage">
+  
+    <div class="container">
+      <!-- top brand -->
+      <div class='row' id="edit_row">
+        <div class="collections-wrap">
+          <div class="block-title">
+            <h1>Top Brands</h1>
+          </div>
+        </div>
+     <div loading style="margin-right: 446px;margin-top: 190px;"></div>
+        <!-- <div class="regular slider"> -->
+        <div class="regular slider">
+          <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 top-brandbox" ng-repeat="brand in topbrands">
+            <div class="emerging-item emerging-gallery">
+              <div class="emerging-gallery_img img mg-image">
+                <div>
+                  <a >
+                    <img ng-src="{{brand.brandurl}}" ng-click="getCategoryBasedOnBrands(brand)" class="img-responsive" alt="{{brand.brandname}}" title="{{brand.brandname}}">
+                  </a>
+                 <!-- <div class="emerging-gallery_text">
+                    <div class="emerging-top-brands-gallery-text-content">
+                      <a ng-href="{{brand.brandlink}}" class="view_collection view_collection-top view-collection-moreinfo">More Info</a>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+       
+      </div>
+      <!-- /top brand -->
+      
+    
+    <br />
+    <br />
+   
+     
+
+  </div>

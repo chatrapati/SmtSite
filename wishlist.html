@@ -1,0 +1,133 @@
+<div class="container" ng-controller="wishListController">
+
+	<ul class="bredcrumb_ul margin_left">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">	Home</a>
+		
+	</li>
+<li  class="bredcrumb_li" ng-if="wishlistBreadCrumbFlag == 'true'" ng-click="pageNavigate()">
+			<a>Dashboard</a>
+		</li>
+    	<li  class="bredcrumb_li">
+			<a>Wishlist</a>
+		</li>
+	</ul>
+	<div class="row" id="edit_row">
+		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+	
+			<div class="block_account_dashboard">
+			
+				<div class="row" ng-if="yourWishlist!=''">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="basic_dashboard">
+
+								<div class="box-head">
+									<h2>MY WISHLIST</h2>
+								</div>
+
+								<!-- my whishlist page start here -->
+								<div class="table-responsive">
+									<table class="table table-bordered" id="myWhishlist">
+										<thead class="p_head">
+											<tr>
+												<th> Product Image </th>
+												<th style="text-align:left;"> Product Name  </th>
+												<th> Price </th>
+												<th> Add To Cart </th>
+												<th> Remove </th>
+											</tr>
+										</thead>
+										<tbody  align="middle" id="myWhishlistData" ng-repeat="list in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+
+											<tr >
+												<td>
+													<img src="{{list.upload_photo}}" style="max-width:30%;"/>
+												</td>
+												<td style="text-align:left;">
+													<h3 class="product-name">
+														<a ng-click="productDetails(list)" title="" style="font-weight:normal;"> {{list.upload_name}} </a>
+													</h3>
+													<!-- <div class="mywhishlist_data_content">
+														<p>{{list.description}}</p>
+													</div> -->
+													<!-- <textarea placeholder="Please Enter your Comments..." style="width:100%;font-size:12px;padding:5px;"></textarea> -->
+												</td>
+												<td style="" >
+													<div class="price_box_whishlist" >
+														<div class="offer">
+															<div class="detail_page_price" ng-repeat="price in list.prices" align="middle">
+																<span class="special-price">
+																	<span class="price" style="padding-left: 0px;font-weight:normal;">
+																		{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+																</span>
+																<span class="old-price">
+																	<span class="price" style="font-weight:normal;">
+																		{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+																</span>
+																<p class="exclude_gst_whishlist" style="font-weight:normal;">(Excluding-GST)</p>
+																<p class="special_price_whishlist yousave" >{{price.percentage+0.00|number:2}}%</p>
+															</div>
+														</div>
+
+													</div>
+													
+												</td>
+												<td>
+													<div class="cart_items">
+														<a ng-click="addToCart(list)" class="ad_cart_whishlist" title="Add To Cart">
+															<span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:10px;"></span> ADD TO CART</a>
+													</div>
+												</td>
+												<td id="wishlistRemoveIcon">
+													<span class="glyphicon glyphicon-remove" ng-click="removeWishListItem(list)"></span>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>									
+								</div>
+								<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="box-head" ng-if="yourWishlist==''" style="margin-bottom: 23%;margin-left: -15px;margin-right: 0px;"><h2>No Records Found!!!</h2></div>
+			
+			</div>
+			<!--  account dashboard page end here -->
+	
+	</div>
+	</div>
+</div>
+
+
+
+
+<div id="addedToCart" class="modal fade" ng-controller="homeController">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header"></div>
+
+      <div class="modal-body" align="middle">
+
+        Added to Cart Successfully!
+
+      </div>
+
+
+
+      <div class="modal-footer">
+
+        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button></div>
+
+    </div>
+
+  </div>
+
+</div>
+
