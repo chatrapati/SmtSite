@@ -1,6 +1,9 @@
+
+
+
 shopMyToolsApp.controller('myOrdersController',
-    ['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService',
-        function ($scope, $http, $window, $rootScope, $location, myOrdersService, inVoiceService) {
+    ['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService','Pagination',
+        function ($scope, $http, $window, $rootScope, $location, myOrdersService, inVoiceService,Pagination) {
             $window.scrollTo(0, 0);
             $scope.loading = true;
             $scope.getOrders = function () {
@@ -11,13 +14,21 @@ shopMyToolsApp.controller('myOrdersController',
                         $rootScope.myOrdersList = data.data.order_info;
                         $scope.loading = false;
                         $scope.data = $rootScope.myOrdersList;
+//                        for(var i = 1; i = $scope.data.length; i++){
+//     $scope.data[i] = { s_no: i }
+//   }
                         $scope.viewby = 10;
                         $scope.totalItems = $scope.data.length;
                         $scope.currentPage = 1;
                         $scope.itemsPerPage = $scope.viewby;
+                          $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
                     }
                 })
             }
+
+  
 
             if(window.localStorage['token']){
                  $scope.getOrders();
@@ -40,7 +51,41 @@ shopMyToolsApp.controller('myOrdersController',
                 $location.path("/");
             }
 
+ $scope.abstractProcessPagination = function (position, pagination, list) {
+      //next button
+      if (position == 5) {
+        pagination.nextPage();
+        if (list[4] <= pagination.page && pagination.page != (pagination.numPages - 1)) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        }
+      } //prev button
+      else if (position == -1) {
+        pagination.prevPage();
+        if (list[0] >= pagination.page && pagination.page != 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      } else {
+        pagination.toPageId(list[position]);
+        if (position == 4 && pagination.numPages > 5 && list[position] < pagination.numPages - 1) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        } else if (position == 0 && pagination.numPages > 5 && list[0] > 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      }
+    };
 
+    $scope.processPagination = function (position) {
+    
+      $scope.abstractProcessPagination(position, $scope.pagination, $scope.pageList)
+    }
 
         }])
 
