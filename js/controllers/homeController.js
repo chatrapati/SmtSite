@@ -34,19 +34,9 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         dashBoardOrdersCountService, headerSliderService, $window, addCompareProductsService, DOMAIN_URL) {
 
-
-
-
-
         $window.scrollTo(0, 0);
-
-
-
-
-
         $scope.isReadonly = true;
-        // $scope.firstCarouselImages = ["images/banners/TOOLS_ERA.png", "images/banners/drones.png", "images/banners/new-range.png"];
-
+      
         $scope.firstCarouselImages = ["images/banners/powertex.jpg", "images/banners/sunflower.jpg", "images/banners/bostec.jpg", "images/banners/bosch.jpg", "images/banners/jasic.jpg"];
 
         $scope.secondCarouselImages = ["images/banners/banner0.png", "images/banners/banner1.jpg", "images/banners/banner2.jpg", "images/banners/banner3.jpg","images/banners/banner4.png"];
@@ -57,175 +47,104 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
         $scope.user_name = window.localStorage['user_name'];
-        //  alert(window.localStorage['user_name']);
-
+      
         $scope.token = window.localStorage['token'];
 
         $scope.getHeader = function () {
-
             getHeaderService.headerMethod().then(function (data) {
-
                 if (data.data.status == 'success') {
-
                     $scope.headerArray = data.data.header_data;
-                    //  console.log($scope.headerArray)
                 } else {
-
                 }
-
             });
-
         }
 
         $scope.goToWishList = function () {
-
             if (window.localStorage['token']) {
                 localStorage.setItem('wishlistBreadCrumbFlag', 'false');
                 $location.path("wishlist");
-
             }
         }
-
-
 
         $scope.goToCheckout = function () {
-
             if (window.localStorage['user_id']) {
-
                 if ($rootScope.cartArray.length != 0) {
-
                     $location.path("checkout");
-
                 }
-
             }
-
         }
-
-
 
         $scope.clearCart = function () {
-
-            // alert('1')
             if (window.confirm("Are you sure you want to clear cart? ")) {
-
                 if (window.localStorage['user_id']) {
-
                     deleteCartService.deleteCartMethod(window.localStorage['user_id'], "all").then(function (data) {
-
-                        // alert(JSON.stringify(data))
-
                         if (data.data.status == 'all products deleted successfully') {
-
                             $rootScope.cartArray = [];
-
                             $scope.viewCartItems();
-
-                        }
-
+                     }
                     })
-
                 } else {
-
                     deleteCartService.deleteCartMethod(localStorage.getItem('randomNumber'), "all").then(function (data) {
-
-                        // alert(JSON.stringify(data))
-
                         if (data.data.status == 'all products deleted successfully') {
-
                             $rootScope.cartArray = [];
-
-                            // localStorage.removeItem('randomNumber');
-
                             $scope.getCartItemsWithoutLogin();
-
                         }
-
                     })
-
                 }
             }
-
         }
-
-
-
-      
 
         $scope.showShippingAddress = function () {
-
-            //alert("1")
-
             $scope.showShippingAddress = 'true';
-
         }
-
         $scope.getFooter = function () {
-
             getFooterService.footerMethod().then(function (data) {
-
-                // alert(JSON.stringify(data))
-
                 if (data.data.status == 'success') {
-
                     $scope.paymentArray = data.data.payment_methods_data;
-
                     $scope.custServiceArray = data.data.customer_service_data;
-
                     $scope.shopMyToolsArray = data.data.shopmytools_data;
-
                     $scope.addressArray = data.data.address;
-
                 } else {
-
-                    //alert(data.data.status)
-
                 }
-
             });
-
         }
-
-
-
-       
-
-
 
         $scope.homePageDetails = function () {
             $scope.loading = true;
             homePageService.homePageMethod().then(function (data) {
-
                 $scope.loading = false;
-
                 if (data.data.status == 'Success') {
-
                     $scope.brandImages = data.data.brdfooter;
-
                     $scope.collections = data.data.collections;
-
                     $scope.topbrands = data.data.topbrands;
-
                     $scope.emergingbrands = data.data.emergingbrands;
-
                     $scope.deals = data.data.deals;
-
                     $rootScope.dealsCount = $scope.deals.length;
-                    //alert($rootScope.dealsCount);
-                    // console.log(JSON.stringify($scope.brandImages))
-
+                     $scope.newarrivals = data.data.newarrivalcats;
+                    $rootScope.newarrivalsArray = [];
+                    for (i = 0; i < $scope.newarrivals.length; i++) {
+                        $scope.newarrivalsObj = $scope.newarrivals[i];
+                        for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
+                            if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
+                                $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
+                            }
+                        }
+                    }
+                     $scope.Offers = data.data.offerscats;
+                        $rootScope.offersArray = [];
+                        for (i = 0; i < $scope.Offers.length; i++) {
+                            $scope.offersObj = $scope.Offers[i];
+                            for (j = 0; j < $scope.offersObj.prices.length; j++) {
+                                if ($scope.offersObj.prices[j].enduser_price != 0) {
+                                    $rootScope.offersArray.push($scope.offersObj)
+                                }
+                            }
+                        }
                 } else {
 
-                    //  alert(data.data.status)
-
                 }
-
-
-
             })
-
         }
-        
      
 
 
@@ -239,79 +158,34 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
         $rootScope.productReview = function (productObj, isReview) {
-
-            //alert('1')
-            //click  review goto particular div start
-
-            //end of goto div
-
             localStorage.setItem('isReviewStatus', isReview);
-
             window.localStorage['productName'] = productObj.upload_name;
-
             $rootScope.showHintFlag = 'false';
-
             $scope.productDetailedUrl = document.URL.split("#!/");
-
             if ($scope.productDetailedUrl[1] == 'productDetailPage') {
-
-                // $location.path("categoryPage1");
                 window.localStorage['productName'] = productObj.upload_name;
                 location.reload();
                 $window.scrollTo(0, 0);
                 $location.path("productDetailPage");
-
             } else {
-
                 $location.path("productDetailPage");
-
             }
-
-
-
-
         }
 
 
 
         $scope.subCategoryMethod = function (subCategory, categoryName) {
-
-            //alert('1')
-
             localStorage.removeItem('selectedArray');
-
             window.localStorage['categoryName'] = "";
-
             window.localStorage['subCategoryName'] = "";
-
             window.localStorage['categoryName'] = categoryName;
-
             window.localStorage['subCategoryName'] = subCategory;
-
-            // if(document.URL == 'http://toolsomg.com/#!/categoryPage'){
-
-            //     $location.path("categoryPage1");
-
-            // }else{
-
-            //     $location.path("categoryPage");
-
-            // }
-
             $scope.categoryURL = document.URL.split("#!/");
-
             if ($scope.categoryURL[1] == 'categoryPage') {
-
                 $location.path("categoryPage1");
-
             } else {
-
                 $location.path("categoryPage");
-
             }
-
-            //$window.location.href = "categoryPage";
-
         }
 
         $scope.myInterval = 5000;
@@ -343,11 +217,6 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             })
         }
 
-
-
-        $scope.getOffers("");
-
-
         $scope.getNewArrivals = function (categoryObj) {
             $scope.loading = true;
             allNewArrivalsService.allNewArrivalsMethod(categoryObj).then(function (data) {
@@ -371,8 +240,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
 
-        $scope.getNewArrivals("")
-
+      
 
 
         $scope.getCategories = function () {
@@ -380,285 +248,142 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             getAllCategoriesService.getCategoriesMethod().then(function (data) {
                 $scope.loading = false;
                 if (data.data.status == 'success') {
-
                     $scope.categoryArray = data.data.categories;
-
-                    // alert(JSON.stringify($scope.categoryArray))
-
                 } else {
-
-                    //  alert(data.data.status)
-
                 }
 
             })
 
         }
 
-        //   window.localStorage['brandName'] = "";
-
-        $scope.categoryBasedProducts = function (categoryName) {
-
+          $scope.categoryBasedProducts = function (categoryName) {
             localStorage.removeItem('selectedArray');
-
             window.localStorage['categoryName'] = "";
-
             window.localStorage['categoryName'] = categoryName;
-
             window.localStorage['brandName'] = "";
-
             window.localStorage['subCategoryName'] = "";
-
             $scope.categoryURL = document.URL.split("#!/");
             localStorage.removeItem('selectedArray')
-
             if ($scope.categoryURL[1] == 'categoryPage') {
-
                 $location.path("categoryPage1");
-
             } else {
-
                 $location.path("categoryPage");
-
             }
-
-
-
         }
 
 
 
         $rootScope.getProductDetails = function (productObj) {
-
             window.localStorage['productName'] = productObj.upload_name;
-
             localStorage.removeItem('isReviewStatus');
-
             $rootScope.showHintFlag = 'false';
-
             localStorage.setItem('breadCrumb', productObj.upload_category);
-
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-
-
-            //  $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-
-
-            // $window.open("http://toolsomg.com/#!/productDetailPage");
-
-
-        //    $window.open(DOMAIN_URL + "#!/productDetailPage");
            $location.path('productDetailPage');
-
-
-
-            // $window.open("http://toolsomg.com/#!/productDetailPage");
-
-
-
-            // $location.path("productDetailPage")
-
         }
 
         $scope.rightClickTab = function (productObj) {
-
             window.localStorage['productName'] = productObj.upload_name;
-
             localStorage.removeItem('isReviewStatus');
-
             $rootScope.showHintFlag = 'false';
-            //$window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-
-            //   $window.open("http://toolsomg.com/#!/productDetailPage");
-
-            // $window.open(DOMAIN_URL + "#!/productDetailPage");
              $location.path('productDetailPage');
-
-
-            //   $location.path("productDetailPage")
-
         }
 
 
 
         $rootScope.getProductDetailsFromCart = function (productObj) {
-
-            //  alert(productObj)
-
-            window.localStorage['productName'] = productObj.productdescription;
-
+   window.localStorage['productName'] = productObj.productdescription;
             localStorage.removeItem('isReviewStatus');
-
             $rootScope.showHintFlag = 'false';
-            // $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-
-            //   $window.open("http://toolsomg.com/#!/productDetailPage");
-
-            // $window.open(DOMAIN_URL + "#!/productDetailPage");
-           $location.path('productDetailPage');
-
-
-            //  $location.path("productDetailPage")
-
+              $location.path('productDetailPage');
         }
 
         $scope.getProductDetailsFromCompare = function (productObj) {
             window.localStorage['productName'] = productObj;
-
             localStorage.removeItem('isReviewStatus');
-
             $rootScope.showHintFlag = 'false';
-            // $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-
-            //  $window.open("http://toolsomg.com/#!/productDetailPage");
-            // $window.open(DOMAIN_URL + "#!/productDetailPage");
-
-            $location.path('productDetailPage');
-            //  $location.path("productDetailPage")
-        }
+             $location.path('productDetailPage');
+            }
 
         $scope.newTab = function (productObj) {
-
             window.localStorage['productName'] = productObj.upload_name;
-
             $rootScope.showHintFlag = 'false';
-
             window.open(document.URL + "productDetailPage", '_blank');
-
         }
 
         $scope.goToEdit = function () {
-
             $location.path("editAccount")
-
         }
 
         $scope.goToAddNewAddress = function () {
-
             $location.path("addAddress")
-
         }
 
         $scope.getCategories();
 
         $scope.goToLogout = function () {
-
             logoutService.userLogout(window.localStorage['token']).then(function (data) {
-
-                if (data.data.status == 'success') {
-
+              if (data.data.status == 'success') {
                     $window.localStorage.clear();
-
                     $scope = $scope.$new(true);
-
                     $rootScope = $rootScope.$new(true);
-
                     window.location.href = "./login.html";
-
                 } else {
-
-                    // alert(data.data.status);
-
                 }
-
             })
-
         }
 
         $scope.goToLogin = function () {
-
             $location.path("login");
         }
 
         $scope.goToAddressBook = function () {
-
             $location.path("addressBook");
-
         }
 
         $rootScope.showHintFlag = 'false';
 
         $rootScope.showHint = function (searchKey) {
             if (searchKey.length >= '3') {
-
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
-
-                    //alert(JSON.stringify(data))
-
                     if (data.data.status == 'success') {
-
                         $rootScope.searchedProducts = data.data.product_info;
-                        //$scope.cat=upload_category.$rootScope.searchedProducts;
-                        //alert($scope.cat)
-
                         $rootScope.recommendedList = data.data.recommended;
-
                         $rootScope.showHintFlag = 'true';
-
-
-
                     } else if (data.data.status == 'fail') {
-
-                        //  alert(data.data.data)
-
                         $rootScope.searchedProducts = [];
                         $rootScope.showHintFlag = 'true';
-
                     }
-
                 })
-
             } else if (searchKey.length == '0') {
-
                 $rootScope.showHintFlag = 'false';
                 $location.path("/")
-
             }
-
         }
 
         $rootScope.test = function (searchKey) {
-
             if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
-
                 $rootScope.showHintFlag = 'false';
-
                 $location.path("searchPage");
-
                 $scope.searchPageURL = document.URL.split("#!/");
-
                 if ($scope.searchPageURL[1] == 'searchPage') {
-
                     $location.path("searchPage1");
-
                 }
                 else {
-
                     $location.path("searchPage");
-
                 }
             } else if (searchKey.length == '0') {
                 $rootScope.showHintFlag = 'false';
                 $location.path("/")
             }
-
-
-
         }
 
         $rootScope.cartArray = cartArray;
-        // for(var i=0;i<cartArray.length;i++) {
-
-        //    $scope.qtyCount = cartArray.qty(i);
-        //     }
-
-
-        // console.log($rootScope.cartArray)
+       
         $rootScope.viewCartItems = function () {
             if (localStorage.getItem('randomNumber')) {
                 viewCartService.cartItemsWithLoginMethod(window.localStorage['user_id'], localStorage.getItem('randomNumber')).then(function (data) {
-                    //console.log('1'+JSON.stringify(data))
                     if (data.data.status == 'success') {
                         $rootScope.cartArray = data.data.total_item_list;
                         $rootScope.amount = data.data.grand_total;
@@ -671,7 +396,6 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 })
             } else {
                 viewCartService.viewCartMethod(window.localStorage['user_id']).then(function (data) {
-                    // console.log('1'+JSON.stringify(data))
                     $scope.qtyCountt = 0;
                     if (data.data.status == 'success') {
                         $rootScope.cartArray = data.data.item_list;
@@ -679,7 +403,6 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         $scope.qtyCountt = 0;
                         for (var i = 0; i < $rootScope.cartArray.length; i++) {
                             $scope.qtyCount = $rootScope.cartArray[i].qty;
-
                             $scope.qtyCountt += parseInt($scope.qtyCount);
                             //alert($scope.qtyCount)
                         }
@@ -691,29 +414,17 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             }
         }
 
-        //alert(localStorage.getItem('randomNumber'))
-
-
-
         if (window.localStorage['user_id']) {
-
             $scope.viewCartItems();
-
         }
 
         $scope.goToDashboard = function () {
-
             if (window.localStorage['token']) {
-
                 $location.path("dashboard");
             }
-
             else {
-
                 window.location.href = "./login.html";
-
             }
-
         }
 
         $rootScope.localCartArray = localCartArray;
@@ -721,27 +432,13 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $scope.orderArray = [];
 
         $scope.getCartItemsWithoutLogin = function () {
-
             viewCartService.cartItemsWithoutLoginMethod(localStorage.getItem('randomNumber')).then(function (data) {
-
-                //console.log('1'+JSON.stringify(data))
-
                 if (data.data.status == 'success') {
-
-                    $rootScope.cartArray = data.data.item_list;
-
-                    // localStorage.setItem('localCartArray', JSON.stringify(data.data.item_list));
-
-                    $scope.orderId = data.data.orderid;
-
+                  $rootScope.cartArray = data.data.item_list;
+                   $scope.orderId = data.data.orderid;
                     window.localStorage['orderId'] = $scope.orderId;
-
                 } else {
-
-                    //alert(data.data.status);
-
-                }
-
+               }
             })
 
         }
@@ -749,7 +446,6 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $scope.getCartItemsWithoutLogin();
 
         $rootScope.addToCart = function (productObj) {
-
             if (window.localStorage['token']) {
                 $scope.productObj = {};
                 $scope.productObj = productObj;
@@ -869,34 +565,6 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             }
         }
 
-        // $rootScope.addToCompare = function (productObj) {
-        //     if ($rootScope.compareProducts.length == 0) {
-        //         $rootScope.compareProducts.push(productObj.upload_name);
-        //         localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
-        //         $("#addedToCompareProducts").modal('show');
-        //     } else {
-        //         if ($rootScope.compareProducts.length == 4) {
-        //             alert('More than 4 products are not allowed for Comparision')
-        //         } else {
-        //             for (var i = 0; i < $rootScope.compareProducts.length; i++) {
-        //                 if ($rootScope.compareProducts[i] == productObj.upload_name) {
-        //                     $scope.match = true;
-        //                     break;
-        //                 }
-        //                 else {
-        //                     $scope.match = false;
-        //                 }
-        //             }
-        //             if ($scope.match) {
-        //                 alert('This Product Already Existed in Compare Products');
-        //             } else {
-        //                 $rootScope.compareProducts.push(productObj.upload_name);
-        //                 localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
-        //                 $("#addedToCompareProducts").modal('show');
-        //             }
-        //         }
-        //     }
-        // }
 
         $rootScope.addToCompare = function (productObj) {
             if (window.localStorage['user_id']) {
