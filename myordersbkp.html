@@ -1,0 +1,57 @@
+
+		<div class="container" ng-controller="myOrdersController">	
+		 <ul class="bredcrumb_ul" style=" margin-top: 5px; margin-left: -15px;">
+    	<li class="bredcrumb_li">
+	<a  ng-click="goToHome()">	Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a ng-click="pageNavigate()">Dashboard</a>
+    </li>
+    	<li  class="bredcrumb_li">
+			<a>Orders</a>
+		</li>
+	</ul>
+			<div class="block_account_dashboard" style="height:338px;">
+					<div loading></div>
+				<div class="row" id="edit_row" ng-if="myOrdersList!=''">
+					<div class="box-head" style="margin-top: 25px;"><h2>Orders</h2></div>
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">	
+						<div class="row">
+							<div class="table-responsive">
+							<table class="table table-bordered" id="smt_Orders_table">
+								<thead>
+									<tr>
+										<th style="text-align:center;">S.No</th>
+										<th style="text-align:left;">Order No</th>
+										<th style="text-align:right;">Created</th>
+										<th style="text-align:right;">Qty</th>
+										<th style="text-align:right;">Amount</th>
+										<th style="text-align:center;">Status</th>
+										<th style="text-align:center;">Options</th>
+									</tr>
+								</thead>
+								<tbody id="smt_Orders_table_Data">
+									<tr ng-repeat="myOrder in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+										<td style="text-align:center;">{{itemsPerPage *(currentPage-1)+$index+1}}</td>
+										<td style="text-align:left;">{{myOrder.orderid}}</td>
+										<td style="text-align:right;">{{myOrder.createddate}}</td>
+										<td style="text-align:right;">{{myOrder.totalquantity}}</td>
+										<td style="text-align:right;">{{myOrder.totalamount|currency:'&#8377;'}}</td>
+										<td style="text-align:center;">{{myOrder.status}}</td>
+										<td style="text-align:center;" ng-click="gotoOrderDetails(myOrder.orderid)"><a href="" class="view_ordr_tbl"><i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a></td>												
+									</tr>
+										
+								</tbody>										
+							</table>
+							</div>
+							<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+						</div>
+					</div>
+				</div>
+
+				<div class="box-head" ng-if="myOrdersList==''" style="margin-top: 36px;margin-left: -14px;"><h2>No Records Found!!!</h2></div>
+
+			</div>
+		
+		</div>
+	

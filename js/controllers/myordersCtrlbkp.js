@@ -1,12 +1,7 @@
-
-
-
 shopMyToolsApp.controller('myOrdersController',
-
-    ['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService', 'Pagination',
-        function ($scope, $http, $window, $rootScope, $location, myOrdersService, inVoiceService, Pagination) {
-
-           $window.scrollTo(0, 0);
+    ['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService',
+        function ($scope, $http, $window, $rootScope, $location, myOrdersService, inVoiceService) {
+            $window.scrollTo(0, 0);
             $scope.loading = true;
             $scope.getOrders = function () {
                 myOrdersService.myOrdersMethod(window.localStorage['user_id']).then(function (data) {
@@ -16,50 +11,20 @@ shopMyToolsApp.controller('myOrdersController',
                         $rootScope.myOrdersList = data.data.order_info;
                         $scope.loading = false;
                         $scope.data = $rootScope.myOrdersList;
-
-                        $scope.serialNo = 1;
-                        $scope.data.forEach(function (element) {
-                            element.s_no = $scope.serialNo;
-                            $scope.serialNo++
-                        }, this);
-
-//                        for(var i = 1; i = $scope.data.length; i++){
-//     $scope.data[i] = { s_no: i }
-//   }
-
                         $scope.viewby = 10;
                         $scope.totalItems = $scope.data.length;
                         $scope.currentPage = 1;
                         $scope.itemsPerPage = $scope.viewby;
-
-                        $scope.pageList = [0, 1, 2, 3, 4];
-                        $scope.pagination = Pagination.getNew($scope.viewby);
-                        $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
-
-                          $scope.pageList = [0, 1, 2, 3, 4];
-          $scope.pagination = Pagination.getNew($scope.viewby);
-          $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
-
                     }
                 })
             }
 
-
-
-
-            if (window.localStorage['token']) {
-                $scope.getOrders();
-            } 
-
-  
-
             if(window.localStorage['token']){
                  $scope.getOrders();
             }else{
-
                 $location.path("/")
             }
-
+           
 
             $scope.gotoOrderDetails = function (orderId) {
                 window.localStorage['orderId'] = orderId;
@@ -76,78 +41,6 @@ shopMyToolsApp.controller('myOrdersController',
             }
 
 
-            $scope.abstractProcessPagination = function (position, pagination, list) {
-                //next button
-                if (position == 5) {
-                    pagination.nextPage();
-                    if (list[4] <= pagination.page && pagination.page != (pagination.numPages - 1)) {
-                        for (var i = 0; i < list.length; i++) {
-                            list[i] = list[i] + 1;
-                        }
-                    }
-                } //prev button
-                else if (position == -1) {
-                    pagination.prevPage();
-                    if (list[0] >= pagination.page && pagination.page != 0) {
-                        for (var i = 0; i < list.length; i++) {
-                            list[i] = list[i] - 1;
-                        }
-                    }
-                } else {
-                    pagination.toPageId(list[position]);
-                    if (position == 4 && pagination.numPages > 5 && list[position] < pagination.numPages - 1) {
-                        for (var i = 0; i < list.length; i++) {
-                            list[i] = list[i] + 1;
-                        }
-                    } else if (position == 0 && pagination.numPages > 5 && list[0] > 0) {
-                        for (var i = 0; i < list.length; i++) {
-                            list[i] = list[i] - 1;
-                        }
-                    }
-                }
-            };
-
-            $scope.processPagination = function (position) {
-
-                $scope.abstractProcessPagination(position, $scope.pagination, $scope.pageList)
-            }
-
- $scope.abstractProcessPagination = function (position, pagination, list) {
-      //next button
-      if (position == 5) {
-        pagination.nextPage();
-        if (list[4] <= pagination.page && pagination.page != (pagination.numPages - 1)) {
-          for (var i = 0; i < list.length; i++) {
-            list[i] = list[i] + 1;
-          }
-        }
-      } //prev button
-      else if (position == -1) {
-        pagination.prevPage();
-        if (list[0] >= pagination.page && pagination.page != 0) {
-          for (var i = 0; i < list.length; i++) {
-            list[i] = list[i] - 1;
-          }
-        }
-      } else {
-        pagination.toPageId(list[position]);
-        if (position == 4 && pagination.numPages > 5 && list[position] < pagination.numPages - 1) {
-          for (var i = 0; i < list.length; i++) {
-            list[i] = list[i] + 1;
-          }
-        } else if (position == 0 && pagination.numPages > 5 && list[0] > 0) {
-          for (var i = 0; i < list.length; i++) {
-            list[i] = list[i] - 1;
-          }
-        }
-      }
-    };
-
-    $scope.processPagination = function (position) {
-    
-      $scope.abstractProcessPagination(position, $scope.pagination, $scope.pageList)
-    }
-
 
         }])
 
@@ -156,7 +49,7 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
 
     $scope.getMyOrderDetails = function () {
 
-
+        
         inVoiceService.completeOrdersMethod(window.localStorage['orderId']).then(function (data) {
             if (data.data.status == 'success') {
                 $rootScope.orderitems = [];
@@ -165,12 +58,12 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
                 $rootScope.grandTotal = data.data.user_info.grand_total;
                 $rootScope.custDetails = data.data.user_info.cust_details;
                 $rootScope.status = $rootScope.custDetails.status;
-                if ($rootScope.custDetails.gst_number) {
+                if($rootScope.custDetails.gst_number){
                     $rootScope.gstnumber = $rootScope.custDetails.gst_number;
-                } else {
+                }else{
                     $rootScope.gstnumber = '';
                 }
-
+                 
                 $rootScope.shippingaddress = data.data.user_info.cust_details.shippingaddress;
                 $rootScope.billingaddress = data.data.user_info.cust_details.billingaddress;
                 $rootScope.shopAddress = data.data.user_info.cust_details.pickup_address;
@@ -179,28 +72,28 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
                 $rootScope.discountAmt = $rootScope.custDetails.discount_amount;
                 $rootScope.paymenttype = $rootScope.custDetails.paymenttype;
                 $rootScope.orderDetails = data.data.user_info.order_data;
-                $rootScope.amtPayable = JSON.parse($rootScope.grandTotal) + JSON.parse($rootScope.discountAmt);
+                $rootScope.amtPayable = JSON.parse($rootScope.grandTotal)+JSON.parse($rootScope.discountAmt);
 
             }
 
         });
     }
 
-    $scope.test = function () {
-        //  alert('1')
-        $location.path("myorders");
+    $scope.test = function(){
+      //  alert('1')
+         $location.path("myorders");
     }
 
-
-    $scope.invoicebredcrumb = function () {
+  
+    $scope.invoicebredcrumb = function(){
         $location.path("invoiceOrders");
     }
 
-    $scope.showInvoice = localStorage.getItem('showInvoice');
+                $scope.showInvoice = localStorage.getItem('showInvoice');
 
-    $scope.showMyOrders = localStorage.getItem('showMyOrders');
+                $scope.showMyOrders = localStorage.getItem('showMyOrders');
 
-    $scope.showPendingOrders = localStorage.getItem('showPendingOrders');
+                $scope.showPendingOrders = localStorage.getItem('showPendingOrders');
 
 
 
@@ -213,20 +106,20 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
         $location.path("/");
     }
 
+    
 
-
-    $scope.pendingOrdersbredcrumb = function () {
+    $scope.pendingOrdersbredcrumb = function(){
         $location.path("pendingOrders");
     }
+   
 
 
-
-    if (window.localStorage['token']) {
-        $scope.getMyOrderDetails();
-    } else {
+    if(window.localStorage['token']){
+         $scope.getMyOrderDetails();
+    }else{
         $location.path("/")
     }
-
+   
 
     $scope.cancelOrder = function (orderId) {
 
@@ -236,7 +129,7 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
                 // alert(JSON.stringify(data))
                 if (data.data.status == 'success') {
                     $("#cancelOrderModal").modal('show');
-                    // $location.path("myorders")
+                   // $location.path("myorders")
                 } else {
                     alert(data.data.status);
                 }
@@ -245,9 +138,9 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
 
     }
 
-    $scope.closeCancelModal = function () {
-        $("#cancelOrderModal").modal('hide');
-        $location.path("myorders");
+    $scope.closeCancelModal = function(){
+         $("#cancelOrderModal").modal('hide');
+         $location.path("myorders");
     }
 
     $scope.gotoOrders = function () {
@@ -284,12 +177,12 @@ shopMyToolsApp.controller('pendingOrdersController',
             })
         }
 
-        if (window.localStorage['token']) {
-            $scope.getOrders();
-        } else {
+        if(window.localStorage['token']){
+              $scope.getOrders();
+        }else{
             $location.path("/")
         }
-
+      
 
         $scope.gotoPendingOrderDetails = function (orderId) {
             window.localStorage['orderId'] = orderId;
@@ -344,12 +237,12 @@ shopMyToolsApp.controller('invoiceOrdersController',
             })
         }
 
-        if (window.localStorage['token']) {
-            $scope.getOrders();
-        } else {
+        if(window.localStorage['token']){
+             $scope.getOrders();
+        }else{
             $location.path("/")
         }
-
+       
 
         $scope.gotoOrders = function () {
             $location.path("invoiceOrders");
