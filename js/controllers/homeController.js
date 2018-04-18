@@ -917,8 +917,28 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             $scope.getFooter();
             $scope.getHeader();
 
+        $scope.gotoFooterPage = function(page){
+            if(page == 'aboutus'){
+                $location.path("aboutus")
+            }else if(page == 'contactus'){
+                 $location.path("contact")
+            }else if(page == 'termofuse'){
+                 $location.path("termsofuse")
+            }else if(page == 'returnpolicy'){
+                $location.path("returnpolicy")
+            }else if(page == 'privacypolicy'){
+                $location.path("privacypolicy")
+            }else if(page == 'shipping'){
+                $location.path("shipping")
+            }else if(page == 'netbanking'){
+                $location.path("netbanking")
+            }else {
+                $location.path("emi")
+            }
+            
+        }
 
-
+       
 
     }]);
 

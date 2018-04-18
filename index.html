@@ -9,6 +9,7 @@
 <html class="no-js" lang="">
 <!--<![endif]-->
 <html>
+
 <head>
   <!--[if lt IE 9]>
 
@@ -49,7 +50,7 @@
 
 
 
-<link rel="icon" href="https://s3.ap-south-1.amazonaws.com/gstbucket1/collections/smtlogo.png" type="image/x-icon"/>
+  <link rel="icon" href="https://s3.ap-south-1.amazonaws.com/gstbucket1/collections/smtlogo.png" type="image/x-icon" />
 
 
   <!-- jQuery library -->
@@ -58,8 +59,8 @@
 
   <script src="./js/jquery-2.2.0.min.js" type="text/javascript"></script>
 
-<!-- <script src="./js/zoomPan.js"></script> -->
-<link rel="stylesheet" href="./css/zoomPan.css">
+  <!-- <script src="./js/zoomPan.js"></script> -->
+  <link rel="stylesheet" href="./css/zoomPan.css">
 
   <!-- Latest compiled JavaScript -->
 
@@ -143,19 +144,19 @@
   <script src="./js/services/product_detail_page_service.js" type="text/javascript"></script>
   <script src="./js/controllers/product_detail_page_controller.js" type="text/javascript"></script>
 
-   <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
-  
+  <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
 
   <style type="text/css">
     /* menu styles start here 9-2-2018 */
-    
+
     .dropdown-submenu {
       position: relative;
     }
-    
+
     .dropdown-submenu>.dropdown-menu {
       top: 0;
       left: 100%;
@@ -165,11 +166,11 @@
       -moz-border-radius: 0 6px 6px;
       border-radius: 0 6px 6px 6px;
     }
-    
+
     .dropdown-submenu:hover>.dropdown-menu {
       display: block;
     }
-    
+
     .dropdown-submenu>a:after {
       display: block;
       content: " ";
@@ -183,15 +184,15 @@
       margin-top: 5px;
       margin-right: -10px;
     }
-    
+
     .dropdown-submenu:hover>a:after {
       border-left-color: #fff;
     }
-    
+
     .dropdown-submenu.pull-left {
       float: none;
     }
-    
+
     .dropdown-submenu.pull-left>.dropdown-menu {
       left: -100%;
       margin-left: 10px;
@@ -199,12 +200,12 @@
       -moz-border-radius: 6px 0 6px 6px;
       border-radius: 6px 0 6px 6px;
     }
-    
+
     #menu_cat {
       margin-left: -29px;
     }
     /* menu styles end here 9-2-2018 */
-    
+
     .yt-menu-nav>#nav>li>a>span,
     .language-currency ul li a,
     .sm-serachbox-pro .sm-searbox-content,
@@ -234,25 +235,25 @@
     #yt_wrapper .page-title h1 {
       color: #444444;
     }
-    
+
     body.sm_market {
       color: #666666;
     }
-    
+
     body.sm_market {
       background-color: #FFFFFF;
     }
-    
+
     a {
       color: #666666;
     }
-    
+
     a:focus,
     a:hover {
       color: #0487A1;
     }
     /*titleColor  hover*/
-    
+
     .more-wrap .more-view:hover,
     .postTitle h2 a:hover,
     .category-products .item .product-name a:hover,
@@ -260,18 +261,18 @@
     .yt-product-detail .tab-product-detail .yt-tab-navi>li>a:hover {
       color: #0487A1;
     }
-    
+
     #yt_header .head-quicklink_links .inner {
       float: right;
     }
-    
+
     .cloud-zoom-big {
       top: 0 !important;
       left: 0 !important;
       width: 100% !important;
       height: 100% !important;
     }
-    
+
     #yttotop {
       background: url(images/backtotop.png) no-repeat scroll center center;
       -moz-transition: all .3s;
@@ -288,25 +289,25 @@
       z-index: 1040;
       right: 0px;
     }
-    
+
     #img_effects {
       height: 50px;
       margin: 0 5px;
     }
-    
+
     #img_effects img {
       height: 100%;
     }
-    
+
     #main_img_effects {
       height: 200px !important;
     }
-    
+
     #main_img_effects img {
       height: 100%;
     }
     /****   18-1-2018    ***************/
-    
+
     .dropdown-menu>li>a {
       display: inherit !important;
       white-space: initial !important;
@@ -320,7 +321,7 @@
   .affix + .container-fluid {
       padding-top: 70px;
   } */
-    
+
     #middle_logo_headr {
       border-bottom: 1px solid #cfcfcf;
     }
@@ -329,6 +330,7 @@
 
 
 </head>
+
 <body ng-app="shopMyTools" class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage" ng-cloak>
 
   <!--     Header part start here -->
@@ -384,12 +386,13 @@
               <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="mlogoo">
                 <div class="row pointer">
                   <!-- <img src="{{headerArray.headerlogo}}" ng-click="goToHome()" id="header_logooo"> -->
-                 
+
                   <img src="images/smtlogo.png" ng-click="goToHome()" id="header_logooo" title="ShopMyTools">
                 </div>
               </div>
               <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12" id="header_searchhh">
-                <input class="smt-navbar-input col-xs-11" type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more" id="srach_textt" ng-change="showHint(searchKey)" my-enter="test(searchKey)">
+                <input class="smt-navbar-input col-xs-11" type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more"
+                  id="srach_textt" ng-change="showHint(searchKey)" my-enter="test(searchKey)">
                 <button class="smt-navbar-button col-xs-1 pull-right" ng-click="test(searchKey)" id="serch_btnnn"><span class="glyphicon glyphicon-search"></span></button>
                 <ul class="data-ctrl" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintFlag == 'true' && searchedProducts.length == 0">
                   <li>
@@ -450,8 +453,10 @@
                         </div>
                         <ul class="dropdown-menu" ng-if="cartArray.length > 0" id="wishUl">
                           <li class="dropdown button" ng-repeat="category in cartArray" id="wishLl">
-                            <a class="dropdown-toggle" ng-if="category.productdescription" title="{{category.productdescription}}" ng-init="limit = 32" data-toggle="dropdown" id="wisha" ng-click="getProductDetailsFromCart(category)">{{category.productdescription | limitTo: limit}}{{category.productdescription.length > limit ? ' . . .' : ''}} 
-													</a> <span class="glyphicon glyphicon-remove" ng-click="removeCartItem(category)" id="wishspan"></span>
+                            <a class="dropdown-toggle" ng-if="category.productdescription" title="{{category.productdescription}}" ng-init="limit = 32"
+                              data-toggle="dropdown" id="wisha" ng-click="getProductDetailsFromCart(category)">{{category.productdescription | limitTo: limit}}{{category.productdescription.length > limit ? ' . . .' : ''}} 
+													</a> <span class="glyphicon glyphicon-remove" ng-click="removeCartItem(category)"
+                              id="wishspan"></span>
                           </li>
                           <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom:10px;margin-top: 10px;">
                             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
@@ -493,13 +498,15 @@
                       <div class="col-md-12" id="compareDiv">
                         <div class="dropdown">
                           <div class="col-md-3 col-xs-3">
-                            <button class="btn btn-secondary dropdown-toggle cancelBtn" type="button" id="compareProductsDiv" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle cancelBtn" type="button" id="compareProductsDiv" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
                               <span><i class="fa fa-list" aria-hidden="true"></i></span></button>
                             <div class="dropdown-menu" aria-labelledby="compareProductsDiv" ng-if="compareProducts.length > 0" id="compareUl">
                               <ul>
                                 <li class="dropdown button" ng-repeat="category in compareProducts" id="compareLl">
                                   <a class="dropdown-toggle" ng-init="limit = 32" data-toggle="dropdown" id="comparea" ng-click="getProductDetailsFromCompare(category)">{{category | limitTo: limit}}{{category .length > limit ? ' . . .' : ''}} 
-                             	</a> <span class="glyphicon glyphicon-remove wishspanCompare" ng-click="removeCompareItem(category)" id="wishspan" style="margin-top: -2px;"></span>
+                             	</a> <span class="glyphicon glyphicon-remove wishspanCompare"
+                                    ng-click="removeCompareItem(category)" id="wishspan" style="margin-top: -2px;"></span>
                                   <br>
                                 </li>
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom:10px;margin-top: 10px;">
@@ -600,7 +607,8 @@
 
                   <ul class="dropdown-menu multi-level" id="id_menu_sub">
                     <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
-                      <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+                      <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown"
+                        title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
                       <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
                         <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
                           <a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
@@ -631,8 +639,8 @@
                 <ul>
                   <h5 id="footer_linksss"><b>SHOPMYTOOLS</b></h5>
                   <!-- <li ng-repeat="smtData in shopMyToolsArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess"><a href="aboutus.html" class="footerText"> ABOUT US</a></li>
-                  <li id="footer_links_valuess"><a href="contact.html" class="footerText"> CONTACT US</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('aboutus')"><a href="" class="footerText"> ABOUT US</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('contactus')"><a href="" class="footerText"> CONTACT US</a></li>
                   <!--<li  id="footer_links_valuess"><a href="dealer.html" class="footerText"> DEALERS LIST</a></li> -->
 
                   <li id="footer_links_valuess"><a href="http://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
@@ -642,10 +650,10 @@
                 <ul>
                   <h5 id="footer_linksss"><b>CUSTOMER SERVICE</b></h5>
                   <!-- <li ng-repeat="smtData in custServiceArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess"><a href="termsofuse.html" class="footerText"> TERMS OF USE</a></li>
-                  <li id="footer_links_valuess"><a href="returnpolicy.html" class="footerText"> RETURN POLICY</a></li>
-                  <li id="footer_links_valuess"><a href="privacypolicy.html" class="footerText"> PRIVACY POLICY</a></li>
-                  <li id="footer_links_valuess"><a href="shipping.html" class="footerText"> SHIPPING</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('termofuse')"><a href="" class="footerText"> TERMS OF USE</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('returnpolicy')"><a href="" class="footerText"> RETURN POLICY</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('privacypolicy')"><a href="" class="footerText"> PRIVACY POLICY</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('shipping')"><a href="" class="footerText"> SHIPPING</a></li>
                   <!-- <li  id="footer_links_valuess"><a href="" class="footerText">&gt;&gt; &nbsp; FREQUENTLY ASKED  QUESTIONS</a></li> -->
                 </ul>
               </div>
@@ -653,8 +661,8 @@
                 <ul>
                   <h5 id="footer_linksss"><b>PAYMENT METHODS</b></h5>
                   <!-- <li ng-repeat="smtData in paymentArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess"><a href="netbanking.html" class="footerText"> NETBANKING</a></li>
-                  <li id="footer_links_valuess"><a href="emi.html" class="footerText"> EMI CONVERSION</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('netbanking')"><a href="" class="footerText"> NETBANKING</a></li>
+                  <li id="footer_links_valuess" ng-click="gotoFooterPage('emiconversion')"><a href="" class="footerText"> EMI CONVERSION</a></li>
                 </ul>
               </div>
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
@@ -663,20 +671,15 @@
                   <li id="footer_links_valuess">
                     <span style="margin-left: 5px;"><i class="fa fa-map-marker" aria-hidden="true" id="enve"></i></span>
                     <span class="footerText1 footer_links_addere">
-<span style="margin-left: 10px;">{{addressArray.plotno}}&nbsp;&nbsp;{{addressArray.building_name}}, </span>
-                    <span>{{addressArray.near_by}},</span>
-                    <br/>
-                    <span style="margin-left: 25px;">{{addressArray.pincode}},</span>
-                    <br/>
-                    <span style="margin-left: 25px;">{{addressArray.city}},</span>
-                    <br/>
-                    <span style="margin-left: 25px;">{{addressArray.state}}.</span>
-                    <br/>
+                   <span style="margin-left: 8px;">A-201&nbsp;&nbsp;THE PLATINA, MIYAPUR MAIN RD,  </span>
+                    <span style="margin-left: 25px;">GACHIBOWLI ,500032,</span>
+                    <span>HYDERABAD, </span><br/>
+                    <span style="margin-left: 25px;">TELANGANA. </span><br/>
                     </span>
                   </li>
                   <li id="footer_links_valuess">
                     <span style="padding-right:5px;"><i class="fa fa-envelope" aria-hidden="true" id="enve"></i></span>
-                    <span><b>EMAIL: </b><a href="{{DOMAIN_URL}}/contact.html#!/" class="footerText" style="text-transform:lowercase;"> support@shopmytools.com </a></span>
+                    <span><b>EMAIL: </b><a href="" ng-click="gotoFooterPage('contactus')" class="footerText" style="text-transform:lowercase;"> support@shopmytools.com </a></span>
 
                   </li>
 
@@ -718,7 +721,7 @@
 
 
 
-  <footer ng-controller="homeController" class="footerbar1 footer">
+  <footer class="footerbar1 footer">
 
 
 
@@ -785,7 +788,7 @@
 
   <script>
     var amountScrolled = 300;
-    $(window).scroll(function() {
+    $(window).scroll(function () {
       if ($(window).scrollTop() > amountScrolled) {
         $('#yttotop').fadeIn('slow');
       } else {
@@ -794,7 +797,7 @@
     });
 
 
-    $('#yttotop').click(function() {
+    $('#yttotop').click(function () {
 
       $('html, body').animate({
 
@@ -809,4 +812,5 @@
 
 
 </body>
+
 </html>

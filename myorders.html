@@ -1,83 +1,90 @@
-
-		<div class="container" ng-controller="myOrdersController">	
-		 <ul class="bredcrumb_ul" style=" margin-top: 5px; margin-left: -15px;">
-    	<li class="bredcrumb_li">
-	<a  ng-click="goToHome()">	Home</a>
+<div class="container" ng-controller="myOrdersController">
+	<ul class="bredcrumb_ul" style=" margin-top: 5px; margin-left: -15px;">
+		<li class="bredcrumb_li">
+			<a ng-click="goToHome()">	Home</a>
 		</li>
 		<li class="bredcrumb_li">
-		<a ng-click="pageNavigate()">Dashboard</a>
-    </li>
-    	<li  class="bredcrumb_li">
+			<a ng-click="pageNavigate()">Dashboard</a>
+		</li>
+		<li class="bredcrumb_li">
 			<a>Orders</a>
 		</li>
 	</ul>
-			<div class="block_account_dashboard" style="height:338px;">
-					<div loading></div>
-				<div class="row" id="edit_row" ng-if="myOrdersList!=''">
-					<div class="box-head" style="margin-top: 25px;"><h2>Orders</h2></div>
-					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">	
-						<div class="row">
-							<div class="table-responsive">
-							<table class="table table-bordered" id="smt_Orders_table">
-								<thead>
-									<tr>
-										<th style="text-align:center;">S.No</th>
-										<th style="text-align:left;">Order No</th>
-										<th style="text-align:right;">Created</th>
-										<th style="text-align:right;">Qty</th>
-										<th style="text-align:right;">Amount</th>
-										<th style="text-align:center;">Status</th>
-										<th style="text-align:center;">Options</th>
-									</tr>
-								</thead>
-								<tbody id="smt_Orders_table_Data">
-									<tr ng-repeat="myOrder in data| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
-										<td style="text-align:center;">{{myOrder.s_no}}</td>
-										<td style="text-align:left;">{{myOrder.orderid}}</td>
-										<td style="text-align:right;">{{myOrder.createddate}}</td>
-										<td style="text-align:right;">{{myOrder.totalquantity}}</td>
-										<td style="text-align:right;">{{myOrder.totalamount|currency:'&#8377;'}}</td>
-										<td style="text-align:center;">{{myOrder.status}}</td>
-										<td style="text-align:center;" ng-click="gotoOrderDetails(myOrder.orderid)"><a href="" class="view_ordr_tbl"><i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a></td>												
-									</tr>
-										
-								</tbody>										
-							</table>
-							</div>
-						 <div class="pagination"  id="pagin">
-            <ul>
-                <li>
-                    <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page == 0" ng-click="processPagination(-1)" >
+	<div class="block_account_dashboard" style="height:338px;">
+		<div loading></div>
+		<div class="row" id="edit_row" ng-if="myOrdersList!=''">
+			<div class="box-head" style="margin-top: 25px;">
+				<h2>Orders</h2>
+			</div>
+			<div class="">
+				<div class="pagination" id="paginOrders">
+					<ul>
+						<li>
+							<button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
                    Previous           
                     </button>
-                </li>
-                <li>
-                    <label  ng-show="pageList[0] > 0 ">...</label>
-                </li>
-                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
-                    <a href=""  ng-click="processPagination(n)">{{pageList[n]+1}}</a>
-                </li>
-                <li>
-                    <label  ng-show="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
-                </li>
-                <li>
-                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)" >
+						</li>
+						<li>
+							<label ng-show="pageList[0] > 0 ">...</label>
+						</li>
+						<li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
+						 class="pagenumbers">
+							<a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+						</li>
+						<li>
+							<label ng-show="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+						</li>
+						<li>
+							<button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
+							 ng-click="processPagination(5)">
                      Next
                     </button>
-                </li>
-            </ul>
-        </div>
-						 <!-- <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination> -->
-						
-							 <!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
-					<!-- <uib-pagination total-items="totalItems" items-per-page="20" next-text="Next" previous-text="Previous" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination> -->
-						</div>
-					</div>
+						</li>
+					</ul>
 				</div>
-
-				<div class="box-head" ng-if="myOrdersList==''" style="margin-top: 36px;margin-left: -14px;"><h2>No Records Found!!!</h2></div>
-
 			</div>
-		
+
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="table-responsive">
+						<table class="table table-bordered" id="smt_Orders_table">
+							<thead>
+								<tr>
+									<th style="text-align:center;">S.No</th>
+									<th style="text-align:left;">Order No</th>
+									<th style="text-align:right;">Created</th>
+									<th style="text-align:right;">Qty</th>
+									<th style="text-align:right;">Amount</th>
+									<th style="text-align:center;">Status</th>
+									<th style="text-align:center;">Options</th>
+								</tr>
+							</thead>
+							<tbody id="smt_Orders_table_Data">
+								<tr ng-repeat="myOrder in data| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+									<td style="text-align:center;">{{myOrder.s_no}}</td>
+									<td style="text-align:left;">{{myOrder.orderid}}</td>
+									<td style="text-align:right;">{{myOrder.createddate}}</td>
+									<td style="text-align:right;">{{myOrder.totalquantity}}</td>
+									<td style="text-align:right;">{{myOrder.totalamount|currency:'&#8377;'}}</td>
+									<td style="text-align:center;">{{myOrder.status}}</td>
+									<td style="text-align:center;" ng-click="gotoOrderDetails(myOrder.orderid)"><a href="" class="view_ordr_tbl"><i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<!-- <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination> -->
+
+					<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
+					<!-- <uib-pagination total-items="totalItems" items-per-page="20" next-text="Next" previous-text="Previous" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination> -->
+				</div>
+			</div>
 		</div>
-	
+
+		<div class="box-head" ng-if="myOrdersList==''" style="margin-top: 36px;margin-left: -14px;">
+			<h2>No Records Found!!!</h2>
+		</div>
+
+	</div>
+
+</div>

@@ -120,16 +120,16 @@ margin-bottom: 28px;
     /* padding-bottom: 10px; */
     color: #444;
 	}
-	#pagin ul li.active a {
+	#pagin ul li.active a,#paginOrders ul li.active a {
     color: #fff !important;
     background: #0487a1 !important;
     width: 22px !important;
     padding: 1px !important;
 }
-#pagin ul .pagenumbers a {
+#pagin ul .pagenumbers a,#paginOrders  ul .pagenumbers a {
     margin-top: 1px !important;
 }
-#pagin ul li {
+#pagin ul li ,#paginOrders  ul li{
 	margin: 0 2px !important;
 	padding: 0 2px !important;
 	line-height: 2.3;
@@ -142,6 +142,12 @@ margin-bottom: 28px;
     color: #fff !important;
     border-radius: 0 !important;
 }
+
+#paginOrders{
+	float:right;
+}
+
+
 #pagin{
 	margin: -32px 0 !important;
 }

@@ -179,6 +179,30 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
       .when('/deals', {
         templateUrl: 'deals.html'
       })
+       .when('/aboutus', {
+        templateUrl: 'aboutus.html'
+      })
+      .when('/contact', {
+        templateUrl: 'contact.html'
+      })
+      .when('/emi', {
+        templateUrl: 'emi.html'
+      })
+      .when('/netbanking', {
+        templateUrl: 'netbanking.html'
+      })
+       .when('/privacypolicy', {
+        templateUrl: 'privacypolicy.html'
+      })
+        .when('/shipping', {
+        templateUrl: 'shipping.html'
+      })
+       .when('/returnpolicy', {
+        templateUrl: 'returnpolicy.html'
+      })
+       .when('/termsofuse', {
+        templateUrl: 'termsofuse.html'
+      })
       .when('/coupons', {
         templateUrl: 'coupons.html'
       });
