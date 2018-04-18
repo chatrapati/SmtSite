@@ -40,10 +40,10 @@ shopMyToolsApp.constant('CONTACT_SERVICE', 'http://192.168.20.55:8003');*/
 
 
 
-shopMyToolsApp.constant('SERVER_URL', 'http://157.119.108.142:8002');
+// shopMyToolsApp.constant('SERVER_URL', 'http://192.168.20.66:8002/homepage');
 
 // shopMyToolsApp.constant('SERVER_URL', 'http://192.168.20.222:8000')
-
+shopMyToolsApp.constant('SERVER_URL', 'http://157.119.108.142:8002');
 shopMyToolsApp.constant('SERVER_URL1', 'http://157.119.108.142:8002');
 
 //  shopMyToolsApp.constant('SERVER_URL1', 'http://192.168.20.65:8000');
