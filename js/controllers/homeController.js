@@ -145,6 +145,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 }
             })
         }
+        
      
 
 
