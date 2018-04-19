@@ -155,6 +155,7 @@ text-align:justify;
   #paginaView {
     clear: both;
     text-align: center !important;
+	margin-bottom:21px !important;
   }
   #ViewLbl {
     display: block !important;
