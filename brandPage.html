@@ -111,7 +111,7 @@
 
 					
                <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12 pull-right" style="margin-bottom: -10px;margin-bottom:10px;">
-                    <div class="pagination" ng-show="pagination.numPages > 0" id="pagin">
+                    <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
             <ul>
                 <li>
                     <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page == 0" ng-click="processPagination(-1)" >
@@ -119,13 +119,13 @@
                     </button>
                 </li>
                 <li>
-                    <label  ng-show="pageList[0] > 0 ">...</label>
+                    <label  ng-if="pageList[0] > 0 ">...</label>
                 </li>
                 <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
                     <a href=""  ng-click="processPagination(n)">{{pageList[n]+1}}</a>
                 </li>
                 <li>
-                    <label  ng-show="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+                    <label  ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                 </li>
                 <li>
                     <button class="pagination-next-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)" >

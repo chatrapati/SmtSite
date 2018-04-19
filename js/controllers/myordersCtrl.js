@@ -36,10 +36,7 @@ shopMyToolsApp.controller('myOrdersController',
                         $scope.pagination = Pagination.getNew($scope.viewby);
                         $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
 
-                          $scope.pageList = [0, 1, 2, 3, 4];
-          $scope.pagination = Pagination.getNew($scope.viewby);
-          $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
-
+                        
                     }
                 })
             }
@@ -168,7 +165,7 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
                 if ($rootScope.custDetails.gst_number) {
                     $rootScope.gstnumber = $rootScope.custDetails.gst_number;
                 } else {
-                    $rootScope.gstnumber = '';
+                    $rootScope.gstnumber = 'No data Available';
                 }
 
                 $rootScope.shippingaddress = data.data.user_info.cust_details.shippingaddress;
@@ -268,7 +265,8 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
 })
 
 shopMyToolsApp.controller('pendingOrdersController',
-    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService', 'myOrdersService', function ($scope, $http, $location, $rootScope, pendingOrdersService, inVoiceService, myOrdersService) {
+    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService', 'myOrdersService','Pagination',
+     function ($scope, $http, $location, $rootScope, pendingOrdersService, inVoiceService, myOrdersService,Pagination) {
         $scope.getOrders = function () {
             $scope.loading = true;
             pendingOrdersService.pendingOrdersMethod(window.localStorage['user_id']).then(function (data) {
@@ -276,10 +274,19 @@ shopMyToolsApp.controller('pendingOrdersController',
                     $rootScope.pendingOrdersList = data.data.user_info;
                     $scope.loading = false;
                     $scope.data = $rootScope.pendingOrdersList;
+                      $scope.serialNo = 1;
+                        $scope.data.forEach(function (element) {
+                            element.s_no = $scope.serialNo;
+                            $scope.serialNo++
+                        }, this);
                     $scope.viewby = 10;
                     $scope.totalItems = $scope.data.length;
                     $scope.currentPage = 1;
                     $scope.itemsPerPage = $scope.viewby;
+                     $scope.pageList = [0, 1, 2, 3, 4];
+                        $scope.pagination = Pagination.getNew($scope.viewby);
+                        $scope.pagination.numPages = Math.ceil($scope.data.length / $scope.pagination.perPage);
+
                 }
             })
         }
@@ -320,6 +327,42 @@ shopMyToolsApp.controller('pendingOrdersController',
             }
 
         }
+
+        $scope.abstractProcessPagination = function (position, pagination, list) {
+      //next button
+      if (position == 5) {
+        pagination.nextPage();
+        if (list[4] <= pagination.page && pagination.page != (pagination.numPages - 1)) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        }
+      } //prev button
+      else if (position == -1) {
+        pagination.prevPage();
+        if (list[0] >= pagination.page && pagination.page != 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      } else {
+        pagination.toPageId(list[position]);
+        if (position == 4 && pagination.numPages > 5 && list[position] < pagination.numPages - 1) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        } else if (position == 0 && pagination.numPages > 5 && list[0] > 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      }
+    };
+
+    $scope.processPagination = function (position) {
+    
+      $scope.abstractProcessPagination(position, $scope.pagination, $scope.pageList)
+    }
 
     }])
 

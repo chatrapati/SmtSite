@@ -13,9 +13,9 @@
 <head>
   <!--[if lt IE 9]>
 
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 
 	<![endif]-->
   <!-- 	
@@ -72,13 +72,13 @@
   <script src="./js/angular.min.js"></script>
 
   <script src="./js/angular-messages.js"></script>
-  <!-- <script src="http://www.elevateweb.co.uk/wp-content/themes/radial/jquery.elevatezoom.min.js" type="text/javascript"></script> -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angular-messages/1.6.4/angular-messages.min.js"></script>  -->
+  <!-- <script src="https://www.elevateweb.co.uk/wp-content/themes/radial/jquery.elevatezoom.min.js" type="text/javascript"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angular-messages/1.6.4/angular-messages.min.js"></script>  -->
 
   <!-- Bootstrap core CSS -->
 
   <script src="./js/ui-bootstrap-tpls.js"></script>
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="./css/site/home-page.css" rel="stylesheet">
   <link href="./css/site/home-page1.css" rel="stylesheet">
   <link href="./css/site/media-queries-style.css" rel="stylesheet">
@@ -97,10 +97,11 @@
   <!-- zoom css files end here 16-1-2018  -->
   <link rel="stylesheet" href="./bower_components/slick-carousel/slick/slick.css">
   <link rel="stylesheet" href="./bower_components/slick-carousel/slick/slick-theme.css">
-  <script src="./bower_components/jquery/jquery.js"></script>
-  <script src="./bower_components/angular/angular.js"></script>
+  <!-- <script src="./bower_components/jquery/jquery.js"></script> -->
+   <!-- <script src="./bower_components/angular/angular.js"></script>  -->
   <script src="./bower_components/slick-carousel/slick/slick.js"></script>
   <script src="./bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
+   <!-- <script src="./bower_components/angular-slick/dist/slick.min.js"></script> -->
   <link href="./css/dashboard.css" rel="stylesheet">
   <link href="./css/view.css" rel="stylesheet">
   <link href="./css/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen" />
@@ -144,10 +145,10 @@
   <script src="./js/services/product_detail_page_service.js" type="text/javascript"></script>
   <script src="./js/controllers/product_detail_page_controller.js" type="text/javascript"></script>
 
-  <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
 
 
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
 
   <style type="text/css">
@@ -391,8 +392,8 @@
                 </div>
               </div>
               <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12" id="header_searchhh">
-                <input class="smt-navbar-input col-xs-11" type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more"
-                  id="srach_textt" ng-change="showHint(searchKey)" my-enter="test(searchKey)">
+                <input class="smt-navbar-input col-xs-11 " type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more"
+                  id="srach_textt" ng-change="showHint(searchKey)"  my-enter="test(searchKey)">
                 <button class="smt-navbar-button col-xs-1 pull-right" ng-click="test(searchKey)" id="serch_btnnn"><span class="glyphicon glyphicon-search"></span></button>
                 <ul class="data-ctrl" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintFlag == 'true' && searchedProducts.length == 0">
                   <li>
@@ -400,7 +401,7 @@
                     <br>
                   </li>
                 </ul>
-                <ul class="data-ctrl" id="data_ctrl_search" outside-click="hideDiv();" style="margin-top:92px !important;" ng-if="showHintFlag == 'true'  && searchedProducts.length >= 1 && searchedProducts.length < 4">
+                 <ul class="data-ctrl" id="data_ctrl_search" outside-click="hideDiv();" ng-style="{{myObj}}" ng-if="showHintFlag == 'true'  && searchedProducts.length >= 1 && searchedProducts.length < 3">
                   <li ng-repeat="product in searchedProducts | filter:searchKey " id="search_top_box">
                     <div class="col-md-12" ng-click="getProductDetails(product)">{{product.upload_name}}</div>
                     <br>
@@ -410,15 +411,15 @@
                       <b style="color:#0487a1;cursor:pointer;">More</b>
                     </div>
                   </li>
-                  <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;" ng-if="searchedProducts.length > 0"><b>Recommended</b>
+                   <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;" ng-if="searchedProducts.length > 0"><b>Recommended</b>
                     <br>
                   </li>
-                  <li ng-repeat="recommended in recommendedList" ng-click="categoryBasedProducts(recommended.upload_category)">
+                  <li ng-repeat="recommended in recommendedList|limitTo:3" ng-click="categoryBasedProducts(recommended.upload_category)">
                     <div class="col-md-12">{{recommended.upload_category | titleCase}}</div>
                     <br>
-                  </li>
+                  </li> 
                 </ul>
-                <ul class="data-ctrl" id="data_ctrl_search" outside-click="hideDiv();" ng-if="showHintFlag == 'true'  && searchedProducts.length >= 4">
+                <ul class="data-ctrl" id="data_ctrl_search" outside-click="hideDiv();" ng-style="{{myObj}}" ng-if="showHintFlag == 'true'  && searchedProducts.length >= 3">
                   <li ng-repeat="product in searchedProducts | filter:searchKey | limitTo:6" id="search_top_box">
                     <div class="col-md-12" ng-click="getProductDetails(product)">{{product.upload_name}}</div>
                     <br>
@@ -428,14 +429,14 @@
                       <b style="color:#0487a1;cursor:pointer;">More</b>
                     </div>
                   </li>
-                  <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;" ng-if="searchedProducts.length > 0"><b>Recommended</b>
+                   <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;" ng-if="searchedProducts.length > 0"><b>Recommended</b>
                     <br>
                   </li>
-                  <li ng-repeat="recommended in recommendedList" ng-click="categoryBasedProducts(recommended.upload_category)">
+                  <li ng-repeat="recommended in recommendedList|limitTo:3" ng-click="categoryBasedProducts(recommended.upload_category)">
                     <div class="col-md-12">{{recommended.upload_category | titleCase}}</div>
                     <br>
-                  </li>
-                </ul>
+                  </li> 
+                </ul> 
               </div>
               <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" id="whish_compare">
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" id="cart-padding">
@@ -643,7 +644,7 @@
                   <li id="footer_links_valuess" ng-click="gotoFooterPage('contactus')"><a href="" class="footerText"> CONTACT US</a></li>
                   <!--<li  id="footer_links_valuess"><a href="dealer.html" class="footerText"> DEALERS LIST</a></li> -->
 
-                  <li id="footer_links_valuess"><a href="http://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
+                  <li id="footer_links_valuess"><a href="https://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
                 </ul>
               </div>
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">

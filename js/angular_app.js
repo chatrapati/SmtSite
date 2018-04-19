@@ -92,6 +92,36 @@ shopMyToolsApp.directive('carouselPrev', function () {
   };
 });
 
+shopMyToolsApp.directive('clientAutoComplete', function ($filter) {
+    return {
+                restrict: 'A',       
+                link: function (scope, elem, attrs) {
+                  console.log('ty')
+                    elem.autocomplete({
+                        source: function (request, response) {
+
+                            //term has the data typed by the user
+                            var params = request.term;
+                            console.log('werw')
+                            //simulates api call with odata $filter
+                            var data = scope.searchedProducts;                                     
+                            if (data) { 
+                                var result = $filter('filter')(data, {upload_name:params});
+                                angular.forEach(result, function (item) {
+                                    item['value'] = item['upload_name'];
+                                });                       
+                            }
+                            response(result);
+
+                        },
+                        minLength: 1                       
+                    });
+                }
+
+            };
+});
+
+
 
 
 

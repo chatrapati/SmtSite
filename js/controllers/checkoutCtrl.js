@@ -1060,6 +1060,37 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
         }
 
 
+         $scope.gotoFooterPage = function(page){
+            if(page == 'aboutus'){
+               // $location.path("aboutus")
+               window.location.href = DOMAIN_URL+"#!/aboutus";
+            }else if(page == 'contactus'){
+                //  $location.path("contact")
+                   window.location.href = DOMAIN_URL+"#!/contact";
+            }else if(page == 'termofuse'){
+                //  $location.path("termsofuse")
+                   window.location.href = DOMAIN_URL+"#!/termsofuse";
+            }else if(page == 'returnpolicy'){
+                // $location.path("returnpolicy")
+                  window.location.href = DOMAIN_URL+"#!/returnpolicy";
+            }else if(page == 'privacypolicy'){
+                // $location.path("privacypolicy")
+                  window.location.href = DOMAIN_URL+"#!/privacypolicy";
+            }else if(page == 'shipping'){
+                // $location.path("shipping")
+                  window.location.href = DOMAIN_URL+"#!/shipping";
+            }else if(page == 'netbanking'){
+                // $location.path("netbanking")
+                  window.location.href = DOMAIN_URL+"#!/netbanking";
+            }else {
+                // $location.path("emi")
+                 window.location.href = DOMAIN_URL+"#!/emi";
+            }
+            
+        }
+
+
+
 
 if(window.localStorage['token']){
 $scope.checkPaymentStatus();

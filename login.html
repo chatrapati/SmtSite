@@ -45,13 +45,13 @@
   <script src="./js/angular.min.js"></script>
 
   <script src="./js/angular-messages.js"></script>
-  <!-- <script src="http://www.elevateweb.co.uk/wp-content/themes/radial/jquery.elevatezoom.min.js" type="text/javascript"></script> -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/angular-messages/1.6.4/angular-messages.min.js"></script>  -->
+  <!-- <script src="https://www.elevateweb.co.uk/wp-content/themes/radial/jquery.elevatezoom.min.js" type="text/javascript"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/angular-messages/1.6.4/angular-messages.min.js"></script>  -->
 
   <!-- Bootstrap core CSS -->
 
   <script src="./js/ui-bootstrap-tpls.js"></script>
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="./css/site/home-page.css" rel="stylesheet">
   <link href="./css/site/home-page1.css" rel="stylesheet">
   <link href="./css/site/media-queries-style.css" rel="stylesheet">
@@ -70,8 +70,8 @@
   <!-- zoom css files end here 16-1-2018  -->
   <link rel="stylesheet" href="./bower_components/slick-carousel/slick/slick.css">
   <link rel="stylesheet" href="./bower_components/slick-carousel/slick/slick-theme.css">
-  <script src="./bower_components/jquery/jquery.js"></script>
-  <script src="./bower_components/angular/angular.js"></script>
+  <!-- <script src="./bower_components/jquery/dist/jquery.js"></script> -->
+  <!-- <script src="./bower_components/angular/angular.js"></script> -->
   <script src="./bower_components/slick-carousel/slick/slick.js"></script>
   <script src="./bower_components/angular-slick-carousel/dist/angular-slick.min.js"></script>
   <link href="./css/dashboard.css" rel="stylesheet">
@@ -116,8 +116,8 @@
   <script src="./js/brand_Detail_Page_app.js" type="text/javascript"></script>
   <script src="./js/services/product_detail_page_service.js" type="text/javascript"></script>
   <script src="./js/controllers/product_detail_page_controller.js" type="text/javascript"></script>
-   <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
-  <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>  -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
 
 	<style type="text/css">
 		.yt-menu-nav>#nav>li>a>span,
@@ -572,7 +572,7 @@ margin-left:-15px !important;
 												<i class="inside fa fa-user" style="padding-left: 9px;"></i>
 												<input type='text' placeholder='Email/Phone' class="inp" required name="username" id="tools-login-user" ng-model="loginData.username"
 												/>
-												<span class="validationError errorMsg" style="color:red" ng-show="loginForm.username.$dirty && loginForm.username.$error.required" class="ng-hide">   
+												<span class="validationError errorMsg" style="color:red" ng-if="loginForm.username.$dirty && loginForm.username.$error.required" class="ng-hide">   
 														Please Enter Valid  Email/Phone.
 														</span>  
 											</div>
@@ -592,7 +592,7 @@ margin-left:-15px !important;
 																<a href="" class="btn btn-default"> <i ng-click="toggleShowPassword3()" ng-class="{'fa fa-eye': showPassword,'fa fa-eye-slash': !showPassword}" style="cursor: pointer;margin-top: 6px;"></i></a>
 															</div>
 														</div>
-												<span class="validationError errorMsg" style="color:red"  ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="ng-hide">   
+												<span class="validationError errorMsg" style="color:red"  ng-if="loginForm.password.$dirty && loginForm.password.$error.required" class="ng-hide">   
 														Please Enter Valid  Password.
 														</span>
 		

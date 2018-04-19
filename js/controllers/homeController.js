@@ -36,10 +36,10 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         $window.scrollTo(0, 0);
         $scope.isReadonly = true;
-      
+
         $scope.firstCarouselImages = ["images/banners/powertex.jpg", "images/banners/sunflower.jpg", "images/banners/bostec.jpg", "images/banners/bosch.jpg", "images/banners/jasic.jpg"];
 
-        $scope.secondCarouselImages = ["images/banners/banner0.png", "images/banners/banner1.jpg", "images/banners/banner2.jpg", "images/banners/banner3.jpg","images/banners/banner4.png"];
+        $scope.secondCarouselImages = ["images/banners/banner0.png", "images/banners/banner1.jpg", "images/banners/banner2.jpg", "images/banners/banner3.jpg", "images/banners/banner4.png"];
 
         if (localStorage.getItem('userInfo')) {
             $scope.user_info = JSON.parse(localStorage.getItem('userInfo'));
@@ -47,7 +47,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
         $scope.user_name = window.localStorage['user_name'];
-      
+
         $scope.token = window.localStorage['token'];
 
         $scope.getHeader = function () {
@@ -81,7 +81,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         if (data.data.status == 'all products deleted successfully') {
                             $rootScope.cartArray = [];
                             $scope.viewCartItems();
-                     }
+                        }
                     })
                 } else {
                     deleteCartService.deleteCartMethod(localStorage.getItem('randomNumber'), "all").then(function (data) {
@@ -120,7 +120,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                     $scope.emergingbrands = data.data.emergingbrands;
                     $scope.deals = data.data.deals;
                     $rootScope.dealsCount = $scope.deals.length;
-                     $scope.newarrivals = data.data.newarrivalcats;
+                    $scope.newarrivals = data.data.newarrivalcats;
                     $rootScope.newarrivalsArray = [];
                     for (i = 0; i < $scope.newarrivals.length; i++) {
                         $scope.newarrivalsObj = $scope.newarrivals[i];
@@ -130,22 +130,22 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                             }
                         }
                     }
-                     $scope.Offers = data.data.offerscats;
-                        $rootScope.offersArray = [];
-                        for (i = 0; i < $scope.Offers.length; i++) {
-                            $scope.offersObj = $scope.Offers[i];
-                            for (j = 0; j < $scope.offersObj.prices.length; j++) {
-                                if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                    $rootScope.offersArray.push($scope.offersObj)
-                                }
+                    $scope.Offers = data.data.offerscats;
+                    $rootScope.offersArray = [];
+                    for (i = 0; i < $scope.Offers.length; i++) {
+                        $scope.offersObj = $scope.Offers[i];
+                        for (j = 0; j < $scope.offersObj.prices.length; j++) {
+                            if ($scope.offersObj.prices[j].enduser_price != 0) {
+                                $rootScope.offersArray.push($scope.offersObj)
                             }
                         }
+                    }
                 } else {
 
                 }
             })
         }
-     
+
 
 
         $scope.gotomoredeal = function () {
@@ -240,7 +240,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
 
-      
+
 
 
         $scope.getCategories = function () {
@@ -256,7 +256,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         }
 
-          $scope.categoryBasedProducts = function (categoryName) {
+        $scope.categoryBasedProducts = function (categoryName) {
             localStorage.removeItem('selectedArray');
             window.localStorage['categoryName'] = "";
             window.localStorage['categoryName'] = categoryName;
@@ -279,31 +279,33 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             $rootScope.showHintFlag = 'false';
             localStorage.setItem('breadCrumb', productObj.upload_category);
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-           $location.path('productDetailPage');
+             $scope.$emit('customEvent', window.localStorage['productName'])
+            // location.reload();
+            $location.path('productDetailPage');
         }
 
         $scope.rightClickTab = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-             $location.path('productDetailPage');
+            $location.path('productDetailPage');
         }
 
 
 
         $rootScope.getProductDetailsFromCart = function (productObj) {
-   window.localStorage['productName'] = productObj.productdescription;
+            window.localStorage['productName'] = productObj.productdescription;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-              $location.path('productDetailPage');
+            $location.path('productDetailPage');
         }
 
         $scope.getProductDetailsFromCompare = function (productObj) {
             window.localStorage['productName'] = productObj;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-             $location.path('productDetailPage');
-            }
+            $location.path('productDetailPage');
+        }
 
         $scope.newTab = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
@@ -323,7 +325,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         $scope.goToLogout = function () {
             logoutService.userLogout(window.localStorage['token']).then(function (data) {
-              if (data.data.status == 'success') {
+                if (data.data.status == 'success') {
                     $window.localStorage.clear();
                     $scope = $scope.$new(true);
                     $rootScope = $rootScope.$new(true);
@@ -348,6 +350,19 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
                     if (data.data.status == 'success') {
                         $rootScope.searchedProducts = data.data.product_info;
+                        if ($rootScope.searchedProducts.length == 1 ) {
+                            $rootScope.myObj = {
+                                "margin-top":"78px"
+                            }
+                        } else if ($rootScope.searchedProducts.length == 2) {
+                            $rootScope.myObj = {
+                                "margin-top":"103px"
+                            }
+                        }else if ($rootScope.searchedProducts.length >= 3) {
+                            $rootScope.myObj = {
+                                "margin-top":"170px"
+                            }
+                        }
                         $rootScope.recommendedList = data.data.recommended;
                         $rootScope.showHintFlag = 'true';
                     } else if (data.data.status == 'fail') {
@@ -380,7 +395,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         }
 
         $rootScope.cartArray = cartArray;
-       
+
         $rootScope.viewCartItems = function () {
             if (localStorage.getItem('randomNumber')) {
                 viewCartService.cartItemsWithLoginMethod(window.localStorage['user_id'], localStorage.getItem('randomNumber')).then(function (data) {
@@ -434,11 +449,11 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $scope.getCartItemsWithoutLogin = function () {
             viewCartService.cartItemsWithoutLoginMethod(localStorage.getItem('randomNumber')).then(function (data) {
                 if (data.data.status == 'success') {
-                  $rootScope.cartArray = data.data.item_list;
-                   $scope.orderId = data.data.orderid;
+                    $rootScope.cartArray = data.data.item_list;
+                    $scope.orderId = data.data.orderid;
                     window.localStorage['orderId'] = $scope.orderId;
                 } else {
-               }
+                }
             })
 
         }
@@ -560,8 +575,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         } else {
             if (localStorage.getItem('compareProducts')) {
                 $rootScope.compareProducts = JSON.parse(localStorage.getItem('compareProducts'));
-            }else{
-                $rootScope.compareProducts =[];
+            } else {
+                $rootScope.compareProducts = [];
             }
         }
 
@@ -690,14 +705,14 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $scope.goToCollections = function () {
 
             $location.path("collections");
-             $scope.loading = true;
+            $scope.loading = true;
 
         }
 
 
 
         $scope.goToTopBrands = function () {
-             $scope.loading = true;
+            $scope.loading = true;
 
             $location.path("topBrands");
 
@@ -714,7 +729,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
         $scope.goToEmergingBrands = function () {
-             $scope.loading = true;
+            $scope.loading = true;
 
             $location.path("emergingBrands");
 
@@ -874,13 +889,13 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 //     breakpoint: 1024,
                 //     settings: "unslick"
                 // },
-				{
-					breakpoint: 1024,
-					settings: {
-						slidesToShow: 6,
-						slidesToScroll: 1
-					}
-				},
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 6,
+                        slidesToScroll: 1
+                    }
+                },
                 {
                     breakpoint: 768,
                     settings: {
@@ -913,32 +928,89 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             ]
         };
 
-           $scope.homePageDetails();
-            $scope.getFooter();
-            $scope.getHeader();
+        $scope.homePageDetails();
+        $scope.getFooter();
+        $scope.getHeader();
 
-        $scope.gotoFooterPage = function(page){
-            if(page == 'aboutus'){
+        $scope.gotoFooterPage = function (page) {
+            if (page == 'aboutus') {
                 $location.path("aboutus")
-            }else if(page == 'contactus'){
-                 $location.path("contact")
-            }else if(page == 'termofuse'){
-                 $location.path("termsofuse")
-            }else if(page == 'returnpolicy'){
+            } else if (page == 'contactus') {
+                $location.path("contact")
+            } else if (page == 'termofuse') {
+                $location.path("termsofuse")
+            } else if (page == 'returnpolicy') {
                 $location.path("returnpolicy")
-            }else if(page == 'privacypolicy'){
+            } else if (page == 'privacypolicy') {
                 $location.path("privacypolicy")
-            }else if(page == 'shipping'){
+            } else if (page == 'shipping') {
                 $location.path("shipping")
-            }else if(page == 'netbanking'){
+            } else if (page == 'netbanking') {
                 $location.path("netbanking")
-            }else {
+            } else {
                 $location.path("emi")
             }
-            
+
         }
 
-       
+        $scope.slickConfig = {
+			enabled: true,
+			// infinite:true,
+			autoplay: true,
+			autoplaySpeed: 5000,
+			draggable: false,			
+			responsive: [
+				// {
+				//     breakpoint: 1024,
+				//     settings: "unslick"
+				// },
+				{
+					breakpoint: 1200,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 4,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 992,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 468,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
+				},
+				{
+					breakpoint: 320,
+					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
+				}
+
+			]
+		};
+
+
 
     }]);
 

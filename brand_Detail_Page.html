@@ -273,7 +273,7 @@
                     <!-- <star-rating ng-model="brandDetailDescArray.avgrating" readonly="isReadonly"></star-rating> -->
 
                     <div>
-                      <div ng-show="showReferalEmail">
+                      <div ng-if="showReferalEmail">
                         <form>
                           <label for="referalEmail">
                             <sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Referral Email Address</label>
@@ -285,7 +285,7 @@
                           <button type="submit" class="email-friend" ng-click="emailtoFriend(referalEmail,brandDetailDescArray.description,brandDetailDescArray.upload_photo)">Send</button>
                         </form>
                       </div>
-                      <div ng-show="showPlzLogin">
+                      <div ng-if="showPlzLogin">
                         <p> Only registered users can refer friends. Please,
                           <a href="login.html" id="review_login">Login</a> or
                           <a href="login.html" id="review_reg">Register</a>
@@ -532,7 +532,7 @@
 																Please Enter Valid  Name.  
 															   </span>   -->
                             <div ng-messages="productpageForm.reviewUserName.$error " class="validation_msgs">
-                              <span class="validationError errorMsg" ng-show="submitted && productpageForm.reviewUserName.$error.required">Please Enter Name.</span>
+                              <span class="validationError errorMsg" ng-if="submitted && productpageForm.reviewUserName.$error.required">Please Enter Name.</span>
                               <p class="validationError errorMsg" ng-message="pattern">Enter valid name</p>
                               <p class="validationError errorMsg" ng-message="minlength">Name should be min 3 digits</p>
                               <p class="validationError errorMsg" ng-message="maxlength">Name should be max 50 digits</p>
@@ -556,7 +556,7 @@
 
 
                             <div ng-messages="productpageForm.reviewUserSummery.$error " class="validation_msgs">
-                              <span class="validationError errorMsg" ng-show="submitted && productpageForm.reviewUserSummery.$error.required">Please Enter Summary.</span>
+                              <span class="validationError errorMsg" ng-if="submitted && productpageForm.reviewUserSummery.$error.required">Please Enter Summary.</span>
                               <p class="validationError errorMsg" ng-message="pattern">Enter valid summary</p>
                               <p class="validationError errorMsg" ng-message="minlength">Summary should be min 3 digits</p>
                               <p class="validationError errorMsg" ng-message="maxlength">Summary should be max 100 digits</p>
@@ -578,7 +578,7 @@
 
 
                             <div ng-messages="productpageForm.reviewUserMobile.$error " class="validation_msgs">
-                              <span class="validationError errorMsg" ng-show="submitted && productpageForm.reviewUserMobile.$error.required">Enter Mobile Number</span>
+                              <span class="validationError errorMsg" ng-if="submitted && productpageForm.reviewUserMobile.$error.required">Enter Mobile Number</span>
                               <p class="validationError errorMsg" ng-message="pattern">Enter valid mobile number</p>
                               <p class="validationError errorMsg" ng-message="minlength">Mobile number should be 10 digits</p>
                               <p class="validationError errorMsg" ng-message="maxlength">Mobile number should be 10 digits</p>
@@ -607,7 +607,7 @@
 
 
                             <div ng-messages="productpageForm.reviewUserComment.$error " class="validation_msgs">
-                              <span class="validationError errorMsg" ng-show="submitted && productpageForm.reviewUserComment.$error.required">Please Enter Comments.</span>
+                              <span class="validationError errorMsg" ng-if="submitted && productpageForm.reviewUserComment.$error.required">Please Enter Comments.</span>
                               <p class="validationError errorMsg" ng-message="pattern">Enter valid comments. </p>
                               <p class="validationError errorMsg" ng-message="minlength">Comments should be min 3 digits</p>
                               <p class="validationError errorMsg" ng-message="maxlength">Comments should be max 300 digits</p>
@@ -865,7 +865,7 @@
         <div ng-repeat="RelatedProductArray in brandDetailRelatedProductsArray">
           <div class="col-item_lak">
             <div class="photo_lak">
-              <img ng-src="{{RelatedProductArray.upload_photo}}" />
+              <img ng-src="{{RelatedProductArray.upload_photo}}" ng-click="getProductDetailsaa(RelatedProductArray)" />
               <div ng-if="RelatedProductArray.avgrating!=0">
                 <p style="margin-top:-130px;">
                   <div ng-repeat="n in [] | range:5" style="text-align: right;">

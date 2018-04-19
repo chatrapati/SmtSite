@@ -19,6 +19,33 @@
 			<div class="box-head" style="margin-top: 25px;">
 				<h2>Orders</h2>
 			</div>
+			<div class="">
+				<div class="pagination" id="paginOrders">
+					<ul>
+						<li>
+							<button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
+                   Previous           
+                    </button>
+						</li>
+						<li>
+							<label ng-if="pageList[0] > 0 ">...</label>
+						</li>
+						<li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
+						 class="pagenumbers">
+							<a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+						</li>
+						<li>
+							<label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+						</li>
+						<li>
+							<button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
+							 ng-click="processPagination(5)">
+                     Next
+                    </button>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 				<div class="row">
 					<div class="table-responsive">
@@ -36,8 +63,8 @@
 						</thead>
 
 						<tbody id="smt_Orders_table_Data">
-							<tr ng-repeat="myOrder in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-								<td style="text-align:center;">{{itemsPerPage *(currentPage-1)+$index+1}}</td>
+							<tr ng-repeat="myOrder in data| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+								<td style="text-align:center;">{{myOrder.s_no}}</td>
 								<td style="text-align:left;">{{myOrder.orderid}}</td>
 								<td style="text-align:right;">{{myOrder.createddate}}</td>
 								<td style="text-align:right;">{{myOrder.totalquantity}}</td>
@@ -52,7 +79,7 @@
 						</tbody>
 					</table>
 					</div>
-					<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+					<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
 				</div>
 			</div>
 		</div>

@@ -6,7 +6,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 		$scope.showData = 'false';
 		//alert($scope.showData)
 		$scope.cartItem={"qty":1};
-
+ 
 		$scope.closeModal = function () {
 			$("#addedToCart").modal('hide');
 			$("#addedToWishList").modal('hide');
@@ -200,7 +200,12 @@ shopMyToolsApp.controller('product_detailed_controller',
 		}
 
 		if (window.localStorage['productName']) {
-			$scope.getProductDetails();
+			alert(window.localStorage['productName'])
+			 $rootScope.$on('customEvent', function(event, message) {
+				 alert(message)
+   $scope.getProductDetails();
+    });
+			
 		} else {
 			$location.path("/");
 		}
