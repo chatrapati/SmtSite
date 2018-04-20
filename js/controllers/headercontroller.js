@@ -94,10 +94,11 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
 
+            window.location.href = DOMAIN_URL+"#!/productDetailPage";
 
         //  $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
 
-              $window.open(DOMAIN_URL+"#!/productDetailPage");
+            //  $window.open(DOMAIN_URL+"#!/productDetailPage");
 
 
             // $location.path("productDetailPage")
@@ -504,7 +505,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.categoryHover = function(){
-          $(".dropdown-toggle").click(function(){
+          $(".dropDownToggle").click(function(){
                $(this).parent().removeClass("dropdown dropdown-submenu ng-scope open");
                $(this).parent().addClass("dropdown dropdown-submenu");
 
