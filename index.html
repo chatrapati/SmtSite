@@ -383,7 +383,7 @@
                 <!--   middle Header styles start here -->
                 <div class="container-fluid" id="middle_logo_headr">
                     <div class="container">
-                        <div class="row">
+                        <div class="row m-row">
                             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="mlogoo">
                                 <div class="row pointer">
                                     <!-- <img src="{{headerArray.headerlogo}}" ng-click="goToHome()" id="header_logooo"> -->
@@ -545,7 +545,40 @@
 
             <!--   header Menu part end here   -->
 
-          
+            <!--     Header part old start here -->
+            <!--<div class="container-fluid" id="menu_sri_header">   
+	
+        <nav class="navbar navbar-inverse srinavbarmenu" role="navigation">
+			<div class="container">      
+				<div class="navbar-header" style="margin-left: -15px;">
+					
+					<div class="navbar-brand navbar-brand-centered" id="nav_menu_cat">
+						<ul class="nav navbar-nav">
+							<li class="dropdown cat-link">
+								<a  class="dropdown-toggle" data-toggle="dropdown">
+									<span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
+									<span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="float: right;margin-top: 8px;color:#fff;"></b>
+								</a>       
+								<ul class="dropdown-menu" id="id_menu_sub">
+									<li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
+										<a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+										<ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
+											<li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
+												<a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
+											</li>                
+										</ul>               
+									</li>            
+								</ul>
+							</li>
+							<li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
+						</ul>
+					</div>
+					
+				</div>      
+			</div>
+        </nav>
+		
+    </div>-->
             <!--     Header part old end here -->
 
             <!--   header Menu part start here   -->
@@ -560,42 +593,35 @@
                 <span class="icon-bar"></span>
               </button>
                         </div>
-                       
-                   
+                        <div class="collapse navbar-collapse" id="menu_cat">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" id="categories_menu_tab">
+                                        <span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
+                                        <span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="color: #fff;margin-left: 40px;"></b>
+                                    </a>
 
-            <div class="collapse navbar-collapse" id="menu_cat">
-              <ul class="nav navbar-nav" ng-mouseleave="categoryHide()">
-                <li class="active">
-                  <a class="dropdown-toggle" data-toggle="dropdown" id="categories_menu_tab"  ng-mouseover="categoryHover()">
-                    <span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
-                    <span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="color: #fff;margin-left: 40px;"></b>
-                  </a>
-
-                  <ul class="dropdown-menu multi-level" id="id_menu_sub">
-                    <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray" id="cat123">
-                      <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown"
-                        title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
-                      <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
-                        <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
-                          <a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
-                <!-- <li><a href="" ng-click="coupons()" id="couponLink"><marquee>This is basic example of marquee</marquee></a></li> -->
-              </ul>
+                                    <ul class="dropdown-menu multi-level" id="id_menu_sub">
+                                        <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
+                                            <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+                                            <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
+                                                <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
+                                                    <a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
+                                <!-- <li><a href="" ng-click="coupons()" id="couponLink"><marquee>This is basic example of marquee</marquee></a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
- 
-
+        </div>
+    </header>
     <ng-view></ng-view>
-
 
     <footer class="footerbar footer">
         <div class="container">
@@ -641,8 +667,8 @@
                                         <span style="margin-left: 5px;"><i class="fa fa-map-marker" aria-hidden="true" id="enve"></i></span>
                                         <span class="footerText1 footer_links_addere">
                                         <span style="margin-left: 8px;">A-201,  'The Platina',   2nd Floor, &nbsp;&nbsp;  </span>
-                                        <span style="margin-left: 25px;">Survey No 136,Gachibowli Miyapur 
-                     </span>
+                                        <span style="margin-left: 25px;">Survey No 136,Gachibowli Miyapur  </span>
+
                                         <span style="margin-left: 25px;"> 
                                           Road,  Gachibowli,  Hyderabad-500032.</span>
                                         <!--  <span style="margin-left: 25px;">TELANGANA. </span> --><br/>
