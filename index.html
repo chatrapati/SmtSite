@@ -545,40 +545,7 @@
 
             <!--   header Menu part end here   -->
 
-            <!--     Header part old start here -->
-            <!--<div class="container-fluid" id="menu_sri_header">   
-	
-        <nav class="navbar navbar-inverse srinavbarmenu" role="navigation">
-			<div class="container">      
-				<div class="navbar-header" style="margin-left: -15px;">
-					
-					<div class="navbar-brand navbar-brand-centered" id="nav_menu_cat">
-						<ul class="nav navbar-nav">
-							<li class="dropdown cat-link">
-								<a  class="dropdown-toggle" data-toggle="dropdown">
-									<span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
-									<span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="float: right;margin-top: 8px;color:#fff;"></b>
-								</a>       
-								<ul class="dropdown-menu" id="id_menu_sub">
-									<li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
-										<a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
-										<ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
-											<li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
-												<a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
-											</li>                
-										</ul>               
-									</li>            
-								</ul>
-							</li>
-							<li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
-						</ul>
-					</div>
-					
-				</div>      
-			</div>
-        </nav>
-		
-    </div>-->
+          
             <!--     Header part old end here -->
 
             <!--   header Menu part start here   -->
@@ -593,33 +560,9 @@
                 <span class="icon-bar"></span>
               </button>
                         </div>
-                        <div class="collapse navbar-collapse" id="menu_cat">
-                            <ul class="nav navbar-nav">
-                                <li class="active">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" id="categories_menu_tab">
-                                        <span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
-                                        <span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="color: #fff;margin-left: 40px;"></b>
-                                    </a>
+                       
+                   
 
-                                    <ul class="dropdown-menu multi-level" id="id_menu_sub">
-                                        <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
-                                            <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
-                                            <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
-                                                <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="subCategoryMethod(subCategory.subcategory,category.categoryname)">
-                                                    <a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
-                                <!-- <li><a href="" ng-click="coupons()" id="couponLink"><marquee>This is basic example of marquee</marquee></a></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-<<<<<<< HEAD
             <div class="collapse navbar-collapse" id="menu_cat">
               <ul class="nav navbar-nav" ng-mouseleave="categoryHide()">
                 <li class="active">
@@ -649,83 +592,10 @@
       </div>
     </div>
   </header>
-  <ng-view></ng-view>
+ 
 
-  <footer  class="footerbar footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-          <div class="row">
-            <a id="yttotop" href="#" title="Go to Top" style="display: block;"></a>
-            <div class="row row1" id="ftr_ss">
-              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
-                <ul>
-                  <h5 id="footer_linksss"><b>SHOPMYTOOLS</b></h5>
-                  <!-- <li ng-repeat="smtData in shopMyToolsArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('aboutus')"><a href="" class="footerText"> ABOUT US</a></li>
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('contactus')"><a href="" class="footerText"> CONTACT US</a></li>
-                  <!--<li  id="footer_links_valuess"><a href="dealer.html" class="footerText"> DEALERS LIST</a></li> -->
-
-                  <li id="footer_links_valuess"><a href="http://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
-                </ul>
-              </div>
-              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
-                <ul>
-                  <h5 id="footer_linksss"><b>CUSTOMER SERVICE</b></h5>
-                  <!-- <li ng-repeat="smtData in custServiceArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('termofuse')"><a href="" class="footerText"> TERMS OF USE</a></li>
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('returnpolicy')"><a href="" class="footerText"> RETURN POLICY</a></li>
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('privacypolicy')"><a href="" class="footerText"> PRIVACY POLICY</a></li>
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('shipping')"><a href="" class="footerText"> SHIPPING</a></li>
-                  <!-- <li  id="footer_links_valuess"><a href="" class="footerText">&gt;&gt; &nbsp; FREQUENTLY ASKED  QUESTIONS</a></li> -->
-                </ul>
-              </div>
-              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
-                <ul>
-                  <h5 id="footer_linksss"><b>PAYMENT METHODS</b></h5>
-                  <!-- <li ng-repeat="smtData in paymentArray" id="footer_links_valuess"><a href="#/smtData.footerimagelink" class="footerText"> {{smtData.footername}}</a></li> -->
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('netbanking')"><a href="" class="footerText"> NETBANKING</a></li>
-                  <li id="footer_links_valuess" ng-click="gotoFooterPage('emiconversion')"><a href="" class="footerText"> EMI CONVERSION</a></li>
-                </ul>
-              </div>
-              <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
-                <ul>
-                  <h5 id="footer_linksss"><b>CONTACT US</b></h5>
-                  <li id="footer_links_valuess">
-                    <span style="margin-left: 5px;"><i class="fa fa-map-marker" aria-hidden="true" id="enve"></i></span>
-                    <span class="footerText1 footer_links_addere">
-                   <span style="margin-left: 8px;">A-201&nbsp;&nbsp;THE PLATINA, MIYAPUR MAIN RD,  </span>
-                    <span style="margin-left: 25px;">GACHIBOWLI ,500032,</span>
-                    <span>HYDERABAD, </span><br/>
-                    <span style="margin-left: 25px;">TELANGANA. </span><br/>
-                    </span>
-                  </li>
-                  <li id="footer_links_valuess">
-                    <span style="padding-right:5px;"><i class="fa fa-envelope" aria-hidden="true" id="enve"></i></span>
-                    <span><b>EMAIL: </b><a href="" ng-click="gotoFooterPage('contactus')" class="footerText" style="text-transform:lowercase;"> support@shopmytools.com </a></span>
-
-                  </li>
-
-
-
-                  <li id="footer_links_valuess">
-
-
-
-                    <span style="padding-right:5px;"><i class="fa fa-phone" aria-hidden="true" id="enve"></i></span>
-
-
-
-                    <span><b>PHONE: </b><a href=""  class="footerText" style="text-transform:lowercase;"> 040-46161234 </a></span>
-
-                  </li>
-                </ul>
-              </div>
-=======
-        </div>
-    </header>
     <ng-view></ng-view>
->>>>>>> f036762a129d34f66f5958566f2dd9570a3e81b0
+
 
     <footer class="footerbar footer">
         <div class="container">
