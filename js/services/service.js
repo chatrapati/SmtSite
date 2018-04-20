@@ -69,9 +69,10 @@ shopMyToolsApp.service('searchProductsService', function ($q, $http, SERVER_URL1
 		var deferred = $q.defer();
 
 		$http({
-			method: 'GET',
-			url: SERVER_URL1 + '/matchprod?product_name=' + productName,
-			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+			method: 'POST',
+			url: SERVER_URL1 + '/matchprod',
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+			data:{"product_name":productName}
 
 		}).then(function success(data) {
 			deferred.resolve(data);

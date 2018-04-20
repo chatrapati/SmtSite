@@ -2,6 +2,10 @@
     float: left;
 }
 
+#categories_menu_tab:hover + #id_menu_sub {
+   display:block;
+}
+
 .smt_background_image{
     background: url("../images/BG_IMG.png");
     width: 100%;

@@ -599,15 +599,15 @@
               </button>
             </div>
             <div class="collapse navbar-collapse" id="menu_cat">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav" ng-mouseleave="categoryHide()">
                 <li class="active">
-                  <a class="dropdown-toggle" data-toggle="dropdown" id="categories_menu_tab">
+                  <a class="dropdown-toggle" data-toggle="dropdown" id="categories_menu_tab"  ng-mouseover="categoryHover()">
                     <span><i class="glyphicon glyphicon-list" aria-hidden="true" style="color: white;"></i></span>
                     <span style="margin-left: 30px;color:#fff;"> CATEGORIES</span> <b class="caret" style="color: #fff;margin-left: 40px;"></b>
                   </a>
 
                   <ul class="dropdown-menu multi-level" id="id_menu_sub">
-                    <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
+                    <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray" id="cat123">
                       <a href="" ng-click="categoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown"
                         title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
                       <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">

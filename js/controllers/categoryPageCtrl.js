@@ -11,6 +11,10 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     $scope.isReadonly = true;
     $scope.showSubCat = 'true';
 
+
+
+     //$(".dropdown-menu.multi-level").css("display", "block");
+
     if (window.localStorage['subCategoryName'] != '') {
       //  $scope.showSubCat = 'false';
       $scope.breadCrumb = window.localStorage['categoryName'];
@@ -94,7 +98,8 @@ $scope.layout = "Grid";
 
     $scope.goToHome = function () {
 
-      $location.path("/")
+      // $location.path("/")
+       window.location.href="./index.html";
     }
 
 
@@ -686,7 +691,8 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
       $scope.brandBreadCrumb = window.localStorage['brandName'];
     }
     $scope.goToHome = function () {
-      $location.path("/")
+      // $location.path("/")
+      window.location.href="./index.html";
     }
 
      $scope.closeModal = function () {

@@ -177,9 +177,30 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = subCategory;
             $scope.categoryURL = document.URL.split("#!/");
            if ($scope.categoryURL[1] == 'categoryPage') {
+                $(".dropdown-menu.multi-level").css("display", "none");
+               $location.path("categoryPage1");
+              // window.location.href = DOMAIN_URL+"#!/categoryPage1";
+            } else {
+                 $(".dropdown-menu.multi-level").css("display", "none");
+                $location.path("categoryPage");
+             //  window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
+        }
+
+        $scope.loginsubCategoryMethod = function(subCategory, categoryName){
+             localStorage.removeItem('selectedArray');
+            window.localStorage['categoryName'] = "";
+            window.localStorage['subCategoryName'] = "";
+            window.localStorage['categoryName'] = categoryName;
+            window.localStorage['subCategoryName'] = subCategory;
+            $scope.categoryURL = document.URL.split("#!/");
+           if ($scope.categoryURL[1] == 'categoryPage') {
+                $(".dropdown-menu.multi-level").css("display", "none");
+              
                window.location.href = DOMAIN_URL+"#!/categoryPage1";
             } else {
-               // $location.path("categoryPage");
+                 $(".dropdown-menu.multi-level").css("display", "none");
+               
                window.location.href = DOMAIN_URL+"#!/categoryPage";
             }
         }
@@ -248,9 +269,15 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.goToHome = function () {
-           window.location.href = "./index.html";
-           // $location.path("/");
+          // window.location.href = "./index.html";
+            $location.path("/");
         }
+
+        $scope.goToHomeFromLogin = function(){
+            window.location.href = "./index.html";
+        }
+
+
 
         $rootScope.viewCartItems = function () {
 
@@ -440,22 +467,53 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.categoryBasedProducts = function (categoryName) {
-
             window.localStorage['categoryName'] = "";
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
-            //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/categoryPage";
-        //    window.location.href = DOMAIN_URL+"#!/categoryPage";
          $scope.categoryURL = document.URL.split("#!/");
             localStorage.removeItem('selectedArray')
             if ($scope.categoryURL[1] == 'categoryPage') {
-               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+                 $(".dropdown-menu.multi-level").css("display", "none");
+              $location.path("categoryPage1");
             } else {
-               // $location.path("categoryPage");
-               window.location.href = DOMAIN_URL+"#!/categoryPage";
+                $location.path("categoryPage");
+                $(".dropdown-menu.multi-level").css("display", "none");
             }
 
+        }
+
+
+        $rootScope.logincategoryBasedProducts = function(categoryName){
+             window.localStorage['categoryName'] = "";
+            window.localStorage['categoryName'] = categoryName;
+            window.localStorage['brandName'] = "";
+            window.localStorage['subCategoryName'] = "";
+           
+         $scope.categoryURL = document.URL.split("#!/");
+            localStorage.removeItem('selectedArray')
+            if ($scope.categoryURL[1] == 'categoryPage') {
+                 $(".dropdown-menu.multi-level").css("display", "none");
+               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+             
+            } else {
+               
+                $(".dropdown-menu.multi-level").css("display", "none");
+               window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
+        }
+
+        $scope.categoryHover = function(){
+          $(".dropdown-toggle").click(function(){
+               $(this).parent().removeClass("dropdown dropdown-submenu ng-scope open");
+               $(this).parent().addClass("dropdown dropdown-submenu");
+
+          });
+            $(".dropdown-menu.multi-level").css("display", "block");
+        }
+
+        $scope.categoryHide = function(){
+             $(".dropdown-menu.multi-level").css("display", "none");
         }
 
          $rootScope.getProductDetailsFromCart = function (productObj) {

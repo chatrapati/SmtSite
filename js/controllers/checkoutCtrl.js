@@ -718,6 +718,43 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
         window.location.href = "index.html";
     }
 
+     $rootScope.logincategoryBasedProducts = function(categoryName){
+             window.localStorage['categoryName'] = "";
+            window.localStorage['categoryName'] = categoryName;
+            window.localStorage['brandName'] = "";
+            window.localStorage['subCategoryName'] = "";
+           
+         $scope.categoryURL = document.URL.split("#!/");
+            localStorage.removeItem('selectedArray')
+            if ($scope.categoryURL[1] == 'categoryPage') {
+                 $(".dropdown-menu.multi-level").css("display", "none");
+               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+             
+            } else {
+               
+                $(".dropdown-menu.multi-level").css("display", "none");
+               window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
+        }
+
+         $scope.loginsubCategoryMethod = function(subCategory, categoryName){
+             localStorage.removeItem('selectedArray');
+            window.localStorage['categoryName'] = "";
+            window.localStorage['subCategoryName'] = "";
+            window.localStorage['categoryName'] = categoryName;
+            window.localStorage['subCategoryName'] = subCategory;
+            $scope.categoryURL = document.URL.split("#!/");
+           if ($scope.categoryURL[1] == 'categoryPage') {
+                $(".dropdown-menu.multi-level").css("display", "none");
+              
+               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+            } else {
+                 $(".dropdown-menu.multi-level").css("display", "none");
+               
+               window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
+        }
+
      $scope.user_name = window.localStorage['user_name'];
         $scope.token = window.localStorage['token'];
         $rootScope.cartArray = cartArray;
