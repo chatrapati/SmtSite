@@ -255,15 +255,9 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
         $scope.gotoCheckOut = function () {
 
-        //    if(document.getElementById('cartQty').value != null){
+       
             if (window.localStorage['user_id']) {
                 
-                // $rootScope.cartArray.forEach(function(element){
-                //     if(element.qty != 0 || element.qty != ''){
-                //         alert('Please enter Quantity')
-                //     }
-                // })
-
                 $location.path("checkout");
 
             } else {
@@ -273,7 +267,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
                 window.location.href = "login.html";
 
             }
-        //    }
+       
             
 
 
@@ -364,14 +358,8 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
         }
 
          $scope.restrictMinus = function(e){
-           //  alert('e')
-	
+         
 	console.log(e)
-    // if(!((e.keyCode > 95 && e.keyCode < 106)
-    //   || (e.keyCode > 47 && e.keyCode < 58) 
-    //   || e.keyCode == 8 )) {
-    //     return false;
-	// }
 
 	if (e.keyCode == 45 || (e.keyCode > 31 && (e.keyCode < 48 || e.keyCode > 57))) e.preventDefault();
 	

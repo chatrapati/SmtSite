@@ -715,8 +715,12 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
 
     $scope.finalOrderId = window.localStorage['finalOrderId'];
     $scope.goToHomeFromCart = function () {
-        window.location.href = "index.html";
+        window.location.href = "./index.html";
     }
+
+     $scope.goToHomeFromLogin = function(){
+            window.location.href = "./index.html";
+        }
 
      $rootScope.logincategoryBasedProducts = function(categoryName){
              window.localStorage['categoryName'] = "";
@@ -964,14 +968,11 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
         }
       
          $rootScope.getProductDetails = function (productObj) {
-            window.localStorage['productName'] = productObj.upload_name;
+            window.localStorage['productName'] = productObj.productdescription;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-            localStorage.setItem('breadCrumb', productObj.upload_category);
-            localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-        //  $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-              $window.open(DOMAIN_URL+"#!/productDetailPage");
-            // $location.path("productDetailPage")
+            window.location.href = DOMAIN_URL+"#!/productDetailPage"
+     
         }
 
         $scope.getFooter = function () {
