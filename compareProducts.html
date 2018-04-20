@@ -63,35 +63,8 @@
 
 																	</div>
 																</div>
-																<!-- <div class="compare_percentage">
-																	<p class="comparespecial-price yousave" style="margin-top:12px !important;">{{data.upload_discount+0.00|number:2}}%</p>
-
-																	</div>									 -->
-
-																</div>
-																<!-- <div class="compare_percentage">
-																		<p class="comparespecial-price yousave" style="margin-top:12px !important;">{{data.upload_discount}}%</p>
-																	</div> -->
-
-
-
-																<!-- <div class="clear-left_detailed">
-																	<div class="cart_items">
-																		<a href="" class="ad_cart_lak" title="Add To Cart" ng-click="addToCart(data)">
-																			<span>
-																				<i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>ADD TO CART</span>
-																		</a>
-																		<a href="" class="whishlist_lak1" title="Add To Wishlist" ng-click="addToWishList(data)"></a>
 																	</div>
-																</div> -->
-
-																<!-- <div class="compre_addcartDiv">
-																	<a href="" class="compre_addcart" ng-click="addToCart(data)">ADD TO CART </a>
-																</div>
-																<br/>
-																<div class="compre_addwhishlistDiv">
-																	<a href="" class="compre_addwhishlist">ADD TO WISHLIST </a>
-																</div> -->
+															
 
 																<div class="clear-left_detailed homecrt" id="homecarts">
 																	<div class="cartdiv">
@@ -107,7 +80,7 @@
 
 															</div>
 														</div>
-													</div>
+													
 												</td>
 											</tr>
 											<tr>
@@ -122,11 +95,7 @@
 												<td ng-repeat="data in compareProductData" class="tby_data description"><p ng-bind="data.description" class="desc"></p></td>
 
 											</tr>
-											<!-- <tr>
-												<td colspan="4" class="tby_head">SKU</td>
-												<td ng-repeat="data in compareProductData" class="tby_data">Bosch Angle Grinder GWS 750-100</td>
-
-											</tr> -->
+											
 											<tr>
 												<td colspan="4" class="tby_head">Weight (Kgs)</td>
 												<td ng-repeat="data in compareProductData" class="tby_data" ng-bind="data.upload_netWeight"></td>
@@ -164,9 +133,7 @@
 			<!--  account dashboard page end here -->
 		</div>
 	</div>
-</div>
-
-<div id="delCompareItem" class="modal fade" ng-controller="compareProductsCtrl">
+	<div id="delCompareItem" class="modal fade" >
 
 	<div class="modal-dialog">
 
@@ -193,7 +160,7 @@
 
 </div>
 
-<div id="addedToCart" class="modal fade" ng-controller="homeController">
+<div id="addedToCart" class="modal fade" >
 
 	<div class="modal-dialog">
 
@@ -220,7 +187,7 @@
 
 </div>
 
-<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+<div id="addedToWishList" class="modal fade" >
 
 	<div class="modal-dialog">
 
@@ -246,3 +213,6 @@
 	</div>
 
 </div>
+
+</div>
+

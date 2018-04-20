@@ -21,6 +21,17 @@ shopMyToolsApp.controller('searchPageController', ['$scope', '$http', '$location
             $location.path("/")
         }
        
+        $scope.closeModal = function () {
+
+            $("#addedToCart").modal('hide');
+
+            $("#addedToWishList").modal('hide');
+
+            $("#addedToCompareProducts").modal('hide');
+
+            $("#outOfQty").modal('hide');
+
+        }
 
        $rootScope.getProductDetails = function (productObj) {
 
@@ -53,7 +64,7 @@ shopMyToolsApp.controller('searchPageController', ['$scope', '$http', '$location
      $scope.goToHome = function () {
          //alert(1)
 
-      $location.path("/")
+     window.location.href = "./index.html";
     }
 
 
@@ -85,7 +96,7 @@ shopMyToolsApp.controller('compareProductsCtrl', function ($scope, $window, $loc
 
     
 
-    $scope.getCompareProducts = function (compareProducts) {
+    $rootScope.getCompareProducts = function (compareProducts) {
 
         if(window.localStorage['user_id']){
             $scope.userId = window.localStorage['user_id']
@@ -114,7 +125,7 @@ shopMyToolsApp.controller('compareProductsCtrl', function ($scope, $window, $loc
     $rootScope.compareProducts = [];
 
     $rootScope.compareProducts = JSON.parse(localStorage.getItem('compareProducts'))
-      $scope.getCompareProducts($rootScope.compareProducts);
+      $rootScope.getCompareProducts($rootScope.compareProducts);
     }else{
         $location.path("/")
     }
@@ -144,8 +155,13 @@ shopMyToolsApp.controller('compareProductsCtrl', function ($scope, $window, $loc
            
         }
 
+        
+
     $scope.closeModal = function () {
         $("#delCompareItem").modal('hide');
+ 
+  $("#addedToCart").modal('hide');
+  $("#addedToWishList").modal('hide');
  
     }
 

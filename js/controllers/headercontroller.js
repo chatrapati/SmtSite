@@ -3,12 +3,12 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
     'searchProductsService', 'homePageService',
     'compareProductsService', 'addToWishListService',
     'searchProductsService', 'addToCartService', 'viewCartService',
-    '$route', '$timeout', 'searchProductsMoreService', '$window', 'deleteCartService','DOMAIN_URL',
+    '$route', '$timeout', 'searchProductsMoreService', '$window', 'deleteCartService','DOMAIN_URL','addCompareProductsService',
     function ($scope, $http, $location, $rootScope, getHeaderService, getFooterService,
         getAllCategoriesService, searchProductsService, homePageService,
         compareProductsService, addToWishListService,
         searchProductsService, addToCartService, viewCartService,
-        $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL) {
+        $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL,addCompareProductsService) {
 
         $window.scrollTo(0, 0);
         $scope.user_name = window.localStorage['user_name'];
@@ -122,7 +122,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
 
-        $scope.getHeader();
+       // $scope.getHeader();
 
         $scope.getFooter = function () {
             getFooterService.footerMethod().then(function (data) {
@@ -169,15 +169,19 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         $scope.getCategories();
 
-        $scope.subCategoryMethod = function (subCategory, categoryName) {
-            //alert('1')
+         $scope.subCategoryMethod = function (subCategory, categoryName) {
+            localStorage.removeItem('selectedArray');
             window.localStorage['categoryName'] = "";
             window.localStorage['subCategoryName'] = "";
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['subCategoryName'] = subCategory;
-            //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/categoryPage";
-           window.location.href = DOMAIN_URL+"#!/categoryPage";
-
+            $scope.categoryURL = document.URL.split("#!/");
+           if ($scope.categoryURL[1] == 'categoryPage') {
+               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+            } else {
+               // $location.path("categoryPage");
+               window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
         }
         $rootScope.showHintFlag = 'false';
         $rootScope.showHint = function (searchKey) {
@@ -208,6 +212,27 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             $rootScope.compareProducts = compareProducts;
         }
 
+         $rootScope.clearCompareProducts = function () {
+            if(window.localStorage['user_id']){
+                 if ($window.confirm("Are you sure you want to delete this product from comparison?")) {
+                addCompareProductsService.delCompareProductsMethod('',window.localStorage['user_id'],'all').then(function(data){
+                   if(data.data.status == 'success'){
+                        $rootScope.compareProductData = [];
+                        localStorage.removeItem('compareProducts');
+                         $rootScope.compareProducts = [];
+                        // $rootScope.getCompareProducts('');
+                   }
+                })
+                  }
+            }else{
+                  $rootScope.compareProductData = [];
+                   $rootScope.compareProducts = [];
+                localStorage.removeItem('compareProducts');
+                // $rootScope.getCompareProducts('');
+            }
+
+        }
+
         $scope.goToLogin = function () {
             // $location.path("login");
             window.location.href = "./login.html";
@@ -223,7 +248,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.goToHome = function () {
-            window.location.href = "./index.html";
+           window.location.href = "./index.html";
+           // $location.path("/");
         }
 
         $rootScope.viewCartItems = function () {
@@ -355,16 +381,18 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             }
         }
 
-         $scope.clearCompareProducts = function () {
-            if ($window.confirm("Are you sure you want to clear all products?")) {
-                $rootScope.compareProducts = localStorage.getItem('compareProducts');
-                $rootScope.compareProducts = [];
-                localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts));
-            }
+        //  $scope.clearCompareProducts = function () {
+        //     if ($window.confirm("Are you sure you want to clear all products?")) {
+        //         $rootScope.compareProducts = localStorage.getItem('compareProducts');
+        //         $rootScope.compareProducts = [];
+        //         localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts));
+        //     }
 
+        // }
+
+ $scope.supplierfun = function () {
+            window.open('http://hub.shopmytools.com/', '_blank')
         }
-
-
 
         $scope.compareProductsMethod = function () {
             //alert("1")
@@ -418,7 +446,15 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
             //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/categoryPage";
-           window.location.href = DOMAIN_URL+"#!/categoryPage";
+        //    window.location.href = DOMAIN_URL+"#!/categoryPage";
+         $scope.categoryURL = document.URL.split("#!/");
+            localStorage.removeItem('selectedArray')
+            if ($scope.categoryURL[1] == 'categoryPage') {
+               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+            } else {
+               // $location.path("categoryPage");
+               window.location.href = DOMAIN_URL+"#!/categoryPage";
+            }
 
         }
 

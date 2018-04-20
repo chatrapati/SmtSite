@@ -104,20 +104,25 @@ shopMyToolsApp.controller('product_detailed_controller',
 		}
 
 
-		// $("#native").hover(function () {
-		// 	$(this).elevateZoom();
-		// });
-		// $('#native').elevateZoom();
+		 $scope.closeModal = function () {
 
-		//alert($scope.showReview)
+            $("#addedToCart").modal('hide');
+
+            $("#addedToWishList").modal('hide');
+
+            $("#addedToCompareProducts").modal('hide');
+
+            $("#outOfQty").modal('hide');
+
+        }
 
 		$rootScope.dealProductPrice = dealProductPrice;
 
 		$scope.getProductDetails = function () {
-
+ $scope.loading = true;
 			product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName']).then(function (data) {
 				//alert(JSON.stringify(data));
-
+				 $scope.loading = false;
 				if (data.data.status == 'success') {
 					var result = data.data;
 					$scope.showData = 'true';
@@ -200,12 +205,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 		}
 
 		if (window.localStorage['productName']) {
-			alert(window.localStorage['productName'])
-			 $rootScope.$on('customEvent', function(event, message) {
-				 alert(message)
-   $scope.getProductDetails();
-    });
-			
+			$scope.getProductDetails();
 		} else {
 			$location.path("/");
 		}

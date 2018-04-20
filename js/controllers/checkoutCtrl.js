@@ -231,7 +231,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
         $scope.saveBillingAddress = function (billingAddresss) {
 
-            if ($scope.billindAddressForm.$valid) {
+            // if ($scope.billindAddressForm.$valid) {
 
                 if (billingAddresss != '' || billingAddresss != undefined) {
 
@@ -247,7 +247,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                 }
 
-            }
+            // }
 
         }
 

@@ -21,6 +21,17 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
       $scope.breadCrumb = window.localStorage['categoryName'];
     }
 
+     $scope.closeModal = function () {
+
+            $("#addedToCart").modal('hide');
+
+            $("#addedToWishList").modal('hide');
+
+            $("#addedToCompareProducts").modal('hide');
+
+            $("#outOfQty").modal('hide');
+
+        }
 
 $scope.layout = "Grid";
 
@@ -50,8 +61,8 @@ $scope.layout = "Grid";
           // window.localStorage['brandsData'] = $rootScope.brandsData;
           localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
           localStorage.setItem('subCategories', JSON.stringify($scope.categories))
-          // $scope.minrange = data.data.minprice;
-          // $scope.maxrange = data.data.maxprice;
+          $scope.mainminrange = data.data.minprice;
+          $scope.mainmaxrange = data.data.maxprice;
           // $scope.totalMinVal = data.data.totalminval;
           // $scope.totalMaxVal = data.data.totalmaxval;
           // // alert($scope.minrange +"<--->"+$scope.maxrange)
@@ -376,8 +387,8 @@ $scope.layout = "Grid";
         if (subCategory.includes('-')) {
           $scope.pricerange = subCategory;
 
-        } else {
-          $scope.pricerange = $scope.minrange + '-' + $scope.maxrange;
+        } else if(subCategory == '') {
+          $scope.pricerange = $scope.mainminrange + '-' + $scope.mainmaxrange;
           //  $scope.fromVal = 0;
           // $scope.toVal = 12;
           //  $scope.currentPageNumber = 1;
@@ -677,6 +688,18 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
     $scope.goToHome = function () {
       $location.path("/")
     }
+
+     $scope.closeModal = function () {
+
+            $("#addedToCart").modal('hide');
+
+            $("#addedToWishList").modal('hide');
+
+            $("#addedToCompareProducts").modal('hide');
+
+            $("#outOfQty").modal('hide');
+
+        }
 
     $scope.getCategorywiseProductcheck = function (fromVal, toVal) {
       $scope.nextBtn = 'true';

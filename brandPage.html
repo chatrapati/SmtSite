@@ -110,7 +110,7 @@
               </div>
 
 					
-               <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12 pull-right" style="margin-bottom: -10px;margin-bottom:10px;">
+               <div class="pull-right" style="margin-bottom: -10px;margin-bottom:10px;">
                     <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
             <ul>
                 <li>
@@ -134,34 +134,6 @@
                 </li>
             </ul>
         </div>
-<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
-                <!-- <div class="form-group">
-
-                  <div class="buttons-countrows">
-
-                    <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
-                      ng-click="previousPageMethod(fromVal,toVal,viewby)">
-
-                      Prev </button>
-
-                    <span class="countpages" ng-cloak> {{currentPageNumber}}</span>
-
-                    <button type="button" class="btn-next btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="nextBtn == 'false'"
-                      ng-click="nextPageMethod(fromVal,toVal,viewby)">
-
-                      Next
-
-                    </button>
-
-
-
-
-
-                  </div>
-
-                </div> -->
-
-
 
               </div> 
 
@@ -465,11 +437,144 @@
 
         <!-- </div> -->
 
+   
+
+        
+<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
+                <!-- <div class="form-group">
+
+                  <div class="buttons-countrows">
+
+                    <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
+                      ng-click="previousPageMethod(fromVal,toVal,viewby)">
+
+                      Prev </button>
+
+                    <span class="countpages" ng-cloak> {{currentPageNumber}}</span>
+
+                    <button type="button" class="btn-next btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="nextBtn == 'false'"
+                      ng-click="nextPageMethod(fromVal,toVal,viewby)">
+
+                      Next
+
+                    </button>
 
 
-      </div>
+
+
+
+                  </div>
+
+                </div> -->
+
+
+
+              </div> 
 
     </div>
+
+	
+	
+	      <div class="row" id="pageshowsort">
+
+            <div>
+
+              <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6" style="margin-top:5px;">
+
+                <select ng-model="x" ng-change="selectLayout(x)">
+
+                  <option value="Grid">Grid</option>
+
+                  <option value="List">List</option>
+
+                </select>
+
+              </div>
+
+              <div class="col-md-2 col-lg-2 col-sm-6 col-xs-6" style="margin-top: 5px;margin-bottom:10px;">
+
+                <label for="name" class="col-lg-4 col-xs-4 col-sm-2 pageshowlabel">Show</label>
+
+                <div class="col-lg-5 col-xs-5 col-sm-5">
+
+                  <select ng-model="viewby" ng-change="setpage(viewby)">
+
+                    <option value="12">12</option>
+
+                    <option value="24">24</option>
+
+                    <option value="36">36</option>
+
+                  </select>
+
+                  <!-- <select name="type" ng-model="viewby" ng-dropdown required ng-change="setpage(viewby)" ng-options="option for option in show_by_list">
+                </select>-->
+
+
+
+                </div>
+
+              </div>
+
+              <div class="col-md-3 col-lg-3 col-sm-6 col-xs-6" style="margin-top: 5px;margin-bottom:10px;">
+
+                <div class="form-group">
+
+                  <label for="name" class="col-lg-2 col-xs-3 pagesortlabel">Sort</label>
+
+                  <div class="col-lg-8 col-xs-8">
+
+                    <select ng-model="sort_by" ng-change="sortby(sort_by)">
+
+                      <option value="popularty">Popularity</option>
+
+                      <option value="topselling">Topselling</option>
+
+                      <option value="namefilter">Name</option>
+
+                      <option value="price_low_high">Price:Low to High</option>
+
+                      <option value="price_high_low">Price:High to Low</option>
+
+                    </select>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+					
+               <div class="pull-right" style="margin-bottom: -10px;margin-bottom:10px;">
+                    <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
+            <ul>
+                <li>
+                    <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page == 0" ng-click="processPagination(-1)" >
+                   Previous           
+                    </button>
+                </li>
+                <li>
+                    <label  ng-if="pageList[0] > 0 ">...</label>
+                </li>
+                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                    <a href=""  ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+                </li>
+                <li>
+                    <label  ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+                </li>
+                <li>
+                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi"  ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)" >
+                     Next
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+              </div> 
+
+            </div>
+
+          </div>
 
   </div>
 
@@ -477,7 +582,7 @@
 
 
 
-<div id="addedToCart" class="modal fade" ng-controller="homeController">
+<div id="addedToCart" class="modal fade" >
 
   <div class="modal-dialog">
 
@@ -505,7 +610,7 @@
 
 </div>
 
-<div id="addedToWishList" class="modal fade" ng-controller="homeController">
+<div id="addedToWishList" class="modal fade" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header"></div>
@@ -519,7 +624,7 @@
   </div>
 </div>
 
-<div id="addedToCompareProducts" class="modal fade" ng-controller="homeController">
+<div id="addedToCompareProducts" class="modal fade" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header"></div>
@@ -533,7 +638,7 @@
   </div>
 </div>
 
-<div id="outOfQty" class="modal fade" ng-controller="homeController">
+<div id="outOfQty" class="modal fade" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header"></div>
@@ -544,6 +649,8 @@
         <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
       </div>
     </div>
+  </div>
+</div>
   </div>
 </div>
 

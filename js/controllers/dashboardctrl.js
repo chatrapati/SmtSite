@@ -149,6 +149,14 @@ shopMyToolsApp.controller('wishListController', function ($scope, $rootScope,$wi
 
         })
     }
+
+     $scope.closeModal = function () {
+
+            $("#addedToCart").modal('hide');
+
+         
+
+        }
  $scope.pageNavigate = function(){
                 $location.path("dashboard");
             }

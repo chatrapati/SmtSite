@@ -37,6 +37,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $window.scrollTo(0, 0);
         $scope.isReadonly = true;
 
+       // $scope.searchKey = '';
+
         $scope.firstCarouselImages = ["images/banners/powertex.jpg", "images/banners/sunflower.jpg", "images/banners/bostec.jpg", "images/banners/bosch.jpg", "images/banners/jasic.jpg"];
 
         $scope.secondCarouselImages = ["images/banners/banner0.png", "images/banners/banner1.jpg", "images/banners/banner2.jpg", "images/banners/banner3.jpg", "images/banners/banner4.png"];
@@ -118,25 +120,25 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                     $scope.collections = data.data.collections;
                     $scope.topbrands = data.data.topbrands;
                     $scope.emergingbrands = data.data.emergingbrands;
-                    $scope.deals = data.data.deals;
+                    $rootScope.deals = data.data.deals;
                     $rootScope.dealsCount = $scope.deals.length;
                     $scope.newarrivals = data.data.newarrivalcats;
-                    $rootScope.newarrivalsArray = [];
+                    $scope.newarrivalsArray = [];
                     for (i = 0; i < $scope.newarrivals.length; i++) {
                         $scope.newarrivalsObj = $scope.newarrivals[i];
                         for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
                             if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
-                                $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
+                                $scope.newarrivalsArray.push($scope.newarrivalsObj)
                             }
                         }
                     }
                     $scope.Offers = data.data.offerscats;
-                    $rootScope.offersArray = [];
+                    $scope.offersArray = [];
                     for (i = 0; i < $scope.Offers.length; i++) {
                         $scope.offersObj = $scope.Offers[i];
                         for (j = 0; j < $scope.offersObj.prices.length; j++) {
                             if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                $rootScope.offersArray.push($scope.offersObj)
+                                $scope.offersArray.push($scope.offersObj)
                             }
                         }
                     }
@@ -198,12 +200,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 if (data.data.status == 'Success') {
                     if (data.data.offerscats != []) {
                         $scope.Offers = data.data.offerscats;
-                        $rootScope.offersArray = [];
+                        $scope.offersArray = [];
                         for (i = 0; i < $scope.Offers.length; i++) {
                             $scope.offersObj = $scope.Offers[i];
                             for (j = 0; j < $scope.offersObj.prices.length; j++) {
                                 if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                    $rootScope.offersArray.push($scope.offersObj)
+                                    $scope.offersArray.push($scope.offersObj)
                                 }
                             }
                         }
@@ -223,12 +225,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 $scope.loading = false;
                 if (data.data.status == 'Success') {
                     $scope.newarrivals = data.data.newarrivalcats;
-                    $rootScope.newarrivalsArray = [];
+                    $scope.newarrivalsArray = [];
                     for (i = 0; i < $scope.newarrivals.length; i++) {
                         $scope.newarrivalsObj = $scope.newarrivals[i];
                         for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
                             if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
-                                $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
+                                $scope.newarrivalsArray.push($scope.newarrivalsObj)
                             }
                         }
                     }
@@ -279,8 +281,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             $rootScope.showHintFlag = 'false';
             localStorage.setItem('breadCrumb', productObj.upload_category);
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
-             $scope.$emit('customEvent', window.localStorage['productName'])
-            // location.reload();
+           //  $scope.$broadcast('customEvent', {productname:window.localStorage['productName']})
+             location.reload();
             $location.path('productDetailPage');
         }
 
@@ -352,11 +354,11 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         $rootScope.searchedProducts = data.data.product_info;
                         if ($rootScope.searchedProducts.length == 1 ) {
                             $rootScope.myObj = {
-                                "margin-top":"78px"
+                                "margin-top":"101px"
                             }
                         } else if ($rootScope.searchedProducts.length == 2) {
                             $rootScope.myObj = {
-                                "margin-top":"103px"
+                                "margin-top":"115px"
                             }
                         }else if ($rootScope.searchedProducts.length >= 3) {
                             $rootScope.myObj = {
@@ -929,8 +931,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         };
 
         $scope.homePageDetails();
-        $scope.getFooter();
-        $scope.getHeader();
+        //$scope.getFooter();
+       // $scope.getHeader();
 
         $scope.gotoFooterPage = function (page) {
             if (page == 'aboutus') {
@@ -953,65 +955,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         }
 
-        $scope.slickConfig = {
-			enabled: true,
-			// infinite:true,
-			autoplay: true,
-			autoplaySpeed: 5000,
-			draggable: false,			
-			responsive: [
-				// {
-				//     breakpoint: 1024,
-				//     settings: "unslick"
-				// },
-				{
-					breakpoint: 1200,
-					settings: {
-						slidesToShow: 4,
-						slidesToScroll: 1
-					}
-				},
-				{
-					breakpoint: 1024,
-					settings: {
-						slidesToShow: 4,
-						slidesToScroll: 1
-					}
-				},
-				{
-					breakpoint: 992,
-					settings: {
-						slidesToShow: 3,
-						slidesToScroll: 1
-					}
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 2,
-						slidesToScroll: 1
-					}
-				},
-				{
-					breakpoint: 468,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1
-					}
-				},
-				{
-					breakpoint: 320,
-					settings: {
-						slidesToShow: 1,
-						slidesToScroll: 1
-					}
-				}
-
-			]
-		};
-
-
-
+      
     }]);
 
 

@@ -332,10 +332,10 @@
 
 </head>
 
-<body ng-app="shopMyTools" class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage" ng-cloak>
+<body ng-app="shopMyTools" ng-controller="headerController" class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage" ng-cloak>
 
   <!--     Header part start here -->
-  <header ng-controller="homeController">
+  <header >
     <div id="smt-navbar">
       <!-- <div data-spy="affix" data-offset-top="197"> -->
       <div>
@@ -344,7 +344,7 @@
             <div class="row">
               <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="welNameee">
                 <span class="welcome-msg welcome-msg_top" ng-if="!user_name">
-						{{headerArray.headername}}
+					Welcome To ShopMyTools
 					</span>
                 <span class="welcome-msg welcome-msg_top" ng-if="user_name">
 						Welcome, {{user_name}}!
@@ -353,7 +353,7 @@
               <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="welcall">
                 <div class="phone-contact">
                   <div class="inner-info">
-                    <span>Support : {{headerArray.headercontactno}}</span>
+                    <span>Support : 040-46161234</span>
                   </div>
                 </div>
               </div>
@@ -629,7 +629,7 @@
   </header>
   <ng-view></ng-view>
 
-  <footer ng-controller="homeController" class="footerbar footer">
+  <footer  class="footerbar footer">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -644,7 +644,7 @@
                   <li id="footer_links_valuess" ng-click="gotoFooterPage('contactus')"><a href="" class="footerText"> CONTACT US</a></li>
                   <!--<li  id="footer_links_valuess"><a href="dealer.html" class="footerText"> DEALERS LIST</a></li> -->
 
-                  <li id="footer_links_valuess"><a href="https://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
+                  <li id="footer_links_valuess"><a href="http://care.shopmytools.com" class="footerText"> SUPPORT</a></li>
                 </ul>
               </div>
               <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12">
