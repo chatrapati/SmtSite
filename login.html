@@ -308,7 +308,7 @@
                 <!--   middle Header styles start here -->
                 <div class="container-fluid" id="middle_logo_headr">
                     <div class="container">
-                        <div class="row m-row">
+                        <div class="row">
                             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12" id="mlogoo">
                                 <div class="row pointer">
                                     <!-- <img src="{{headerArray.headerlogo}}" ng-click="goToHome()" id="header_logooo"> -->
@@ -527,7 +527,7 @@
 
                                     <ul class="dropdown-menu multi-level" id="id_menu_sub">
                                         <li class="dropdown dropdown-submenu" ng-repeat="category in categoryArray">
-                                            <a href="" ng-click="logincategoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
+                                            <a href="" ng-click="logincategoryBasedProducts(category.categoryname)" id="cat_name_ul" class="dropdown-toggle dropDownToggle" data-toggle="dropdown" title="{{category.categoryname | titleCase}}">{{category.categoryname | titleCase}}</a>
                                             <ul class="dropdown-menu" ng-if="category.subcategoryname.length > 0" id="sub_cat_dropDown_list">
                                                 <li class="kopie" ng-repeat="subCategory in category.subcategoryname" ng-click="loginsubCategoryMethod(subCategory.subcategory,category.categoryname)">
                                                     <a href="" title="{{subCategory.subcategory | titleCase }}">{{subCategory.subcategory | titleCase }}</a>
