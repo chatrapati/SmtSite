@@ -145,6 +145,22 @@ input[type="number"]:focus {
     /*.comparespecial-price.yousave{
 		padding:3px 1px;
   } */
+   #data_ctrl_search {
+            margin-top: 217px !important;
+			
+        }   
+#data_ctrl_search  li:nth-child(9) div {
+           
+			margin-bottom: -24px;
+        } 
+#data_ctrl_search  li:nth-child(10) div {
+           
+			margin-bottom: -24px;
+        }   	
+#data_ctrl_search  li:nth-child(11) div {
+           
+			margin-bottom: -24px;
+        }   	  		
     .m-row {
         padding: 13px 0;
     }
@@ -348,12 +364,12 @@ input[type="number"]:focus {
     #all_ofers {
         margin-bottom: 10px !important;
     }
-    #data_ctrl_search {
+  /*  #data_ctrl_search {
         display: block;
         margin-top: 78% !important;
         margin-top: 69% !important;
         margin-top: 97% !important;
-    }
+    } */
     #sub_cat_dropDown_list {
         display: block !important;
     }
@@ -1406,15 +1422,17 @@ ul #footer_links_valuess a:hover {
 
 @-moz-document url-prefix('') {
     #data_ctrl_search {
-        margin-top: 341px !important;
+        margin-top: 343px !important;
     }
 }
 
 @media (min-width:320px) and (max-width:480px) {
     @-moz-document url-prefix('') {
         #data_ctrl_search {
-            margin-top: 511px !important;
-        }
+            margin-top: 439px !important;
+        }    
+    }
+	 @-moz-document url-prefix('') {
         #search_top_box {
             margin-bottom: -30px;
         }
@@ -1422,9 +1440,7 @@ ul #footer_links_valuess a:hover {
     #search_top_box {
         margin-bottom: -30px;
     }
-    #data_ctrl_search {
-        margin-top: 86% !important;
-    }
+  
     #shopingCart {
         margin: 5px 1px 10px !important;
     }
