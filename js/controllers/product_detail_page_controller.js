@@ -446,6 +446,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 
 
 		$scope.getCartItemsWithoutLogin();
+		$scope.viewCartItems();
 
 		$scope.productQty = function(cartItem){
 			//alert(qty)

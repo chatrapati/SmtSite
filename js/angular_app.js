@@ -23,6 +23,27 @@ shopMyToolsApp.filter('slice', function () {
   };
 });
 
+
+shopMyToolsApp.directive('customAutofocus', function() {
+  return{
+         restrict: 'A',
+
+         link: function(scope, element, attrs){
+          
+           scope.$watch(function(){
+             return scope.$eval(attrs.customAutofocus);
+             },function (newValue){
+               if (newValue == true){
+                   element.focus();
+               }
+           });
+         }
+     };
+})
+;
+
+
+
 shopMyToolsApp.directive('ngElevateZoom', function () {
   return {
     restrict: 'A',

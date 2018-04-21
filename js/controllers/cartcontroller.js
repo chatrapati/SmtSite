@@ -114,8 +114,8 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
         //$scope.viewCartItems();
 
       
-            $scope.leavingInput = function(cartObj){
-                // alert('1')
+            $scope.leavingInput = function(cartObj,event){
+               //  alert(event.id)
                 if(cartObj.qty == '' || cartObj.qty == undefined){
                     alert('Please enter quantity')
                     cartObj.qty =1;
@@ -124,14 +124,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
 
 
-        $scope.changeQty = function (cartObj) {
-
-            //console.log(JSON.stringify(cartObj.qty))
-
-           
-           //val123=cartObj.qty;
-           
-
+        $scope.changeQty = function (cartObj,index) {
             // if (cartObj.qty.length > 0) {
                 if (cartObj.qty > 0) {
                     if (window.localStorage['token']) {
@@ -157,7 +150,8 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
                             if (data.data.status == 'item added to cart..') {
 
                                 window.localStorage['orderId'] = data.data.orderid;
-
+                                 $scope.focusIndex = index;
+                               
                                 $scope.viewCartItems();
 
                             } else if (data.data.status == 'out off stock') {
@@ -357,17 +351,21 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
         }
 
-         $scope.restrictMinus = function(e){
-         
-	console.log(e)
+        
 
-	if (e.keyCode == 45 || (e.keyCode > 31 && (e.keyCode < 48 || e.keyCode > 57))) e.preventDefault();
+         $scope.restrictMinus = function(e,index){
+             $scope.focusIndex = index;
+             console.log(e)
+             if(e.which == 8){
+                   $scope.focusIndex = index;
+             }
+    if (e.which == 45 || (e.which > 31 && (e.which < 48 || e.which > 57)))
+         e.preventDefault();
 	
   }
 
 
         $scope.goToHomeFromCart = function () {
-
 
 
             $location.path("/")
