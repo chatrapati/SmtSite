@@ -12,7 +12,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     $scope.showSubCat = 'true';
 
 
-
+ $rootScope.seo = {pageTitle:'Category Title',pageDescription:' category ghdfhfghfg'}
      //$(".dropdown-menu.multi-level").css("display", "block");
 
     if (window.localStorage['subCategoryName'] != '') {

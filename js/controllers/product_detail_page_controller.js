@@ -114,14 +114,15 @@ shopMyToolsApp.controller('product_detailed_controller',
 
             $("#outOfQty").modal('hide');
 
-        }
+		}
+		
 
 		$rootScope.dealProductPrice = dealProductPrice;
 
 		$scope.getProductDetails = function () {
  $scope.loading = true;
 			product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName']).then(function (data) {
-				//alert(JSON.stringify(data));
+				// alert(JSON.stringify(data));
 				 $scope.loading = false;
 				if (data.data.status == 'success') {
 					var result = data.data;
@@ -157,6 +158,24 @@ shopMyToolsApp.controller('product_detailed_controller',
 					else {
 						$scope.showMultipleProducts = false;
 						$scope.brandDetailDescArray = result.Product;
+						$rootScope.tags=$scope.brandDetailDescArray.tags.toString();
+						//$rootScope.tags.toString();
+						// alert($rootScope.tags)
+						$rootScope.metadescription=$scope.brandDetailDescArray.metadescription.toString();
+							$rootScope.keywords=$scope.brandDetailDescArray.keywords.toString();
+ $scope.brandDetailDescArray.manual_pdf="https://s3.ap-south-1.amazonaws.com/gstbucket1/RRB-Gropu-D-Detailed-Syllabus-2018.pdf";
+							if($scope.brandDetailDescArray.manual_pdf!== null || $scope.brandDetailDescArray.manual_pdf!==undefined){
+                              $rootScope.manual_pdf=$scope.brandDetailDescArray.manual_pdf;
+							}
+							$scope.brandDetailDescArray.manual_video="https://s3.ap-south-1.amazonaws.com/gstbucket1/smt+coming+soon.mp4";
+							if($scope.brandDetailDescArray.manual_video!== null || $scope.brandDetailDescArray.manual_video!==undefined){
+                             $rootScope.manual_video=$scope.brandDetailDescArray.manual_video;
+							}
+						
+							
+							$rootScope.pagetitle=$scope.brandDetailDescArray.upload_name;	
+
+						//alert($rootScope.tags)
 						//console.log(JSON.stringify($scope.brandDetailDescArray.extraimages))
 						//alert(typeof($scope.brandDetailDescArray.extraimages))
 						//$scope.brandDetailDescArray=
@@ -207,7 +226,16 @@ shopMyToolsApp.controller('product_detailed_controller',
 		if (window.localStorage['productName']) {
 			$scope.getProductDetails();
 		} else {
-			$location.path("/");
+			//alert('1')
+			tmp = [];
+			location.search.substr(1).split("?").forEach(function(item){
+				console.log(item)
+				tmp = item.split("=");
+				//console.log(tmp)
+				window.localStorage['productName'] = tmp[1];
+				$scope.getProductDetails();
+			})
+		//	$location.path("/");
 		}
 
 
@@ -354,7 +382,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 			//	$scope.userEmail = window.localStorage['email'];
 			referralEmailservice.sendEmailMethod(referalEmail, product, window.localStorage['email'], productImg).then(function (data) {
 				if (data.data.status == 'Data Saved Successfully.') {
-					alert('Email sent Successsfully');
+					alert('Email sent Successfully');
 				} else {
 					alert(data.data.status)
 				}
@@ -547,7 +575,16 @@ shopMyToolsApp.controller('product_detailed_controller',
 		$scope.replaceSelectedImg = function (img) {
 			//alert(JSON.stringify(img))
 			$scope.brandDetailDescArray.upload_photo = img;
+			$scope.showVideo = false;
 		}
+
+		$scope.showVideo = false;
+
+		$scope.replaceSelectedVideo = function(){
+			$scope.showVideo = true;
+			// $scope.brandDetailDescArray.upload_photo = '../../images/movie.mp4';
+		}
+
      // $i=$scope.brandDetailDescArray.extraimages.length;
 		$scope.rightarrow=function(openimage){
 			//alert("hai")

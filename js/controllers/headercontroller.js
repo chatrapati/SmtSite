@@ -3,12 +3,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
     'searchProductsService', 'homePageService',
     'compareProductsService', 'addToWishListService',
     'searchProductsService', 'addToCartService', 'viewCartService',
-    '$route', '$timeout', 'searchProductsMoreService', '$window', 'deleteCartService','DOMAIN_URL','addCompareProductsService',
+    '$route', '$timeout', 'searchProductsMoreService', '$window', 'deleteCartService','DOMAIN_URL',
+    'addCompareProductsService','logoutService',
     function ($scope, $http, $location, $rootScope, getHeaderService, getFooterService,
         getAllCategoriesService, searchProductsService, homePageService,
         compareProductsService, addToWishListService,
         searchProductsService, addToCartService, viewCartService,
-        $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL,addCompareProductsService) {
+        $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL,addCompareProductsService,logoutService) {
 
         $window.scrollTo(0, 0);
         $scope.user_name = window.localStorage['user_name'];
@@ -26,10 +27,14 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 }
             });
         }
-        
-         $scope.seo = { 
-    pageTitle : '', pageDescription : '' 
-  }; 
+        //  var absUrl = $location.absUrl();
+        // alert(absUrl);
+        // $scope.urldata=absUrl.split('#!');
+        // alert($scope.urldata[1])
+
+      
+         $rootScope.seo = { pageTitle : 'Header Conteroller', pageDescription : 'Header controller description'}; 
+         console.log($scope.seo);
 
          $scope.coupons=function(){
               //window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/coupons";
@@ -162,8 +167,37 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
-                //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/searchPage";
-                window.location.href = DOMAIN_URL+"#!/searchPage";
+              //  $location.path("searchPage");
+                $scope.searchPageURL = document.URL.split("#!/");
+                if ($scope.searchPageURL[1] == 'searchPage') {
+                    $location.path("searchPage1");
+                }
+                else {
+                    $location.path("searchPage");
+                }
+            } else if (searchKey.length == '0') {
+                $rootScope.showHintFlag = 'false';
+                $location.path("/")
+            }
+
+        }
+
+        $scope.logintest = function(searchKey){
+              if (searchKey.length > 0) {
+                localStorage.setItem('searchkey', searchKey);
+                $rootScope.showHintFlag = 'false';
+              
+                $scope.searchPageURL = document.URL.split("#!/");
+                if ($scope.searchPageURL[1] == 'searchPage') {
+                  //  $location.path("searchPage1");
+                  window.location.href =DOMAIN_URL+"#!/searchPage1";
+                }
+                else {
+                    window.location.href =DOMAIN_URL+"#!/searchPage";
+                }
+            } else if (searchKey.length == '0') {
+                $rootScope.showHintFlag = 'false';
+                $location.path("/")
             }
 
         }
@@ -206,24 +240,45 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             }
         }
         $rootScope.showHintFlag = 'false';
-        $rootScope.showHint = function (searchKey) {
-            //$scope.showHintFlag = 'true';
-            //alert(searchKey.length)
+      $rootScope.showHint = function (searchKey) {
+         // alert(searchKey)
             if (searchKey.length >= '3') {
+                //alert(searchKey)
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
-                    //alert(JSON.stringify(data))
+                    console.log(JSON.stringify(data))
                     if (data.data.status == 'success') {
                         $rootScope.searchedProducts = data.data.product_info;
+                        if ($rootScope.searchedProducts.length == 1 ) {
+                            $rootScope.myObj = {
+                                "margin-top":"101px"
+                            }
+                        } else if ($rootScope.searchedProducts.length == 2) {
+                            $rootScope.myObj = {
+                                "margin-top":"115px"
+                            }
+                        }else if ($rootScope.searchedProducts.length > 3) {
+                           
+                            $rootScope.myObj = {
+                                "margin-top":"170px"
+                            }
+                        }
+                        else if ($rootScope.searchedProducts.length == 3) {
+                          
+                            $rootScope.myObj = {
+                                "margin-top":"127px"
+                            }
+                        }
                         $rootScope.recommendedList = data.data.recommended;
                         $rootScope.showHintFlag = 'true';
-                    } else if(data.data.status == 'fail') {
-                        alert(data.data.data)
+                    } else if (data.data.status == 'fail') {
+                        $rootScope.searchedProducts = [];
+                        $rootScope.showHintFlag = 'true';
                     }
                 })
             } else if (searchKey.length == '0') {
                 $rootScope.showHintFlag = 'false';
+                $location.path("/")
             }
-
         }
 
 
@@ -264,9 +319,16 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             $location.path("addressBook");
         }
 
-        $scope.goToLogout = function () {
-            // $location.path('login')
-            window.location.href = "./login.html";
+         $scope.goToLogout = function () {
+            logoutService.userLogout(window.localStorage['token']).then(function (data) {
+                if (data.data.status == 'success') {
+                    $window.localStorage.clear();
+                    $scope = $scope.$new(true);
+                    $rootScope = $rootScope.$new(true);
+                    window.location.href = "./login.html";
+                } else {
+                }
+            })
         }
 
         $scope.goToHome = function () {
@@ -474,11 +536,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = "";
          $scope.categoryURL = document.URL.split("#!/");
             localStorage.removeItem('selectedArray')
+            //location.reload();
             if ($scope.categoryURL[1] == 'categoryPage') {
                  $(".dropdown-menu.multi-level").css("display", "none");
               $location.path("categoryPage1");
             } else {
                 $location.path("categoryPage");
+               // window.location.href = DOMAIN_URL+"#!categoryPage";
                 $(".dropdown-menu.multi-level").css("display", "none");
             }
 

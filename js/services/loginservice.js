@@ -28,7 +28,7 @@ shopMyToolsApp.service('getIPService', function ($q, $http) {
 
 		$http({
 			method: 'GET',
-			url: 'http://freegeoip.net/json/',
+			url: 'https://freegeoip.net/json/',
 			headers: { 'Content-Type': 'application/json' }
 
 		}).then(function success(data) {

@@ -72,6 +72,15 @@ shopMyToolsApp.controller('searchPageController', ['$scope', '$http', '$location
 
 shopMyToolsApp.controller('contactUsCtrl', function ($scope, $window, $location, $rootScope, contactUsService) {
 
+
+    
+    $rootScope.seo={tags:"contactus",keywords:"contact phone number, contact us, call information phone number, customer service, phone number",metadescription:"For any queries on deals and offers for the products ordered through shopmytools.com, contact us by writing email at support@shopmytools.com or call us at 91-40-46161234.", metatitle:"Contact Us - Customer Service | Shopmytools.com"}
+    $rootScope.pagetitle=$rootScope.seo.metatitle;
+    $rootScope.metadescription=$rootScope.seo.metadescription;
+    $rootScope.keywords=$rootScope.seo.keywords;
+
+
+
     $scope.contactus = {"email":localStorage.getItem('userEmail')};
 
     $scope.submitContactData = function (contactus) {

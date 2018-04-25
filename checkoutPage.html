@@ -198,7 +198,7 @@
 											<label for="house_no">
 												<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>House No.</label>
 											<input type="text" name="house_no" required class="form-control" id="house_no" ng-model="checkoutData.house_no" placeholder="Enter House No."
-											 ng-minlength="3" ng-maxlength="15" maxlength="15" required ng-pattern="/^[a-zA-Z0-9/ - # -]*$/" />
+											 ng-minlength="3" ng-maxlength="15" maxlength="15" required ng-pattern="/^[a-zA-Z0-9/, # - # -]*$/" />
 											<p class="validationError errorMsg" ng-if="submitted && deliveryAddressForm.house_no.$error.required">Enter House Number</p>
 
 											<div ng-messages="deliveryAddressForm.house_no.$error ">
@@ -467,7 +467,7 @@
 												<label for="house_no">
 													<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>House No.</label>
 												<input type="text" name="house_no" class="form-control" id="house_no" ng-model="billingAddress.house_no" placeholder="Enter House No."
-												 required ng-pattern="/^[a-zA-Z0-9/ - # -]*$/" ng-minlength="3">
+												 required ng-pattern="/^[a-zA-Z0-9/, # - # -]*$/"  ng-minlength="3">
 												<p class="validationError errorMsg" ng-if="submitted && billindAddressForm.house_no.$error.required">Enter House Number</p>
 
 												<div ng-messages="billindAddressForm.house_no.$error ">

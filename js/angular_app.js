@@ -266,7 +266,7 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
     // .html5Mode(true);
 
     //  $locationProvider.html5Mode(true);
-    // $locationProvider.hashPrefix('!');
+    // $locationProvider.hashPrefix('');
 
   }]);
 

@@ -825,8 +825,10 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
                     }
 
     $scope.gotoOrderDetails = function () {
+          $scope.loading = true;
         inVoiceService.completeOrdersMethod($scope.finalOrderId).then(function (data) {
             if (data.data.status == 'success') {
+                $scope.loading = false;
                 $rootScope.orderitems = [];
                 $rootScope.taxAmount = data.data.user_info.tax_amount;
                 $rootScope.grandTotal = data.data.user_info.grand_total;
@@ -1002,12 +1004,22 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
             })
         }
 
-        $rootScope.test = function (searchKey) {
-            if (searchKey.length > 0) {
+        $scope.logintest = function(searchKey){
+              if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
-                //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/searchPage";
-                window.location.href = DOMAIN_URL+"#!/searchPage";
+              
+                $scope.searchPageURL = document.URL.split("#!/");
+                if ($scope.searchPageURL[1] == 'searchPage') {
+                  //  $location.path("searchPage1");
+                  window.location.href =DOMAIN_URL+"#!/searchPage1";
+                }
+                else {
+                    window.location.href =DOMAIN_URL+"#!/searchPage";
+                }
+            } else if (searchKey.length == '0') {
+                $rootScope.showHintFlag = 'false';
+                $location.path("/")
             }
 
         }

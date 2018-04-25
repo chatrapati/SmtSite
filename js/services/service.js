@@ -66,13 +66,14 @@ shopMyToolsApp.service('getAllCategoriesService', function ($q, $http, SERVER_UR
 
 shopMyToolsApp.service('searchProductsService', function ($q, $http, SERVER_URL1) {
 	this.searchProductsMethod = function (productName) {
+		// alert(productName)
 		var deferred = $q.defer();
 
 		$http({
-			method: 'POST',
-			url: SERVER_URL1 + '/matchprod',
+			method: 'GET',
+			url: SERVER_URL1 + '/matchprod?product_name='+productName,
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
-			data:{"product_name":productName}
+			// data:{"product_name":productName}
 
 		}).then(function success(data) {
 			deferred.resolve(data);

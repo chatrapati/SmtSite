@@ -6,9 +6,9 @@
 <!--[if IE 8]> <html class="no-js lt-ie9" lang=""> <![endif]-->
 
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="shopMyTools" ng-controller="headerController">
 <!--<![endif]-->
-<html>
+
 
 <head>
     <!--[if lt IE 9]>
@@ -24,17 +24,14 @@
   <title>ShopMyTools</title>
   <meta name="description" content="{{ seo.metaDescription }}"> -->
     <script src="./js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
-    <title>Home</title>
-
+<meta name="fragment" content="!">
+    <title>{{pagetitle}}</title>
+ <meta name="description" content="{{metadescription}}">
+  <meta name="keywords"  content="{{keywords}}">
     <meta charset="UTF-8;safari-fix">
 
-    <!-- for zooming in mobile view start-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <meta name="viewport" content="width=1000, initial-scale=1, user-scalable=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>  for ios and android but in android view is not exactly correct -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+   
+      <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- for zooming in mobile view end -->
 
 
@@ -134,6 +131,13 @@
     <script src="./js/controllers/cartcontroller.js"></script>
     <script src="./js/controllers/checkoutCtrl.js"></script>
     <script src="./js/controllers/dashboardctrl.js"></script>
+     <script src="./js/controllers/aboutus.js"></script>
+     <script src="./js/controllers/termsofusecontroller.js"></script>
+       <script src="./js/controllers/returnpolicycontroller.js"></script>
+       <script src="./js/controllers/privacypolicycontroller.js"></script>
+<script src="./js/controllers/shippingcontroller.js"></script>
+<script src="./js/controllers/netbankingcontroller.js"></script>
+<script src="./js/controllers/emiconversioncontroller.js"></script>
     <script src="./js/services/loginservice.js"></script>
     <script src="./js/services/categoryService.js"></script>
     <style>
@@ -150,6 +154,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
+   <!-- <base href="/" /> -->
 
     <style type="text/css">
         /* menu styles start here 9-2-2018 */
@@ -332,7 +337,7 @@
 
 </head>
 
-<body ng-app="shopMyTools" ng-controller="headerController" class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage" ng-cloak>
+<body  class="sm_market    cms-index-index cms-toolsduniya " id="categoryPage" ng-cloak>
 
     <!--     Header part start here -->
     <header>
@@ -715,7 +720,7 @@
 
 
 
-                            Â© 2018 ShopMyTools. All Rights Reserved. Designed by &nbsp; Golden Sun Technology.
+                            © 2018 ShopMyTools. All Rights Reserved. Designed by &nbsp; Golden Sun Technology.
 
 
 
