@@ -95,7 +95,7 @@
                 </div>
 
             </div>
-            <slick settings="slickConfigBrands" slides-to-show="6" ng-if="collections" slides-to-scroll="1" autoplay="true">
+            <slick settings="slickConfigBrands" slides-to-show="6" ng-if="collections" slides-to-scroll="1" autoplay="true" id="collectionMainDiv">
                 <div class="col-md-2 col-lg-2 col-sm-4 col-xs-6 collection-page-temp" ng-repeat="collection in collections">
 
                     <div class="coll-gallery">
@@ -170,8 +170,10 @@
 
             </div>
             <!-- <div class="regular slider"> -->
-            <div>
+          
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right: 31px;padding-left: 18px;">
                 <slick settings="slickConfigBrands" slides-to-show="6" ng-if="topbrands" slides-to-scroll="1">
+				
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="brand in topbrands">
 
                         <div class="emerging-item emerging-gallery">
@@ -203,8 +205,10 @@
                         </div>
 
                     </div>
-                </slick>
-            </div>
+             
+				</slick>
+				   </div>
+            
 
             <div id="all-collections-shoe-more-btn" ng-click="goToTopBrands()" class="allhomebtn">
                 <a style="margin-top:1px !important;">All Top Brands</a>
@@ -229,7 +233,7 @@
 
             <!-- <div class="emergingbrand1">  -->
 
-            <div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right: 31px;padding-left: 18px;">
                 <slick settings="slickConfigBrands" slides-to-show="6" ng-if="emergingbrands" slides-to-scroll="1">
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="ebrand in emergingbrands">
 
@@ -283,7 +287,7 @@
 
                     <tabset class="nav nav-tabs" style="margin-top:-6px;">
 
-                        <tab class="active pull-right tabPane" heading="ALL PRODUCTS" style="margin-right:30%;" ng-click="getOffers('')">
+                        <tab class="active pull-right tabPane" heading="ALL PRODUCTS" style="" ng-click="getOffers('')" id="tabOne">
 
                             <div class="tab-pane fade in active" id="allproducts">
 
@@ -436,7 +440,7 @@
 
                         </tab>
 
-                        <tab heading="DRILL MACHINE" class="pull-right tabPane" style="margin-right: -21%;" ng-click="getOffers('Drill Machine')">
+                        <tab heading="DRILL MACHINE" class="pull-right tabPane" style="" ng-click="getOffers('Drill Machine')" id="tabTwo">
 
                             <div class="tab-pane" id="electricdrill">
 
@@ -591,7 +595,7 @@
 
                         </tab>
 
-                        <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="margin-right: -32%;" ng-click="getOffers('Angle Grinder')">
+                        <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="" ng-click="getOffers('Angle Grinder')" id="tabThree">
 
                             <div class="tab-pane" id="anglegrinder">
 
@@ -738,7 +742,7 @@
 
                         </tab>
 
-                        <tab heading="HAMMERS" class="pull-right tabPane" style="margin-right: -40%;" ng-click="getOffers('Hammers')">
+                        <tab heading="HAMMERS" class="pull-right tabPane"  ng-click="getOffers('Hammers')" id="tabFour">
 
                             <div class="tab-pane" id="impactdrill">
 

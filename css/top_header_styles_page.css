@@ -145,6 +145,25 @@ input[type="number"]:focus {
     /*.comparespecial-price.yousave{
 		padding:3px 1px;
   } */
+   #collectionMainDiv{
+	   padding-left:16px !important;
+   }
+ #home_Arrows #collectionMainDiv .slick-next {
+    right: -14px !important; 
+	top:48%;
+}
+#home_Arrows #collectionMainDiv .slick-prev {
+     left: -6px !important; 
+    
+}
+#home_Arrows .slick-next {
+    right: -18px !important; 
+	top:46%;
+}
+#home_Arrows .slick-prev {
+    top:46%;
+    
+}
    #data_ctrl_search {
             margin-top: 217px !important;
 			
@@ -2132,13 +2151,13 @@ a.compare_hover:hover {
 }
 
 #home_Arrows .slick-next {
-    /* right: -25px; */
-    right: 10px;
+    right: -20px; 
+	top:48%;
 }
 
 #home_Arrows .slick-prev {
-    /* left: -25px; */
-    left: 0px;
+     left: -21px ; 
+	top:48%;
     z-index: 1;
 }
 

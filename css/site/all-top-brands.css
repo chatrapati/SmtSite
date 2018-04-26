@@ -208,7 +208,18 @@ a.all-view_collection:focus {
 .cont3{
 	height: 39px;
 	}
-	
+	#tabOne{
+		margin-right:30% !important;
+	}
+	#tabTwo{
+	margin-right: -21%;
+	}
+	#tabThree{
+		margin-right: -32%;
+	}
+	#tabFour{
+		margin-right: -39%;
+}
 	
 @media screen and (max-width: 1200px) and (min-width: 992px){
 .cont1{
@@ -219,6 +230,19 @@ a.all-view_collection:focus {
 	}
 .cont3{
 	height: 39px !important;
+	}
+	#tabOne{
+		margin-right:37% !important;
+	}
+	#tabTwo{
+	margin-right: -24%;
+	}
+	#tabThree{
+		margin-right: -37%;
+	}
+	#tabFour{
+		margin-right: -47%;
+}
 	}
 }
 
