@@ -88,7 +88,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
          $rootScope.getProductDetails = function (productObj) {
-        console.log(productObj)
+       
             window.localStorage['productName'] = productObj.upload_name;
 
             localStorage.removeItem('isReviewStatus');
@@ -99,14 +99,11 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
 
+            location.reload();
+
             window.location.href = DOMAIN_URL+"#!/productDetailPage";
 
-        //  $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-
-            //  $window.open(DOMAIN_URL+"#!/productDetailPage");
-
-
-            // $location.path("productDetailPage")
+      
 
         }
 
@@ -245,7 +242,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             if (searchKey.length >= '3') {
                 //alert(searchKey)
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
-                    console.log(JSON.stringify(data))
+                    // console.log(JSON.stringify(data))
                     if (data.data.status == 'success') {
                         $rootScope.searchedProducts = data.data.product_info;
                         if ($rootScope.searchedProducts.length == 1 ) {

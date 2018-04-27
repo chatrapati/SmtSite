@@ -289,6 +289,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             window.localStorage['productName'] = productObj.upload_name;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
+            window.localStorage['subCategoryName'] = "";
             localStorage.setItem('breadCrumb', productObj.upload_category);
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
             //  $scope.$broadcast('customEvent', {productname:window.localStorage['productName']})

@@ -202,14 +202,14 @@ shopMyToolsApp.service('getCouponService', function ($q, $http, LOGIN_URL) {
 })
 
 shopMyToolsApp.service('getDealersListService', function ($q, $http, LOGIN_URL) {
-	this.getDealersListMethod = function (latLong) {
+	this.getDealersListMethod = function (latLong,pincode) {
 		var deferred = $q.defer();
 
 		$http({
 			method: 'POST',
 			url: LOGIN_URL + '/dealerlist',
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
-			data: { "lat_long": latLong }
+			data: { "lat_long": latLong ,"pincode":pincode}
 
 		}).then(function success(data) {
 			deferred.resolve(data);

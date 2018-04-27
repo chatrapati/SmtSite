@@ -252,7 +252,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         }
 
         $scope.saveDealerAddress = function (dealer) {
-            //  alert(JSON.stringify(dealer))
+
+            
             $scope.disableShippingbtn = false;
 
             $scope.dealerAddress = dealer.shop_name;
@@ -622,13 +623,77 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
         $scope.getDealersList = function (latLongArray) {
 
-            getDealersListService.getDealersListMethod(latLongArray).then(function (data) {
+            getDealersListService.getDealersListMethod(latLongArray,$scope.pincode).then(function (data) {
 
                 //   alert(JSON.stringify(data))
 
                 if (data.data.status == 'success') {
                      $scope.loading = false;
                     $scope.dealersList = data.data.dealer_list;
+
+                      var source, destination;
+            //           for(i=0;i<$scope.dealersList.length;i++){
+            //               source = $scope.pincode;
+            // destination = $scope.dealersList[i].pincode;
+            // var request = {
+            //     origin: source,
+            //     destination: destination,
+            //     travelMode: google.maps.TravelMode.DRIVING
+            // };            
+            // var service = new google.maps.DistanceMatrixService();
+            // service.getDistanceMatrix({
+            //     origins: [source],
+            //     destinations: [destination],
+            //     travelMode: google.maps.TravelMode.DRIVING,
+            //     unitSystem: google.maps.UnitSystem.METRIC,
+            //     avoidHighways: false,
+            //     avoidTolls: false
+            // }, function (response, status) {
+               
+            //     if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+            //         $scope.distance1 = response.rows[0].elements[0].distance.text;
+  
+            //        $scope.dealersList[i]["distance"] = $scope.distance1.split(" ")[0];
+            //         //console.log(item.distance)
+            //        //console.log(JSON.stringify($scope.dealersList))
+            //        // distancefinel = distance.split(" ");    
+            //     } else {
+            //         alert("Unable to find the distance via road.");
+            //     }
+            // }); 
+            //           }
+        console.log(JSON.stringify($scope.dealersList))
+    //   angular.forEach($scope.dealersList,function(item){
+    //       source = $scope.pincode;
+    //         destination = item.pincode;
+    //         var request = {
+    //             origin: source,
+    //             destination: destination,
+    //             travelMode: google.maps.TravelMode.DRIVING
+    //         };            
+    //         var service = new google.maps.DistanceMatrixService();
+    //         service.getDistanceMatrix({
+    //             origins: [source],
+    //             destinations: [destination],
+    //             travelMode: google.maps.TravelMode.DRIVING,
+    //             unitSystem: google.maps.UnitSystem.METRIC,
+    //             avoidHighways: false,
+    //             avoidTolls: false
+    //         }, function (response, status) {
+               
+    //             if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+    //                 $scope.distance = response.rows[0].elements[0].distance.text;
+  
+    //                item.distance = $scope.distance.split(" ")[0];
+    //                 //console.log(item.distance)
+    //                //console.log(JSON.stringify($scope.dealersList))
+    //                // distancefinel = distance.split(" ");    
+    //             } else {
+    //                 alert("Unable to find the distance via road.");
+    //             }
+    //         });
+    //   })
+         
 
                 } else {
 
@@ -648,6 +713,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             $scope.altMobile = altMobile;
 
              $scope.gst_number=gstnumber;
+
+             $scope.pincode = pincode;
             // alert($scope.gst_number)
 
             //alert($scope.altMobile)
@@ -710,7 +777,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
 
 shopMyToolsApp.controller('paymentSuccessCtrl', 
-function ($scope, $window, $rootScope, inVoiceService,viewCartService,
+function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutService,
      paymentStatusService,getHeaderService,getFooterService,getAllCategoriesService,searchProductsService,deleteCartService,DOMAIN_URL) {
 
     $scope.finalOrderId = window.localStorage['finalOrderId'];
@@ -1073,8 +1140,15 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,
         }
 
         $scope.goToLogout = function () {
-            // $location.path('login')
-            window.location.href = "./login.html";
+            logoutService.userLogout(window.localStorage['token']).then(function (data) {
+                if (data.data.status == 'success') {
+                    $window.localStorage.clear();
+                    $scope = $scope.$new(true);
+                    $rootScope = $rootScope.$new(true);
+                    window.location.href = "./login.html";
+                } else {
+                }
+            })
         }
 
         $scope.goToHome = function () {

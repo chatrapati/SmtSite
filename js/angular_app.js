@@ -48,7 +48,7 @@ shopMyToolsApp.directive('ngElevateZoom', function () {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
-      console.log("Linking")
+      // console.log("Linking")
      //  element.addClass('zoomWindowContainer x');
       //Will watch for changes on the attribute
       attrs.$observe('zoomImage', function () {

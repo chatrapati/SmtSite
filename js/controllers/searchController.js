@@ -53,6 +53,7 @@ shopMyToolsApp.controller('searchPageController', ['$scope', '$http', '$location
         }
 
         $rootScope.productReview = function (productObj, isReview) {
+            // alert(productObj)
             localStorage.setItem('isReviewStatus', isReview);
             window.localStorage['productName'] = productObj.upload_name;
             $rootScope.showHintFlag = 'false';
