@@ -1643,6 +1643,15 @@ ul #footer_links_valuess a:hover {
 
 		padding: 8px 3px 8px 3px;
   }*/
+  #tabTwo {
+    margin-right: -23%;
+}
+#tabThree {
+    margin-right: -34%;
+}
+#tabFour {
+    margin-right: -43%;
+}
     #header_logooo {
         margin-top: 8px;
     }
