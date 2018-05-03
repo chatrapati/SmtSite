@@ -1515,6 +1515,12 @@ ul #footer_links_valuess a:hover {
             margin-bottom: -30px;
         }
     }
+	.slick-prev{
+		display:none !important;
+	}
+	.slick-next{
+		display:none !important;
+	}
     #search_top_box {
         margin-bottom: -30px;
     }
