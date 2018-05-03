@@ -539,6 +539,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         $("#addedToCart").modal('show');
                     } else if (data.data.status == 'item added to cart..') {
                         $("#addedToCart").modal('show');
+                        //  $scope.random_no = data.data.random_number;
+                        // localStorage.setItem('randomNumber', $scope.random_no);
                     } else {
                         alert(data.data.status);
                     }
@@ -619,8 +621,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                                 localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
                                 $("#addedToCompareProducts").modal('show');
                                 $scope.getCompareProducts();
-                            } else {
-
+                            } else if(data.data.status == 'subcategory not matched'){
+                                alert('Compare only same Sub-category');
                             }
                         })
                     }
@@ -629,6 +631,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             } else {
                 if ($rootScope.compareProducts.length == 0) {
                     $rootScope.compareProducts.push(productObj.upload_name);
+                    $rootScope.compareDetails = productObj.upload_subcategory;
                     localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
                     $("#addedToCompareProducts").modal('show');
                 } else {
@@ -647,15 +650,22 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         if ($scope.match) {
                             alert('This Product Already Existed in Compare Products');
                         } else {
-                            $rootScope.compareProducts.push(productObj.upload_name);
+                            if($rootScope.compareDetails == productObj.upload_subcategory){
+                                $rootScope.compareProducts.push(productObj.upload_name);
                             localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
                             $("#addedToCompareProducts").modal('show');
+                            }else{
+                                alert('Compare only same Sub-category'); 
+                            }
+                            
                         }
                     }
                 }
             }
 
         }
+
+         $rootScope.compareDetails =[];
 
         $scope.supplierfun = function () {
             window.open('http://hub.shopmytools.com/', '_blank')
@@ -790,11 +800,17 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
 
-        $scope.gotoCartPage = function () {
+        // $scope.gotoCartPage = function () {
 
-            $location.path("viewCart")
+        //     // $location.path("viewCart")
 
-        }
+        //       if(window.localStorage['token']){
+        //      window.location.href = DOMAIN_URL+"#!/viewCart";
+        //    }else{
+        //         window.location.href = DOMAIN_URL+"login.html";
+        //    }
+
+        // }
 
 
 

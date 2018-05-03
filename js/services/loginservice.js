@@ -111,6 +111,25 @@ shopMyToolsApp.service('registrationService', function ($q, $http, LOGIN_URL,) {
 	};
 
 
+		this.mobilecheck = function (userid) {
+		var deferred = $q.defer();
+
+		$http({
+			method: 'GET',
+			url: LOGIN_URL + '/usercheck?username=' + userid,
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+
+		}).then(function success(data) {
+			deferred.resolve(data);
+
+		}, function error(data) {
+			deferred.reject(data);
+
+		});
+
+		return deferred.promise;
+	};
+
 
 
 })
@@ -352,11 +371,11 @@ shopMyToolsApp.service('forgotPaswdService', function ($q, $http, LOGIN_URL) {
 });
 
 shopMyToolsApp.service('resetPaswdService', function ($q, $http, LOGIN_URL) {
-	this.resetPswdMethod = function (userId, newPswd, confirmPswd,timeStamp) {
+	this.resetPswdMethod = function (userId, newPswd, confirmPswd,timeStamp,mobile) {
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
-			url: LOGIN_URL + '/resetpassword?user_id=' + userId,
+			url: LOGIN_URL + '/resetpassword?user_id=' + userId+'&mobile='+mobile,
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
 			data: { "new_password": newPswd, "confirm_password": confirmPswd,"time_stamp":timeStamp }
 		}).then(function success(data) {

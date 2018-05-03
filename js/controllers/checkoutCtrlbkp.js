@@ -915,7 +915,6 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
                 $rootScope.paymenttype = $rootScope.custDetails.paymenttype;
                 $rootScope.orderDetails = data.data.user_info.order_data;
                 $rootScope.discountAmt = $rootScope.custDetails.discount_amount;
-                $rootScope.netTotal = JSON.parse($rootScope.grandTotal)+JSON.parse($rootScope.discountAmt);
             }
         });
     }

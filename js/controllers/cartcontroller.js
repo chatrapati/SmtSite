@@ -105,7 +105,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
         }
 
 
-             if(window.localStorage['token']){
+             if(window.localStorage['token'] || localStorage.getItem('randomNumber')){
                 $scope.viewCartItems();
             }else{
                 window.location.href = "./login.html";

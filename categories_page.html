@@ -6,6 +6,17 @@
     .mg-image a {
         cursor: pointer;
     }
+     .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e012";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color:white;         /* adjust as needed */
+}
+ .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
 </style>
 <!--<meta http-equiv="refresh" content= "0" />-->
 
@@ -31,7 +42,7 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <!--start of side filter-->
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 subcatdiv">
-                            <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" data-target="#subcategory" ng-if="categories.length > 1">
+                            <div class="accordion-toggle" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" data-target="#subcategory" ng-if="categories.length > 1">
                                 <b>SUB-CATEGORY</b>
                             </div>
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="subcategory" class="subcatcheck">
@@ -103,7 +114,7 @@
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
-                <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry" ng-checked="selectedArray.brand.indexOf(brandArry) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry)">{{brandArry}}
+                <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry" ng-checked="selectedArray.brand.indexOf(brandArry) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry,'left')">{{brandArry}}
               </label>
                                 </div>
                             </div>
@@ -153,7 +164,7 @@
                                         </div>
                                     </div>
                                     <div class="" id="paginaView">
-                                        <div class="pagination" ng-if="pagination.numPages == 0" id="pagin">
+                                        <!-- <div class="pagination" ng-if="pagination.numPages == 0" id="pagin">
                                             <ul>
                                                 <li>
                                                     <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
@@ -198,8 +209,8 @@
                       </button>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <!-- <div class="form-group">
+                                        </div> -->
+                                         <div class="form-group">
                   <div class="buttons-countrows">
                     <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
                       ng-click="previousPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
@@ -210,7 +221,7 @@
                       Next
                     </button>
                   </div>
-                </div> -->
+                </div> 
                                     </div>
 
                                 </div>
@@ -227,8 +238,9 @@
                                 <div ng-if="layout == 'Grid'">
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner ">
-
-                                        <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;">
+                                             <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products " style="margin-top:10px;">
+                                       
+                                        <!-- <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;"> -->
                                             <div class="sub-item respl-item" style="opacity: 1;">
                                                 <div class="item-inner">
                                                     <div class="product-image">
@@ -472,7 +484,7 @@
                                         </div>
                                     </div>
                                     <div class="" id="paginaView">
-                                        <div class="pagination" ng-if="pagination.numPages == 0" id="pagin" style="margin: -26px 0 !important;">
+                                        <!-- <div class="pagination" ng-if="pagination.numPages == 0" id="pagin" style="margin: -26px 0 !important;">
                                             <ul>
                                                 <li>
                                                     <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
@@ -517,8 +529,8 @@
                       </button>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <!-- <div class="form-group">
+                                        </div> -->
+                                         <div class="form-group">
                   <div class="buttons-countrows">
                     <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
                       ng-click="previousPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
@@ -529,7 +541,7 @@
                       Next
                     </button>
                   </div>
-                </div> -->
+                </div> 
                                     </div>
 
                                 </div>

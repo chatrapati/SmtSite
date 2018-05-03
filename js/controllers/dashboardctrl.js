@@ -111,6 +111,8 @@ shopMyToolsApp.controller('dashboardController',
 
             $scope.updateEditDetails = function (userInfo) {
                 window.localStorage['user_name'] = userInfo.first_name;
+                $scope.userInfo = {"user_mobile": userInfo.mobile,"email": window.localStorage['email']};
+                localStorage.setItem('userInfo',JSON.stringify($scope.userInfo))
                 userdataUpdateService.updateuserData(userInfo, window.localStorage['user_id']).then(function (data) {
                     if (data.data.status == 'success') {
                         alert('Updated Successfully');

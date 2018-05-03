@@ -12,6 +12,33 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
     
     }
 
+    $scope.mobilenumbercheck=function(mobile){
+
+     
+      registrationService.mobilecheck(mobile).then(function(data){
+        if(data.data.status=="email exists"){
+          alert("Email id is already exists");
+          $scope.registrationData.email="";
+
+          var name = $window.document.getElementById('email');
+           if (name.value != ''){
+
+               name.focus();
+           }
+                
+        }else if(data.data.status=="mobile exists" ){
+          alert("Mobile number is already exists");
+          $scope.registrationData.user_mobile="";
+           var mobileno = $window.document.getElementById('user_mobile');
+           if (mobileno.value != ''){
+
+               mobileno.focus();
+           }
+        }
+      
+      })
+    }
+
   
 // $scope.fblogin=function(){
 
@@ -244,7 +271,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
     $scope.register = function (registrationData) {
 // alert(JSON.stringify(registrationData))
-      
+      $scope.otp = '';
 if(!registrationData.gstnumber){
   registrationData.gstnumber = "";
 }
@@ -347,7 +374,7 @@ if(!registrationData.gstnumber){
     }
 
     $scope.forgotPaswd = function (forgotPwdUsername) {
-      $rootScope.forgotPwdUsername = forgotPwdUsername;
+      window.localStorage['forgotPwdUsername'] = forgotPwdUsername;
       forgotPaswdService.forgotPswdMethod(forgotPwdUsername).then(function (data) {
        // alert(JSON.stringify(data))
         if(data.data.status == 'otp sent'){
@@ -372,7 +399,7 @@ if(!registrationData.gstnumber){
   // alert($rootScope.ip)
 
     $scope.otpForgotPwd = function(otp){
-      forgotPaswdService.forgotPswdOtpMethod( $rootScope.forgotPwdUsername,otp).then(function(data){
+      forgotPaswdService.forgotPswdOtpMethod(window.localStorage['forgotPwdUsername'],otp).then(function(data){
         //alert(JSON.stringify(data))
        if(data.data.status == 'success'){
         // $location.path("resetPassword")
@@ -380,7 +407,7 @@ if(!registrationData.gstnumber){
      
          //window.location.href = "http://localhost/smtwithpython/SmtSite/resetPassword.html#!/";
         
-         window.location.href = DOMAIN_URL+"/resetPassword.html#!/";
+         window.location.href = DOMAIN_URL+"resetPassword.html#!/";
        }else{
          alert(data.data.status)
        }
@@ -433,6 +460,7 @@ $scope.toggleShowPassword3=function(){
     //  $rootScope.urlString = window.location.search;
 
     $scope.resetPassword = function (data) {
+     // alert( window.localStorage['forgotPwdUsername'])
       $scope.newPswd = data.newPassword;
      // alert(window.localStorage['time_stamp'])
       $scope.confirmPswd = data.confirmPassword;
@@ -443,14 +471,22 @@ $scope.toggleShowPassword3=function(){
          $rootScope.urlString = window.location.href;
       $rootScope.url = $rootScope.urlString;
       $scope.userArray = $rootScope.url.split("#!/");
-         $scope.userId = $scope.userArray[1];
-           $scope.timeStamp = window.localStorage['time_stamp'];
+         
+         if($scope.userArray[1] != ''){
+          $scope.userId = $scope.userArray[1];
+          $scope.mobile = '';
+          $scope.timeStamp = window.localStorage['time_stamp'];
+         }else{
+           $scope.userId  = '';
+            $scope.mobile =  window.localStorage['forgotPwdUsername'];
+            $scope.timeStamp = '';
+         }
+           
       }
-     
      
       if($scope.resetForm.$valid){
         if ($scope.newPswd == $scope.confirmPswd) {
-          resetPaswdService.resetPswdMethod($scope.userId, $scope.newPswd, $scope.confirmPswd,$scope.timeStamp).then(function (data) {
+          resetPaswdService.resetPswdMethod($scope.userId, $scope.newPswd, $scope.confirmPswd,$scope.timeStamp,$scope.mobile).then(function (data) {
             if(data.data.status == 'password changed successfully'){
                window.location.href = "./index.html";
             }else{

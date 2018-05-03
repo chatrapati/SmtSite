@@ -11,6 +11,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         searchProductsService, addToCartService, viewCartService,
         $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL,addCompareProductsService,logoutService) {
 
+
+
         $window.scrollTo(0, 0);
         $scope.user_name = window.localStorage['user_name'];
         $scope.token = window.localStorage['token'];
@@ -119,9 +121,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.gotoCartPage = function () {
-            //alert("1")
-        //    window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/viewCart";
-            window.location.href = DOMAIN_URL+"#!/viewCart";
+        //    if(window.localStorage['token']){
+             window.location.href = DOMAIN_URL+"index.html#!/viewCart";
+        //    }else{
+        //        alert('Please login to view cart')
+        //         window.location.href = DOMAIN_URL+"login.html";
+        //    }
+           
         }
 
 
@@ -237,43 +243,114 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             }
         }
         $rootScope.showHintFlag = 'false';
+         $rootScope.showHintMsg = 'false';
       $rootScope.showHint = function (searchKey) {
-         // alert(searchKey)
+      
             if (searchKey.length >= '3') {
-                //alert(searchKey)
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
-                    // console.log(JSON.stringify(data))
                     if (data.data.status == 'success') {
-                        $rootScope.searchedProducts = data.data.product_info;
+                         $rootScope.showHintMsg = 'false';
+                        $rootScope.searchedProducts = data.data.product_info;   
                         if ($rootScope.searchedProducts.length == 1 ) {
-                            $rootScope.myObj = {
-                                "margin-top":"101px"
-                            }
+                              $rootScope.searchClass = "data_ctrl_search3";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"101px "
+                            // }
                         } else if ($rootScope.searchedProducts.length == 2) {
-                            $rootScope.myObj = {
-                                "margin-top":"115px"
-                            }
-                        }else if ($rootScope.searchedProducts.length > 3) {
-                           
-                            $rootScope.myObj = {
-                                "margin-top":"170px"
-                            }
+                              $rootScope.searchClass = "data_ctrl_search4";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"115px "
+                            // }
+                        }
+                        else if ($rootScope.searchedProducts.length > 3) {
+                         $rootScope.searchClass = "data_ctrl_search5";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"170px "
+                            // }
                         }
                         else if ($rootScope.searchedProducts.length == 3) {
-                          
-                            $rootScope.myObj = {
-                                "margin-top":"127px"
-                            }
+                           
+                         $rootScope.searchClass = "data_ctrl_search6";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px !important"
+                            // }
                         }
                         $rootScope.recommendedList = data.data.recommended;
                         $rootScope.showHintFlag = 'true';
-                    } else if (data.data.status == 'fail') {
+                        localStorage.setItem('searchedProducts',JSON.stringify($rootScope.searchedProducts));
+                    }else if(data.data.status == 'successdata'){
+                         $rootScope.showHintMsg = 'false';
+                        $rootScope.searchedProducts1 = data.data.product_info;
+                     
                         $rootScope.searchedProducts = [];
+                    for (i = 0; i < $rootScope.searchedProducts1.length; i++) {
+                        $scope.searchedProductsObj = $rootScope.searchedProducts1[i];
+                        for (j = 0; j < $scope.searchedProductsObj.prices.length; j++) {
+                            if ($scope.searchedProductsObj.prices[j].doubleoffer_price != 0) {
+                                $rootScope.searchedProducts.push($scope.searchedProductsObj)
+                            }
+                        }
+                    }
+                        if ($rootScope.searchedProducts.length == 1 ) {
+                            $rootScope.searchClass = "data_ctrl_search3";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"101px"
+                            // }
+                        } else if ($rootScope.searchedProducts.length == 2) {
+                             $rootScope.searchClass = "data_ctrl_search4";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"115px"
+                            // }
+                        }else if ($rootScope.searchedProducts.length > 3) {
+                            $rootScope.searchClass = "data_ctrl_search5";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"170px"
+                            // }
+                        }
+                        else if ($rootScope.searchedProducts.length == 3) {
+                           
+                           $rootScope.searchClass = "data_ctrl_search6";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px"
+                            // }
+                        }
+                        $rootScope.recommendedList = data.data.recommended;
                         $rootScope.showHintFlag = 'true';
+                         localStorage.setItem('searchedProducts',JSON.stringify($rootScope.searchedProducts));
+                    }
+                     else if (data.data.status == 'fail') {
+                        $rootScope.searchedProducts = JSON.parse(localStorage.getItem('searchedProducts'));
+                        $rootScope.showHintMsg = 'true';
+                         $rootScope.showHintFlag = 'false';
+                         if ($rootScope.searchedProducts.length == 1 ) {
+                            $rootScope.searchClass = "suggestionsCls1";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"101px"
+                            // }
+                        } else if ($rootScope.searchedProducts.length == 2) {
+                             $rootScope.searchClass = "suggestionsCls2";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"115px"
+                            // }
+                        }else if ($rootScope.searchedProducts.length > 3) {
+                            $rootScope.searchClass = "suggestionsCls3";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"170px"
+                            // }
+                        }
+                        else if ($rootScope.searchedProducts.length == 3) {
+                           
+                           $rootScope.searchClass = "suggestionsCls4";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px"
+                            // }
+                        }
                     }
                 })
             } else if (searchKey.length == '0') {
+                // alert('0')
                 $rootScope.showHintFlag = 'false';
+                 $rootScope.showHintMsg = 'false';
                 $location.path("/")
             }
         }
@@ -329,8 +406,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.goToHome = function () {
-          // window.location.href = "./index.html";
-            $location.path("/");
+           window.location.href = "./index.html";
+          //  $location.path("/");
         }
 
         $scope.goToHomeFromLogin = function(){
@@ -589,10 +666,9 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             $rootScope.showHintFlag = 'false';
             // $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
 
-             $window.open(DOMAIN_URL+"#!/productDetailPage");
+            // $window.open(DOMAIN_URL+"#!/productDetailPage");
 
-
-            //  $location.path("productDetailPage")
+              $location.path("productDetailPage")
 
         }
 

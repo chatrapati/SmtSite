@@ -1,6 +1,6 @@
 shopMyToolsApp.controller('product_detailed_controller',
 	function ($scope, $location, product_detailed_service, notify_service, reviews_service,
-		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope, addToWishListService) {
+		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope, addToWishListService,addCompareProductsService) {
 		//alert('1')
 		$window.scrollTo(0, 0);
 		$scope.showData = 'false';
@@ -25,6 +25,74 @@ shopMyToolsApp.controller('product_detailed_controller',
 			}, 'slow');
 
 		}
+
+		$rootScope.addToCompare = function (productObj) {
+            if (window.localStorage['user_id']) {
+                for (var i = 0; i < $rootScope.compareProducts.length; i++) {
+                    if ($rootScope.compareProducts[i] == productObj.upload_name) {
+                        $scope.match = true;
+                        break;
+                    }
+                    else {
+                        $scope.match = false;
+                    }
+                }
+                if ($scope.match) {
+                    alert('This Product Already Existed in Compare Products');
+                } else {
+                    if ($rootScope.compareProducts.length == 3) {
+                        alert('More than 3 products are not allowed for Comparision')
+                    } else {
+                        addCompareProductsService.compareProductsMethod(productObj.upload_name, window.localStorage['user_id']).then(function (data) {
+                            //alert(JSON.stringify(data))
+                            if (data.data.status == 'success') {
+                                $rootScope.compareProducts = data.data.prod_info;
+                                localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                                $("#addedToCompareProducts").modal('show');
+                                $scope.getCompareProducts();
+                            }  else if(data.data.status == 'subcategory not matched'){
+                                alert('Compare only same Sub-category');
+                            }
+                        })
+                    }
+                }
+
+            }else {
+                if ($rootScope.compareProducts.length == 0) {
+                    $rootScope.compareProducts.push(productObj.upload_name);
+                    $rootScope.compareDetails = productObj.upload_subcategory;
+                    localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                    $("#addedToCompareProducts").modal('show');
+                } else {
+                    if ($rootScope.compareProducts.length == 3) {
+                        alert('More than 3 products are not allowed for Comparision')
+                    } else {
+                        for (var i = 0; i < $rootScope.compareProducts.length; i++) {
+                            if ($rootScope.compareProducts[i] == productObj.upload_name) {
+                                $scope.match = true;
+                                break;
+                            }
+                            else {
+                                $scope.match = false;
+                            }
+                        }
+                        if ($scope.match) {
+                            alert('This Product Already Existed in Compare Products');
+                        } else {
+                            if($rootScope.compareDetails == productObj.upload_subcategory){
+                                $rootScope.compareProducts.push(productObj.upload_name);
+                            localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                            $("#addedToCompareProducts").modal('show');
+                            }else{
+                                alert('Compare only same Sub-category'); 
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
+        }
 
 		$scope.isReadonly = true;
 		//alert(localStorage.getItem('breadCrumb'))
@@ -161,11 +229,11 @@ shopMyToolsApp.controller('product_detailed_controller',
 						$rootScope.tags=$scope.brandDetailDescArray.tags.toString();
 						$rootScope.metadescription=$scope.brandDetailDescArray.metadescription.toString();
 							$rootScope.keywords=$scope.brandDetailDescArray.keywords.toString();
-                          $scope.brandDetailDescArray.manual_pdf="https://s3.ap-south-1.amazonaws.com/gstbucket1/RRB-Gropu-D-Detailed-Syllabus-2018.pdf";
+                        //   $scope.brandDetailDescArray.manual_pdf="https://s3.ap-south-1.amazonaws.com/gstbucket1/RRB-Gropu-D-Detailed-Syllabus-2018.pdf";
 							if($scope.brandDetailDescArray.manual_pdf!== null || $scope.brandDetailDescArray.manual_pdf!==undefined){
                               $rootScope.manual_pdf=$scope.brandDetailDescArray.manual_pdf;
 							}
-							$scope.brandDetailDescArray.manual_video="https://s3.ap-south-1.amazonaws.com/gstbucket1/smt+coming+soon.mp4";
+							// $scope.brandDetailDescArray.manual_video="https://s3.ap-south-1.amazonaws.com/gstbucket1/smt+coming+soon.mp4";
 							if($scope.brandDetailDescArray.manual_video!== null || $scope.brandDetailDescArray.manual_video!==undefined){
                              $rootScope.manual_video=$scope.brandDetailDescArray.manual_video;
 							}
@@ -374,19 +442,19 @@ shopMyToolsApp.controller('product_detailed_controller',
 		$rootScope.cartArray = cartArray;
 
 		$scope.viewCartItems = function () {
-			if (localStorage.getItem('randomNumber')) {
-				viewCartService.cartItemsWithLoginMethod(window.localStorage['user_id'], localStorage.getItem('randomNumber')).then(function (data) {
-					//console.log('1'+JSON.stringify(data))
-					if (data.data.status == 'success') {
-						$rootScope.cartArray = data.data.total_item_list;
-						$scope.orderId = data.data.orderid;
-						window.localStorage['orderId'] = $scope.orderId;
-						localStorage.removeItem('randomNumber');
-					} else {
-						//alert(data.data.status);
-					}
-				})
-			} else {
+			// if (localStorage.getItem('randomNumber')) {
+			// 	viewCartService.cartItemsWithLoginMethod(window.localStorage['user_id'], localStorage.getItem('randomNumber')).then(function (data) {
+			// 		//console.log('1'+JSON.stringify(data))
+			// 		if (data.data.status == 'success') {
+			// 			$rootScope.cartArray = data.data.total_item_list;
+			// 			$scope.orderId = data.data.orderid;
+			// 			window.localStorage['orderId'] = $scope.orderId;
+			// 			localStorage.removeItem('randomNumber');
+			// 		} else {
+			// 			//alert(data.data.status);
+			// 		}
+			// 	})
+			// } else {
 				viewCartService.viewCartMethod(window.localStorage['user_id']).then(function (data) {
 					//console.log('1'+JSON.stringify(data))
 					if (data.data.status == 'success') {
@@ -397,7 +465,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 						//alert(data.data.status);
 					}
 				})
-			}
+			// }
 
 		}
 
@@ -453,9 +521,13 @@ shopMyToolsApp.controller('product_detailed_controller',
 		}
 
 
-
-		$scope.getCartItemsWithoutLogin();
-		$scope.viewCartItems();
+if(window.localStorage['user_id']){
+$scope.viewCartItems();
+}else{
+$scope.getCartItemsWithoutLogin();
+}
+		
+		
 
 		$scope.productQty = function(cartItem){
 			//alert(qty)

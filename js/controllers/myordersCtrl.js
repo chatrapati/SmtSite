@@ -1,9 +1,5 @@
-
-
-
 shopMyToolsApp.controller('myOrdersController',
-
-    ['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService', 'Pagination',
+['$scope', '$http', '$window', '$rootScope', '$location', 'myOrdersService', 'inVoiceService', 'Pagination',
         function ($scope, $http, $window, $rootScope, $location, myOrdersService, inVoiceService, Pagination) {
 
            $window.scrollTo(0, 0);
