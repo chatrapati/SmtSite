@@ -351,7 +351,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 // alert('0')
                 $rootScope.showHintFlag = 'false';
                  $rootScope.showHintMsg = 'false';
-                $location.path("/")
+               // $location.path("/")
             }
         }
 
