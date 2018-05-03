@@ -20,7 +20,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
           alert("Email id is already exists");
           $scope.registrationData.email="";
 
-          var name = $window.document.getElementById('email');
+          var name =document.getElementById('email');
            if (name.value != ''){
 
                name.focus();
@@ -29,7 +29,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
         }else if(data.data.status=="mobile exists" ){
           alert("Mobile number is already exists");
           $scope.registrationData.user_mobile="";
-           var mobileno = $window.document.getElementById('user_mobile');
+           var mobileno = document.getElementById('user_mobile');
            if (mobileno.value != ''){
 
                mobileno.focus();
