@@ -348,7 +348,12 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                          localStorage.setItem('searchedProducts',JSON.stringify($rootScope.searchedProducts));
                     }
                      else if (data.data.status == 'fail') {
+
                         $rootScope.searchedProducts = JSON.parse(localStorage.getItem('searchedProducts'));
+                       
+                        // if($rootScope.searchedProducts.length == 0){
+                            
+                        // }
                         $rootScope.showHintMsg = 'true';
                          $rootScope.showHintFlag = 'false';
                          if ($rootScope.searchedProducts.length == 1 ) {

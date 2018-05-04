@@ -6,17 +6,17 @@
     .mg-image a {
         cursor: pointer;
     }
-     .accordion-toggle:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e113";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color:white;         /* adjust as needed */
+     /* .accordion-toggle:after {
+   
+    font-family: 'Glyphicons Halflings';  
+    content: "\e113";   
+    float: right;       
+    color:white;        
 }
  .accordion-toggle.collapsed:after {
-    /* symbol for "collapsed" panels */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-}
+  
+    content: "\e114";   
+} */
 </style>
 <!--<meta http-equiv="refresh" content= "0" />-->
 
@@ -42,37 +42,41 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <!--start of side filter-->
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 subcatdiv">
-                            <div class="{{togclass}}" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" ng-click="toggleclick()"data-target="#subcategory" ng-if="categories.length > 0">
+                            <div class="accordion-toggle" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" ng-click="toggleclick()"data-target="#subcategory" ng-if="categories.length > 0">
                                 <b>SUB-CATEGORY</b>
+                                <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval==true" style="float: right;margin-top: 2px;"></i>
+                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval==false" style="float: right;margin-top: 2px;"></i>
                             </div>
-                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" ng-if="toggleval==true"id="subcategory" class="subcatcheck">
+                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" ng-if="toggleval==true" id="subcategory" class="subcatcheck">
                                 <div ng-repeat="category in categories track by $index">
                                     <!-- <input type="checkbox" value="value"> -->
                                     <label>
                 <input type="checkbox" class="branCheck checkbox" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" name="category" ng-value="'{{category}}'" ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>
                                 </div>
                             </div>
-                            <div  class="accordion-toggle" data-toggle="collapse" data-target="#priceid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
+                            <div  class="accordion-toggle" data-toggle="collapse"  ng-click="toggleclick2()" data-target="#priceid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
                                 <b>PRICE</b>
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval2==true" style="float: right;margin-top: 2px;"></i>
+                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval2==false" style="float: right;margin-top: 2px;"></i>
                             </div>
-                            <div class="cat_radio_checks" id="priceid">
-                                <input type="radio" ng-model="price" ng-value="'0-1000'" ng-change="getCategorywiseProductcheck('price','0-1000','left')">
-                                <span>&#8377;0 - &#8377;1,000</span>
-                                <br>
-                                <input type="radio" ng-model="price" ng-value="'1000-10000'" ng-change="getCategorywiseProductcheck('price','1000-10000','left')">
-                                <span>&#8377;1,000 - &#8377;10,000</span>
-                                <br>
-                                <input type="radio" ng-model="price" ng-value="'10000-30000'" ng-change="getCategorywiseProductcheck('price','10000-30000','left')">
-                                <span>&#8377;10,000 - &#8377;30,000</span>
-                                <br>
-                                <input type="radio" ng-model="price" ng-value="'30000-50000'" ng-change="getCategorywiseProductcheck('price','30000-50000','left')">
-                                <span>&#8377;30,000 - &#8377;50,000</span>
-                                <br>
+                            <div class="cat_radio_checks" id="priceid" ng-if="toggleval2==true">
+                                <input type="radio" ng-if="minprice<1000" ng-model="price" ng-value="'0-1000'" ng-change="getCategorywiseProductcheck('price','0-1000','left')">
+                                <span  ng-if="minprice<1000">&#8377;0 - &#8377;1,000</span>
+                                <br ng-if="minprice<1000">
+                                <input type="radio" ng-model="price"  ng-if="maxprice>=1000" ng-value="'1000-10000'" ng-change="getCategorywiseProductcheck('price','1000-10000','left')">
+                                <span ng-if="maxprice>=1000">&#8377;1,000 - &#8377;10,000</span>
+                                <br ng-if="maxprice>=1000">
+                                <input type="radio" ng-model="price" ng-if="maxprice>=10000" ng-value="'10000-30000'" ng-change="getCategorywiseProductcheck('price','10000-30000','left')">
+                                <span ng-if="maxprice>=10000">&#8377;10,000 - &#8377;30,000</span>
+                                <br ng-if="maxprice>=10000">
+                                <input type="radio" ng-if="maxprice>=30000" ng-model="price" ng-value="'30000-50000'" ng-change="getCategorywiseProductcheck('price','30000-50000','left')">
+                                <span ng-if="maxprice>=30000">&#8377;30,000 - &#8377;50,000</span>
+                                <br ng-if="maxprice>=30000">
                                 <!-- <input type="radio" ng-model="price" ng-value="'20000-40000'" ng-change="getCategorywiseProductcheck('price','10000-40000')" > ₹20,000 - ₹40,000<br> -->
                                 <!-- <input type="radio" > ₹40,000 - ₹100,000<br> -->
-                                <input type="radio" ng-model="price" ng-value="'50000-2000000'" ng-change="getCategorywiseProductcheck('price','50000-100000000','left')">
-                                <span>&#8377;50,000 and above</span>
-                                <br>
+                                <input type="radio" ng-if="maxprice>=50000" ng-model="price" ng-value="'50000-2000000'" ng-change="getCategorywiseProductcheck('price','50000-100000000','left')">
+                                <span ng-if="maxprice>=50000">&#8377;50,000 and above</span>
+                                <br ng-if="maxprice>=50000">
                                 <input type="radio" ng-model="price" ng-change="getCategorywiseProductcheck('price','','left')">
                                 <span>Show all</span>
                             </div>
@@ -109,10 +113,12 @@
               </div>
             </div>
           </div> -->
-                            <div class="accordion-toggle" data-toggle="collapse" data-target="#brandid"style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
+                            <div class="accordion-toggle" ng-click="toggleclick3()" data-toggle="collapse" data-target="#brandid"style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
                                 <b>BRAND</b>
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval3==true" style="float: right;margin-top: 2px;"></i>
+                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval3==false" style="float: right;margin-top: 2px;"></i>
                             </div>
-                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid">
+                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid" ng-if="toggleval3==true">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
                 <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')">{{brandArry.brand}}({{brandArry.count}})

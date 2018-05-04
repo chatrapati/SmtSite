@@ -13,18 +13,44 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     $scope.isReadonly = true;
     $scope.showSubCat = 'true';
  $scope.toggleval=true;
-   $scope.togclass="accordion-toggle:after";
+  $scope.toggleval2=true;
+  $scope.toggleval3=true;
+  
     $scope.toggleclick=function(){
 
       if($scope.toggleval==true){
-        $scope.togclass="accordion-toggle:after";
+      
        $scope.toggleval=false;
       }
       else{
-         $scope.togclass="accordion-toggle collapsed:after";
+      
          $scope.toggleval=true;
       }
     }
+     $scope.toggleclick2=function(){
+
+      if($scope.toggleval2==true){
+       
+       $scope.toggleval2=false;
+      }
+      else{
+        
+         $scope.toggleval2=true;
+      }
+    }
+
+     $scope.toggleclick3=function(){
+
+      if($scope.toggleval3==true){
+       
+       $scope.toggleval3=false;
+      }
+      else{
+        
+         $scope.toggleval3=true;
+      }
+    }
+
 
 
  $rootScope.seo = {pageTitle:'Category Title',pageDescription:' category ghdfhfghfg'}
@@ -76,6 +102,9 @@ $scope.layout = "Grid";
           // window.localStorage['categories'] = $scope.categories;
           $rootScope.selectedArray = [];
           $scope.brandsData = data.data.brand_count;
+         $scope.maxprice=data.data.maxprice;
+         $scope.minprice=data.data.minprice;
+
         
           localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
           localStorage.setItem('subCategories', JSON.stringify($scope.categories))

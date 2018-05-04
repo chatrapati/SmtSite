@@ -422,35 +422,43 @@ if(!registrationData.gstnumber){
   $scope.inputType1 = 'password';
   $scope.inputType2='password';
   // Hide & show password function
+    $scope.eye='fa fa-eye';
   $scope.toggleShowPassword = function(){
   //alert("asdf");
     if ($scope.inputType == 'password'){
       $scope.inputType = 'text';
+        $scope.eye='fa fa-eye-slash';
     }
     else{
       $scope.inputType = 'password';
+      $scope.eye='fa fa-eye';
     }
   };
 
+ $scope.eye1='fa fa-eye';
    $scope.toggleShowPassword1 = function(){
   //alert("asdf");
     if ($scope.inputType1 == 'password'){
       $scope.inputType1 = 'text';
+      $scope.eye1='fa fa-eye-slash';
     }
     else{
       $scope.inputType1 = 'password';
+       $scope.eye1='fa fa-eye';
     }
   };
 
 
 
-  
+   $scope.eye2='fa fa-eye';
 $scope.toggleShowPassword3=function(){
    if ($scope.inputType2 == 'password'){
       $scope.inputType2 = 'text';
+      $scope.eye2='fa fa-eye-slash';
     }
     else{
       $scope.inputType2 = 'password';
+       $scope.eye2='fa fa-eye';
     }
 }
 
