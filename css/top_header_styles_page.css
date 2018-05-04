@@ -2348,8 +2348,12 @@ a.compare_hover:hover {
 
 .m-row {
     padding-top: 5px;
-    padding-bottom: 0px;
+    padding-bottom: 4px;
 }
-
+@-moz-document url-prefix('') {
+.data_ctrl_search7 {
+    margin-top: 344px !important;
+}
+}
 
 /* 20-4-2018 styles end here */
