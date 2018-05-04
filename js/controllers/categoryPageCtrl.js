@@ -39,11 +39,13 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
 
         }
 
+         $rootScope.showHintFlag = 'false';
+
        $scope.categoryName = window.localStorage['categoryName'];
 $scope.getProductCategories = function (fromVal, toVal) {
 
      product_categories_service.getAllCategoriesOfProduct(window.localStorage['categoryName'], window.localStorage['subCategoryName'], fromVal, toVal).then(function (data) {
-     $scope.categories = data.data.subcategories;
+     $scope.categories = data.data.subcat_count;
           $scope.fromVal = data.data.from;
           $scope.toVal = data.data.to;
             $rootScope.selectedArray = [];

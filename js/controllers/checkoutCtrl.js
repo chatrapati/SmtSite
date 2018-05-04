@@ -138,6 +138,13 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             
         }
 
+
+      $scope.getRedeem=function(redamount){
+          $rootScope.redeemamount=redamount;
+           $rootScope.amount=$rootScope.amount-redamount;
+          
+      }
+
             $scope.IsVisible = false;
             
             $scope.showBillingDetails = false;
@@ -335,6 +342,10 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                      if ($rootScope.couponAmt) {
                          $rootScope.amount = $rootScope.amount-$rootScope.couponAmt;
                      }
+                        if( $rootScope.redeemamount){
+                          $rootScope.amount= $rootScope.amount- $rootScope.redeemamount;
+
+                        }
                    
 
                     $scope.orderId = data.data.orderid;

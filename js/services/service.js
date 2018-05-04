@@ -72,6 +72,7 @@ shopMyToolsApp.service('searchProductsService', function ($q, $http, SERVER_URL1
 		$http({
 			method: 'POST',
 			url: SERVER_URL1 + '/matchprod',
+			// url: SERVER_URL1 +'/match_product_test',
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
 			 data:{"product_name":productName}
 

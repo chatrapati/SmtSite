@@ -188,6 +188,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 		$rootScope.dealProductPrice = dealProductPrice;
 
 		$scope.getProductDetails = function () {
+			
  			$scope.loading = true;
 			product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName']).then(function (data) {
 				// alert(JSON.stringify(data));

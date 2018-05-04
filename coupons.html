@@ -40,9 +40,11 @@
 
                         <div>
 
+                            <div ng-if="homesliderimage.length == 0" style="text-align: center;margin-top: 25px;width:25%; margin-left: 40%;" align="middle">
+                              <img src="https://s3.ap-south-1.amazonaws.com/gstbucket1/images/noproducts+%5B1%5D.jpg">
+                            </div>
 
-
-                          <div class="row">
+                          <div class="row" ng-if="homesliderimage.length != 0">
 
 
 

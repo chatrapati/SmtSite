@@ -36,7 +36,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
       
          $rootScope.seo = { pageTitle : 'Header Conteroller', pageDescription : 'Header controller description'}; 
-         console.log($scope.seo);
+        //  console.log($scope.seo);
 
          $scope.coupons=function(){
               //window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/coupons";
@@ -90,6 +90,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
          $rootScope.getProductDetails = function (productObj) {
+            
        
             window.localStorage['productName'] = productObj.upload_name;
 
@@ -245,7 +246,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         $rootScope.showHintFlag = 'false';
          $rootScope.showHintMsg = 'false';
       $rootScope.showHint = function (searchKey) {
-      
+    
             if (searchKey.length >= '3') {
                 searchProductsService.searchProductsMethod(searchKey).then(function (data) {
                     if (data.data.status == 'success') {
@@ -262,7 +263,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                             //     "margin-top":"115px "
                             // }
                         }
-                        else if ($rootScope.searchedProducts.length > 3) {
+                        else if ($rootScope.searchedProducts.length == 4) {
                          $rootScope.searchClass = "data_ctrl_search5";
                             // $rootScope.myObj = {
                             //     "margin-top":"170px "
@@ -271,6 +272,20 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                         else if ($rootScope.searchedProducts.length == 3) {
                            
                          $rootScope.searchClass = "data_ctrl_search6";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px !important"
+                            // }
+                        }
+                        else if ($rootScope.searchedProducts.length >= 6) {
+                           
+                         $rootScope.searchClass = "data_ctrl_search7";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px !important"
+                            // }
+                        }
+                         else if ($rootScope.searchedProducts.length == 5) {
+                           
+                         $rootScope.searchClass = "data_ctrl_search8";
                             // $rootScope.myObj = {
                             //     "margin-top":"127px !important"
                             // }
@@ -301,8 +316,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                             // $rootScope.myObj = {
                             //     "margin-top":"115px"
                             // }
-                        }else if ($rootScope.searchedProducts.length > 3) {
-                            $rootScope.searchClass = "data_ctrl_search5";
+                        }else if ($rootScope.searchedProducts.length >= 6) {
+                            $rootScope.searchClass = "data_ctrl_search7";
                             // $rootScope.myObj = {
                             //     "margin-top":"170px"
                             // }
@@ -312,6 +327,20 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                            $rootScope.searchClass = "data_ctrl_search6";
                             // $rootScope.myObj = {
                             //     "margin-top":"127px"
+                            // }
+                        }
+                        else if ($rootScope.searchedProducts.length == 4) {
+                           
+                           $rootScope.searchClass = "data_ctrl_search5";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px"
+                            // }
+                        }
+                          else if ($rootScope.searchedProducts.length == 5) {
+                           
+                         $rootScope.searchClass = "data_ctrl_search8";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px !important"
                             // }
                         }
                         $rootScope.recommendedList = data.data.recommended;
@@ -332,17 +361,30 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                             // $rootScope.myObj = {
                             //     "margin-top":"115px"
                             // }
-                        }else if ($rootScope.searchedProducts.length > 3) {
-                            $rootScope.searchClass = "suggestionsCls3";
+                        }else if ($rootScope.searchedProducts.length >=  6) {
+                           
+                            $rootScope.searchClass = "suggestionsCls6";
                             // $rootScope.myObj = {
                             //     "margin-top":"170px"
                             // }
                         }
                         else if ($rootScope.searchedProducts.length == 3) {
                            
-                           $rootScope.searchClass = "suggestionsCls4";
+                           $rootScope.searchClass = "suggestionsCls3";
                             // $rootScope.myObj = {
                             //     "margin-top":"127px"
+                            // }
+                        }
+                         else if ($rootScope.searchedProducts.length == 5) {
+                           
+                           $rootScope.searchClass = "suggestionsCls5";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"127px"
+                            // }
+                        }else if ($rootScope.searchedProducts.length ==  4) {
+                            $rootScope.searchClass = "suggestionsCls4";
+                            // $rootScope.myObj = {
+                            //     "margin-top":"170px"
                             // }
                         }
                     }
@@ -351,6 +393,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 // alert('0')
                 $rootScope.showHintFlag = 'false';
                  $rootScope.showHintMsg = 'false';
+                // document.getElementById("data_ctrl_search").style.display = 'none';
+                //  document.getElementById("data_ctrl_search2").style.display = 'none';
                // $location.path("/")
             }
         }
@@ -406,8 +450,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
         $scope.goToHome = function () {
-           window.location.href = "./index.html";
-          //  $location.path("/");
+          // window.location.href = "./index.html";
+            $location.path("/");
         }
 
         $scope.goToHomeFromLogin = function(){
@@ -578,7 +622,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         $scope.searchProductsMore = function (searchKey) {
             localStorage.setItem('searchkey', searchKey);
-            console.log(localStorage.getItem('searchkey'))
+            // console.log(localStorage.getItem('searchkey'))
             // window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/searchPage";
 
            window.location.href = DOMAIN_URL+"#!/searchPage";

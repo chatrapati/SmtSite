@@ -773,6 +773,23 @@
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
 									</div>
 								</div>
+								
+
+								<div class="productShipping" ng-if="paymentType=='payu'">
+									<div class="discCodes">
+										<p class="discCodes_head">
+											<i class="fa fa-star" aria-hidden="true" style="padding-right:5px;color:red;"></i>Redeem</p>
+										<p class="discCodes_text">Enter Amount to redeem.</p>
+										<input type="text" ng-model="redeemamount" placeholder="Enter Coupon Code"  class="cart_code">
+										<button type="submit" class="btn btn-default pull-right"  id="discCodesBtn" ng-click="getRedeem(redeemamount)">Apply Redeem</button>
+									</div>
+									<div style="margin-left: 10px;">
+										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
+										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
+										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
+										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+									</div>
+								</div>
 							</div>
 						</div>
 						<a class="btn btn-default ad_cart" role="button" ng-click="proceed(cartItem)" style="float:right;margin: 10px;">Proceed to Checkout</a>
