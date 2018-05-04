@@ -49,7 +49,7 @@
                                 <div ng-repeat="category in categories track by $index">
                                     <!-- <input type="checkbox" value="value"> -->
                                     <label>
-                <input type="checkbox" class="branCheck checkbox" ng-selected="category" ng-checked="selectedArray.subcategory.indexOf(category) > -1" name="category" ng-value="'{{category}}'" ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>
+                <input type="checkbox" class="branCheck checkbox" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" name="category" ng-value="'{{category}}'" ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>
                                 </div>
                             </div>
                             <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
@@ -114,7 +114,7 @@
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
-                <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry" ng-checked="selectedArray.brand.indexOf(brandArry) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry,'left')">{{brandArry}}
+                <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')">{{brandArry.brand}}({{brandArry.count}})
               </label>
                                 </div>
                             </div>

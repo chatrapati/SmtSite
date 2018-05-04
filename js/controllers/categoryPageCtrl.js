@@ -49,7 +49,7 @@ $scope.getProductCategories = function (fromVal, toVal) {
           $scope.fromVal = data.data.from;
           $scope.toVal = data.data.to;
             $rootScope.selectedArray = [];
-          $scope.brandsData = data.data.brand_data;
+          $scope.brandsData = data.data.brand_count;
            localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
           localStorage.setItem('subCategories', JSON.stringify($scope.categories))
            $scope.products = data.data.products;
