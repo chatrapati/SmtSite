@@ -9,7 +9,7 @@
      .accordion-toggle:after {
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e012";    /* adjust as needed, taken from bootstrap.css */
+    content: "\e113";    /* adjust as needed, taken from bootstrap.css */
     float: right;        /* adjust as needed */
     color:white;         /* adjust as needed */
 }
@@ -42,20 +42,20 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <!--start of side filter-->
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 subcatdiv">
-                            <div class="accordion-toggle" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" data-target="#subcategory" ng-if="categories.length > 0">
+                            <div class="{{togclass}}" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" ng-click="toggleclick()"data-target="#subcategory" ng-if="categories.length > 0">
                                 <b>SUB-CATEGORY</b>
                             </div>
-                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="subcategory" class="subcatcheck">
+                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" ng-if="toggleval==true"id="subcategory" class="subcatcheck">
                                 <div ng-repeat="category in categories track by $index">
                                     <!-- <input type="checkbox" value="value"> -->
                                     <label>
                 <input type="checkbox" class="branCheck checkbox" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" name="category" ng-value="'{{category}}'" ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>
                                 </div>
                             </div>
-                            <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
+                            <div  class="accordion-toggle" data-toggle="collapse" data-target="#priceid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
                                 <b>PRICE</b>
                             </div>
-                          <div class="cat_radio_checks">
+                            <div class="cat_radio_checks" id="priceid">
                                 <input type="radio" ng-model="price" ng-value="'0-1000'" ng-change="getCategorywiseProductcheck('price','0-1000','left')">
                                 <span>&#8377;0 - &#8377;1,000</span>
                                 <br>
@@ -109,10 +109,10 @@
               </div>
             </div>
           </div> -->
-                            <div style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
+                            <div class="accordion-toggle" data-toggle="collapse" data-target="#brandid"style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
                                 <b>BRAND</b>
                             </div>
-                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;">
+                            <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
                 <input type="checkbox" class="branCheck checkbox" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1" ng-model="selected" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')">{{brandArry.brand}}({{brandArry.count}})

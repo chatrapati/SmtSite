@@ -12,6 +12,19 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     $window.scrollTo(0, 0);
     $scope.isReadonly = true;
     $scope.showSubCat = 'true';
+ $scope.toggleval=true;
+   $scope.togclass="accordion-toggle:after";
+    $scope.toggleclick=function(){
+
+      if($scope.toggleval==true){
+        $scope.togclass="accordion-toggle:after";
+       $scope.toggleval=false;
+      }
+      else{
+         $scope.togclass="accordion-toggle collapsed:after";
+         $scope.toggleval=true;
+      }
+    }
 
 
  $rootScope.seo = {pageTitle:'Category Title',pageDescription:' category ghdfhfghfg'}
@@ -460,7 +473,11 @@ $scope.layout = "Grid";
           $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
           }
           else {
-            alert('Categories not available');
+            //alert('Categories not available');
+             $scope.products = [];
+                $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
           }
 
         });
@@ -511,7 +528,11 @@ $scope.layout = "Grid";
             console.log(JSON.stringify($scope.products))
           }
           else {
-            alert('Categories not available');
+           // alert('Categories not available');
+            $scope.products = [];
+                $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
           }
         });
       }
