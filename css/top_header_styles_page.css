@@ -1058,7 +1058,7 @@ input[type="number"]:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 5px;
+    padding-top: 6px;
     /* height: 75px; */
 }
 
