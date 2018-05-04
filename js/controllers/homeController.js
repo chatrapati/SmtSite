@@ -296,7 +296,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             localStorage.setItem('breadCrumb', productObj.upload_category);
             localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
           
-            location.reload();
+           // location.reload();
              window.location.href = DOMAIN_URL+"#!/productDetailPage";
            
         }

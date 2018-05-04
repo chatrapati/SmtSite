@@ -1,29 +1,29 @@
 shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
-  'product_categories_service', '$location', 'product_subcategories_filter', '$window', '$filter',
-   'DOMAIN_URL','Pagination','addToCartService','addCompareProductsService',
-  function ($scope, $rootScope, product_categories_service, $location, product_subcategories_filter,
-     $window, $filter, DOMAIN_URL,Pagination,addToCartService,addCompareProductsService) {
-  $scope.fromVal = 0;
-    $scope.toVal = 12;
+  'product_categories_service', '$location', 'product_subcategories_filter',
+   '$window', '$filter', 'DOMAIN_URL','Pagination','addCompareProductsService','addToCartService',
+  function ($scope, $rootScope, product_categories_service, $location,
+     product_subcategories_filter, $window, $filter, DOMAIN_URL,Pagination,addCompareProductsService,addToCartService) {
+    $scope.x = "Grid";
     $scope.viewby = "12";
-    $scope.layout = "Grid";
-    $scope.subCatList = [""];
-    $scope.brandList = [""];
-     $scope.sort_by = "popularty";
-      $scope.currentPageNumber = 1;
-      $scope.pricerange = '';
-       $scope.x = "Grid";
-        $window.scrollTo(0, 0);
+    $scope.sort_by = "popularty";
+    $scope.currentPageNumber = 1;
+    $scope.fromVal = 0;
+    $scope.toVal = 12;
+    $window.scrollTo(0, 0);
     $scope.isReadonly = true;
     $scope.showSubCat = 'true';
 
-      if (window.localStorage['subCategoryName'] != '') {
-     
+
+ $rootScope.seo = {pageTitle:'Category Title',pageDescription:' category ghdfhfghfg'}
+     //$(".dropdown-menu.multi-level").css("display", "block");
+
+    if (window.localStorage['subCategoryName'] != '') {
+      //  $scope.showSubCat = 'false';
       $scope.breadCrumb = window.localStorage['categoryName'];
       $scope.breadCrumb1 = window.localStorage['subCategoryName'];
-    
+     // alert($scope.breadCrumb1)
     } else {
-     
+      //  $scope.showSubCat = 'true';
       $scope.breadCrumb = window.localStorage['categoryName'];
     }
 
@@ -39,58 +39,60 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
 
         }
 
-         $rootScope.showHintFlag = 'false';
+$scope.layout = "Grid";
 
-       $scope.categoryName = window.localStorage['categoryName'];
-$scope.getProductCategories = function (fromVal, toVal) {
+    $scope.selectLayout = function(x){
+     // alert(x);
+      $scope.layout = x;
+        $scope.pageList = [0, 1, 2, 3, 4];
+      $scope.pagination = Pagination.getNew($scope.viewby);
+      $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+    }
 
-     product_categories_service.getAllCategoriesOfProduct(window.localStorage['categoryName'], window.localStorage['subCategoryName'], fromVal, toVal).then(function (data) {
-     $scope.categories = data.data.subcat_count;
+
+    $scope.getProductCategories = function (fromVal, toVal) {
+      $scope.loading = true;
+      product_categories_service.getAllCategoriesOfProduct(window.localStorage['categoryName'], window.localStorage['subCategoryName'], fromVal, toVal).then(function (data) {
+        $scope.loading = false;
+        if (data.data.status == 'Success') {
+        //  alert(JSON.stringify(data))
+          // alert('1')
+          $scope.categories = data.data.subcat_count;
           $scope.fromVal = data.data.from;
           $scope.toVal = data.data.to;
-            $rootScope.selectedArray = [];
+          // window.localStorage['categories'] = $scope.categories;
+          $rootScope.selectedArray = [];
           $scope.brandsData = data.data.brand_count;
-           localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
-          localStorage.setItem('subCategories', JSON.stringify($scope.categories))
-           $scope.products = data.data.products;
         
+          localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
+          localStorage.setItem('subCategories', JSON.stringify($scope.categories))
+          $scope.mainminrange = data.data.minprice;
+          $scope.mainmaxrange = data.data.maxprice;
+        
+
+          $scope.value = data.data.minrange;
+          $scope.products = data.data.products;
+          // $scope.displayItems = $scope.products.slice(0, 5);
           $rootScope.totalcount = data.data.totalcount;
-         
+          // alert($rootScope.totalcount)
           $scope.productsprice = $scope.products.prices;
-           $scope.products.forEach(function (element) {
-       
-        // alert(element)
-        if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, 'prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        }
-        else if ($scope.sort_by == 'namefilter') {
-          $scope.products = $filter('orderBy')($scope.products, 'upload_name');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'popularty') {
-          $scope.products = $filter('orderBy')($scope.products, '-avgrating');
-          // $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, '-prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'topselling') {
-          $scope.products = $filter('orderBy')($scope.products, 'salesqty');
-          // $scope.currentPageNumber = 1;
+          $scope.totalItems = data.data.products.length;
+          $scope.datalists = data.data.products;
+           $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      //      if($scope.toVal < $rootScope.totalcount){
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+        } else {
+               $scope.products = [];
         }
       })
-         
-    })
-}
-
-//$scope.getProductCategories($scope.fromVal,$scope.toVal);
-
- $scope.selectLayout = function(x){
-  
-      $scope.layout = x;
-      
     }
+
+
 
       $rootScope.addToCart = function (productObj) {
             if (window.localStorage['token']) {
@@ -235,20 +237,84 @@ $scope.getProductCategories = function (fromVal, toVal) {
 
         }
 
-         $scope.goToHome = function () {
+    $scope.goToHome = function () {
 
       // $location.path("/")
        window.location.href="./index.html";
     }
 
-     $scope.pageNavigate = function (breadCrumb) {
+
+    $scope.nextBtn = 'true';
+    $scope.setpage = function (page) {
+
+      // if ($scope.fromVal = 12) {
+
+      //   $scope.fromVal = 0;
+      // }
+      // $scope.toVal = page;
+
+    
+
+      // if ($rootScope.selectedArray) {
+      //   //  alert(JSON.stringify($rootScope.selectedArray))
+      //   if ($rootScope.selectedArray.subcategory.length > 1) {
+      //     $scope.getCategorywiseProductcheck('cat', $rootScope.selectedArray.subcategory)
+      //     $scope.currentPageNumber = 1;
+      //   }
+      //   if ($rootScope.selectedArray.brand.length > 1) {
+      //     $scope.getCategorywiseProductcheck('brand', $rootScope.selectedArray.brand)
+      //     $scope.currentPageNumber = 1;
+      //   }
+
+      //   if ($rootScope.selectedArray.maxrange != '' || $rootScope.selectedArray.maxrange != undefined) {
+      //     //  alert('2')
+      //     $scope.getCategorywiseProductcheck('price', $rootScope.selectedArray.maxrange)
+      //   }
+      //   if ($rootScope.selectedArray.pricerange != '' || $rootScope.selectedArray.pricerange != undefined && $scope.price != undefined) {
+      //     //  alert('1')
+      //     $scope.getCategorywiseProductcheck('price', $rootScope.selectedArray.pricerange)
+      //   }
+      // } else {
+      //   if ($scope.toVal < $rootScope.totalcount) {
+      //     $scope.getProductCategories($scope.fromVal, $scope.toVal);
+      //     $scope.nextBtn = 'true';
+      //   } else {
+      //     $scope.toVal = $rootScope.totalcount;
+      //     $scope.getProductCategories($scope.fromVal, $scope.toVal);
+      //     $scope.nextBtn = 'false';
+      //   }
+      // }
+      // if ($rootScope.selectedArray1) {
+      //   if ($rootScope.selectedArray1.sortdata != '') {
+
+      //     $scope.getCategorywiseProductcheck('sort', $rootScope.selectedArray1.category)
+      //   }
+
+      // }
+      $scope.currentPageNumber = 1;
+        $scope.pageList = [0,1,2,3,4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      
+    }
+
+    $scope.test1 = function (val) {
+      $scope.minrange = 10;
+      $scope.maxrange = 1000;
+      $scope.maxrange1 = val;
+
+    }
+
+    $scope.pageNavigate = function (breadCrumb) {
       window.localStorage['categoryName'] = breadCrumb;
       window.localStorage['subCategoryName'] = "";
       $scope.breadCrumb1 = '';
       $scope.getProductCategories($scope.fromVal, $scope.toVal);
     }
 
-     $rootScope.getProductDetailsCat = function (productObj) {
+
+
+    $rootScope.getProductDetailsCat = function (productObj) {
 
       // alert(JSON.stringify(productObj))
 
@@ -273,230 +339,376 @@ $scope.getProductCategories = function (fromVal, toVal) {
 
     }
 
-$scope.getCategorywiseProductcheck = function (typeval, subCategory, from) {
 
-    if(typeval == 'cat'){
-       // alert(typeof(subCategory))
-       if(typeof(subCategory) == 'object'){
-           $scope.subCatList = subCategory
-       }else{
- if ($scope.subCatList.indexOf(subCategory) >= 1) {
-            var index = $scope.subCatList.indexOf(subCategory);
-            $scope.subCatList.splice(index, 1);
+    $scope.setOrder = function (id, order, reverse) {
+      $scope.sorting.id = id;
+      $scope.sorting.order = order;
+      $scope.sorting.direction = reverse;
+    };
+
+    $scope.show_by_list = ["12", "24", "36"];
+
+    $scope.subCatList = [""];
+    $scope.brandList = [""];
+
+    // $scope.pricefilter = ['']
+
+    $scope.showBrandFilter = 'true';
+
+    $scope.getCategorywiseProductcheck = function (typeval, subCategory, from) {
+      $scope.from = from;
+      //alert(subCategory)
+      // alert('1'+$scope.subCatList)
+      $scope.loading = true;
+      $scope.nextBtn = 'true';
+      //  $scope.fromVal = 0;
+      //       $scope.toVal = 12;
+      if (typeval == "cat") {
+        //alert('cat')
+        if (typeof (subCategory) == 'object') {
+          $scope.subCatList = subCategory;
+        } else {
+
+          if ($scope.subCatList.indexOf(subCategory) >= 1) {
+            $scope.subCatList.splice($scope.subCatList.indexOf(subCategory), 1);
+
           } else {
             $scope.subCatList.push(subCategory);
           }
-       }
-        if(from == 'left'){
-            $scope.fromVal = 0;
-    $scope.toVal = 12;
-     $scope.currentPageNumber = 1;
         }
-        
-         product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
-        // console.log(data.data)
-          if(data.data.status=='Success'){
-          $rootScope.selectedArray = data.data.filterdata;
+
+        if (window.localStorage['categoryName'] != "") {
+          $scope.categoryName = window.localStorage['categoryName'];
+        } else {
+          $scope.categoryName = "";
+        }
+
+
+         $scope.fromVal = 0;
+          $scope.toVal = 12;
+          $scope.currentPageNumber = 1;
+          $scope.viewby = "12";
+         
+        // if (localStorage.getItem('selectedArray')) {
+        //   if (localStorage.getItem('selectedArray').pricerange == '' || localStorage.getItem('selectedArray').pricerange == undefined) {
+        //     //  alert('1')
+        //     if (localStorage.getItem('selectedArray').maxrange) {
+        //       $scope.pricerange = localStorage.getItem('selectedArray').minrange + '-' + localStorage.getItem('selectedArray').maxrange;
+        //     } else {
+        //       $scope.pricerange = '';
+        //     }
+
+        //   } else if (localStorage.getItem('selectedArray').maxrange != '' || localStorage.getItem('selectedArray').maxrange != undefined) {
+        //     //  alert('2')
+        //     $scope.pricerange = localStorage.getItem('selectedArray').minrange + '-' + localStorage.getItem('selectedArray').maxrange;
+        //   }
+        //   else if (localStorage.getItem('selectedArray').pricerange != '') {
+        //     //  alert('3')
+        //     $scope.pricerange = $scope.minrange + '-' + localStorage.getItem('selectedArray').pricerange;
+        //   }
+        // }
+        // else {
+
+        //   //  alert('4')
+        //   $scope.fromVal = 0;
+        //   $scope.toVal = 12;
+        //   $scope.currentPageNumber = 1;
+        //   $scope.viewby = "12";
+        //   $scope.pricerange = '';
+        // }
+
+        if ($scope.price != undefined) {
+          $scope.pricerange = $scope.price;
+        }else{
+           $scope.pricerange = '';
+        }
+
+        // alert($scope.toVal)
+        product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
+          $scope.loading = false;
+          if (data.data.status == 'Success') {
+
+            $rootScope.selectedArray = data.data.filterdata;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
+            // if ($scope.subCatList.length == 1) {
+
+            //   $scope.getProductCategories($scope.fromVal, $scope.viewby);
+            // }
+
+            //  $scope.currentPageNumber = 1;
+            // $scope.viewby = "12";
+            $scope.minrange = data.data.minprice;
+            $scope.maxrange = data.data.maxprice;
             $scope.products = data.data.products;
             $scope.fromVal = data.data.from;
             $scope.toVal = data.data.to;
-             $rootScope.totalcount = data.data.totalcount;
             $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
             $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
-             $scope.products.forEach(function (element) {
-       
-        // alert(element)
-        if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, 'prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        }
-        else if ($scope.sort_by == 'namefilter') {
-          $scope.products = $filter('orderBy')($scope.products, 'upload_name');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'popularty') {
-          $scope.products = $filter('orderBy')($scope.products, '-avgrating');
-          // $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, '-prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'topselling') {
-          $scope.products = $filter('orderBy')($scope.products, 'salesqty');
-          // $scope.currentPageNumber = 1;
-        }
-      })
+            $rootScope.totalcount = data.data.totalcount;
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      //      if($scope.toVal < $rootScope.totalcount){
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+          } else if (data.data.status == 'No data avialbale') {
+            $scope.products = [];
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
           }
-        else if(data.data.status="No data avialbale"){
-              $scope.products = [];
+          else {
+            alert('Categories not available');
+          }
+
+        });
+      } else if (typeval == 'sort') {
+        // alert('sort')
+        if ($rootScope.selectedArray) {
+          if ($rootScope.selectedArray.pricerange == '' || $rootScope.selectedArray.pricerange == undefined) {
+            $scope.pricerange = $scope.minrange + '-' + $scope.maxrange;
+          } else if ($rootScope.selectedArray.pricerange != '') {
+            $scope.pricerange = $scope.minrange + '-' + $rootScope.selectedArray.pricerange;
+          }
         }
-        })
-         
-    }else if(typeval == 'brand'){
-        if ($scope.brandList.indexOf(subCategory) >= 1) {
-            var index = $scope.brandList.indexOf(subCategory);
-            $scope.brandList.splice(index, 1);
+        else {
+          //  alert('2sd')
+          $scope.pricerange = '';
+        }
+
+        // if($rootScope.selectedArray1){
+
+        // }
+
+        $scope.categoryName = subCategory;
+        product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
+          $scope.loading = false;
+          if (data.data) {
+
+            $rootScope.selectedArray = data.data.filterdata;
+            localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
+            // alert(localStorage.getItem('brandsData'))
+
+            //  $scope.currentPageNumber = 1;
+            // $scope.viewby = "12";
+            $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
+            $scope.minrange = data.data.minprice;
+            $scope.maxrange = data.data.maxprice;
+            $scope.maxrange1 = $rootScope.selectedArray.maxrange;
+            $scope.products = data.data.products;
+            $rootScope.totalcount = data.data.totalcount;
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      //      if($scope.toVal < $rootScope.totalcount){
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+            console.log(JSON.stringify($scope.products))
+          }
+          else {
+            alert('Categories not available');
+          }
+        });
+      }
+      else if (typeval == 'price') {
+        // alert('prce')
+        // alert($scope.testMsg)
+        // console.log(subCategory)
+        $scope.maxrange = subCategory;
+        if (window.localStorage['categoryName'] != "") {
+          $scope.categoryName = window.localStorage['categoryName'];
+        } else {
+          $scope.categoryName = "";
+        }
+
+        if (window.localStorage['subCategoryName']) {
+          $scope.subCatList.push(window.localStorage['subCategoryName'])
+        }
+        // $scope.pricerange = $scope.minrange + '-' + $scope.maxrange;
+        if (subCategory.includes('-')) {
+          $scope.pricerange = subCategory;
+
+        } else if(subCategory == '') {
+          $scope.pricerange = $scope.mainminrange + '-' + $scope.mainmaxrange;
+          //  $scope.fromVal = 0;
+          // $scope.toVal = 12;
+          //  $scope.currentPageNumber = 1;
+          // $scope.viewby = "12";
+        }
+        if ($scope.from == 'left') {
+          $scope.fromVal = 0;
+          $scope.toVal = 12;
+          $scope.currentPageNumber = 1;
+          $scope.viewby = "12";
+        }
+
+
+
+        product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
+          $scope.loading = false;
+          //   alert(JSON.stringify(data))
+          if (data.data.status == 'Success') {
+            //alert()
+
+            $rootScope.selectedArray = data.data.filterdata;
+            $rootScope.totalcount = data.data.totalcount;
+            localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
+
+            $scope.minrange = data.data.minprice;
+            // $scope.maxrange = data.data.maxprice;
+            $scope.maxrange = localStorage.getItem('maxrange');
+            // $scope.currentPageNumber = 1;
+            // $scope.viewby = "12";
+
+            $scope.maxrange1 = $rootScope.selectedArray.maxrange;
+            $scope.products = data.data.products;
+            //alert(JSON.stringify($scope.products))
+            $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      //      if($scope.toVal < $rootScope.totalcount){
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+          }
+          else if (data.data.status == 'No data avialbale') {
+            // alert('Categories not available');
+            $scope.products = [];
+            $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+          }
+        });
+      }
+      else if (typeval == "brand") {
+        // alert('brand')
+        //alert(subCategory)
+        if (typeof (subCategory) == 'object') {
+          $scope.brandList = subCategory;
+        } else {
+          if ($scope.brandList.indexOf(subCategory) >= 1) {
+            // var index = $scope.brandList.indexOf(subCategory);
+            $scope.brandList.splice($scope.brandList.indexOf(subCategory), 1);
           }
           else {
             // $scope.brandList = [];
             $scope.brandList.push(subCategory);
           }
-         $scope.pricerange = '';
-          product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
-           
-           if(data.data.status=='Success'){
+
+        }
+        if (window.localStorage['categoryName'] != "") {
+          $scope.categoryName = window.localStorage['categoryName'];
+        } else {
+          $scope.categoryName = "";
+        }
+
+         $scope.fromVal = 0;
+          $scope.toVal = 12;
+          $scope.currentPageNumber = 1;
+          $scope.viewby = "12";
+         
+
+           if ($scope.price != undefined) {
+          $scope.pricerange = $scope.price
+        }else{
+           $scope.pricerange = '';
+        }
+        // if ($rootScope.selectedArray) {
+        //   if ($rootScope.selectedArray.pricerange == '' || $rootScope.selectedArray.pricerange == undefined) {
+        //     // alert('1')
+        //     if ($rootScope.selectedArray.maxrange) {
+        //       $scope.pricerange = $rootScope.selectedArray.minrange + '-' + $rootScope.selectedArray.maxrange;
+        //     } else {
+        //       $scope.pricerange = localStorage.getItem('minrange') + '-' + localStorage.getItem('maxrange');
+        //     }
+
+        //   } else if ($rootScope.selectedArray.maxrange != '' || $rootScope.selectedArray.maxrange != undefined) {
+        //     //  alert('2')
+        //     $scope.pricerange = $rootScope.selectedArray.minrange + '-' + $rootScope.selectedArray.maxrange;
+        //   }
+        //   else if ($rootScope.selectedArray.pricerange != '') {
+        //     // alert('3')
+        //     $scope.pricerange = $scope.minrange + '-' + $rootScope.selectedArray.pricerange;
+        //   }
+        // }
+        // else {
+        //   // alert('4')
+        //   $scope.fromVal = 0;
+        //   $scope.toVal = 12;
+        //   $scope.currentPageNumber = 1;
+        //   $scope.viewby = "12";
+        //   $scope.pricerange = '';
+        // }
+
+
+        if (window.localStorage['subCategoryName']) {
+          $scope.subCatList.push(window.localStorage['subCategoryName'])
+        }
+        product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
+          $scope.loading = false;
+          if (data.data.status == 'Success') {
+
             $rootScope.selectedArray = data.data.filterdata;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $rootScope.brandsDataArray = $rootScope.selectedArray.brand;
-           
+            // alert(localStorage.getItem('brandsData'))
+            $scope.minrange = data.data.minprice;
+            $scope.maxrange = data.data.maxprice;
             $scope.products = data.data.products;
             $rootScope.totalcount = data.data.totalcount;
             $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
             $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
-             $scope.products.forEach(function (element) {
-       
-        // alert(element)
-        if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, 'prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        }
-        else if ($scope.sort_by == 'namefilter') {
-          $scope.products = $filter('orderBy')($scope.products, 'upload_name');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'popularty') {
-          $scope.products = $filter('orderBy')($scope.products, '-avgrating');
-          // $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, '-prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'topselling') {
-          $scope.products = $filter('orderBy')($scope.products, 'salesqty');
-          // $scope.currentPageNumber = 1;
-        }
-      })
-           }
-        else if(data.data.status="No data avialbale"){
-              $scope.products = [];
-        }
-        })
-    }else if(typeval == 'price'){
-         if(from == 'left'){
-            $scope.fromVal = 0;
-    $scope.toVal = 12;
-     $scope.currentPageNumber = 1;
-        }
-        $scope.pricerange = subCategory;
-          product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by).then(function (data) {
-            if(data.data.status=='Success'){
-            $rootScope.selectedArray = data.data.filterdata;
-            localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-            $rootScope.brandsDataArray = $rootScope.selectedArray.brand;
-           
-            $scope.products = data.data.products;
-            $rootScope.totalcount = data.data.totalcount;
-            $rootScope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
-            $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
-             $scope.products.forEach(function (element) {
-       
-        // alert(element)
-        if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, 'prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        }
-        else if ($scope.sort_by == 'namefilter') {
-          $scope.products = $filter('orderBy')($scope.products, 'upload_name');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'popularty') {
-          $scope.products = $filter('orderBy')($scope.products, '-avgrating');
-          // $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, '-prices[0].offer_price');
-         //  $scope.currentPageNumber = 1;
-        } else if ($scope.sort_by == 'topselling') {
-          $scope.products = $filter('orderBy')($scope.products, 'salesqty');
-          // $scope.currentPageNumber = 1;
-        }
-      })
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      //      if($scope.toVal < $rootScope.totalcount){
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+
+          } else if (data.data.status == 'No data avialbale') {
+            $scope.products = [];
+             $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
           }
-            else if(data.data.status="No data avialbale"){
-              $scope.products = [];
-        }
-        
-        })
+          else {
+           // alert('Categories not available');
+                $scope.products = [];
+
+          }
+
+        });
+
+      }
+
+
+
     }
-    
-}
-
-$scope.previousPageMethod = function (from, to) {
-    if($scope.currentPageNumber != 1){
-  $scope.fromVal = JSON.parse(from)-JSON.parse($scope.viewby);
-        $scope.toVal = JSON.parse(to)-JSON.parse($scope.viewby);
-        $scope.currentPageNumber = $scope.currentPageNumber - 1;
-        if(localStorage.getItem('selectedArray')){
-   
-     $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
- $scope.categoryName = $scope.selectedArray.category;
- $scope.subCatList = $scope.selectedArray.subcategory;
- $scope.brandList = $scope.selectedArray.brand;
- $scope.pricerange = $scope.selectedArray.pricerange;
- $scope.getCategorywiseProductcheck('cat',$scope.subCatList);
-}else{
-   
-$scope.getProductCategories($scope.fromVal,$scope.toVal);
-}
-    }
-   
-
-}
-
-$scope.nextPageMethod = function(from,to,viewby){
-  //alert($scope.viewby)
-//   if($scope.viewby == 12){
-// $scope.fromVal = JSON.parse(from)+12;
-//         $scope.toVal = JSON.parse(to)+12;
-//   }else{
-      $scope.fromVal = JSON.parse(from)+JSON.parse($scope.viewby);
-        $scope.toVal = JSON.parse(to)+JSON.parse($scope.viewby);
-//   }
-    
- $scope.currentPageNumber = $scope.currentPageNumber + 1;
-if(localStorage.getItem('selectedArray')){
-   
-     $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
- $scope.categoryName = $scope.selectedArray.category;
- $scope.subCatList = $scope.selectedArray.subcategory;
- $scope.brandList = $scope.selectedArray.brand;
- $scope.pricerange = $scope.selectedArray.pricerange;
- $scope.getCategorywiseProductcheck('cat',$scope.subCatList);
-}else{
-   
-$scope.getProductCategories($scope.fromVal,$scope.toVal);
-}
-}
 
 
-if(localStorage.getItem('selectedArray')){
-  $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
- $scope.categoryName = $scope.selectedArray.category;
- $scope.subCatList = $scope.selectedArray.subcategory;
- $scope.brandList = $scope.selectedArray.brand;
- $scope.pricerange = $scope.selectedArray.pricerange;
- $scope.getCategorywiseProductcheck('cat',$scope.subCatList);
-}else{
-    $scope.getProductCategories($scope.fromVal,$scope.toVal);
-}
-
-$scope.sortby = function (val123) {
-       
+    $scope.sortby = function (val123) {
+ 
+         
+        //  $scope.viewby = "12";
+      
       $scope.sort_by = val123;
-       $scope.fromVal = 0;
-    $scope.toVal = 12;
-     $scope.currentPageNumber = 1;
+      // alert($scope.sort_by)
+      //$scope.loading = true;  
+       $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
       $scope.products.forEach(function (element) {
        
         // alert(element)
@@ -520,43 +732,90 @@ $scope.sortby = function (val123) {
           // $scope.currentPageNumber = 1;
         }
       })
-}
 
- $scope.setpage = function (page) {
-    // alert($rootScope.totalcount)
-      $scope.toVal = page;
-      if($scope.toVal < $rootScope.totalcount){
-
-       if(localStorage.getItem('selectedArray')){
-  $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
- $scope.categoryName = $scope.selectedArray.category;
- $scope.subCatList = $scope.selectedArray.subcategory;
- $scope.brandList = $scope.selectedArray.brand;
- $scope.pricerange = $scope.selectedArray.pricerange;
- $scope.getCategorywiseProductcheck('cat',$scope.subCatList);
-}else{
-    $scope.getProductCategories($scope.fromVal,$scope.toVal);
-}
-       
-      }else{
-        $scope.toVal = $rootScope.totalcount;
-       if(localStorage.getItem('selectedArray')){
-  $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
- $scope.categoryName = $scope.selectedArray.category;
- $scope.subCatList = $scope.selectedArray.subcategory;
- $scope.brandList = $scope.selectedArray.brand;
- $scope.pricerange = $scope.selectedArray.pricerange;
- $scope.getCategorywiseProductcheck('cat',$scope.subCatList);
-}else{
-    $scope.getProductCategories($scope.fromVal,$scope.toVal);
-}
-       $scope.nextBtn = 'false';
-      }
-     
       
- }
+         // alert($scope.toVal)
+      // if($scope.toVal < $rootScope.totalcount){
+      //  // alert('1')
+      //      $scope.pageList = [0];
+      //     $scope.pagination = Pagination.getNew($scope.viewby);
+      //     $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+      // }
+      console.log(JSON.stringify($scope.products))
 
-}])
+    }
+
+    $scope.abstractProcessPagination = function (position, pagination, list) {
+      //next button
+
+     
+      if (position == 5) {
+        pagination.nextPage();
+        if (list[4] <= pagination.page && pagination.page != (pagination.numPages - 1)) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        }
+      } //prev button
+      else if (position == -1) {
+        pagination.prevPage();
+        if (list[0] >= pagination.page && pagination.page != 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      } else {
+        pagination.toPageId(list[position]);
+        if (position == 4 && pagination.numPages > 5 && list[position] < pagination.numPages - 1) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] + 1;
+          }
+        } else if (position == 0 && pagination.numPages > 5 && list[0] > 0) {
+          for (var i = 0; i < list.length; i++) {
+            list[i] = list[i] - 1;
+          }
+        }
+      }
+    };
+
+    $scope.processPagination = function (position) {
+    
+    
+      $scope.abstractProcessPagination(position, $scope.pagination, $scope.pageList)
+    }
+
+
+
+    //alert(localStorage.getItem('selectedArray'))
+    if (localStorage.getItem('selectedArray')) {
+      $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'));
+      // alert($scope.selectedArray.category)
+      if ($scope.selectedArray.category != '' && $scope.selectedArray.subcategory == '' && $scope.selectedArray.brand == '') {
+        $scope.getProductCategories($scope.fromVal, $scope.toVal);
+      }
+      if ($scope.selectedArray.subcategory != '' && $scope.selectedArray.category != '') {
+        window.localStorage['categoryName'] = $scope.selectedArray.category;
+        // alert(window.localStorage['categoryName'])
+        $scope.getCategorywiseProductcheck('cat', $scope.selectedArray.subcategory)
+
+      }
+      if ($scope.selectedArray.brand != '' && $scope.selectedArray.category != '') {
+        window.localStorage['categoryName'] = $scope.selectedArray.category;
+        $scope.getCategorywiseProductcheck('brand', $scope.selectedArray.brand)
+      }
+      if ($scope.selectedArray.brand != '' && $scope.selectedArray.category != '' && $scope.selectedArray.subcategory != '') {
+        window.localStorage['categoryName'] = $scope.selectedArray.category;
+        $scope.getCategorywiseProductcheck('brand', $scope.selectedArray.brand)
+        $scope.getCategorywiseProductcheck('cat', $scope.selectedArray.subcategory)
+      }
+    } else if (window.localStorage['categoryName'] || window.localStorage['subCategoryName']) {
+     // alert('1')
+      $scope.getProductCategories($scope.fromVal, $scope.toVal);
+    } else {
+      $location.path("/");
+    }
+  }
+]);
 
 
 shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
@@ -702,3 +961,20 @@ $scope.layout = "Grid";
       $scope.getCategorywiseProductcheck($scope.fromVal, $scope.toVal);
     }
   }])
+
+/*shopMyToolsApp.filter('emptyFilter', function() {
+  return function(brandsData) {
+    var filteredArray = [];
+      angular.forEach(brandsData, function(item) {
+        if (item) filteredArray.push(item);
+      });
+    return filteredArray;  
+  };
+}*/
+
+
+
+
+
+
+
