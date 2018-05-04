@@ -2356,6 +2356,11 @@ a.compare_hover:hover {
 
 }
 @-moz-document url-prefix('') {
+.data_ctrl_search6 {
+    margin-top: 344px !important;
+}
+}
+@-moz-document url-prefix('') {
 .data_ctrl_search7 {
     margin-top: 344px !important;
 }
@@ -2374,7 +2379,7 @@ a.compare_hover:hover {
 }
 @-moz-document url-prefix('') {
 .suggestionsCls6 {
-    margin-top: 244px !important;
+    margin-top: 257px !important;
 }
 }
 
