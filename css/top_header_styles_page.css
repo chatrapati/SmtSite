@@ -1532,8 +1532,8 @@ ul #footer_links_valuess a:hover {
 }
 
 @-moz-document url-prefix('') {
-    #data_ctrl_search {
-        margin-top: 343px !important;
+    .data_ctrl_search3 {
+        margin-top: 202px !important;
     }
 }
 
@@ -2343,17 +2343,48 @@ a.compare_hover:hover {
     color: #fff;
 }
 
-
-/* 20-4-2018 styles start here */
-
+/* 04-5-2018 styles start here */
 .m-row {
     padding-top: 5px;
     padding-bottom: 0px;
+}
+@-moz-document url-prefix('') {
+	.m-row {
+    padding-top: 5px;
+    padding-bottom: 4px;
+}
+
 }
 @-moz-document url-prefix('') {
 .data_ctrl_search7 {
     margin-top: 344px !important;
 }
 }
+@-moz-document url-prefix('') {
+.data_ctrl_search8 {
+    margin-top: 313px;
+    
+}
 
-/* 20-4-2018 styles end here */
+}
+@-moz-document url-prefix('') {
+.suggestionsCls5 {
+    margin-top: 217px !important;
+}
+}
+@-moz-document url-prefix('') {
+.suggestionsCls6 {
+    margin-top: 244px !important;
+}
+}
+@-moz-document url-prefix('') {
+.suggestionsCls6 {
+    margin-top: 103px !important;
+}
+}
+@media (min-width: 992px){
+.compareDiv2{
+	    padding-left: 11px !important
+}
+}
+/* 04-5-2018 styles end here */
