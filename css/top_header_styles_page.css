@@ -2377,9 +2377,11 @@ a.compare_hover:hover {
     margin-top: 244px !important;
 }
 }
+
 @-moz-document url-prefix('') {
-.suggestionsCls6 {
-    margin-top: 103px !important;
+.suggestionsCls1 {
+    margin-top: 103px;
+}
 }
 }
 @media (min-width: 992px){
