@@ -1724,11 +1724,11 @@ ul #footer_links_valuess a:hover {
         text-align: inherit !important;
     }
 }
-@media (min-width: 1200px){
+/*@media (min-width: 1200px){
 #header_searchhh {
     padding-top: 7px;
   }
-}
+} */
 @media (min-width:1024px) and (max-width:1280px) {
     /*.ad_cart_lak {
 
