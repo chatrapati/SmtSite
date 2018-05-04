@@ -1,30 +1,11 @@
 shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
 
-    // this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
-    //     var deferred = $q.defer();
-		
-    //     $http({
-    //         method: 'POST',
-    //         url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
-    //        //url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts?category='+categoryName,
-    //         headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
-	// 		data:{"category":categoryName,"subcategory":[subCategoryName], "from":fromVal ,"to":toVal } 
-           
-    //     }).then(function success(data) {
-    //         deferred.resolve(data);
-    //     }, function error(data) {
-    //         deferred.reject(data);
-    //     });
-    //     return deferred.promise;
-    // };	
-
-
- this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
+    this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
         var deferred = $q.defer();
 		
         $http({
             method: 'POST',
-            url: PRODUCT_CATEGORY_SERVICE+'/productlist',
+            url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
            //url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts?category='+categoryName,
             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
 			data:{"category":categoryName,"subcategory":[subCategoryName], "from":fromVal ,"to":toVal } 
@@ -38,6 +19,25 @@ shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT
     };	
 
 
+//  this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
+//         var deferred = $q.defer();
+		
+//         $http({
+//             method: 'POST',
+//             url: PRODUCT_CATEGORY_SERVICE+'/productlist',
+//            //url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts?category='+categoryName,
+//             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
+// 			data:{"category":categoryName,"subcategory":[subCategoryName], "from":fromVal ,"to":toVal } 
+           
+//         }).then(function success(data) {
+//             deferred.resolve(data);
+//         }, function error(data) {
+//             deferred.reject(data);
+//         });
+//         return deferred.promise;
+//     };	
+
+
 
 
 
@@ -45,29 +45,12 @@ shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT
 
 shopMyToolsApp.service('product_subcategories_filter', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
 
-    // this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val) {
-    //     var deferred = $q.defer();
-		
-    //     $http({
-    //         method: 'POST',
-    //         url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
-    //         headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
-	//  data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,"to":toVal,val} 
-           
-    //     }).then(function success(data) {
-    //         deferred.resolve(data);
-    //     }, function error(data) {
-    //         deferred.reject(data);
-    //     });
-    //     return deferred.promise;
-    // };	
-
- this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val) {
+    this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val) {
         var deferred = $q.defer();
 		
         $http({
             method: 'POST',
-            url: PRODUCT_CATEGORY_SERVICE+'/productlist',
+            url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
 	 data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,"to":toVal,val} 
            
@@ -78,6 +61,23 @@ shopMyToolsApp.service('product_subcategories_filter', function ($q, $http,PRODU
         });
         return deferred.promise;
     };	
+
+//  this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val) {
+//         var deferred = $q.defer();
+		
+//         $http({
+//             method: 'POST',
+//             url: PRODUCT_CATEGORY_SERVICE+'/productlist',
+//             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
+// 	 data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,"to":toVal,val} 
+           
+//         }).then(function success(data) {
+//             deferred.resolve(data);
+//         }, function error(data) {
+//             deferred.reject(data);
+//         });
+//         return deferred.promise;
+//     };	
 
 
 });	
