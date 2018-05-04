@@ -1,3 +1,7 @@
+
+.cancelBtn {
+     margin-top:2px !important;
+    }
 .re-products {
     margin-bottom: -75px;
 }
@@ -1043,11 +1047,11 @@ input[type="number"]:focus {
 }
 
 #header_logooo {
-    /*padding: 10px 0;*/
-    /* padding: 12px 0; */
+  /*  padding: 3px 0; */
+   
     width: 50%;
     cursor: pointer;
-    /* margin-top: 2px; */
+  margin-top:2px !important; 
 }
 
 #header_searchhh {
@@ -1720,13 +1724,19 @@ ul #footer_links_valuess a:hover {
         text-align: inherit !important;
     }
 }
-
+@media (min-width: 1200px){
+#header_searchhh {
+    padding-top: 7px;
+  }
+}
 @media (min-width:1024px) and (max-width:1280px) {
     /*.ad_cart_lak {
 
 		padding: 8px 3px 8px 3px;
   }*/
-  
+  #header_searchhh {
+    padding-top: 7px;
+  }
   #tabTwo {
     margin-right: -23%;
 }
@@ -1737,8 +1747,13 @@ ul #footer_links_valuess a:hover {
     margin-right: -43%;
 }
     #header_logooo {
-        margin-top: 8px;
+       margin-top: 5px !important;
+    height: 42px;
     }
+	.m-row {
+    padding-top: 3px !important;
+    padding-bottom: 0px !important;
+}
     #reup .addreview {
         margin-left: 1px !important;
     }
@@ -1785,6 +1800,7 @@ ul #footer_links_valuess a:hover {
     }
     .btn-secondary {
         margin-left: -16px !important;
+		margin-top: 2px;
     }
     #shopingCart {
         margin: 8px 11px 10px !important;
@@ -2332,7 +2348,7 @@ a.compare_hover:hover {
 
 .m-row {
     padding-top: 5px;
-    padding-bottom: 4px;
+    padding-bottom: 0px;
 }
 
 
