@@ -916,7 +916,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
                 if($rootScope.custDetails.gst_number){
                     $rootScope.gstnumber = $rootScope.custDetails.gst_number;
                 }else{
-                    $rootScope.gstnumber = '';
+                    $rootScope.gstnumber = 'No Data Available';
                 }
                 $rootScope.status = $rootScope.custDetails.status;
                 $rootScope.shippingaddress = $rootScope.custDetails.shippingaddress;

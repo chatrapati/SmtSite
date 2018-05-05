@@ -14,7 +14,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
     $scope.mobilenumbercheck=function(mobile){
 
-     
+     alert(mobile)
       registrationService.mobilecheck(mobile).then(function(data){
         if(data.data.status=="email exists"){
           alert("Email id is already exists");
@@ -39,6 +39,44 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
       })
     }
 
+    $scope.forgetpasscheck=function(mobile){
+
+      registrationService.mobilecheck(mobile).then(function(data){
+        if(data.data.status=="email exists"){
+          // alert("Email id is already exists");
+          // $scope.registrationData.email="";
+
+          
+              
+        }else{
+                alert("User is does't existed");
+                var forgotPwdEmail =document.getElementById('forgotPwdEmail');
+                $scope.forgotPwdEmail="";
+                // if (forgotPwdEmail.value != ''){
+                     
+                //     forgotPwdEmail.focus();
+                // }
+              }
+                
+      
+      })
+    }
+
+
+    $scope.doSomething=function(mobile){
+       registrationService.mobilecheck(mobile).then(function(data){
+        if(data.data.status=="email exists"){
+             
+        }else{
+                alert("User is does't existed");
+                var forgotPwdEmail =document.getElementById('forgotPwdEmail');
+                $scope.forgotPwdEmail="";
+                
+              }
+                
+      
+      })
+    }
   
 // $scope.fblogin=function(){
 
@@ -383,6 +421,9 @@ if(!registrationData.gstnumber){
           window.localStorage['time_stamp'] = data.data.time_stamp;
            alert(data.data.status)
         }
+          else if(data.data.status=="email/mobile does not exists"){
+            alert("User does't existed.Please register.")
+          }
        
 
       })

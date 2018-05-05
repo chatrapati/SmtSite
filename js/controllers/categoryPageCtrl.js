@@ -107,6 +107,7 @@ $scope.layout = "Grid";
           $scope.brandsData = data.data.brand_count;
          $scope.maxprice=data.data.maxprice;
          $scope.minprice=data.data.minprice;
+        //  $scope.pricerange=$scope.minprice +'-' +$scope.maxprice;
 
         localStorage.setItem('maxprice' ,$scope.maxprice);
         localStorage.setItem('minprice' ,$scope.minprice);
@@ -401,7 +402,7 @@ $scope.layout = "Grid";
 
     $scope.showBrandFilter = 'true';
 
-    $scope.getCategorywiseProductcheck = function (typeval, subCategory, from) {
+    $scope.getCategorywiseProductcheck = function (typeval, subCategory, from,val1) {
     
       $scope.from = from;
      
@@ -433,12 +434,14 @@ $scope.layout = "Grid";
           $scope.toVal = 12;
           $scope.currentPageNumber = 1;
           $scope.viewby = "12";
+
+          // alert($scope.price)
          
   if(localStorage.getItem('selectedArray')){
    
     $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'))
    
-    $scope.pricerange = $scope.selectedArray.minrange +'-'+ $scope.selectedArray.maxrange;
+    $scope.pricerange = $scope.selectedArray.pricerange;
   }else{
      $scope.pricerange = '';
   }
@@ -604,6 +607,15 @@ $scope.layout = "Grid";
           }
 
         }
+
+        if(localStorage.getItem('selectedArray')){
+   
+    $scope.selectedArray = JSON.parse(localStorage.getItem('selectedArray'))
+   
+    $scope.pricerange = $scope.selectedArray.pricerange;
+  }else{
+     $scope.pricerange = '';
+  }
         if (window.localStorage['categoryName'] != "") {
           $scope.categoryName = window.localStorage['categoryName'];
         } else {
@@ -616,11 +628,6 @@ $scope.layout = "Grid";
           $scope.viewby = "12";
          
 
-           if ($scope.price != undefined) {
-          $scope.pricerange = $scope.price
-        }else{
-           $scope.pricerange = '';
-        }
         // if ($rootScope.selectedArray) {
         //   if ($rootScope.selectedArray.pricerange == '' || $rootScope.selectedArray.pricerange == undefined) {
         //     // alert('1')

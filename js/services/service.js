@@ -144,6 +144,7 @@ shopMyToolsApp.service('homePageService', function ($q, $http, SERVER_URL) {
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
 
 		}).then(function success(data) {
+			
 			deferred.resolve(data);
 
 		}, function error(data) {

@@ -10,6 +10,7 @@
 }
 </style> -->
 
+
 <div class="container-fulid" id="categoryPage" ng-controller="homeController" dw-loading="sample-1">
 
     <div class="container mbl_side_mar">
@@ -38,7 +39,7 @@
                     </ol>
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div ng-repeat="img in firstCarouselImages" ng-class="$index===1?'item active':'item'">
+                        <div ng-repeat="img in firstCarouselImages" ng-class="$index===0?'item active':'item'">
                             <img ng-src="{{img}}">
                             <div class="header-text hidden-xs">
                                 <div class="col-md-12 text-center">
@@ -49,10 +50,10 @@
                     </div>
                     <!-- Controls -->
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     </a>
                     <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     </a>
                 </div>
                 <!-- /carousel -->
