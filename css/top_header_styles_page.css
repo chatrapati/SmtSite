@@ -2123,7 +2123,7 @@ a.whishlist_lak {
 
 #couponLink {
     color: #fff !important;
-    line-height: 2;
+    line-height: 1.8;
 }
 
 #couponLink:hover {
@@ -2402,13 +2402,7 @@ a.compare_hover:hover {
 }
 }
 
-@-moz-document url-prefix('') {
-.data_ctrl_search4 {
-  margin-top: 229px !important;
-    
-}
 
-}
 @-moz-document url-prefix('') {
 	
 .list_GstExcl{
@@ -2417,12 +2411,87 @@ a.compare_hover:hover {
 
 }
 @-moz-document url-prefix('') {
+	
 .priceBox{
 		margin-left: -6px;
 	}
+	
 }
 
+.priceBox{
+		margin-left: -6px;
+	}
+	
 .list_bottom{
 	margin-bottom: -26px;
+}
+
+@-moz-document url-prefix('') {
+	
+.data_ctrl_search4 {
+	
+  margin-top: 229px !important; 
+  
+}
+
+}
+
+@-moz-document url-prefix('') {
+	
+.priceBox_firefox {
+	
+ margin-left: 7px;
+  
+}
+
+}
+
+@-moz-document url-prefix('') {
+	
+.priceOne{
+	
+display: inline-block;
+margin-left: -4px;
+
+}
+}
+
+.priceOne{
+	
+display: inline-block;
+margin-left: -5px;
+
+}
+.list .price-box .price {
+    margin-top: 2px !important;
+    padding-left: 0px;
+}
+.col-item #old-price-507_b{
+padding-left: 11px;
+}
+
+#categoryPage a.whishlist_lak {
+    margin-left: 1px !important;
+}
+
+#catPage #homecarts .wishbtn {
+    margin-bottom: -11px !important;
+    height: 30px !important;
+}
+#catCartDiv .wishbtn {
+   margin-bottom: -11px !important;
+    height: 30px !important;
+}
+.collections-wrap.sub-item .item-inner .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+} */
+#carousel-example .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+}
+#slide_new .wishbtn {
+   margin-bottom: -10px !important;
+    height: 30px !important;
 }
 /* 04-5-2018 styles end here */
