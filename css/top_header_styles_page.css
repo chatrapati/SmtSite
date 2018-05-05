@@ -2402,13 +2402,7 @@ a.compare_hover:hover {
 }
 }
 
-@-moz-document url-prefix('') {
-.data_ctrl_search4 {
-  margin-top: 229px !important;
-    
-}
 
-}
 @-moz-document url-prefix('') {
 	
 .list_GstExcl{
@@ -2417,14 +2411,26 @@ a.compare_hover:hover {
 
 }
 @-moz-document url-prefix('') {
+	
 .priceBox{
 		margin-left: -6px;
 	}
+	
 }
+
 .priceBox{
 		margin-left: -6px;
 	}
+	
 .list_bottom{
 	margin-bottom: -26px;
+}
+
+@-moz-document url-prefix('') {
+	
+.data_ctrl_search4 {
+  margin-top: 229px !important;   
+}
+
 }
 /* 04-5-2018 styles end here */
