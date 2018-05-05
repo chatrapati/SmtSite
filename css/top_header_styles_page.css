@@ -2440,7 +2440,7 @@ a.compare_hover:hover {
 	
 .priceBox_firefox {
 	
- margin-left: 5px;
+ margin-left: 7px;
   
 }
 
@@ -2451,7 +2451,7 @@ a.compare_hover:hover {
 .priceOne{
 	
 display: inline-block;
-margin-left: -5px;
+margin-left: -4px;
 
 }
 }
