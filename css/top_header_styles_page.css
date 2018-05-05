@@ -2462,4 +2462,12 @@ display: inline-block;
 margin-left: -5px;
 
 }
+.list .price-box .price {
+    margin-top: 2px !important;
+    padding-left: 0px;
+}
+.col-item #old-price-507_b{
+padding-left: 11px;
+
+}
 /* 04-5-2018 styles end here */
