@@ -2435,4 +2435,31 @@ a.compare_hover:hover {
 }
 
 }
+
+@-moz-document url-prefix('') {
+	
+.priceBox_firefox {
+	
+ margin-left: 5px;
+  
+}
+
+}
+
+@-moz-document url-prefix('') {
+	
+.priceOne{
+	
+display: inline-block;
+margin-left: -5px;
+
+}
+}
+
+.priceOne{
+	
+display: inline-block;
+margin-left: -5px;
+
+}
 /* 04-5-2018 styles end here */
