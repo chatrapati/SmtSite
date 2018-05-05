@@ -2468,6 +2468,30 @@ margin-left: -5px;
 }
 .col-item #old-price-507_b{
 padding-left: 11px;
+}
 
+#categoryPage a.whishlist_lak {
+    margin-left: 1px !important;
+}
+
+#catPage #homecarts .wishbtn {
+    margin-bottom: -11px !important;
+    height: 30px !important;
+}
+#catCartDiv .wishbtn {
+   margin-bottom: -11px !important;
+    height: 30px !important;
+}
+.collections-wrap.sub-item .item-inner .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+} */
+#carousel-example .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+}
+#slide_new .wishbtn {
+   margin-bottom: -10px !important;
+    height: 30px !important;
 }
 /* 04-5-2018 styles end here */
