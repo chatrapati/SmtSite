@@ -2409,4 +2409,9 @@ a.compare_hover:hover {
 }
 
 }
+@-moz-document url-prefix('') {
+.list_GstExcl{
+	margin: 1px 0px 0px 0px !important;
+}
+}
 /* 04-5-2018 styles end here */
