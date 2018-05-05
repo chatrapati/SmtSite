@@ -4,7 +4,8 @@ shopMyToolsApp.controller('searchPageController', ['$scope', '$http', '$location
     function ($scope, $http, $location, $rootScope, searchProductsMoreService, $window,DOMAIN_URL,addCompareProductsService) {
         console.log(localStorage.getItem('searchkey'))
         $window.scrollTo(0, 0);
-
+ $rootScope.showHintFlag = 'false';
+         $rootScope.showHintMsg = 'false';
         //     $rootScope.searchedProducts=window.localStorage['searchedProducts'];
         $scope.getSearchedCat = function () {
             searchProductsMoreService.searchProductsMoreMethod(localStorage.getItem('searchkey')).then(function (data) {
