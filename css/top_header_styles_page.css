@@ -2414,4 +2414,9 @@ a.compare_hover:hover {
 	margin: 1px 0px 0px 0px !important;
 }
 }
+@-moz-document url-prefix('') {
+.priceBox{
+		margin-left: -6px;
+	}
+}
 /* 04-5-2018 styles end here */
