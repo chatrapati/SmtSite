@@ -671,7 +671,8 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
          $rootScope.compareDetails =[];
 
         $scope.supplierfun = function () {
-            window.open('http://hub.shopmytools.com/', '_blank')
+            // window.open('http://hub.shopmytools.com/', '_blank')
+             window.open('http://192.168.20.21:8000/', '_blank')
         }
 
         $scope.removeCompareItem = function (categoryObj) {
