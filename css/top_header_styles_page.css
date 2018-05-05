@@ -1,4 +1,6 @@
-
+ .pointer {
+           cursor: auto !important;
+        }
 /*.cancelBtn {
      margin-top:2px !important;
     } */
