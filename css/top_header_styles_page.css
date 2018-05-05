@@ -45,11 +45,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
     }
 }
-@-moz-document url-prefix('') {
-.suggestionsCls3 {
-    margin-top: 157px;
-}
-}
+
 @-moz-document url-prefix('') {
     #contctform input[type="text"] {
         -moz-box-sizing: border-box;
@@ -2414,15 +2410,18 @@ a.compare_hover:hover {
 
 }
 @-moz-document url-prefix('') {
+	
 .list_GstExcl{
 	margin: 1px 0px 0px 0px !important;
 }
+
 }
 @-moz-document url-prefix('') {
 .priceBox{
 		margin-left: -6px;
 	}
 }
+
 .list_bottom{
 	margin-bottom: -26px;
 }
