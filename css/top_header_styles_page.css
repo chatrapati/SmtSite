@@ -45,7 +45,11 @@ input[type=number]::-webkit-inner-spin-button {
         width: 100%;
     }
 }
-
+@-moz-document url-prefix('') {
+.suggestionsCls3 {
+    margin-top: 157px;
+}
+}
 @-moz-document url-prefix('') {
     #contctform input[type="text"] {
         -moz-box-sizing: border-box;

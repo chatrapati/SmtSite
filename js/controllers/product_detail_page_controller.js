@@ -2,6 +2,8 @@ shopMyToolsApp.controller('product_detailed_controller',
 	function ($scope, $location, product_detailed_service, notify_service, reviews_service,
 		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope, addToWishListService,addCompareProductsService) {
 		//alert('1')
+		 $rootScope.showHintFlag = 'false';
+         $rootScope.showHintMsg = 'false';
 		$window.scrollTo(0, 0);
 		$scope.showData = 'false';
 		//alert($scope.showData)
