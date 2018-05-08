@@ -1049,11 +1049,11 @@ input[type="number"]:focus {
 }
 
 #header_logooo {
-  /*  padding: 3px 0; */
+   padding: 3px 0; 
    
     width: 50%;
     cursor: pointer;
-  margin-top:2px !important; 
+  margin-top:-2px !important; 
 }
 
 #header_searchhh {
@@ -1736,8 +1736,11 @@ ul #footer_links_valuess a:hover {
 
 		padding: 8px 3px 8px 3px;
   }*/
+  #cart-padding{
+  margin-top: -3px;
+  }
   #header_searchhh {
-    padding-top: 7px;
+    padding-top: 3px;
   }
   #tabTwo {
     margin-right: -23%;
@@ -1749,9 +1752,12 @@ ul #footer_links_valuess a:hover {
     margin-right: -43%;
 }
     #header_logooo {
-       margin-top: 5px !important;
-    height: 42px;
+       margin-top: 1px !important;
+   /* height: 42px; */
     }
+	#middle_logo_headr{
+		padding: 3px 0;
+	}
 	.m-row {
     padding-top: 3px !important;
     padding-bottom: 0px !important;
