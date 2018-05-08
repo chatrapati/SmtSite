@@ -1049,13 +1049,20 @@ input[type="number"]:focus {
 }
 
 #header_logooo {
-   padding: 3px 0; 
+  padding: 3px 0;
    
     width: 50%;
     cursor: pointer;
   margin-top:-2px !important; 
 }
-
+@-moz-document url-prefix('') {
+#header_logooo {
+	padding: 1px 0;
+width: 50%;
+cursor: pointer;
+margin-top: -1px !important;
+}
+}
 #header_searchhh {
     display: flex;
     justify-content: center;
@@ -1755,6 +1762,14 @@ ul #footer_links_valuess a:hover {
        margin-top: 1px !important;
    /* height: 42px; */
     }
+	
+	@-moz-document url-prefix('') {
+		
+#header_logooo {
+  margin-top:-1px !important; 
+}
+
+}
 	#middle_logo_headr{
 		padding: 3px 0;
 	}
