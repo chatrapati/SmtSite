@@ -1073,7 +1073,7 @@ input[type="number"]:focus {
    
     width: 50%;
     cursor: pointer;
-  margin-top:-2px !important; 
+  margin-top:-1px !important; 
 }
 @-moz-document url-prefix('') {
 #header_logooo {
