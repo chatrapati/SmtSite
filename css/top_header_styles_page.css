@@ -1,3 +1,7 @@
+
+.footer_links_addere{
+	cursor:context-menu !important;
+}
 @-moz-document url-prefix('') {
 		
 .footer_links_addere span:nth-child(3) {
@@ -7,7 +11,7 @@
 }
 
  .pointer {
-           cursor: auto !important;
+           cursor: context-menu !important;
         }
 /*.cancelBtn {
      margin-top:2px !important;
