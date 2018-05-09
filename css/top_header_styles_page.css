@@ -1,3 +1,10 @@
+#ftr_ss div:nth-child(4) ul #footer_links_valuess{
+	display:inline-block;
+}
+
+#ftr_ss ul li{
+	cursor:context-menu !important;
+}
 
 .footer_links_addere{
 	cursor:context-menu !important;
@@ -8,6 +15,7 @@
     margin-left:25px;
 	display:inline-block;
 }
+
 }
 
  .pointer {
