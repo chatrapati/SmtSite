@@ -1,4 +1,5 @@
 #ftr_ss div:nth-child(4) ul #footer_links_valuess{
+<<<<<<< HEAD
 display:inline-block;
 }
 
@@ -16,6 +17,30 @@ cursor:context-menu !important;
 display:inline-block;
 }
 }
+=======
+	display:inline-block;
+}
+
+#ftr_ss ul li{
+	cursor:context-menu !important;
+}
+
+.footer_links_addere{
+	cursor:context-menu !important;
+}
+@-moz-document url-prefix('') {
+		
+.footer_links_addere span:nth-child(3) {
+    margin-left:25px;
+	display:inline-block;
+}
+
+}
+
+ .pointer {
+           cursor: context-menu !important;
+        }
+>>>>>>> 2f65df19f1157ebc364d8a2531254061738cd8b9
 /*.cancelBtn {
      margin-top:2px !important;
     } */
