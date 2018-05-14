@@ -86,17 +86,23 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         $scope.clearCart = function () {
             if (window.confirm("Are you sure you want to clear cart? ")) {
                 if (window.localStorage['user_id']) {
+                  //  alert('1')
                     deleteCartService.deleteCartMethod(window.localStorage['user_id'], "all").then(function (data) {
                         if (data.data.status == 'all products deleted successfully') {
                             $rootScope.cartArray = [];
-                            $scope.viewCartItems();
+                            // $location.path("/");
+                            // window.href.location =  DOMAIN_URL + '#!/';
+                            // $scope.viewCartItems();
+                           
                         }
                     })
                 } else {
                     deleteCartService.deleteCartMethod(localStorage.getItem('randomNumber'), "all").then(function (data) {
                         if (data.data.status == 'all products deleted successfully') {
                             $rootScope.cartArray = [];
+                            //   $location.path("/");
                             $scope.getCartItemsWithoutLogin();
+                           
                         }
                     })
                 }
@@ -150,6 +156,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                                 }
                             }
                         }
+                        // $rootScope.offersArray.forEach(function(element) {
+                        //    homePageService.imageCheck(element.upload_photo).then(function(data){
+                        //        console.log(data)
+                        //    })
+                        // }, this);
+
                     } else {
 
                     }
@@ -212,12 +224,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 if (data.data.status == 'Success') {
                     if (data.data.offerscats != []) {
                         $scope.Offers = data.data.offerscats;
-                        $rootScope.offersArray = [];
+                        $scope.offersArray = [];
                         for (i = 0; i < $scope.Offers.length; i++) {
                             $scope.offersObj = $scope.Offers[i];
                             for (j = 0; j < $scope.offersObj.prices.length; j++) {
                                 if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                    $rootScope.offersArray.push($scope.offersObj)
+                                    $scope.offersArray.push($scope.offersObj)
                                 }
                             }
                         }
@@ -237,12 +249,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 $scope.loading = false;
                 if (data.data.status == 'Success') {
                     $scope.newarrivals = data.data.newarrivalcats;
-                    $rootScope.newarrivalsArray = [];
+                    $scope.newarrivalsArray = [];
                     for (i = 0; i < $scope.newarrivals.length; i++) {
                         $scope.newarrivalsObj = $scope.newarrivals[i];
                         for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
                             if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
-                                $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
+                                $scope.newarrivalsArray.push($scope.newarrivalsObj)
                             }
                         }
                     }
@@ -846,6 +858,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             // alert(window.localStorage['categoryName'])
 
             localStorage.removeItem('selectedArray');
+            location.reload();
 
             $location.path("categoryPage");
 

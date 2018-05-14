@@ -1,29 +1,28 @@
-
+<!-- <div class="container" ng-controller="myOrderDetailsCtrl">
+ 
+	</div> -->
 <div class="container" ng-controller="myOrderDetailsCtrl">
- <ul class="bredcrumb_ul" style="margin-top: 5px;margin-left:-15px;">
-    	<li class="bredcrumb_li">
-	<a  ng-click="goToHome()">Home</a>
+	<ul class="bredcrumb_ul" style="margin-top: 5px;margin-left:-15px;">
+		<li class="bredcrumb_li">
+			<a ng-click="goToHome()">Home</a>
 		</li>
 		<li class="bredcrumb_li">
-		<a ng-click="pageNavigate()">Dashboard</a>
-    </li>
-    	<li  class="bredcrumb_li" ng-if="showInvoice == 'true'">
+			<a ng-click="pageNavigate()">Dashboard</a>
+		</li>
+		<li class="bredcrumb_li" ng-if="showInvoice == 'true'">
 			<a ng-click="invoicebredcrumb()">Invoice Orders</a>
 		</li>
-		<li  class="bredcrumb_li" ng-if="showMyOrders == 'true'">
+		<li class="bredcrumb_li" ng-if="showMyOrders == 'true'">
 			<a ng-click="test()">Orders</a>
 		</li>
-		 <li class="bredcrumb_li" ng-if="showPendingOrders == 'true'">
+		<li class="bredcrumb_li" ng-if="showPendingOrders == 'true'">
 			<a ng-click="pendingOrdersbredcrumb()">Pending Orders</a>
-		</li> 
-		<li  class="bredcrumb_li">
+		</li>
+		<li class="bredcrumb_li">
 			<a>Invoice</a>
-		
+
 		</li>
 	</ul>
-	</div>
-<div class="container" ng-controller="myOrderDetailsCtrl">
-	
 
 	<div class="row" id="edit_row">
 
@@ -60,8 +59,11 @@
 									<div class="box-head_vieworder">
 
 										<div id="textId" ng-hide="showPrintSection == 'false'">
-											<div class="col-md-12">
+											<div class="col-md-12" style="padding:10px;">
 												<h4> Your Order ID is {{orderId}}</h4>
+												<div class="pull-right logo-top">
+													<img src="images/smtlogo.png" id="header_logooo" title="ShopMyTools" style="height:40px;">
+												</div>
 											</div>
 											<div class="col-md-12">
 												<table style="margin-bottom:5px;" border=1 width="100%">
@@ -73,8 +75,8 @@
 															<th style="text-align:left;">Product Name</th>
 															<!-- <th style="text-align:left;">SKU</th> -->
 															<th style="text-align:right;">Unit Price</th>
-																<th style="text-align:right;">Qty</th>
-																	<th style="text-align:right;">Total Price</th>
+															<th style="text-align:right;">Qty</th>
+															<th style="text-align:right;">Total Price</th>
 															<th style="text-align:right;">Tax(%)</th>
 															<th style="text-align:right;">Tax Amount</th>
 															<th style="text-align:right;">Subtotal</th>
@@ -116,13 +118,13 @@
 														</tr>
 
 
-														 <tr>
+														<tr>
 
 															<td colspan="6" class="tft_head" style="text-align:right;">Grand Total (Incl.Tax)</td>
 
 															<td class="tft_data" style="text-align:right;">{{amtPayable|currency:'&#8377;'}}</td>
 
-														</tr> 
+														</tr>
 
 														<tr>
 
@@ -164,7 +166,7 @@
 												</div>
 
 											</div>
-											<div class="col-md-12" >
+											<div class="col-md-12">
 												<div class="col-md-6" style="border:1px solid #cfcfcf;padding:2px 2px; width:47%;float:left;">
 													<div class="" style="border-bottom:1px solid #cfcfcf;">
 
@@ -195,7 +197,7 @@
 
 														<span>{{shippingaddress.firstname}}&nbsp;&nbsp;{{shippingaddress.lastname}}</span>
 														<br>
-														<span>{{shippingaddress.mobile}}/{{shippingaddress.alt_mobile}}</span>
+														<span>{{shippingaddress.mobile}}<span ng-if="shippingaddress.alt_mobile">/{{shippingaddress.alt_mobile}}</span></span>
 														<br>
 														<span>{{shippingaddress.house_no}},&nbsp;&nbsp;{{shippingaddress.street_address}}</span>
 														<br>
@@ -217,7 +219,7 @@
 
 														<span>{{billingaddress.firstname}}&nbsp;&nbsp;{{billingaddress.lastname}}</span>
 														<br>
-														<span>{{billingaddress.mobile}}/{{billingaddress.alt_mobile}}</span>
+														<span>{{billingaddress.mobile}}<span ng-if="billingaddress.alt_mobile">/{{billingaddress.alt_mobile}}</span></span>
 														<br>
 														<span>{{billingaddress.house_no}},&nbsp;&nbsp;{{billingaddress.street_address}}</span>
 														<br>
@@ -261,7 +263,7 @@
 
 													<span>{{shippingaddress.firstname}}&nbsp;&nbsp;{{shippingaddress.lastname}}</span>
 													<br>
-													<span>{{shippingaddress.mobile}}/{{shippingaddress.alt_mobile}}</span>
+													<span>{{shippingaddress.mobile}}<span ng-if="shippingaddress.alt_mobile">/{{shippingaddress.alt_mobile}}</span></span>
 													<br>
 													<span>{{shippingaddress.house_no}},&nbsp;&nbsp;{{shippingaddress.street_address}}</span>
 													<br>
@@ -290,7 +292,7 @@
 
 													<span>{{billingaddress.firstname}}&nbsp;&nbsp;{{billingaddress.lastname}}</span>
 													<br>
-													<span>{{billingaddress.mobile}}/{{billingaddress.alt_mobile}}</span>
+													<span>{{billingaddress.mobile}}<span ng-if="billingaddress.alt_mobile">/{{billingaddress.alt_mobile}}</span></span>
 													<br>
 													<span>{{billingaddress.house_no}},&nbsp;&nbsp;{{billingaddress.street_address}}</span>
 													<br>
@@ -389,8 +391,8 @@
 
 													<p>
 
-														<b> {{paymenttype|titleCase}} </b>
-
+														<b ng-if="paymenttype == 'cashondelivery'"> Cash On Delivery </b>
+														<b ng-if="paymenttype != 'cashondelivery'">{{paymenttype}}</b>
 													</p>
 
 												</div>
@@ -401,7 +403,7 @@
 
 									</div>
 
-									<div class="row" style="margin-bottom:10px;" >
+									<div class="row" style="margin-bottom:10px;">
 
 										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
 
@@ -415,7 +417,7 @@
 
 												<div class="shipping_method_viewmore">
 
-													<p>36AAGCG4402R1ZA  </p>
+													<p>36AAGCG4402R1ZA </p>
 
 												</div>
 
@@ -423,7 +425,7 @@
 
 										</div>
 
-										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12"  id="invoice_mbl_padd">
+										<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" id="invoice_mbl_padd">
 
 											<div class="box_vieworder">
 
@@ -467,10 +469,10 @@
 
 													<th style="text-align:left;">Product Name</th>
 													<th style="text-align:right;">Unit Price</th>
-														<th style="text-align:right;">Qty</th>
-															<th style="text-align:right;">Total Price</th>
+													<th style="text-align:right;">Qty</th>
+													<th style="text-align:right;">Total Price</th>
 													<th style="text-align:right;">Tax (%)</th>
-													 <th style="text-align:right;">Tax Amount</th> 
+													<th style="text-align:right;">Tax Amount</th>
 													<th style="text-align:right;">Subtotal</th>
 
 												</tr>
@@ -490,7 +492,7 @@
 														<span>{{orderData.unitprice|currency:'&#8377;'}}</span>
 
 													</td>
-																	<td style="text-align:right;">
+													<td style="text-align:right;">
 
 
 
@@ -509,13 +511,13 @@
 														<span>{{orderData.tax}}</span>
 
 													</td>
-													 <td style="text-align:right;">
+													<td style="text-align:right;">
 
 														<span>{{orderData.tax_amount|currency:'&#8377;'}}</span>
 
-													</td> 
+													</td>
 
-									
+
 
 													<td style="text-align:right;">
 
@@ -538,13 +540,13 @@
 												</tr>
 
 
-												 <tr>
+												<tr>
 
 													<td colspan="6" class="tft_head">Grand Total (Incl.Tax)</td>
 
 													<td class="tft_data">{{amtPayable|currency:'&#8377;'}}</td>
 
-												</tr> 
+												</tr>
 
 												<tr>
 
@@ -596,35 +598,33 @@
 		</div>
 
 	</div>
+	<div id="cancelOrderModal" class="modal">
 
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" ng-click="closeCancelModal()" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+
+				<div class="modal-body" align="middle">
+
+					Order# {{orderId}} has been cancelled successfully
+
+				</div>
+
+
+
+				<div class="modal-footer">
+
+					<button class="btn btn-primary modalBtn" ng-click="closeCancelModal()">OK</button>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
 
 </div>
-
-	 <div id="cancelOrderModal" class="modal" ng-controller="myOrderDetailsCtrl">
-
-      <div class="modal-dialog">
-
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" ng-click="closeCancelModal()" aria-label="Close"><span aria-hidden="true">×</span></button>
-          </div>
-
-          <div class="modal-body" align="middle">
-
-           Order# {{orderId}} has been cancelled successfully
-
-          </div>
-
-
-
-          <div class="modal-footer">
-
-            <button class="btn btn-primary modalBtn" ng-click="closeCancelModal()">OK</button>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>

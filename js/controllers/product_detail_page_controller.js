@@ -215,6 +215,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 						}
 
 						$scope.productsData = result.Product.products;
+						$scope.uploadWarranty = result.Product.upload_warranty;
 						$scope.productsData.forEach(function (items) {
 							items.attributes.forEach(function (item) {
 								$scope.attributeList.push(item);
@@ -244,6 +245,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 						$scope.avgRating = $scope.brandDetailDescArray.avgrating;
 						$scope.pricesInfo = result.price_info;
 						$scope.attributeInfo = result.attribute_info;
+						$scope.uploadWarranty = result.upload_warranty;
 					}
 					$scope.productDetailedReviewBlock = result.product_Reviews;
 					$scope.brandDetailQuantity = result.Quantity;

@@ -100,7 +100,7 @@
 													<label for="mobile">
 														<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
 
-													<input type="text" name="mobile" class="form-control" id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
+													<input type="text" name="mobile" class="form-control" ng-blur="mobilenumbercheck(customerData.mobile)" id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
 													 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
 
 													<!-- <span class="validationError errorMsg" style="color:red" ng-if="editForm.user_mobile.$dirty && editForm.user_mobile.$invalid" class="ng-hide">
@@ -133,4 +133,43 @@
 
 		</div>
 	</div>
+	  <div id="otpmodal" class="modal " >
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header"></div>
+
+                <div class="modal-body" align="middle">
+
+                    Enter OTP
+
+                    <input type="number" name="otp" class="form-control" id="otp" ng-model="otp" placeholder="Enter OTP">
+                    <span style="color:red" ng-if="error">Please enter OTP</span>
+                    <!-- <input type="number" value="otp" ng-model="otp"> -->
+                    <p style="color:green;">OTP sent to your new number .Please wait to get OTP.</p>
+                </div>
+
+
+
+                <div class="modal-footer">
+
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="text-left">
+                            <a href="#" tabindex="5" class="forgot-password" ng-click="updateEditDetails(customerData)">Resend OTP</a>
+                        </div>
+
+                    </div>
+
+
+                    <button class="btn btn-primary modalBtn" ng-click="completeUpdation(otp,customerData)">OK</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 </div>

@@ -1,4 +1,4 @@
-shopMyToolsApp.controller('emicontroller',['$scope','$rootScope',function($scope,$rootScope){
+shopMyToolsApp.controller('emicontroller',['$scope','$rootScope',function($scope,$rootScope,$window){
     //  alert("hai")
 
     $rootScope.seo={tags:"EMI Conversion - Net Banking | Shopmytoolscom",keywords:"credit card, creditcard, debit card, emi conversion, emi on debit card, internet banking, net banking, online banking, online net banking"

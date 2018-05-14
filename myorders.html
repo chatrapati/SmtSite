@@ -66,7 +66,8 @@
 									<td style="text-align:right;">{{myOrder.createddate}}</td>
 									<td style="text-align:right;">{{myOrder.totalquantity}}</td>
 									<td style="text-align:right;">{{myOrder.totalamount|currency:'&#8377;'}}</td>
-									<td style="text-align:center;">{{myOrder.status}}</td>
+									<td style="text-align:center;" ng-if="myOrder.status == 'Accepted'">Pending</td>
+									<td style="text-align:center;" ng-if="myOrder.status != 'Accepted'">{{myOrder.status}}</td>
 									<td style="text-align:center;" ng-click="gotoOrderDetails(myOrder.orderid)"><a href="" class="view_ordr_tbl"><i class="fa fa-eye" aria-hidden="true" style="padding-right:5px;color:#444;"></i>View</a></td>
 								</tr>
 

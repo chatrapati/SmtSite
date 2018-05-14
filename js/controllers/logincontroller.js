@@ -13,8 +13,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
     }
 
     $scope.mobilenumbercheck=function(mobile){
-
-     alert(mobile)
+    // alert(mobile)
       registrationService.mobilecheck(mobile).then(function(data){
         if(data.data.status=="email exists"){
           alert("Email id is already exists");
@@ -43,19 +42,13 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
       registrationService.mobilecheck(mobile).then(function(data){
         if(data.data.status=="email exists"){
-          // alert("Email id is already exists");
-          // $scope.registrationData.email="";
-
-          
+        
               
         }else{
                 alert("User is does't existed");
                 var forgotPwdEmail =document.getElementById('forgotPwdEmail');
                 $scope.forgotPwdEmail="";
-                // if (forgotPwdEmail.value != ''){
-                     
-                //     forgotPwdEmail.focus();
-                // }
+               
               }
                 
       
@@ -256,14 +249,11 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
           $rootScope.ip = '';
         }
         loginService.userAuthentication(loginData.username, loginData.password, $rootScope.ip).then(function (data) {
-//console.log(data.data)
+
           if (data.data.status == 'Success') {
             window.localStorage['token'] = data.data.token;
             window.localStorage['user_id'] = data.data.user_id;
             $scope.userName = data.data.username;
-           // $scope.gstnumber=data.data
-            //alert(JSON.stringify(data.data))
-            // $rootScope.userInfo = data.data.userinfo;
             window.localStorage['email'] = data.data.userinfo.email;
             window.localStorage['mobile'] = data.data.userinfo.user_mobile;
             window.localStorage['customermobile'] = data.data.userinfo.user_mobile;
@@ -305,42 +295,37 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
     }
 
-    //alert(window.localStorage['user_name'])
+ 
 
     $scope.register = function (registrationData) {
-// alert(JSON.stringify(registrationData))
+
       $scope.otp = '';
 if(!registrationData.gstnumber){
   registrationData.gstnumber = "";
 }
-    // window.localStorage['userInfo']  = registrationData;
+   
      localStorage.setItem('userInfo', JSON.stringify(registrationData));
-   //   
-      // if ($scope.registerForm.$valid) {
+  
         if (registrationData.newsletter == true) {
           registrationData.newsletter = "checked";
         } else {
           registrationData.newsletter = "unchecked";
         }
-        // alert(JSON.stringify(registrationData))
+     
         $rootScope.registrationData = registrationData;
          window.localStorage['mobile'] = $rootScope.registrationData.user_mobile;
        window.localStorage['customermobile'] = $rootScope.registrationData.user_mobile;
-        //alert( window.localStorage['user_name'])
+       
         registrationService.userRegistration($rootScope.registrationData).then(function (data) {
-          // alert(JSON.stringify(data))
+         
           if (data.data.status == 'Data saved successfully') {
-            // window.localStorage['token'] = data.data.token;
-            // window.localStorage['user_id'] = data.data.user_id;
-             
-          
             $("#otpmodal").modal('show');
-            //  window.location.href="./index.html";
+           
           } else {
             alert(data.data.status)
           }
         })
-      // }
+     
 
     }
 
@@ -378,8 +363,6 @@ if(!registrationData.gstnumber){
         }
         
         registrationService.verifyOTP($scope.otp, window.localStorage['mobile'],$rootScope.ip).then(function (data) {
-          //alert(JSON.stringify(data))
-
           if (data.data.status == 'Data saved successfully') {
              window.localStorage['token'] = data.data.token;
             window.localStorage['user_id'] = data.data.user_id;
@@ -404,9 +387,7 @@ if(!registrationData.gstnumber){
 
     $scope.resendOTP = function () {
       registrationService.resendOTP(window.localStorage['user_id']).then(function (data) {
-        // alert(JSON.stringify(data))
-
-        alert(data.data.return)
+           alert(data.data.return)
 
       })
     }
@@ -414,7 +395,7 @@ if(!registrationData.gstnumber){
     $scope.forgotPaswd = function (forgotPwdUsername) {
       window.localStorage['forgotPwdUsername'] = forgotPwdUsername;
       forgotPaswdService.forgotPswdMethod(forgotPwdUsername).then(function (data) {
-       // alert(JSON.stringify(data))
+      
         if(data.data.status == 'otp sent'){
           $("#forgotOtpModal").modal('show');
         }else if(data.data.status == 'email sent'){
@@ -432,22 +413,14 @@ if(!registrationData.gstnumber){
 
     }
 
-  //   var url = "//freegeoip.net/json/";
-  // $http.get(url).then(function(response) {
-  //   console.log(response.data.ip);
-  //   $rootScope.ip = response.data.ip;
-  // });
-  // alert($rootScope.ip)
+
 
     $scope.otpForgotPwd = function(otp){
       forgotPaswdService.forgotPswdOtpMethod(window.localStorage['forgotPwdUsername'],otp).then(function(data){
-        //alert(JSON.stringify(data))
+       
        if(data.data.status == 'success'){
-        // $location.path("resetPassword")
-      localStorage.setItem('userId',data.data.user_id);
-     
-         //window.location.href = "http://localhost/smtwithpython/SmtSite/resetPassword.html#!/";
-        
+      
+      localStorage.setItem('userId',data.data.user_id); 
          window.location.href = DOMAIN_URL+"resetPassword.html#!/";
        }else{
          alert(data.data.status)
@@ -504,14 +477,12 @@ $scope.toggleShowPassword3=function(){
 }
 
 
- //alert(window.localStorage['token'])
 
-    //  $rootScope.urlString = window.location.search;
 
     $scope.resetPassword = function (data) {
-     // alert( window.localStorage['forgotPwdUsername'])
+ 
       $scope.newPswd = data.newPassword;
-     // alert(window.localStorage['time_stamp'])
+  
       $scope.confirmPswd = data.confirmPassword;
       if(window.localStorage['user_id']){
           $scope.userId = window.localStorage['user_id'];
@@ -541,7 +512,7 @@ $scope.toggleShowPassword3=function(){
             }else{
               alert(data.data.status)
             }
-            // alert(data.data.status);
+           
            
           })
         } else {

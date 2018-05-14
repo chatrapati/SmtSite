@@ -1,6 +1,6 @@
 shopMyToolsApp.controller('dashboardController',
-    ['$scope', '$http', '$location', '$rootScope', 'dashBoardOrdersCountService', '$window', 'wishListService', 'userdataUpdateService',
-        function ($scope, $http, $location, $rootScope, dashBoardOrdersCountService, $window, wishListService, userdataUpdateService) {
+    ['$scope', '$http', '$location', '$rootScope', 'registrationService','dashBoardOrdersCountService', '$window', 'wishListService', 'userdataUpdateService',
+        function ($scope, $http, $location, $rootScope,registrationService, dashBoardOrdersCountService, $window, wishListService, userdataUpdateService) {
             $window.scrollTo(0, 0);
 
             $scope.changePassword = function(){
@@ -74,6 +74,35 @@ shopMyToolsApp.controller('dashboardController',
 
             }
 
+
+
+                $scope.mobilenumbercheck=function(mobile){
+    // alert(mobile)
+      registrationService.mobilecheck(mobile).then(function(data){
+        if(data.data.status=="email exists"){
+          alert("Email id is already exists");
+          $scope.registrationData.email="";
+
+          var name =document.getElementById('email');
+           if (name.value != ''){
+
+               name.focus();
+           }
+                
+        }else if(data.data.status=="mobile exists" ){
+          alert("Mobile number is already exists");
+          $scope.registrationData.user_mobile="";
+           var mobileno = document.getElementById('user_mobile');
+           if (mobileno.value != ''){
+
+               mobileno.focus();
+           }
+        }
+      
+      })
+    }
+    
+
             $scope.pageNavigate = function(){
                 $location.path("dashboard");
             }
@@ -111,15 +140,34 @@ shopMyToolsApp.controller('dashboardController',
 
             $scope.updateEditDetails = function (userInfo) {
                 window.localStorage['user_name'] = userInfo.first_name;
-                $scope.userInfo = {"user_mobile": userInfo.mobile,"email": window.localStorage['email']};
+                window.localStorage['mobile'] =userInfo.mobile;
+                 $scope.userInfo = {"user_mobile": userInfo.mobile,"email": window.localStorage['email']};
                 localStorage.setItem('userInfo',JSON.stringify($scope.userInfo))
                 userdataUpdateService.updateuserData(userInfo, window.localStorage['user_id']).then(function (data) {
-                    if (data.data.status == 'success') {
-                        alert('Updated Successfully');
+                    if (data.data.status == 'success' || data.data.status == 'details updated successfully') {
+                        alert('Details updated successfully');
                         $location.path("dashboard")
-                    } else {
+                    } else if(data.data.status == 'OTP sent to requested mobile number'){
+                      //  $rootScope.updatedMobile = userInfo.mobile;
+                     
+                         $("#otpmodal").modal('show');
+                    }
+                    else {
                         alert(data.data.status)
                     }
+                })
+            }
+
+            $scope.completeUpdation = function(otp,custData){
+               
+                userdataUpdateService.otpUpdateuserData(JSON.stringify(otp),$scope.userInfo.user_mobile,window.localStorage['user_id'],custData).then(function(data){
+                   if(data.data.status == 'details updated successfully'){
+                       alert('Details updated successfully')
+                        $("#otpmodal").modal('hide');
+                         $location.path("dashboard")
+                   }else{
+                       alert(data.data.status)
+                   }
                 })
             }
 
@@ -129,7 +177,7 @@ shopMyToolsApp.controller('dashboardController',
 
         }]);
 
-shopMyToolsApp.controller('wishListController', function ($scope, $rootScope,$window, $location, wishListService, removeWishListItemService) {
+shopMyToolsApp.controller('wishListController', function ($scope, $rootScope,$window,addToCartService, $location, wishListService, removeWishListItemService) {
 
     $scope.getWishlistItems = function () {
         $scope.loading = true;
@@ -151,6 +199,82 @@ shopMyToolsApp.controller('wishListController', function ($scope, $rootScope,$wi
 
         })
     }
+
+
+      $rootScope.addToCart = function (productObj) {
+            if (window.localStorage['token']) {
+                $scope.productObj = {};
+                $scope.productObj = productObj;
+                if ($rootScope.cartArray.length > 0) {
+                    $scope.orderArray = [];
+                    $scope.orderArray.push({ "productdescription": $scope.productObj.upload_name, "qty": "1" })
+                    $rootScope.orderArray = $scope.orderArray.concat($rootScope.cartArray)
+                } else {
+                    $scope.orderArray = [];
+                    $scope.orderArray.push({ "productdescription": productObj.upload_name, "qty": "1" })
+                    $rootScope.orderArray = $scope.orderArray
+                }
+                addToCartService.addToCartMethod($rootScope.orderArray, window.localStorage['user_id']).then(function (data) {
+                    if (data.data.status == 'item added to cart') {
+                        if (productObj != "") {
+                            $("#addedToCart").modal('show');
+                            window.localStorage['orderId'] = data.data.orderid;
+                            $scope.viewCartItems();
+                        }
+                        else {
+                            window.localStorage['orderId'] = data.data.orderid;
+                            $scope.viewCartItems();
+                            localStorage.removeItem('localCartArray');
+                        }
+                    } else if (data.data.status == 'item added to cart..') {
+                        //window.localStorage['orderId'] = data.data.orderid;
+                        $("#addedToCart").modal('show');
+                        $scope.viewCartItems();
+                    }
+                    else if (data.data.status == 'out off stock') {
+                        $rootScope.avlQty = data.data.avlqty;
+                        $("#outOfQty").modal('show');
+                    }
+                    else {
+                        // alert(data.data.status)
+                    }
+                })
+            } else {
+                $scope.userId = "";
+                if (localStorage.getItem('randomNumber') != undefined) {
+                    $scope.randomNumber = localStorage.getItem('randomNumber');
+                    // alert($scope.randomNumber)
+                } else {
+                    $scope.randomNumber = "";
+                    // alert($scope.randomNumber)
+                }
+                $scope.orderArrayList = [];
+                if ($rootScope.cartArray.length > 0) {
+                    $rootScope.cartArray.push({ "productdescription": productObj.upload_name, "qty": "1" });
+                    $scope.orderArrayList = $rootScope.cartArray;
+                } else {
+                    $scope.orderArrayList.push({ "productdescription": productObj.upload_name, "qty": "1" });
+                }
+                localStorage.setItem('localCartArrayList', JSON.stringify($scope.orderArrayList));
+                $scope.localCartArrayList = JSON.parse(localStorage.getItem('localCartArrayList'));
+                addToCartService.initiateCartOrders($scope.userId, $scope.randomNumber, $scope.orderArrayList).then(function (data) {
+                    // alert(JSON.stringify(data))
+                    if (data.data.status == 'item added to cart') {
+                        $scope.random_no = data.data.random_number;
+                        localStorage.setItem('randomNumber', $scope.random_no);
+                        //  $rootScope.randomNumber = window.localStorage['randomNumber'];
+                        $("#addedToCart").modal('show');
+                    } else if (data.data.status == 'item added to cart..') {
+                        $("#addedToCart").modal('show');
+                        //  $scope.random_no = data.data.random_number;
+                        // localStorage.setItem('randomNumber', $scope.random_no);
+                    } else {
+                        alert(data.data.status);
+                    }
+                    $scope.getCartItemsWithoutLogin();
+                })
+            }
+        }
 
      $scope.closeModal = function () {
 
@@ -196,6 +320,9 @@ if(window.localStorage['token']){
 
         $location.path("productDetailPage")
     }
+
+
+
 
 
 })

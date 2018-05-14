@@ -1,30 +1,11 @@
-#ftr_ss div:nth-child(4) ul #footer_links_valuess{
-display:inline-block;
-}
-
-#ftr_ss ul li{
-cursor:context-menu !important;
-}
-
-.footer_links_addere{
-cursor:context-menu !important;
-}
-@-moz-document url-prefix('') {
-
-.footer_links_addere span:nth-child(3) {
-    margin-left:25px;
-display:inline-block;
-}
-}
+ .pointer {
+           cursor: auto !important;
+        }
 /*.cancelBtn {
      margin-top:2px !important;
     } */
 .re-products {
     margin-bottom: -75px;
-}
-
-.special_price_whishlist.yousave {
-    margin-right: 76px !important;
 }
 
 .pagination>.active>a,
@@ -1068,20 +1049,13 @@ input[type="number"]:focus {
 }
 
 #header_logooo {
-  padding: 3px 0;
+  /*  padding: 3px 0; */
    
     width: 50%;
     cursor: pointer;
-  margin-top:-1px !important; 
+  margin-top:2px !important; 
 }
-@-moz-document url-prefix('') {
-#header_logooo {
-	padding: 1px 0;
-width: 50%;
-cursor: pointer;
-margin-top: -1px !important;
-}
-}
+
 #header_searchhh {
     display: flex;
     justify-content: center;
@@ -1762,11 +1736,8 @@ ul #footer_links_valuess a:hover {
 
 		padding: 8px 3px 8px 3px;
   }*/
-  #cart-padding{
-  margin-top: -3px;
-  }
   #header_searchhh {
-    padding-top: 3px;
+    padding-top: 7px;
   }
   #tabTwo {
     margin-right: -23%;
@@ -1778,20 +1749,9 @@ ul #footer_links_valuess a:hover {
     margin-right: -43%;
 }
     #header_logooo {
-       margin-top: 1px !important;
-   /* height: 42px; */
+       margin-top: 5px !important;
+    height: 42px;
     }
-	
-	@-moz-document url-prefix('') {
-		
-#header_logooo {
-  margin-top:-1px !important; 
-}
-
-}
-	#middle_logo_headr{
-		padding: 3px 0;
-	}
 	.m-row {
     padding-top: 3px !important;
     padding-bottom: 0px !important;
@@ -2502,12 +2462,10 @@ display: inline-block;
 margin-left: -5px;
 
 }
-
 .list .price-box .price {
     margin-top: 2px !important;
     padding-left: 0px;
 }
-
 .col-item #old-price-507_b{
 padding-left: 11px;
 }
@@ -2520,30 +2478,20 @@ padding-left: 11px;
     margin-bottom: -11px !important;
     height: 30px !important;
 }
-
 #catCartDiv .wishbtn {
    margin-bottom: -11px !important;
     height: 30px !important;
 }
-
-#barndCartDiv .wishbtn {
-   margin-bottom: -11px !important;
-    height: 30px !important;
-}
-
-/*.collections-wrap .sub-item .item-inner .wishbtn {
+.collections-wrap.sub-item .item-inner .wishbtn {
     margin-bottom: -12px !important;
     height: 31px !important;
-}  */
-
+} */
 #carousel-example .wishbtn {
     margin-bottom: -12px !important;
     height: 31px !important;
 }
-
 #slide_new .wishbtn {
    margin-bottom: -10px !important;
     height: 30px !important;
 }
-
 /* 04-5-2018 styles end here */

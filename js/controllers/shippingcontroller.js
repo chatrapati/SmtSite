@@ -1,4 +1,4 @@
-shopMyToolsApp.controller('shippingcontroller',['$scope','$rootScope',function($scope,$rootScope){
+shopMyToolsApp.controller('shippingcontroller',['$scope','$rootScope',function($scope,$rootScope,$window){
     //  alert("hai")
 
     $rootScope.seo={tags:"Shipping | Shopmytools.com",keywords:"cheap shipping, next day delivery, shipping, shipping cost, shipping prices, shipping services"

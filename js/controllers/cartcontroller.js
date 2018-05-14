@@ -1,12 +1,4 @@
-// function funup(val123,id123)
-// {
-//            if(val123.charCodeAt()==48)
-//             {
-//                 //alert(document.getElementById("id123").value);
-//                 alert("You can not add Zero quantity123");
-//                 return false;
-//             }
-// }
+
 shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$rootScope',
 
     'viewCartService', 'deleteCartService', 'addToCartService', '$filter', '$window','DOMAIN_URL',
@@ -355,7 +347,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
          $scope.restrictMinus = function(e,index){
              $scope.focusIndex = index;
-             console.log(e)
+            
              if(e.which == 8){
                    $scope.focusIndex = index;
              }
@@ -379,13 +371,7 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
             localStorage.removeItem('isReviewStatus');
 
             $rootScope.showHintFlag = 'false';
-        //    $window.open("http://localhost/newSMTsite/index.html#!/productDetailPage");
-
-        //   $window.open("http://toolsomg.com/#!/productDetailPage");
-
-        //  $window.open(DOMAIN_URL+"#!/productDetailPage");
-
-
+       
               $location.path("productDetailPage")
 
         }

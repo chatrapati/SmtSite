@@ -146,14 +146,13 @@ shopMyToolsApp.controller('myOrdersController',
 
 
 shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $location, $window, inVoiceService, myOrdersService) {
-
+ $window.scrollTo(0, 0);
     $scope.getMyOrderDetails = function () {
 
+$scope.orderId = window.localStorage['orderId'];
 
         inVoiceService.completeOrdersMethod(window.localStorage['orderId']).then(function (data) {
             if (data.data.status == 'success') {
-                $rootScope.orderitems = [];
-                $rootScope.orderId = window.localStorage['orderId'];
                 $rootScope.taxAmount = data.data.user_info.tax_amount;
                 $rootScope.grandTotal = data.data.user_info.grand_total;
                 $rootScope.custDetails = data.data.user_info.cust_details;
@@ -261,8 +260,11 @@ shopMyToolsApp.controller('myOrderDetailsCtrl', function ($scope, $rootScope, $l
 })
 
 shopMyToolsApp.controller('pendingOrdersController',
-    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService', 'myOrdersService','Pagination',
-     function ($scope, $http, $location, $rootScope, pendingOrdersService, inVoiceService, myOrdersService,Pagination) {
+    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService',
+     'myOrdersService','Pagination','$window',
+     function ($scope, $http, $location, $rootScope, pendingOrdersService,
+         inVoiceService, myOrdersService,Pagination,$window) {
+        $window.scrollTo(0, 0);
         $scope.getOrders = function () {
             $scope.loading = true;
             pendingOrdersService.pendingOrdersMethod(window.localStorage['user_id']).then(function (data) {
@@ -364,7 +366,9 @@ shopMyToolsApp.controller('pendingOrdersController',
 
 
 shopMyToolsApp.controller('invoiceOrdersController',
-    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService', function ($scope, $http, $location, $rootScope, pendingOrdersService, inVoiceService) {
+    ['$scope', '$http', '$location', '$rootScope', 'pendingOrdersService', 'inVoiceService', '$window',
+    function ($scope, $http, $location, $rootScope, pendingOrdersService, inVoiceService,$window) {
+       $window.scrollTo(0, 0);
         $scope.getOrders = function () {
             $scope.loading = true;
             inVoiceService.inVoiceMethod(window.localStorage['user_id']).then(function (data) {

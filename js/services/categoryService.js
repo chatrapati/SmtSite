@@ -13,6 +13,9 @@ shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT
         }).then(function success(data) {
             deferred.resolve(data);
         }, function error(data) {
+            // if(data.status == 500){
+            //     alert('Some issue')
+            // }
             deferred.reject(data);
         });
         return deferred.promise;
@@ -45,14 +48,15 @@ shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT
 
 shopMyToolsApp.service('product_subcategories_filter', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
 
-    this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val) {
+    this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val,warranty) {
         var deferred = $q.defer();
 		
         $http({
             method: 'POST',
             url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
-	 data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,"to":toVal,val} 
+     data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,
+      "to":toVal,val,"warranty":warranty} 
            
         }).then(function success(data) {
             deferred.resolve(data);

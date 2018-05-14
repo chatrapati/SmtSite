@@ -14,8 +14,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         $scope.couponNotApplicable = 'false';
         $rootScope.couponApplied = 'false';
         $scope.couponShopMsg = 'false';
-        //$scope.customermobile=window.localStorage(customermobile);
-       // alert(window.localStorage['customermobile'])
+       
             if(window.localStorage['customermobile'].length == 12){
                 $scope.alt_mobile = window.localStorage['customermobile'].slice(2);
             }else{
@@ -150,30 +149,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             $scope.showBillingDetails = false;
               $scope.showPaymentDetails = false;
             $scope.orderType = true;
-            //      $scope.showShippingDetails = true;
-
-            // $scope.ShowHide = function () {
-            //    // If DIV is visible it will be hidden and vice versa.
-            //     $scope.IsVisible = $scope.IsVisible ? false : true;
-            //    $scope.showBillingDetails = $scope.showBillingDetails ? false : true;
-                
-            // }
-            //  $scope.ShowHidePayment = function () {
-            //    // If DIV is visible it will be hidden and vice versa.
-              
-            //     $scope.showPaymentDetails = $scope.showPaymentDetails ? false : true;
-
-            // }
-            //  $scope.shippingAddress1 = function () {
-            //     //alert("123")
-            //    // If DIV is visible it will be hidden and vice versa.
-          
-            //    // $scope.orderType = $scope.orderType ? false : true;
-            //      $scope.showShippingDetails = $scope.showShippingDetails ? false : true;
-              
-            // }
-        //   $scope.checkoutData = {};
-       // $scope.showShippingDetails = $scope.showShippingDetails ? false : true;
+           
         $scope.showShippingDetails = true;
         $scope.showBillingDetails = false;
         $scope.showPaymentDetails = false;
@@ -232,7 +208,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                 }
             }
 
-            console.log(JSON.stringify($scope.shippingAddressData))
+           // console.log(JSON.stringify($scope.shippingAddressData))
 
         }
 
@@ -430,7 +406,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             $scope.hash = $scope.encrypttext;
 
-            console.log($scope.hash)
+            //console.log($scope.hash)
 
         }
 
@@ -615,7 +591,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             // localStorage.setItem('shippingAddressInfo',JSON.stringify($scope.shippingAddressData))
             //  localStorage.setItem('billingAddressInfo',JSON.stringify($scope.billingAddressData))
-            console.log(JSON.stringify($scope.orderArray))
+            //console.log(JSON.stringify($scope.orderArray))
             saveOrderService.saveOrderMethod($scope.orderArray).then(function (data) {
                // alert(JSON.stringify(data))
                 if (data.data.status == 'data saved') {
@@ -673,7 +649,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             //     }
             // }); 
             //           }
-        console.log(JSON.stringify($scope.dealersList))
+      //  console.log(JSON.stringify($scope.dealersList))
     //   angular.forEach($scope.dealersList,function(item){
     //       source = $scope.pincode;
     //         destination = item.pincode;

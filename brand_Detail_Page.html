@@ -361,6 +361,14 @@
 
                                                     </td>
                                                 </tr>
+                                                 <tr ng-if="uploadWarranty > 0">
+                                                    <td class="spec_smt" >
+                                                        <span class="spec">Warranty</span>
+                                                    </td>
+                                                    <td class="spec_smt">
+                                                        <span class="spectd">{{uploadWarranty}}&nbsp;&nbsp; M</span>
+                                                    </td>
+                                                </tr>
                                             </table>
 
                                             <table class="table table-bordered" ng-if="!showMultipleProducts">
@@ -388,6 +396,14 @@
                                                     </td>
                                                     <td class="spec_smt">
                                                         <span class="spectd">{{specs.atrvalue}}</span>
+                                                    </td>
+                                                </tr>
+                                                 <tr ng-if="uploadWarranty > 0">
+                                                    <td class="spec_smt" >
+                                                        <span class="spec">Warranty</span>
+                                                    </td>
+                                                    <td class="spec_smt">
+                                                        <span class="spectd">{{uploadWarranty}}&nbsp;&nbsp; M</span>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -809,6 +825,14 @@
 
                                                 </td>
                                             </tr>
+                                             <tr ng-if="uploadWarranty > 0">
+                                                    <td class="spec_smt">
+                                                        <span class="spec">Warranty</span>
+                                                    </td>
+                                                    <td class="spec_smt">
+                                                        <span class="spectd">{{uploadWarranty}}&nbsp;&nbsp; M</span>
+                                                    </td>
+                                                </tr>
 
                                         </table>
 
@@ -854,6 +878,14 @@
                                                     <span class="spectd">{{specs.atrvalue}}</span>
                                                 </td>
                                             </tr>
+                                             <tr ng-if="uploadWarranty > 0">
+                                                    <td class="spec_smt">
+                                                        <span class="spec">Warranty</span>
+                                                    </td>
+                                                    <td class="spec_smt">
+                                                        <span class="spectd">{{uploadWarranty}}&nbsp;&nbsp;M</span>
+                                                    </td>
+                                                </tr>
                                         </table>
                                     </div>
                                 </div>

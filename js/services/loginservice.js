@@ -414,7 +414,25 @@ shopMyToolsApp.service('userdataUpdateService', function ($q, $http, LOGIN_URL) 
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
 			data: {
 				"firstname": editData.first_name, "lastname": editData.last_name,
-				"mobile": editData.mobile
+				"mobile": editData.mobile,"id":userId
+			}
+		}).then(function success(data) {
+			deferred.resolve(data);
+		}, function error(data) {
+			deferred.reject(data);
+		});
+		return deferred.promise;
+	};
+
+	this.otpUpdateuserData = function (otp,mobile, userId,custData) {
+		var deferred = $q.defer();
+		$http({
+			method: 'POST',
+			url: LOGIN_URL + '/updateacinfo',
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+			data: {
+				"mobile": mobile, "otp": otp,
+				"id": userId,"firstname":custData.first_name,"lastname":custData.last_name
 			}
 		}).then(function success(data) {
 			deferred.resolve(data);

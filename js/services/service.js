@@ -155,6 +155,26 @@ shopMyToolsApp.service('homePageService', function ($q, $http, SERVER_URL) {
 		return deferred.promise;
 	};
 
+	// this.imageCheck = function (imgUrl) {
+	// 	var deferred = $q.defer();
+
+	// 	$http({
+	// 		method: 'GET',
+	// 		url: imgUrl,
+	// 		headers: { 'Content-Type': 'image' , 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
+
+	// 	}).then(function success(data) {
+			
+	// 		deferred.resolve(data);
+
+	// 	}, function error(data) {
+	// 		deferred.reject(data);
+
+	// 	});
+
+	// 	return deferred.promise;
+	// };
+
 })
 
 shopMyToolsApp.service('allOffersService', function ($q, $http, SERVER_URL) {

@@ -59,11 +59,11 @@
 															<div class="detail_page_price" ng-repeat="price in list.prices" align="middle">
 																<span class="special-price">
 																	<span class="price" style="padding-left: 0px;font-weight:normal;">
-																		{{price.offer_price | noFractionCurrency:'&#8377;'}}</span>
+																		{{price.offer_price | currency:'&#8377;'}}</span>
 																</span>
 																<span class="old-price">
 																	<span class="price" style="font-weight:normal;">
-																		{{price.enduser_price | noFractionCurrency:'&#8377;'}}</span>
+																		{{price.enduser_price | currency:'&#8377;'}}</span>
 																</span>
 																<p class="exclude_gst_whishlist" style="font-weight:normal;">(Excluding-GST)</p>
 																<p class="special_price_whishlist yousave" >{{price.percentage+0.00|number:2}}%</p>
