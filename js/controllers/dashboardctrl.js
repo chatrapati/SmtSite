@@ -157,6 +157,9 @@ shopMyToolsApp.controller('dashboardController',
                     }
                 })
             }
+            $scope.editaddress=function(){
+                $location.path("editaddress");
+            }
 
             $scope.completeUpdation = function(otp,custData){
                

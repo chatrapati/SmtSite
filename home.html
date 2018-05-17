@@ -219,6 +219,55 @@
 
         <!-- /top brand -->
 
+
+          <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode" id="recent"></div>
+<section layout="row" flex="" >
+    
+           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp" style="position:fixed;" md-component-id="right">
+
+      <md-toolbar class="md-theme-light">
+        <div><h1 class="md-toolbar-tools">Recently Viewed Products  <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
+       </div>
+      </md-toolbar>
+      <md-content  layout-padding="" class="resent_content">
+       
+          <md-input-container >
+           <div class="row">
+     <div class="col-md-12 latest_popupBox" ng-repeat="recently in prod_info |limitTo:5">
+    <div class="col-md-4">
+ <a href="" ng-click="getProductDetails(recently)" target="_blank">
+ <img  class="img-responsive  img-thumbnail" alt="{{recently.upload_name}}" src="{{recently.upload_photo}}"> 
+ </a>
+</div>
+ <div class="col-md-8"><p class="resent_prodname">{{recently.upload_name}} <br/> <a href="" ng-click="getProductDetails(recently)" class="pull-right" style="color: #0587a1;">More</a></p>
+ </div>	
+ </div>
+<div class="row">
+    <div class="col-md-offset-7 col-md-4" style="margin-left: 60.333333%;">
+    <button class="btn btn-default resentBtn_home col-md-12" layout="row" ng-click="gotoviewmore()" layout-align="center center" flex>
+          View More
+    </button>   
+        </div>
+   </div>
+   
+   
+   </div>
+          </md-input-container>
+       
+       
+      </md-content>
+        <!-- <footer>
+      <md-toolbar ng-if="prod_infocount>4" class="md-scroll-shrink">
+        <div class="" layout="row" ng-click="gotoviewmore()" layout-align="center center" flex>
+          View More
+        </div>
+      </md-toolbar>
+    </footer> -->
+
+    </md-sidenav>
+  
+</section>
+
         <!-- emerging brand -->
 
         <div class='row' id="home_Arrows">
@@ -290,23 +339,9 @@
 
                         <tab class="active pull-right tabPane" heading="ALL PRODUCTS" style="" ng-click="getOffers('')" id="tabOne">
 
-                            <div class="tab-pane fade in active" id="allproducts">
-
-                                <div class="container">
-
-                                    <div class="row">
-
-                                        <div id="carousel-example">
-
-                                            <!-- Wrapper for slides -->
-
-                                            <div class="carousel-inner" style="padding:10px;">
-
-                                                <div>
-
-                                                    <div class="row">
-
-                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="product in offersArray | limitTo:4 track by $index " style="padding-right: 7px;
+                           <slick settings="slickConfigBrands" slides-to-show="4" ng-if="emergingbrands" slides-to-scroll="1">
+                               <br/>
+                                                 <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="newarrival in newarrivalsArray " style="padding-right: 7px;
                                                         padding-left: 5px;">
 
                                                             <div class="sub-item respl-item" style="opacity: 1;">
@@ -319,22 +354,26 @@
 
                                                                     <div class="product-image">
 
-                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(product)" ng-right-click="rightClickTab(product)" class="product-img" title="{{product.upload_name}}">
 
-                                                                            <img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}" title="{{product.upload_name}}">
-                                                                            
+
+                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(newarrival)" class="product-img" title="{{newarrival.upload_name}}">
+
+                                                                            <img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}" title="{{newarrival.upload_name}}">
+
                                                                         </a>
 
                                                                     </div>
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                                                        <div class="product-name" ng-init="limit = 32">
 
-                                                                            <a ng-click="getProductDetails(product)" href="" ng-right-click="newTab(product)" title="{{product.upload_name}}">{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' .
-                                        . .' : ''}}
 
-                                        <!-- <span ng-repeat="attribute in product.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
+
+                                                                            <a ng-click="getProductDetails(newarrival)" title="{{newarrival.upload_name}}">
+
+                                        {{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}
+                                        <!--{{newarrival.atrname}} {{newarrival.atrvalue}} -->
 
                                       </a>
 
@@ -342,15 +381,13 @@
 
                                                                         <div class="product-price">
 
-
-
-                                                                            <div class="price-box" ng-repeat="price in product.prices">
+                                                                            <div class="price-box" ng-repeat="price in newarrival.prices">
 
                                                                                 <div class="offer home_offer">
 
                                                                                     <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
-                                                                                    <br>
+
 
                                                                                     <p class="special-price yousave disPrice">
 
@@ -390,28 +427,29 @@
 
 
 
-
                                                                         <div class="clear-left_detailed homecrt" id="homecarts">
                                                                             <div class="cartdiv">
-                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(product)">
+                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(newarrival)">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
-                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
-                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="product.avgrating == 0" ng-click="productReview(product, 'review')">
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(newarrival)"></a>
+                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>
+                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="newarrival.avgrating == 0" ng-click="productReview(newarrival, 'review')">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                             <span class="hidden-xs">REVIEW</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(product, 'review')" title="Write Your Review" ng-if="product.avgrating != 0">
-                                                                                    <star-rating ng-model="product.avgrating" readonly="isReadonly"></star-rating>
+                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(newarrival, 'review')" title="Write Your Review" ng-if="newarrival.avgrating != 0">
+                                                                                    <star-rating ng-model="newarrival.avgrating" readonly="isReadonly"></star-rating>
                                                                                 </a>
                                                                             </div>
                                                                         </div>
+
+
 
 
 
@@ -422,22 +460,7 @@
                                                             </div>
 
                                                         </div>
-
-                                                    </div>
-
-                                                </div>
-
-
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
+                </slick>
 
                         </tab>
 

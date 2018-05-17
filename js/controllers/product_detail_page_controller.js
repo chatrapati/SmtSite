@@ -190,9 +190,14 @@ shopMyToolsApp.controller('product_detailed_controller',
 		$rootScope.dealProductPrice = dealProductPrice;
 
 		$scope.getProductDetails = function () {
+			if (window.localStorage['user_id']) {
+				$scope.userId = window.localStorage['user_id'];
+			} else {
+				$scope.userId = "";
+			}
 			
  			$scope.loading = true;
-			product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName']).then(function (data) {
+			product_detailed_service.getAllDetailsOfProduct(window.localStorage['productName'],$scope.userId).then(function (data) {
 				// alert(JSON.stringify(data));
 				 $scope.loading = false;
 				if (data.data.status == 'success') {
@@ -245,7 +250,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 						$scope.avgRating = $scope.brandDetailDescArray.avgrating;
 						$scope.pricesInfo = result.price_info;
 						$scope.attributeInfo = result.attribute_info;
-						$scope.uploadWarranty = result.upload_warranty;
+						$scope.uploadWarranty = result.Product.upload_warranty;
 					}
 					$scope.productDetailedReviewBlock = result.product_Reviews;
 					$scope.brandDetailQuantity = result.Quantity;
@@ -254,7 +259,8 @@ shopMyToolsApp.controller('product_detailed_controller',
 					/* related products start here  */
 					$scope.brandDetailRelatedProductsArray = result.Related_Products;
 					//alert(JSON.stringify($scope.brandDetailRelatedProductsArray))
-					$scope.brandDetailUpsellProductsArray = result.Upsell_Products
+					$scope.brandDetailUpsellProductsArray = result.Upsell_Products;
+						$scope.brandDetailRecentlyProductsArray = result.recent_data_list;
 					
 
 					/* upsell products end here  */

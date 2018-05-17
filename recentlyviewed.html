@@ -1,4 +1,4 @@
-<div class="container" ng-controller="searchPageController">
+<div class="container" ng-controller="recentlyviewedcontroller">
 
     <div class='row'>
 
@@ -8,7 +8,7 @@
                     <a ng-click="goToHome()">	Home</a>
                 </li>
                 <li class="bredcrumb_li">
-                    <a>Here are results from All Categories</a>
+                    <a>Recently viewed products</a>
                 </li>
                 <br>
 
@@ -16,11 +16,8 @@
 
             <div class="block-title">
 
-                <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">SEARCH PRODUCTS</h1>
-
-
-                <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"> -->
-                            <div class="row">                              
+                <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">RECENTLY VIEWED PRODUCTS</h1>
+                   <div class="row">                              
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top:0px;padding-right: 10px;">
                                     <div class="pull-right" style="margin-top: -7px;">
                                         <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
@@ -51,15 +48,12 @@
                                 </div>
 
 
-                            </div><br>
-                        <!-- </div> -->
+                            </div><br><br>
                 <div ng-if="searchedMoreProducts.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
 
                     <img src="images/noproducts.png">
 
                     <br></div>
-
-                         
 
 
                 <div>

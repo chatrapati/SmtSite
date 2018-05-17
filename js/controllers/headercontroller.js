@@ -4,12 +4,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
     'compareProductsService', 'addToWishListService',
     'searchProductsService', 'addToCartService', 'viewCartService',
     '$route', '$timeout', 'searchProductsMoreService', '$window', 'deleteCartService','DOMAIN_URL',
-    'addCompareProductsService','logoutService',
+    'addCompareProductsService','logoutService','$mdSidenav','$log',
     function ($scope, $http, $location, $rootScope, getHeaderService, getFooterService,
         getAllCategoriesService, searchProductsService, homePageService,
         compareProductsService, addToWishListService,
         searchProductsService, addToCartService, viewCartService,
-        $route, $timeout, searchProductsMoreService, $window, deleteCartService,DOMAIN_URL,addCompareProductsService,logoutService) {
+        $route, $timeout, searchProductsMoreService, $window, deleteCartService,
+        DOMAIN_URL,addCompareProductsService,logoutService, $mdSidenav,$log) {
 
 
 
@@ -40,11 +41,9 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         $scope.goToWishList = function () {
             if (window.localStorage['token']) {
-                window.location.href = DOMAIN_URL+"#!/wishlist";
-            } else {
-                window.location.href = "./login.html"
+                localStorage.setItem('wishlistBreadCrumbFlag', 'false');
+                $location.path("wishlist");
             }
-
         }
 
         $scope.goToCheckout = function () {
@@ -65,12 +64,105 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 addToWishListService.addToWishListMethod(window.localStorage['user_id'], productObj.upload_name).then(function (data) {
                     if (data.data.status == 'product saved successfully') {
                         $("#addedToWishList").modal('show');
-                    } else {
+                    } else if(data.data.status == 'product already existed in your wishlist') {
+                        alert('product already existed in your wishlist')
                     }
                 })
             } else {
                 alert('Please Login to Add To WishList')
             }
+        }
+
+         $rootScope.compareProducts = compareProducts;
+
+        $rootScope.getCompareProducts = function () {
+            addCompareProductsService.getCompareProductsMethod(window.localStorage['user_id']).then(function (data) {
+                // alert(JSON.stringify(data))
+                if (data.data.status == 'success') {
+                    $rootScope.compareProducts = data.data.prod_info;
+                    localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                    // alert(localStorage.getItem('compareProducts'))
+                }
+            })
+        }
+
+        if (window.localStorage['user_id']) {
+            $scope.getCompareProducts();
+        } else {
+            if (localStorage.getItem('compareProducts')) {
+                $rootScope.compareProducts = JSON.parse(localStorage.getItem('compareProducts'));
+            } else {
+                $rootScope.compareProducts = [];
+            }
+        }
+
+
+        $rootScope.addToCompare = function (productObj) {
+            if (window.localStorage['user_id']) {
+                for (var i = 0; i < $rootScope.compareProducts.length; i++) {
+                    if ($rootScope.compareProducts[i] == productObj.upload_name) {
+                        $scope.match = true;
+                        break;
+                    }
+                    else {
+                        $scope.match = false;
+                    }
+                }
+                if ($scope.match) {
+                    alert('This Product Already Existed in Compare Products');
+                } else {
+                    if ($rootScope.compareProducts.length == 3) {
+                        alert('More than 3 products are not allowed for Comparision')
+                    } else {
+                        addCompareProductsService.compareProductsMethod(productObj.upload_name, window.localStorage['user_id']).then(function (data) {
+                            //alert(JSON.stringify(data))
+                            if (data.data.status == 'success') {
+                                $rootScope.compareProducts = data.data.prod_info;
+                                localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                                $("#addedToCompareProducts").modal('show');
+                                $scope.getCompareProducts();
+                            }  else if(data.data.status == 'subcategory not matched'){
+                                alert('Compare only same Sub-category');
+                            }
+                        })
+                    }
+                }
+
+            } else {
+                if ($rootScope.compareProducts.length == 0) {
+                    $rootScope.compareProducts.push(productObj.upload_name);
+                    $rootScope.compareDetails = productObj.upload_subcategory;
+                    localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                    $("#addedToCompareProducts").modal('show');
+                } else {
+                    if ($rootScope.compareProducts.length == 3) {
+                        alert('More than 3 products are not allowed for Comparision')
+                    } else {
+                        for (var i = 0; i < $rootScope.compareProducts.length; i++) {
+                            if ($rootScope.compareProducts[i] == productObj.upload_name) {
+                                $scope.match = true;
+                                break;
+                            }
+                            else {
+                                $scope.match = false;
+                            }
+                        }
+                        if ($scope.match) {
+                            alert('This Product Already Existed in Compare Products');
+                        } else {
+                            if($rootScope.compareDetails == productObj.upload_subcategory){
+                                $rootScope.compareProducts.push(productObj.upload_name);
+                            localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+                            $("#addedToCompareProducts").modal('show');
+                            }else{
+                                alert('Compare only same Sub-category'); 
+                            }
+                            
+                        }
+                    }
+                }
+            }
+
         }
 
          $rootScope.getProductDetails = function (productObj) {
@@ -94,15 +186,39 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         }
 
-        $scope.getProductDetailsFromCompare = function (productObj) {
-            window.localStorage['productName'] = productObj;
 
-            localStorage.removeItem('isReviewStatus');
-
+          $rootScope.productReview = function (productObj, isReview) {
+            localStorage.setItem('isReviewStatus', isReview);
+            window.localStorage['productName'] = productObj.upload_name;
             $rootScope.showHintFlag = 'false';
-     
-            $window.open(DOMAIN_URL+"#!/productDetailPage");
-           
+            $scope.productDetailedUrl = document.URL.split("#!/");
+            if ($scope.productDetailedUrl[1] == 'productDetailPage') {
+               // window.localStorage['productName'] = productObj.upload_name;
+                location.reload();
+                $window.scrollTo(0, 0);
+                $location.path("productDetailPage");
+            } else {
+                $location.path("productDetailPage");
+            }
+        }
+
+          $scope.closeModal = function () {
+
+            $("#addedToCart").modal('hide');
+
+            $("#addedToWishList").modal('hide');
+
+            $("#addedToCompareProducts").modal('hide');
+
+            $("#outOfQty").modal('hide');
+
+        }
+
+      $scope.getProductDetailsFromCompare = function (productObj) {
+            window.localStorage['productName'] = productObj;
+            localStorage.removeItem('isReviewStatus');
+            $rootScope.showHintFlag = 'false';
+            $location.path('productDetailPage');
         }
 
         $scope.gotoCartPage = function () {
@@ -143,10 +259,11 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             })
         }
 
-        $rootScope.test = function (searchKey) {
+          $rootScope.test = function (searchKey) {
             if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
+                $location.path("searchPage");
                 $scope.searchPageURL = document.URL.split("#!/");
                 if ($scope.searchPageURL[1] == 'searchPage') {
                     $location.path("searchPage1");
@@ -158,7 +275,6 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 $rootScope.showHintFlag = 'false';
                 $location.path("/")
             }
-
         }
 
         $scope.logintest = function(searchKey){
@@ -219,9 +335,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
          $rootScope.showHintMsg = 'false';
       
       $rootScope.showHint = function (searchKey) {
-    
+    if(window.localStorage['user_id']){
+        $scope.userId = window.localStorage['user_id'];
+    }else{
+       $scope.userId =""; 
+    }
             if (searchKey.length >= '3') {
-                searchProductsService.searchProductsMethod(searchKey).then(function (data) {
+                searchProductsService.searchProductsMethod(searchKey,$scope.userId).then(function (data) {
                     if (data.data.status == 'success') {
                          $rootScope.showHintMsg = 'false';
                         $rootScope.searchedProducts = data.data.product_info;   
@@ -375,6 +495,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             $location.path("addressBook");
         }
 
+       
          $scope.goToLogout = function () {
             logoutService.userLogout(window.localStorage['token']).then(function (data) {
                 if (data.data.status == 'success') {
@@ -387,6 +508,16 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             })
         }
 
+              var timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+       $scope.goToLogout();
+  }, 600000);
+}
+
+
+
         $scope.goToHome = function () {
        
             $location.path("/");
@@ -395,6 +526,84 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         $scope.goToHomeFromLogin = function(){
             window.location.href = "./index.html";
         }
+
+       
+    $rootScope.addToCart = function (productObj) {
+            if (window.localStorage['token']) {
+                $scope.productObj = {};
+                $scope.productObj = productObj;
+                if ($rootScope.cartArray.length > 0) {
+                    $scope.orderArray = [];
+                    $scope.orderArray.push({ "productdescription": $scope.productObj.upload_name, "qty": "1" })
+                    $rootScope.orderArray = $scope.orderArray.concat($rootScope.cartArray)
+                } else {
+                    $scope.orderArray = [];
+                    $scope.orderArray.push({ "productdescription": productObj.upload_name, "qty": "1" })
+                    $rootScope.orderArray = $scope.orderArray
+                }
+                addToCartService.addToCartMethod($rootScope.orderArray, window.localStorage['user_id']).then(function (data) {
+                    if (data.data.status == 'item added to cart') {
+                        if (productObj != "") {
+                            $("#addedToCart").modal('show');
+                            window.localStorage['orderId'] = data.data.orderid;
+                            $scope.viewCartItems();
+                        }
+                        else {
+                            window.localStorage['orderId'] = data.data.orderid;
+                            $scope.viewCartItems();
+                            localStorage.removeItem('localCartArray');
+                        }
+                    } else if (data.data.status == 'item added to cart..') {
+                        //window.localStorage['orderId'] = data.data.orderid;
+                        $("#addedToCart").modal('show');
+                        $scope.viewCartItems();
+                    }
+                    else if (data.data.status == 'out off stock') {
+                        $rootScope.avlQty = data.data.avlqty;
+                        $("#outOfQty").modal('show');
+                    }
+                    else {
+                        // alert(data.data.status)
+                    }
+                })
+            } else {
+                $scope.userId = "";
+                if (localStorage.getItem('randomNumber') != undefined) {
+                    $scope.randomNumber = localStorage.getItem('randomNumber');
+                    // alert($scope.randomNumber)
+                } else {
+                    $scope.randomNumber = "";
+                    // alert($scope.randomNumber)
+                }
+                $scope.orderArrayList = [];
+                if ($rootScope.cartArray.length > 0) {
+                    $rootScope.cartArray.push({ "productdescription": productObj.upload_name, "qty": "1" });
+                    $scope.orderArrayList = $rootScope.cartArray;
+                } else {
+                    $scope.orderArrayList.push({ "productdescription": productObj.upload_name, "qty": "1" });
+                }
+                localStorage.setItem('localCartArrayList', JSON.stringify($scope.orderArrayList));
+                $scope.localCartArrayList = JSON.parse(localStorage.getItem('localCartArrayList'));
+                addToCartService.initiateCartOrders($scope.userId, $scope.randomNumber, $scope.orderArrayList).then(function (data) {
+                    // alert(JSON.stringify(data))
+                    if (data.data.status == 'item added to cart') {
+                        $scope.random_no = data.data.random_number;
+                        localStorage.setItem('randomNumber', $scope.random_no);
+                        //  $rootScope.randomNumber = window.localStorage['randomNumber'];
+                        $("#addedToCart").modal('show');
+                    } else if (data.data.status == 'item added to cart..') {
+                        $("#addedToCart").modal('show');
+                        //  $scope.random_no = data.data.random_number;
+                        // localStorage.setItem('randomNumber', $scope.random_no);
+                    } else {
+                        alert(data.data.status);
+                    }
+                    $scope.getCartItemsWithoutLogin();
+                })
+            }
+        }
+
+    
 
 
 
@@ -472,6 +681,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             })
         }
 
+
+
         $scope.clearCart = function () {
             if (window.confirm("Are you sure you want to clear cart? ")) {
                 if (window.localStorage['user_id']) {
@@ -496,18 +707,29 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             }
         }
           $scope.removeCompareItem = function (categoryObj) {
-
-            if ($window.confirm("Are you sure you want to delete this product from comparison?")) {
-
+            if (window.localStorage['user_id']) {
+                if ($window.confirm("Are you sure you want to delete this product from comparison?")) {
+                    addCompareProductsService.delCompareProductsMethod(categoryObj, window.localStorage['user_id'], '').then(function (data) {
+                        // alert(JSON.stringify(data))
+                        if (data.data.status == 'success') {
+                            $scope.getCompareProducts();
+                        }
+                    })
+                }
+            } else {
                 $rootScope.compareProducts.splice(JSON.parse(localStorage.getItem('compareProducts')).indexOf(categoryObj.upload_name), 1);
-               
+                //alert(JSON.stringify($rootScope.compareProducts))
                 localStorage.setItem('compareProducts', JSON.stringify($rootScope.compareProducts))
+
             }
+
         }
  $scope.supplierfun = function () {
             // window.open('http://hub.shopmytools.com/', '_blank')
                window.open('http://192.168.20.21:8000/', '_blank')
         }
+
+          $rootScope.compareDetails =[];
 
         $scope.compareProductsMethod = function () {
             if ($rootScope.compareProducts.length > 1) {
@@ -560,7 +782,9 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             }
 
         }
+ $rootScope.localCartArray = localCartArray;
 
+        $scope.orderArray = [];
 
         $rootScope.logincategoryBasedProducts = function(categoryName){
              window.localStorage['categoryName'] = "";
@@ -594,12 +818,11 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
              $(".dropdown-menu.multi-level").css("display", "none");
         }
 
-         $rootScope.getProductDetailsFromCart = function (productObj) {
-   window.localStorage['productName'] = productObj.productdescription;
+        $rootScope.getProductDetailsFromCart = function (productObj) {
+            window.localStorage['productName'] = productObj.productdescription;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-               $location.path("productDetailPage")
-
+            $location.path('productDetailPage');
         }
 
        $scope.removeCartItem = function (cartObj) {

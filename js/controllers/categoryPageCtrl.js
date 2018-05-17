@@ -347,6 +347,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
      
 
     $scope.getCategorywiseProductcheck = function (typeval, subCategory, from, val1) {
+      // alert(typeval)
       $scope.from = from;
       $scope.loading = true;
       $scope.nextBtn = 'true';
@@ -384,8 +385,6 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           $scope.loading = false;
           if (data.data.status == 'Success') {
             $rootScope.selectedArray = data.data.filterdata;
-            $rootScope.categories = data.data.subcat_count;
-            $rootScope.brandsData = data.data.brand_count;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
            // console.log($rootScope.selectedArray)
             // $scope.minrange = data.data.minprice;
@@ -398,15 +397,38 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+             if(window.localStorage['subCategoryName'] && data.data.brand_count){
+               $scope.brandsData = data.data.brand_count;
+                localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+            if(data.data.subcat_count){
+              $rootScope.categories = data.data.subcat_count;
+               localStorage.setItem('subCategories',JSON.stringify($rootScope.categories))
+            }else{
+              $rootScope.categories =  JSON.parse(localStorage.getItem('subCategories'))
+            }
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
-            $rootScope.categories = data.data.subcat_count;
-            $rootScope.brandsData = data.data.brand_count;
+           
+           // $scope.brandsData = data.data.brand_count;
              $rootScope.selectedArray = data.data.filterdata;
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+              if(window.localStorage['subCategoryName'] && data.data.brand_count){
+               $scope.brandsData = data.data.brand_count;
+                localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+            if(data.data.subcat_count){
+              $rootScope.categories = data.data.subcat_count;
+            }else{
+              $rootScope.categories =  JSON.parse(localStorage.getItem('subCategories'))
+            }
           }
           else {
             $scope.products = [];
@@ -449,9 +471,9 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $rootScope.categories = data.data.subcat_count;
             $rootScope.selectedArray = data.data.filterdata;
             $rootScope.totalcount = data.data.totalcount;
-             $rootScope.brandsData = data.data.brand_count;
+            // $scope.brandsData = data.data.brand_count;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-             localStorage.setItem('brandsData',JSON.stringify($rootScope.brandsData))
+            // 
              console.log(localStorage.getItem('brandsData'))
            localStorage.setItem('categories',JSON.stringify($rootScope.categories))
             //$scope.minrange = data.data.minprice;
@@ -462,13 +484,25 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+            if(window.localStorage['subCategoryName'] && data.data.brand_count){
+               $scope.brandsData = data.data.brand_count;
+                localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
            
           }
+          
           else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
              $rootScope.categories = data.data.subcat_count;
-            $rootScope.brandsData = data.data.brand_count;
+            if(window.localStorage['subCategoryName']){
+               $scope.brandsData = data.data.brand_count;
+                localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
            
             $scope.pageList = [0, 1, 2, 3, 4];
@@ -514,12 +548,10 @@ if (window.localStorage['categoryName'] != "") {
         product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by,$scope.warranty).then(function (data) {
           $scope.loading = false;
           if (data.data.status == 'Success') {
-            $rootScope.categories = data.data.subcat_count;
+            //$rootScope.categories = data.data.subcat_count;
             $rootScope.selectedArray = data.data.filterdata;
-             $rootScope.brandsData = data.data.brand_count;
-              localStorage.setItem('brandsData',JSON.stringify($rootScope.brandsData))
-           localStorage.setItem('categories',JSON.stringify($rootScope.categories))
-           console.log(localStorage.getItem('brandsData'))
+            
+           //console.log(localStorage.getItem('brandsData'))
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $rootScope.brandsDataArray = $rootScope.selectedArray.brand;
             // $scope.minrange = data.data.minprice;
@@ -530,12 +562,19 @@ if (window.localStorage['categoryName'] != "") {
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
-
+            if(window.localStorage['subCategoryName']){
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+              localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+           localStorage.setItem('categories',JSON.stringify($rootScope.categories))
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
               $rootScope.categories = data.data.subcat_count;
-            $rootScope.brandsData = data.data.brand_count;
+            if(window.localStorage['subCategoryName']){
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+            localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
@@ -578,10 +617,8 @@ if (window.localStorage['categoryName'] != "") {
           if (data.data.status == 'Success') {
             $rootScope.categories = data.data.subcat_count;
             $rootScope.selectedArray = data.data.filterdata;
-             $rootScope.brandsData = data.data.brand_count;
-              localStorage.setItem('brandsData',JSON.stringify($rootScope.brandsData))
-           localStorage.setItem('categories',JSON.stringify($rootScope.categories))
-           
+            // $scope.brandsData = data.data.brand_count;
+            
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $rootScope.brandsDataArray = $rootScope.selectedArray.brand;
             // $scope.minrange = data.data.minprice;
@@ -592,16 +629,31 @@ if (window.localStorage['categoryName'] != "") {
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
-
+             if(window.localStorage['subCategoryName'] && data.data.brand_count){
+               $scope.brandsData = data.data.brand_count;
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+              localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+           localStorage.setItem('categories',JSON.stringify($rootScope.categories))
+           
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
               $rootScope.categories = data.data.subcat_count;
-            $rootScope.brandsData = data.data.brand_count;
+            // $scope.brandsData = data.data.brand_count;
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+             if(window.localStorage['subCategoryName'] && data.data.brand_count){
+               $scope.brandsData = data.data.brand_count;
+            }else{
+              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+            }
+              localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+           localStorage.setItem('categories',JSON.stringify($rootScope.categories))
+           
           }
           else {
             // alert('Categories not available');
@@ -729,6 +781,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
     }
 
     $scope.getCategorywiseProductcheck = function (fromVal, toVal) {
+     
       
       $scope.nextBtn = 'true';
       $scope.brandName = localStorage.getItem('brandName');

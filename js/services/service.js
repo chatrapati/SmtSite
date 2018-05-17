@@ -65,13 +65,13 @@ shopMyToolsApp.service('getAllCategoriesService', function ($q, $http, SERVER_UR
 })
 
 shopMyToolsApp.service('searchProductsService', function ($q, $http, SERVER_URL1) {
-	this.searchProductsMethod = function (productName) {
+	this.searchProductsMethod = function (productName,userId) {
 		// alert(productName)
 		var deferred = $q.defer();
 
 		$http({
 			method: 'POST',
-			url: SERVER_URL1 + '/matchprod',
+			url: SERVER_URL1 + '/matchprod?user_id='+userId,
 			// url: SERVER_URL1 +'/match_product_test',
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
 			 data:{"product_name":productName}
@@ -85,6 +85,21 @@ shopMyToolsApp.service('searchProductsService', function ($q, $http, SERVER_URL1
 		});
 
 		return deferred.promise;
+	};
+
+	this.recentlyviewdprodcuts=function(userId,status){
+		var deferred =$q.defer();
+		$http({
+			method:'GET',
+			url: SERVER_URL1 + '/recent_products?user_id='+userId+'&status='+status,
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+		}).then(function success(data){
+			deferred.resolve(data);
+		},function error(data){
+			deferred.reject(data);
+		});
+		return deferred.promise;
+
 	};
 
 })

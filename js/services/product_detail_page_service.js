@@ -1,12 +1,12 @@
 shopMyToolsApp.service('product_detailed_service', function ($q, $http, PRODUCT_DETAIL_SERVICE) {
 
-    this.getAllDetailsOfProduct = function (productName) {
+    this.getAllDetailsOfProduct = function (productName,userId) {
 
         var deferred = $q.defer();
       
         $http({
             method: 'GET',
-          	url: PRODUCT_DETAIL_SERVICE+'/productdetails?product_name='+productName,
+          	url: PRODUCT_DETAIL_SERVICE+'/productdetails?product_name='+productName+'&userid='+userId,
             headers: { 'Content-Type': 'application/json' ,'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',"secret_key":"4r5t@W"}          
 			
         }).then(function success(data) {

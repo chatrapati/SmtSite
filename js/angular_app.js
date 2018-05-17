@@ -1,4 +1,5 @@
-var shopMyToolsApp = angular.module('shopMyTools', ['ngRoute', 'ui.bootstrap', 'angular.filter', 'ngMessages', 'slickCarousel','simplePagination']);
+var shopMyToolsApp = angular.module('shopMyTools', ['ngRoute', 'ui.bootstrap', 'angular.filter', 
+'ngMessages', 'slickCarousel','simplePagination','ngMaterial','material.svgAssetsCache']);
 
 /* currency controller code start here 16-1-2018  */
 shopMyToolsApp.filter('noFractionCurrency',
@@ -41,6 +42,8 @@ shopMyToolsApp.directive('customAutofocus', function() {
      };
 })
 ;
+
+
 
 
 
@@ -253,6 +256,12 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
       })
        .when('/termsofuse', {
         templateUrl: 'termsofuse.html'
+      })
+       .when('/recentlyviewd', {
+        templateUrl: 'recentlyviewed.html'
+      })
+      .when('/editaddress', {
+        templateUrl: 'editaddress.html'
       })
       .when('/coupons', {
         templateUrl: 'coupons.html'

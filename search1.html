@@ -17,11 +17,49 @@
             <div class="block-title">
 
                 <h1 style="border-bottom: 1px solid #ddd;padding-bottom: 5px;">SEARCH PRODUCTS</h1>
+
+
+                <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12"> -->
+                            <div class="row">                              
+                                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top:0px;padding-right: 10px;">
+                                    <div class="pull-right" style="margin-top: -7px;">
+                                        <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
+                                            <ul>
+                                                <li>
+                                                    <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
+                            Previous
+                          </button>
+                                                </li>
+                                                <li>
+                                                    <label ng-if="pageList[0] > 0 ">...</label>
+                                                </li>
+                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                                                    <a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+                                                </li>
+                                                <li>
+                                                    <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+                                                </li>
+                                                <li>
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
+                            Next
+                          </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div><br>
+                        <!-- </div> -->
                 <div ng-if="searchedMoreProducts.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
 
                     <img src="images/noproducts.png">
 
                     <br></div>
+
+                         
 
 
                 <div>
@@ -44,7 +82,7 @@
 
 
 
-                                <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="product in searchedMoreProducts">
+                                <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="product in searchedMoreProducts  | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
 
 
 
@@ -104,11 +142,11 @@
 
 
 
-                                                                    {{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}} <!--{{deal.atrname}} {{deal.atrvalue}} -->
+                                                                      {{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' . . .' : ''}} <!--{{deal.atrname}} {{deal.atrvalue}} -->
 
 
 
-                                                                  </a>
+                                                                    </a>
 
 
 
@@ -138,9 +176,9 @@
 
                                                             <span class="special-price">
 
-                                                                          <span class="special-price" id="product-price-507_b">
+                                                                            <span class="special-price" id="product-price-507_b">
 
-                                                                              <span class="price" style="padding-left: 2px;margin: 0 auto;">{{price.offer_price | currency:'&#8377;'}}</span>
+                                                                                <span class="price" style="padding-left: 2px;margin: 0 auto;">{{price.offer_price | currency:'&#8377;'}}</span>
 
                                                             </span>
 
@@ -148,11 +186,11 @@
 
                                                             <span class="old-price">
 
-                                                                          <span class="price" id="old-price-507_b">
+                                                                            <span class="price" id="old-price-507_b">
 
-                                                                          {{price.enduser_price | currency:'&#8377;'}}
+                                                                            {{price.enduser_price | currency:'&#8377;'}}
 
-                                                                          </span>
+                                                                            </span>
 
                                                             </span>
 
@@ -165,34 +203,34 @@
                                                 </div>
                                                 <!--     <div class="clear-left_detailed">
 
-                       
-                        <div class="cartdiv">
-                          <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(product)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
-                        </div>
-                        <div class="wishcompdiv">
-                          <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
-                          <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
-                          <div class="revdiv">
-                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(product, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                         
+                          <div class="cartdiv">
+                            <a href="" class="ad_cart_lak btn addcartbtn" title="Add To Cart" ng-click="addToCart(product)"><span><i class="glyphicon glyphicon-shopping-cart"  style="padding-right:5px;font-size:13px"></i>ADD TO CART</span></a>
                           </div>
-                        </div>
-                   
+                          <div class="wishcompdiv">
+                            <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+                            <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
+                            <div class="revdiv">
+                              <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(product, 'review')"><span><i class="glyphicon glyphicon-star" style="padding-right:5px;font-size: 13px;top: 3px;"> </i> REVIEW</span> </a>
+                            </div>
+                          </div>
+                     
 
-                      </div> -->
+                        </div> -->
                                                 <div class="clear-left_detailed" id="homecarts">
                                                     <div class="cartdiv">
                                                         <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(product)">
                                                             <span>
-                                <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
-                                <span class="cart_style_new">ADD TO CART</span>
+                                  <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
+                                  <span class="cart_style_new">ADD TO CART</span>
                                                             </span>
                                                         </a>
                                                         <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
                                                         <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
                                                         <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="product.avgrating == 0" ng-click="productReview(product, 'review')">
                                                             <span>
-                                <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
-                                <span class="hidden-xs">REVIEW</span>
+                                  <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
+                                  <span class="hidden-xs">REVIEW</span>
                                                             </span>
                                                         </a>
                                                         <a class="btn addreview" id="strRev" ng-click="productReview(product, 'review')" title="Write Your Review" ng-if="product.avgrating != 0">
