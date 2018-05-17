@@ -48,7 +48,7 @@ shopMyToolsApp.service('product_categories_service', function ($q, $http,PRODUCT
 
 shopMyToolsApp.service('product_subcategories_filter', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
 
-    this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val,warranty) {
+    this.getAllCategoriesFilterOfProduct = function (category,subCategoryName,brandName,pricerange,fromVal,toVal,val,warranty,percent) {
         var deferred = $q.defer();
 		
         $http({
@@ -56,7 +56,7 @@ shopMyToolsApp.service('product_subcategories_filter', function ($q, $http,PRODU
             url: PRODUCT_CATEGORY_SERVICE+'/categoryproducts',
             headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'},
      data:{"category":category,"subcategory":subCategoryName,"brand":brandName,"pricerange":pricerange,"from":fromVal ,
-      "to":toVal,val,"warranty":warranty} 
+      "to":toVal,val,"warranty":warranty,"percentage":percent} 
            
         }).then(function success(data) {
             deferred.resolve(data);

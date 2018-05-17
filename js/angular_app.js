@@ -148,7 +148,9 @@ shopMyToolsApp.directive('clientAutoComplete', function ($filter) {
 
 
 
-
+shopMyToolsApp.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
     
 
 shopMyToolsApp.config(['$routeProvider', '$locationProvider',

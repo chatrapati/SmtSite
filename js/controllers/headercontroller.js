@@ -770,15 +770,19 @@ document.onmousemove = function(){
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
-         $scope.categoryURL = document.URL.split("#!/");
-            localStorage.removeItem('selectedArray')
-            location.reload();
+            $scope.categoryURL = document.URL.split("#!/");
+             localStorage.removeItem('selectedArray');
+            // window.location.href = DOMAIN_URL+'#!/categoryPage';
+              //$location.path("categoryPage1");
+             
             if ($scope.categoryURL[1] == 'categoryPage') {
                  $(".dropdown-menu.multi-level").css("display", "none");
-              $location.path("categoryPage1");
+              window.location.href = DOMAIN_URL+'#!/categoryPage1';
+              location.reload();
             } else {
-                $location.path("categoryPage");
+                window.location.href = DOMAIN_URL+'#!/categoryPage';
                 $(".dropdown-menu.multi-level").css("display", "none");
+                location.reload();
             }
 
         }
