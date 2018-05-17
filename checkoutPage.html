@@ -17,6 +17,23 @@
 	#shop_add_part {
 		margin-left: 25px;
 	}
+	
+	@media only screen and (min-width: 920px) {
+    /* For mobile phones: */
+  #dealer_addr{
+	width: 48.3%;
+	margin-left:10px;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width:480px) {
+    /* For mobile phones: */
+  #dealer_addr{
+	width: 100%;
+    padding: 5px;
+    height: auto;
+	}
+}
 </style>
 
 
@@ -110,9 +127,9 @@
 								<div class="row" style="margin-top: 20px;clear: both;">
 
 									<div class="InnerPage" style="margin-top: 20px;">
-										<div class="listedContent">
+										<div class="listedContent row">
 											<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-bottom: 26px;margin-top: -10px;">
-												<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12" ng-repeat="dealer in dealersList" id="dealer_addr">
+												<div class="col-md-5 col-lg-5 col-sm-12 col-xs-12" ng-repeat="dealer in dealersList" id="dealer_addr">
 													<span id="dealer_shp_name">
 														<input type="radio" name="address" ng-model="selected" ng-value="'{{dealer}}'" ng-change="saveDealerAddress(dealer)" />{{dealer.shop_name}}
 													</span>
