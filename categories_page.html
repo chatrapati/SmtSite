@@ -52,7 +52,7 @@
                                 <div ng-repeat="category in categories track by $index" >
                                     <!-- <input type="checkbox" value="value"> -->
                                     <label>
-                  <input type="checkbox" id="checkBox_{{$index}}" class="branCheck"  ng-selected="category.subcategory" ng-checked="{{category.selected}}"
+                  <input type="checkbox" id="checkBox_{{$index}}" class="branCheck"   ng-checked="{{category.selected}}"
                  ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  
                                 <!-- <input type="checkbox" class="branCheck checkbox"   name="category" ng-value="'{{category}}'" 
                                ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  -->

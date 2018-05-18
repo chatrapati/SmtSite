@@ -2,11 +2,12 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
     'getpayuDetailsService', 'viewCartService', 'getDealersListService', '$window', '$filter',
 
-    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL',
+    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL','getRedeemPointsService',
 
     function ($scope, $http, $location, $rootScope, getpayuDetailsService,
 
-        viewCartService, getDealersListService, $window, $filter, saveOrderService, getPincodeStatusService,getCouponService,DOMAIN_URL) {
+        viewCartService, getDealersListService, $window, $filter, saveOrderService, 
+        getPincodeStatusService,getCouponService,DOMAIN_URL,getRedeemPointsService) {
 
         $window.scrollTo(0, 0);
 
@@ -63,8 +64,6 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                             $rootScope.couponApplied = 'true';
                             $scope.couponNotApplicable = 'false';
                             $rootScope.couponAmt = $scope.couponData.maxvalue;
-                             // localStorage.setItem('couponAmt', $rootScope.couponAmt);
-                            //  alert(localStorage.getItem('couponAmt'))
                              $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
                         } else {
                             $scope.couponNotApplicable = 'true';
@@ -82,9 +81,6 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                 $rootScope.couponApplied = 'true';
                                 $scope.couponNotApplicable = 'false';
                                 $rootScope.couponAmt = $scope.couponData.maxvalue;
-                                // alert($rootScope.couponAmt)
-                                // localStorage.setItem('couponAmt', $rootScope.couponAmt);
-                                //  alert(localStorage.getItem('couponAmt'))
                                 $rootScope.amount1 = $rootScope.amount - $rootScope.couponAmt;
                                 // alert($rootScope.amount1)
                             } else {
@@ -159,6 +155,18 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         $scope.showBillingAddress = false;
         $scope.disableShippingbtn = true;
         $scope.disablePaymentbtn = true;
+
+
+        $scope.getRedeemPoints = function(){
+            getRedeemPointsService.getRedeemPointsMethod(window.localStorage['user_id']).then(function(data){
+                //console.log(data)
+                if(data.data.status == 'success'){
+                    $scope.availRedeemCash = data.data.redeem_cash;
+                }
+            })
+        }
+
+        $scope.getRedeemPoints(); 
 
         $scope.nextStepPayment = function (shippingData,gstnumber) {
            
@@ -706,15 +714,21 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             //alert($scope.altMobile)
             $scope.loading = true;
-
-            getPincodeStatusService.getPincodeStatusMethod(pincode).then(function (data) {
+            $scope.latLongArray = [];
+            if(pincode == 500021){
+                var latitude = 17.4501509;
+                var longitude = 78.3671564;
+                 $scope.latLongArray.push(longitude,latitude);
+                $scope.getDealersList($scope.latLongArray)
+            }else{
+                  getPincodeStatusService.getPincodeStatusMethod(pincode).then(function (data) {
 
                 if (data.data.status == 'Success') {
                     
-
+                  
                     var geocoder = new google.maps.Geocoder();
 
-                    geocoder.geocode({ 'address': JSON.stringify(pincode) }, function (results, status) {
+                    geocoder.geocode({ 'address': pincode }, function (results, status) {
 
                         if (status == google.maps.GeocoderStatus.OK) {
 
@@ -723,9 +737,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                             var longitude = results[0].geometry.location.lng();
 
 
-                            // alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+                           // alert("Latitude: " + latitude + "\nLongitude: " + longitude);
 
-                            $scope.latLongArray = [];
+                            
 
                             $scope.latLongArray.push(longitude,latitude);
 
@@ -747,6 +761,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                 }
 
             })
+            }
+
+          
 
         }
 

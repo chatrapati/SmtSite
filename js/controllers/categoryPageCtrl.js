@@ -401,9 +401,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           if (data.data.status == 'Success') {
             $rootScope.selectedArray = data.data.filterdata;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-           // console.log($rootScope.selectedArray)
-            // $scope.minrange = data.data.minprice;
-            // $scope.maxrange = data.data.maxprice;
+          alert($scope.pricerange)
             $scope.products = data.data.products;
             $scope.fromVal = data.data.from;
             $scope.toVal = data.data.to;
@@ -433,7 +431,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
-              if(window.localStorage['subCategoryName'] && data.data.brand_count){
+              if(data.data.brand_count){
                $scope.brandsData = data.data.brand_count;
                 localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
             }else{
@@ -488,8 +486,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $rootScope.totalcount = data.data.totalcount;
             // $scope.brandsData = data.data.brand_count;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-            // 
-             console.log(localStorage.getItem('brandsData'))
+          
            localStorage.setItem('categories',JSON.stringify($rootScope.categories))
             //$scope.minrange = data.data.minprice;
             // $scope.maxrange = data.data.maxprice;
@@ -512,12 +509,10 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
              $rootScope.categories = data.data.subcat_count;
-            if(window.localStorage['subCategoryName']){
+           
                $scope.brandsData = data.data.brand_count;
                 localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
-            }else{
-              $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
-            }
+           
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
            
             $scope.pageList = [0, 1, 2, 3, 4];
