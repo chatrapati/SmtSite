@@ -445,3 +445,21 @@ shopMyToolsApp.service('userdataUpdateService', function ($q, $http, LOGIN_URL) 
 
 
 
+
+shopMyToolsApp.service('getRedeemPointsService', function ($q, $http, LOGIN_URL) {
+	this.getRedeemPointsMethod = function (userId) {
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: LOGIN_URL + '/redeem_points?user_id='+userId,
+			headers: { 'Content-Type': 'application/json',  'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
+		}).then(function success(data) {
+			deferred.resolve(data);
+		}, function error(data) {
+			deferred.reject(data);
+		});
+		return deferred.promise;
+	};
+});
+
+
