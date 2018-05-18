@@ -770,20 +770,33 @@ document.onmousemove = function(){
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
-            $scope.categoryURL = document.URL.split("#!/");
-             localStorage.removeItem('selectedArray');
-            // window.location.href = DOMAIN_URL+'#!/categoryPage';
-              //$location.path("categoryPage1");
-             
+         $scope.categoryURL = document.URL.split("#!/");
+       //  console.log($scope.categoryURL)
+         
+          localStorage.removeItem('selectedArray')
+         if(navigator.userAgent.indexOf("Firefox") != -1 ){
+           // alert('1')
+            if ($scope.categoryURL[1] == 'categoryPage') {
+
+                 $(".dropdown-menu.multi-level").css("display", "none");
+              window.location.href = DOMAIN_URL+"#!/categoryPage1";
+               window.location.reload();
+            } else {
+                window.location.href = DOMAIN_URL+"#!/categoryPage";
+                $(".dropdown-menu.multi-level").css("display", "none");
+                window.location.reload();
+            }
+         }else{
+           
+            window.location.reload();
             if ($scope.categoryURL[1] == 'categoryPage') {
                  $(".dropdown-menu.multi-level").css("display", "none");
-              window.location.href = DOMAIN_URL+'#!/categoryPage1';
-              location.reload();
+              $location.path("categoryPage1");
             } else {
-                window.location.href = DOMAIN_URL+'#!/categoryPage';
+                $location.path("categoryPage");
                 $(".dropdown-menu.multi-level").css("display", "none");
-                location.reload();
             }
+         }
 
         }
  $rootScope.localCartArray = localCartArray;

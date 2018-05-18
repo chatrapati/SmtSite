@@ -220,12 +220,12 @@
         <!-- /top brand -->
 
 
-          <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode" id="recent"></div>
+          <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode  hidden-xs hidden-sm" id="recent"></div>
 <section layout="row" flex="" >
     
            <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp" style="position:fixed;" md-component-id="right">
 
-      <md-toolbar class="md-theme-light">
+      <md-toolbar class="md-theme-light hidden-xs hidden-sm"">
         <div><h1 class="md-toolbar-tools">Recently Viewed Products  <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
        </div>
       </md-toolbar>
@@ -945,7 +945,7 @@
 
                     <tabset class="nav nav-tabs">
 
-                        <tab class="active pull-right tabPane" style="margin-right: 16%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
+                        <tab class="active pull-right tabPane" style="margin-right: 17%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
 
                             <div class="tab-pane fade in active" id="allProducts1">
 

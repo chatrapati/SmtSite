@@ -274,7 +274,8 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
              //alert($scope.currentUrl)
               window.location.href = $scope.currentUrl;
             }else{
-               window.location.href = "./index.html";
+               // window.location.href = "./index.html";
+               window.location.href = DOMAIN_URL +"#!/dashboard";
             }
            
 
