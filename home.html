@@ -220,20 +220,16 @@
         <!-- /top brand -->
 
 
-
-          <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode  hidden-xs hidden-sm" id="recent"></div>
-
           <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode hidden-xs hidden-sm" id="recent"></div>
-
 <section layout="row" flex="" >
     
-           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp" style="position:fixed;" md-component-id="right">
+           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp hidden-xs hidden-sm" style="position:fixed;" md-component-id="right">
 
-      <md-toolbar class="md-theme-light hidden-xs hidden-sm"">
+      <md-toolbar class="md-theme-light">
         <div><h1 class="md-toolbar-tools">Recently Viewed Products  <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
        </div>
       </md-toolbar>
-      <md-content  layout-padding="" class="resent_content">
+      <md-content  layout-padding="" class="resent_content" style="overflow: hidden;">
        
           <md-input-container >
            <div class="row">
