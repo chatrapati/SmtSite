@@ -510,10 +510,13 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
               var timeout;
 document.onmousemove = function(){
-  clearTimeout(timeout);
+    if(window.localStorage['token']){
+        clearTimeout(timeout);
   timeout = setTimeout(function(){
        $scope.goToLogout();
   }, 600000);
+    }
+  
 }
 
 

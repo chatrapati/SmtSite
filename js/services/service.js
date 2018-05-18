@@ -262,6 +262,31 @@ shopMyToolsApp.service('compareProductsService', function ($q, $http, SERVER_URL
 
 })
 
+
+shopMyToolsApp.service('editaddressservice', function ($q, $http, SERVER_URL1) {
+
+	this.editaddress = function (userId,shipping,billing) {
+		// alert(shipping)
+		var deferred = $q.defer();
+		$http({
+			method: 'POST',
+			url: SERVER_URL1 + '/address_update',
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+			data: { "userid":userId,"address":{"shipping_address":shipping,"billing_address":billing}}
+
+		}).then(function success(data) {
+			deferred.resolve(data);
+
+		}, function error(data) {
+			deferred.reject(data);
+
+		});
+
+		return deferred.promise;
+	};
+
+})
+
 shopMyToolsApp.service('addCompareProductsService', function ($q, $http, SERVER_URL1) {
 	this.compareProductsMethod = function (compareProductList,userID) {
 		var deferred = $q.defer();

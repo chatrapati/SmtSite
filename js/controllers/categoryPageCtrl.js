@@ -401,29 +401,29 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           if (data.data.status == 'Success') {
             $rootScope.selectedArray = data.data.filterdata;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-           // console.log($rootScope.selectedArray)
-            // $scope.minrange = data.data.minprice;
-            // $scope.maxrange = data.data.maxprice;
             $scope.products = data.data.products;
             $scope.fromVal = data.data.from;
             $scope.toVal = data.data.to;
-           
             $rootScope.totalcount = data.data.totalcount;
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
-             if(window.localStorage['subCategoryName'] && data.data.brand_count){
+             if(data.data.brand_count){
                $scope.brandsData = data.data.brand_count;
                 localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
             }else{
+
               $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+               console.log($scope.brandsData)
             }
+           
             if(data.data.subcat_count){
               $rootScope.categories = data.data.subcat_count;
                localStorage.setItem('subCategories',JSON.stringify($rootScope.categories))
             }else{
               $rootScope.categories =  JSON.parse(localStorage.getItem('subCategories'))
             }
+           
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
            
@@ -703,7 +703,7 @@ if (window.localStorage['categoryName'] != "") {
         product_subcategories_filter.getAllCategoriesFilterOfProduct($scope.categoryName, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by,$scope.warranty,$scope.percent).then(function (data) {
           $scope.loading = false;
           if (data.data.status == 'Success') {
-            $rootScope.categories = data.data.subcat_count;
+            $rootScope.categories =JSON.parse(localStorage.getItem('categories'));
             $rootScope.selectedArray = data.data.filterdata;
             // $scope.brandsData = data.data.brand_count;
             
