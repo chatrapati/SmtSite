@@ -17,18 +17,42 @@
 	#shop_add_part {
 		margin-left: 25px;
 	}
+	#edit_row{
+	margin-bottom:10px;
+	}
+	@media (min-width: 992px){
+.col-md-offset-5 {
+   margin-left: 44.2%;
+}
+}
+
+.btnsave{
+margin-top:6px;
+}
+.cancelBtn:hover {
+    color: #333;
+}
 </style>
-
-
 <div class="container" ng-controller="editaddresscontroller">
+	<ul class="bredcrumb_ul margin_left">
+    	<li class="bredcrumb_li">
+	     <a  ng-click="goToHome()">	Home</a>
+		</li>
+		<li class="bredcrumb_li">
+		<a ng-click="pageNavigate()">Dashboard</a>
+         </li>
+    	<li  class="bredcrumb_li">
+			<a>Edit Address</a>
+		</li>
+	</ul>
 	<div class="row" id="edit_row">
 		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background-color: white;margin-top: 15px;" id="categoryPage">
 			<div class="row">
-
 				<!--   shipping address start here -->
 
 
-				<div class="shipping_addr_part">
+				<div class="shipping_addr_part col-md-6 col-lg-6 col-sm-6 col-xs-6 ">
+
 					<div style="background-color:gray;padding:5px;">
 						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">1</span>
 						<h4 class="checkout-step-title">
@@ -40,10 +64,7 @@
 	
 						<form name="deliveryAddressForm" id="checkoutForm" >
 
-							<div class="row"  style="padding: 10px;margin-bottom: 25px;">
-
-
-
+							<div class="row" style="padding: 3px;">
 								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 									<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 										<div class="form-group" style="padding-bottom:5px;">
@@ -274,7 +295,7 @@
 								</div> -->
 
 
-								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: -19px;">
 									<div class="checkbox">
 										<label id="default_billing_haeding">
 											<input type="checkbox" name="remember" ng-model="checkoutData.remember" ng-click="sameaddress(checkoutData)">
@@ -295,11 +316,9 @@
 				</div>
 
 				<!--   shipping address end here -->
+				<div class="shipping_addr_part col-md-6 col-lg-6 col-sm-6 col-xs-12">
+					<div style="background-color:gray;padding:5px;" ng-click="ShowHide()">
 
-
-
-				<div class="shipping_addr_part">
-					<div style="background-color:gray;padding:5px;margin-bottom: 10px;" ng-click="ShowHide()">
 						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">2</span>
 						<h4 class="checkout-step-title">
 							<a role="button" style="color:#fff;">Billing Address</a>
@@ -307,9 +326,9 @@
 					</div>
 					<div>
 						<form name="billindAddressForm" id="contactForm">
-							<div class="" style="border:1px solid #ddd;margin-bottom: 10px;" id="contctform">
+							<div class="" style="border:1px solid #ddd;" id="contctform">
 
-								<div class="row" style="padding: 10px;margin-bottom: 39px;">
+								<div class="row" style="padding: 3px;margin-bottom: 23px;">
 									<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 										<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 											<div class="form-group" style="padding-bottom:5px;">
@@ -532,40 +551,20 @@
 										</div>
 									</div> -->
 								</div>
-								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-									<a class="btn btn-default pull-right btn_conti pull-right ad_cart" role="button" ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(checkoutData,billingAddress)">Save</a>
-								</div>
+								
 							</div>
 						</form>
 					</div>
 				</div>
 
 				<!--   billing address end here -->
-
-
-
-	
-
-				<!--   Payment Method end here -->
-
-				<!--   Order Review start here -->
-
-				<!--   Order Review end here -->
-
 			</div>
-
-
-
 		</div>
-
-		<!--   your checkout progress start here -->
-
-
-	
+		  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 btnsave">
+		<div class="form-group col-md-offset-5 col-md-7 col-xs-12">
+					  <a class="btn btn-default ad_cart cancelBtn col-md-2" role="button" ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(checkoutData,billingAddress)">Save</a>
+					</div>
+					</div>
 	</div>
 </div>
-
-
-
-
 <!---------------------------------------  end   ------------------------------------------------------>

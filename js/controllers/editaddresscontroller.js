@@ -14,6 +14,10 @@ shopMyToolsApp.controller('editaddresscontroller', ['$scope', '$http', '$locatio
 
         $scope.billingAddress = JSON.parse(localStorage.getItem('billingAddressInfo'));
 
+           $scope.pageNavigate = function () {
+            $location.path("dashboard");
+        }
+
       $scope.sameaddress=function(checkoutData){
         //   alert("hai");
           console.log(checkoutData.remember);
@@ -41,6 +45,7 @@ shopMyToolsApp.controller('editaddresscontroller', ['$scope', '$http', '$locatio
                     //    console.log(data.data)
                     if(data.data.status="updated successfully"){
                         alert("Address Updated Successfully")
+                   window.location.href = "#!/dashboard";
                     }
 
                    })
