@@ -2,11 +2,11 @@
     .product-image a {
         cursor: pointer;
     }
-
+    
     .mg-image a {
         cursor: pointer;
     }
-    /* .accordion-toggle:after {
+     /* .accordion-toggle:after {
    
     font-family: 'Glyphicons Halflings';  
     content: "\e113";   
@@ -41,87 +41,57 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <!--start of side filter-->
-
+                      
                         <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 subcatdiv">
-                            <div class="accordion-toggle" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;"
-                                data-toggle="collapse" ng-click="toggleclick()" data-target="#subcategory" ng-if="categories.length > 0">
+                            <div class="accordion-toggle" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;" data-toggle="collapse" ng-click="toggleclick()"data-target="#subcategory" ng-if="categories.length > 0">
                                 <b>SUB-CATEGORY</b>
                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval==true" style="float: right;margin-top: 2px;"></i>
                                 <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval==false" style="float: right;margin-top: 2px;"></i>
                             </div>
-
-
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" ng-if="toggleval==true" id="subcategory" class="subcatcheck">
-
-
-                                <label>Search: <input class="searchbrand" ng-model="searchText"></label>
-                                <table id="searchTextResults">
-
-                                    <tr ng-repeat="category in categories | filter:searchText">
-                                        <td> <label>
-                  <input type="checkbox"  class="branCheck"   ng-checked="{{category.selected}}" ng-selected="category.subcategory"
-                 ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>
-                                        </td>
-
-
-                                    </tr>
-                                </table>
-
-                      
+                                <div ng-repeat="category in categories track by $index" >
+                                    <!-- <input type="checkbox" value="value"> -->
+                                    <label>
+                  <input type="checkbox" id="checkBox_{{$index}}" class="branCheck" ng-selected="category.subcategory"  ng-checked="{{category.selected}}"
+                 ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  
+                                <!-- <input type="checkbox" class="branCheck checkbox"   name="category" ng-value="'{{category}}'" 
+                               ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  -->
+                   
+            </div>
                             </div>
-
-
-
-                            <div class="accordion-toggle" data-toggle="collapse" ng-click="toggleclick2()" data-target="#priceid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
+                            <div  class="accordion-toggle" data-toggle="collapse"  ng-click="toggleclick2()" data-target="#priceid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;margin-bottom:10px;">
                                 <b>PRICE</b>
-                                <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval2==true" style="float: right;margin-top: 2px;"></i>
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval2==true" style="float: right;margin-top: 2px;"></i>
                                 <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval2==false" style="float: right;margin-top: 2px;"></i>
                             </div>
-                            <div class="cat_radio_checks" ng-init="price=pricerange" id="priceid" ng-if="toggleval2==true">
+                           <div class="cat_radio_checks" ng-init="price=pricerange" id="priceid" ng-if="toggleval2==true">
                                 <input type="radio" name="price" ng-if="minprice<1000" ng-model="price" ng-value="'0-1000'" ng-click="getCategorywiseProductcheck('price','0-1000','left')">
-                                <span ng-if="minprice<1000">&#8377;0 - &#8377;1,000</span>
+                                <span  ng-if="minprice<1000">&#8377;0 - &#8377;1,000</span>
                                 <br ng-if="minprice<1000">
-                                <input type="radio" name="price" ng-model="price" ng-if="maxprice>=1000" ng-value="'1000-10000'" ng-click="getCategorywiseProductcheck('price','1000-10000','left')">
+                                <input type="radio"  name="price" ng-model="price"  ng-if="maxprice>=1000" ng-value="'1000-10000'" ng-click="getCategorywiseProductcheck('price','1000-10000','left')">
                                 <span ng-if="maxprice>=1000">&#8377;1,000 - &#8377;10,000</span>
                                 <br ng-if="maxprice>=1000">
-                                <input type="radio" name="price" ng-model="price" ng-if="maxprice>=10000" ng-value="'10000-30000'" ng-click="getCategorywiseProductcheck('price','10000-30000','left')">
+                                <input type="radio"  name="price" ng-model="price" ng-if="maxprice>=10000" ng-value="'10000-30000'" ng-click="getCategorywiseProductcheck('price','10000-30000','left')">
                                 <span ng-if="maxprice>=10000">&#8377;10,000 - &#8377;30,000</span>
                                 <br ng-if="maxprice>=10000">
-                                <input type="radio" name="price" ng-if="maxprice>=30000" ng-model="price" ng-value="'30000-50000'" ng-click="getCategorywiseProductcheck('price','30000-50000','left')">
+                                <input type="radio"  name="price" ng-if="maxprice>=30000" ng-model="price" ng-value="'30000-50000'" ng-click="getCategorywiseProductcheck('price','30000-50000','left')">
                                 <span ng-if="maxprice>=30000">&#8377;30,000 - &#8377;50,000</span>
                                 <br ng-if="maxprice>=30000">
                                 <!-- <input type="radio" ng-model="price" ng-value="'20000-40000'" ng-change="getCategorywiseProductcheck('price','10000-40000')" > ₹20,000 - ₹40,000<br> -->
                                 <!-- <input type="radio" > ₹40,000 - ₹100,000<br> -->
-                                <input type="radio" name="price" ng-if="maxprice>=50000" ng-model="price" ng-value="'50000-2000000'" ng-click="getCategorywiseProductcheck('price','50000-100000000','left')">
+                                <input type="radio"   name="price" ng-if="maxprice>=50000" ng-model="price" ng-value="'50000-2000000'" ng-click="getCategorywiseProductcheck('price','50000-100000000','left')">
                                 <span ng-if="maxprice>=50000">&#8377;50,000 and above</span>
                                 <br ng-if="maxprice>=50000">
-                                <input type="radio" name="price" ng-model="price" ng-value="''" ng-click="getCategorywiseProductcheck('price','','left')">
+                                <input type="radio"  name="price" ng-model="price" ng-value="''" ng-click="getCategorywiseProductcheck('price','','left')">
                                 <span>Show All</span>
                             </div>
 
                             <div class="accordion-toggle" ng-click="toggleclick4()" data-toggle="collapse" data-target="#warrantyid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
                                 <b>WARRANTY</b>
-
-                                <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval4==true" style="float: right;margin-top: 2px;"></i>
-                                <!-- end ngIf: toggleval3==true -->
-                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval4==false" style="float: right;margin-top: 2px;"></i>
-
-                            </div>
-                            <!-- <div style="margin-top: 8px;" id="warrantyid" ng-if="toggleval4==true">
-                                <input type="radio" name="warranty" ng-model="warranty" ng-value=1 ng-click="getCategorywiseProductcheck('warranty','1','left')">
-                                <span>Warranty</span>
-                                <br>
-                                <input type="radio" name="warranty" ng-model="warranty" ng-value="'0'" ng-click="getCategorywiseProductcheck('warranty','0','left')">
-                                <span>Non-Warranty</span>
-                                <br>
-                                <input type="radio" name="warranty" ng-model="warranty" ng-value="" ng-click="getCategorywiseProductcheck('warranty','','left')">
-                                <span>Show All</span>
-                            </div>
-
-                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval4==true" style="float: right;margin-top: 2px;"></i>
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval4==true" style="float: right;margin-top: 2px;"></i><!-- end ngIf: toggleval3==true -->
                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval4==false" style="float: right;margin-top: 2px;"></i>
                            
-                            </div>   -->
+                            </div>  
                              <div style="margin-top: 8px;"  id="warrantyid" ng-if="toggleval4==true">
                                 <input type="radio" name="warranty"  ng-model="warranty" ng-value=1 ng-click="getCategorywiseProductcheck('warranty','1','left')">
                                 <span >Warranty</span>
@@ -133,82 +103,56 @@
                                 <span >Show All</span> 
                         </div>
 
-
                             <div class="accordion-toggle" ng-click="toggleclick5()" data-toggle="collapse" data-target="#discountId" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
                                 <b>DISCOUNT</b>
-                                <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval5==true" style="float: right;margin-top: 2px;"></i>
-                                <!-- end ngIf: toggleval3==true -->
-                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval5==false" style="float: right;margin-top: 2px;"></i>
-
-                            </div>
-                            <div class="cat_radio_checks" ng-init="percentage=percent" id="discountId" ng-if="toggleval5==true">
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval5==true" style="float: right;margin-top: 2px;"></i><!-- end ngIf: toggleval3==true -->
+                               <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval5==false" style="float: right;margin-top: 2px;"></i>
+                           
+                            </div> 
+                         <div class="cat_radio_checks" ng-init="percentage=percent"  id="discountId" ng-if="toggleval5==true">
                                 <input type="radio" name="percentage" ng-model="percentage" ng-value=10 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
-                                <span>Upto 10%</span>
-                                <br>
-                                <input type="radio" name="percentage" ng-model="percentage" ng-value=25 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
-                                <span>Upto 25%</span>
-                                <br>
-                                <input type="radio" name="percentage" ng-model="percentage" ng-value=50 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
-                                <span>Upto 50%</span>
-                                <br>
-                                <input type="radio" name="percentage" ng-model="percentage" ng-value=75 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
-                                <span>Upto 75%</span>
-                                <br>
-
+                                <span  >Upto 10%</span>
+                                <br >
+                                <input type="radio"  name="percentage" ng-model="percentage"  ng-value=25 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
+                                <span >Upto 25%</span>
+                                <br >
+                                <input type="radio"  name="percentage" ng-model="percentage"  ng-value=50 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
+                                <span >Upto 50%</span>
+                                <br >
+                                <input type="radio"  name="percentage"  ng-model="percentage" ng-value=75 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
+                                <span >Upto 75%</span>
+                                <br >
+                           
                                 <!-- <input type="radio"   name="percent" ng-model="percent" ng-value="'100'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
                                 <span>Above 75%</span>
                                 <br > -->
-                                <input type="radio" name="percentage" ng-model="percentage" ng-value="''" ng-click="getCategorywiseProductcheck('percent','','left')">
+                                <input type="radio"  name="percentage" ng-model="percentage" ng-value="''" ng-click="getCategorywiseProductcheck('percent','','left')">
                                 <span>Show All</span>
                             </div>
 
 
-                            <div class="accordion-toggle" ng-click="toggleclick3()" data-toggle="collapse" data-target="#brandid" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
+        <div class="accordion-toggle" ng-click="toggleclick3()" data-toggle="collapse" data-target="#brandid"style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
                                 <b>BRAND</b>
-                                <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval3==true" style="float: right;margin-top: 2px;"></i>
+                                 <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval3==true" style="float: right;margin-top: 2px;"></i>
                                 <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval3==false" style="float: right;margin-top: 2px;"></i>
-
-                            </div>
-                            <div ng-if="toggleval3==true">
-
-
-                                
-
-<label>Search: <input ng-model="searchText"></label>
-<table id="searchTextResults">
-  <tr><th>Name</th></tr>
-  <tr ng-repeat="brandArry in brandsData | filter:searchText">
-        <td>   <label>
-                 <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="{{brandArry.selected}}"
-
-                ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')"> 
-
-                 <!-- <input type="checkbox" class="branCheck checkbox"  name="brandArry" ng-model="selected" 
-                ng-value="{{brandArry}}" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"> -->
-                {{brandArry.brand}}({{brandArry.count}})
-              </label>
-                                        </td>
-
-
-                                    </tr>
-                                </table>
                             </div>
 
-
-
-
-
- 
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid" ng-if="toggleval3==true">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
                  <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"
                 ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')"> 
 
+                 <!-- <input type="checkbox" class="branCheck checkbox"  name="brandArry" ng-model="selected" 
+                ng-value="{{brandArry}}" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"> -->
+                {{brandArry.brand}}({{brandArry.count}})
+              </label>
+                                </div>
+                            </div>
 
 
 
-
+                         
                         </div>
                         <!--end of side filter -->
                         <!--start of body grid-->
@@ -255,7 +199,7 @@
                                         </div>
                                     </div>
                                     <div class="" id="paginaView">
-                                        <div class="pagination" ng-if="pagination.numPages == 0" id="pagin">
+                                         <div class="pagination" ng-if="pagination.numPages == 0" id="pagin">
                                             <ul>
                                                 <li>
                                                     <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
@@ -272,8 +216,7 @@
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
-                                                        ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
                         Next
                       </button>
                                                 </li>
@@ -289,22 +232,20 @@
                                                 <li>
                                                     <label ng-if="pageList[0] > 0 ">...</label>
                                                 </li>
-                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
-                                                    class="pagenumbers">
+                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
                                                     <a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
                                                 </li>
                                                 <li>
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
-                                                        ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
                         Next
                       </button>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <!-- <div class="form-group">
+                                        </div> 
+                                         <!-- <div class="form-group">
                   <div class="buttons-countrows">
                     <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
                       ng-click="previousPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
@@ -332,10 +273,9 @@
                                 <div ng-if="layout == 'Grid'">
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner ">
-                                        <!-- <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products " style="margin-top:10px;"> -->
-
-                                        <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage"
-                                            style="margin-top:10px;">
+                                             <!-- <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products " style="margin-top:10px;"> -->
+                                       
+                                         <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;"> 
                                             <div class="sub-item respl-item" style="opacity: 1;">
                                                 <div class="item-inner">
                                                     <div class="product-image">
@@ -410,8 +350,7 @@
                                                                 </a>
                                                                 <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
-                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
-                                                                    ng-click="productReview(productsdata, 'review')">
+                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
                                                                     <span>
                                 <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                 <span class="hidden-xs">REVIEW</span>
@@ -438,8 +377,7 @@
                             <!-- list row -->
                             <div class="row">
                                 <div style="margin-top: 10px;" ng-if="layout == 'List'" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list">
-                                    <div ng-repeat="productsdata in products| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage"
-                                        style="margin-bottom:10px;">
+                                    <div ng-repeat="productsdata in products| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-bottom:10px;">
                                         <div class="col-item carousel-inner">
                                             <div class="col-md-4">
                                                 <div class="listitem-inner">
@@ -516,8 +454,7 @@
                                                             </a>
                                                             <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
                                                             <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
-                                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
-                                                                ng-click="productReview(productsdata, 'review')">
+                                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
                                                                 <span>
                               <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                               <span class="hidden-xs">REVIEW</span>
@@ -582,7 +519,7 @@
                                         </div>
                                     </div>
                                     <div class="" id="paginaView">
-                                        <div class="pagination" ng-if="pagination.numPages == 0" id="pagin" style="margin: -26px 0 !important;">
+                                         <div class="pagination" ng-if="pagination.numPages == 0" id="pagin" style="margin: -26px 0 !important;">
                                             <ul>
                                                 <li>
                                                     <button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
@@ -599,8 +536,7 @@
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
-                                                        ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
                         Next
                       </button>
                                                 </li>
@@ -616,22 +552,20 @@
                                                 <li>
                                                     <label ng-if="pageList[0] > 0 ">...</label>
                                                 </li>
-                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
-                                                    class="pagenumbers">
+                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
                                                     <a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
                                                 </li>
                                                 <li>
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
-                                                        ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
                         Next
                       </button>
                                                 </li>
                                             </ul>
-                                        </div>
-                                        <!-- <div class="form-group">
+                                        </div> 
+                                         <!-- <div class="form-group">
                   <div class="buttons-countrows">
                     <button type="button" class="btn-prev btn   flat-box-btn waves-effect waves-button btnpageprevnext" ng-disabled="currentPageNumber == 1"
                       ng-click="previousPageMethod(fromVal,toVal,viewby)" style="border-radius: 0px;">
@@ -766,5 +700,4 @@
     function myFunction(x) {
         x.classList.toggle("fa-chevron-down");
     }
-
 </script>
