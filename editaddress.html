@@ -33,17 +33,14 @@ margin-top:6px;
     color: #333;
 }
 </style>
-
-
 <div class="container" ng-controller="editaddresscontroller">
-
-			 <ul class="bredcrumb_ul margin_left">
+	<ul class="bredcrumb_ul margin_left">
     	<li class="bredcrumb_li">
-	<a  ng-click="goToHome()">	Home</a>
+	     <a  ng-click="goToHome()">	Home</a>
 		</li>
 		<li class="bredcrumb_li">
 		<a ng-click="pageNavigate()">Dashboard</a>
-    </li>
+         </li>
     	<li  class="bredcrumb_li">
 			<a>Edit Address</a>
 		</li>
@@ -51,7 +48,6 @@ margin-top:6px;
 	<div class="row" id="edit_row">
 		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="background-color: white;margin-top: 15px;" id="categoryPage">
 			<div class="row">
-
 				<!--   shipping address start here -->
 				<div class="shipping_addr_part col-md-6 col-lg-6 col-sm-6 col-xs-12">
 					<div style="background-color:gray;padding:5px;">
@@ -317,9 +313,6 @@ margin-top:6px;
 				</div>
 
 				<!--   shipping address end here -->
-
-
-
 				<div class="shipping_addr_part col-md-6 col-lg-6 col-sm-6 col-xs-12">
 					<div style="background-color:gray;padding:5px;" ng-click="ShowHide()">
 						<span class="checkout-step-number111" style="color:#fff;font-size: 15px;padding:10px;">2</span>
@@ -563,17 +556,11 @@ margin-top:6px;
 				<!--   billing address end here -->
 			</div>
 		</div>
-
 		  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 btnsave">
 		<div class="form-group col-md-offset-5 col-md-7 col-xs-12">
 					  <a class="btn btn-default ad_cart cancelBtn col-md-2" role="button" ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(checkoutData,billingAddress)">Save</a>
 					</div>
 					</div>
 	</div>
-
 </div>
-
-
-
-
 <!---------------------------------------  end   ------------------------------------------------------>
