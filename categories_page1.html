@@ -52,7 +52,7 @@
                                 <div ng-repeat="category in categories track by $index" >
                                     <!-- <input type="checkbox" value="value"> -->
                                     <label>
-                  <input type="checkbox" id="checkBox_{{$index}}" class="branCheck"   ng-checked="{{category.selected}}"
+                  <input type="checkbox" id="checkBox_{{$index}}" class="branCheck" ng-selected="category.subcategory"  ng-checked="{{category.selected}}"
                  ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  
                                 <!-- <input type="checkbox" class="branCheck checkbox"   name="category" ng-value="'{{category}}'" 
                                ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-selected="category.subcategory" ng-checked="selectedArray.subcategory.indexOf(category.subcategory) > -1" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  -->
@@ -82,7 +82,7 @@
                                 <input type="radio"   name="price" ng-if="maxprice>=50000" ng-model="price" ng-value="'50000-2000000'" ng-click="getCategorywiseProductcheck('price','50000-100000000','left')">
                                 <span ng-if="maxprice>=50000">&#8377;50,000 and above</span>
                                 <br ng-if="maxprice>=50000">
-                                <input type="radio"  name="price" ng-model="price" ng-value="" ng-click="getCategorywiseProductcheck('price','','left')">
+                                <input type="radio"  name="price" ng-model="price" ng-value="''" ng-click="getCategorywiseProductcheck('price','','left')">
                                 <span>Show All</span>
                             </div>
 
@@ -93,14 +93,14 @@
                            
                             </div>  
                              <div style="margin-top: 8px;"  id="warrantyid" ng-if="toggleval4==true">
-                                <input type="radio" name="warranty"  ng-model="warranty" ng-value="'1'" ng-click="getCategorywiseProductcheck('warranty','1','left')">
+                                <input type="radio" name="warranty"  ng-model="warranty" ng-value=1 ng-click="getCategorywiseProductcheck('warranty','1','left')">
                                 <span >Warranty</span>
                                 <br >
-                                <input type="radio"  name="warranty" ng-model="warranty" ng-value="''"  ng-click="getCategorywiseProductcheck('warranty','','left')">
+                                <input type="radio"  name="warranty" ng-model="warranty" ng-value=0 ng-click="getCategorywiseProductcheck('warranty','0','left')">
                                 <span >Non-Warranty</span>
-                                <!-- <br>
-                                 <input type="radio"  name="warranty" ng-model="warranty" ng-value=""  ng-click="getCategorywiseProductcheck('warranty','','left')">
-                                <span >Show All</span> -->
+                                 <br>
+                                 <input type="radio"  name="warranty" ng-model="warranty" ng-value="''"  ng-click="getCategorywiseProductcheck('warranty','','left')">
+                                <span >Show All</span> 
                         </div>
 
                             <div class="accordion-toggle" ng-click="toggleclick5()" data-toggle="collapse" data-target="#discountId" style="border: 1px solid #eee;padding: 5px;margin-top: 15px;background-color: #0487A1;color: #fff;">
@@ -109,24 +109,24 @@
                                <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval5==false" style="float: right;margin-top: 2px;"></i>
                            
                             </div> 
-                         <div class="cat_radio_checks"   id="discountId" ng-if="toggleval5==true">
-                                <input type="radio" name="percent" ng-model="percent" ng-value="'10'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
+                         <div class="cat_radio_checks" ng-init="percentage=percent"  id="discountId" ng-if="toggleval5==true">
+                                <input type="radio" name="percentage" ng-model="percentage" ng-value=10 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
                                 <span  >Upto 10%</span>
                                 <br >
-                                <input type="radio"  name="percent" ng-model="percent"  ng-value="'25'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
+                                <input type="radio"  name="percentage" ng-model="percentage"  ng-value=25 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
                                 <span >Upto 25%</span>
                                 <br >
-                                <input type="radio"  name="percent" ng-model="percent"  ng-value="'50'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
+                                <input type="radio"  name="percentage" ng-model="percentage"  ng-value=50 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
                                 <span >Upto 50%</span>
                                 <br >
-                                <input type="radio"  name="percent"  ng-model="percent" ng-value="'75'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
+                                <input type="radio"  name="percentage"  ng-model="percentage" ng-value=75 ng-click="getCategorywiseProductcheck('percent',percentage,'left')">
                                 <span >Upto 75%</span>
                                 <br >
                            
                                 <!-- <input type="radio"   name="percent" ng-model="percent" ng-value="'100'" ng-click="getCategorywiseProductcheck('percent',percent,'left')">
                                 <span>Above 75%</span>
                                 <br > -->
-                                <input type="radio"  name="percentage" ng-model="percentage" ng-value="'100'" ng-click="getCategorywiseProductcheck('percent','','left')">
+                                <input type="radio"  name="percentage" ng-model="percentage" ng-value="''" ng-click="getCategorywiseProductcheck('percent','','left')">
                                 <span>Show All</span>
                             </div>
 
@@ -135,19 +135,12 @@
                                 <b>BRAND</b>
                                  <i class="fa fa-chevron-up" aria-hidden="true" ng-if="toggleval3==true" style="float: right;margin-top: 2px;"></i>
                                 <i class="fa fa-chevron-down" aria-hidden="true" ng-if="toggleval3==false" style="float: right;margin-top: 2px;"></i>
-                           
-                           
                             </div>
-
-
-         
-                            
-
 
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid" ng-if="toggleval3==true">
                                 <div ng-repeat="brandArry in brandsData track by $index">
                                     <label>
-                 <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="{{brandArry.selected}}"
+                 <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"
                 ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')"> 
 
                  <!-- <input type="checkbox" class="branCheck checkbox"  name="brandArry" ng-model="selected" 
