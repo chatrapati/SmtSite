@@ -420,12 +420,12 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
               // console.log($scope.brandsData)
             }
            
-            if(data.data.subcat_count){
-              $rootScope.categories = data.data.subcat_count;
-               localStorage.setItem('subCategories',JSON.stringify($rootScope.categories))
-            }else{
+            // if(data.data.subcat_count){
+            //   $rootScope.categories = data.data.subcat_count;
+            //    localStorage.setItem('subCategories',JSON.stringify($rootScope.categories))
+            // }else{
               $rootScope.categories =  JSON.parse(localStorage.getItem('subCategories'))
-            }
+            // }
            
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
