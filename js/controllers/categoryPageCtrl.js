@@ -367,6 +367,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
       $scope.loading = true;
       $scope.nextBtn = 'true';
       if (typeval == "cat") {
+       // alert($scope.percent)
         if (typeof (subCategory) == 'object') {
           $scope.subCatList = subCategory;
         } else {
@@ -401,10 +402,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           if (data.data.status == 'Success') {
             $rootScope.selectedArray = data.data.filterdata;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
-<<<<<<< HEAD
-=======
-          alert($scope.pricerange)
->>>>>>> 5cc9622e397ada8741578cca8fd35740baf59180
+         
             $scope.products = data.data.products;
             $scope.fromVal = data.data.from;
             $scope.toVal = data.data.to;
@@ -418,7 +416,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             }else{
 
               $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
-               console.log($scope.brandsData)
+              // console.log($scope.brandsData)
             }
            
             if(data.data.subcat_count){
@@ -561,7 +559,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             // $scope.brandsData = data.data.brand_count;
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             // 
-             console.log(localStorage.getItem('brandsData'))
+           //  console.log(localStorage.getItem('brandsData'))
            localStorage.setItem('categories',JSON.stringify($rootScope.categories))
             //$scope.minrange = data.data.minprice;
             // $scope.maxrange = data.data.maxprice;

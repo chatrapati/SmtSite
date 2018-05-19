@@ -2486,6 +2486,15 @@ md-toolbar._md-toolbar-transitions {
     /* margin-right: 21px; */
     margin-left: 22px;
 }
+.editaddressdashboard{
+    color:white;
+        margin-left: 26px;
+}
+.editaddressdashboard:hover{
+    color:yellow;
+        margin-left: 26px;
+
+}
 
 
 md-backdrop.md-opaque {
