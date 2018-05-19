@@ -528,7 +528,12 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
-             $rootScope.categories = data.data.subcat_count;
+             if(window.localStorage['subCategoryName']){
+                $rootScope.categories = [];
+             }else{
+              $rootScope.categories = data.data.subcat_count;
+             }
+             
            
                $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
                 localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
@@ -606,7 +611,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             //  $rootScope.categories = data.data.subcat_count;
             if(window.localStorage['subCategoryName']){
                $scope.brandsData = data.data.brand_count;
-               $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'))
+               $rootScope.categories = []
                 localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
             }else{
               $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
@@ -673,9 +678,12 @@ if (window.localStorage['categoryName'] != "") {
           } else if (data.data.status == 'No data avialbale' || data.data.status == 'Products Not avialbale') {
             $scope.products = [];
              $rootScope.selectedArray = data.data.filterdata;
-             $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
+            
             if(window.localStorage['subCategoryName']){
               $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
+               $rootScope.categories = [];
+            }else{
+               $rootScope.categories = JSON.parse(localStorage.getItem('subCategories'));
             }
             localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
