@@ -2016,11 +2016,12 @@ a.whishlist_lak {
     color: white;
 }
 
-.centered {
+.proclick {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+        margin-top: 131px;
 }
 
 .centered1 {
@@ -2495,7 +2496,18 @@ md-toolbar._md-toolbar-transitions {
     
 
 }
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
+.searchbrand{
+    border-radius: 8%;
+    height: 25px;
+    margin-top: 10px;
+}
 
 md-backdrop.md-opaque {
     opacity: 0 !important;

@@ -716,8 +716,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             $scope.loading = true;
             $scope.latLongArray = [];
             if(pincode == 500021){
-                var latitude = 17.4501509;
-                var longitude = 78.3671564;
+                var latitude = 17.385044;
+                var longitude = 78.486671;
                  $scope.latLongArray.push(longitude,latitude);
                 $scope.getDealersList($scope.latLongArray)
             }else{
