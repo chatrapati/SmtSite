@@ -442,12 +442,13 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
             $scope.pagination = Pagination.getNew($scope.viewby);
             $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
            
-              if(!window.localStorage['subCategoryName'] && data.data.brand_count){
+              if(window.localStorage['subCategoryName'] && data.data.brand_count){
                $scope.brandsData = data.data.brand_count;
-                localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
+               
             }else{
               $scope.brandsData = JSON.parse(localStorage.getItem('brandsData'));
             }
+             localStorage.setItem('brandsData',JSON.stringify($scope.brandsData))
             if(window.localStorage['subCategoryName']){
               $rootScope.categories = [];
             }
