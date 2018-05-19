@@ -481,7 +481,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
         if (subCategory.includes('-')) {
           $scope.pricerange = subCategory;
         } else if (subCategory == '') {
-          $scope.pricerange = localStorage.getItem('minprice') + '-' + localStorage.getItem('maxprice');
+          $scope.pricerange = '';
 
         }
         if ($scope.from == 'left') {
