@@ -17,7 +17,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     $scope.toggleval3 = true;
     $scope.toggleval4 = true;
       $scope.toggleval5 = true;
-    $scope.percent= '';
+    
 
     $rootScope.showHintFlag = 'false';
     $rootScope.showHintMsg = 'false';
@@ -330,7 +330,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
       location.reload();
     }
 
-    $scope.warranty = '';
+   
 
 
 
@@ -401,6 +401,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           $scope.loading = false;
           if (data.data.status == 'Success') {
             $rootScope.selectedArray = data.data.filterdata;
+           
             localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
          
             $scope.products = data.data.products;
@@ -431,6 +432,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
            
            // $scope.brandsData = data.data.brand_count;
              $rootScope.selectedArray = data.data.filterdata;
+             // alert($rootScope.selectedArray.percentage)
              localStorage.setItem('selectedArray', JSON.stringify($rootScope.selectedArray));
             $scope.pageList = [0, 1, 2, 3, 4];
             $scope.pagination = Pagination.getNew($scope.viewby);
@@ -828,6 +830,9 @@ if (window.localStorage['categoryName'] != "") {
       }
       $scope.getCategorywiseProductcheck('cat', $scope.subCatList);
     } else {
+      $scope.percent= '';
+       $scope.warranty = '';
+       $scope.pricerange = '';
       $scope.getProductCategories($scope.fromVal, $scope.toVal);
     }
 
