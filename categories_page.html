@@ -139,7 +139,23 @@
                            
                             </div>
 
+<label>Search: <input ng-model="searchText"></label>
+<table id="searchTextResults">
+  <tr><th>Name</th></tr>
+  <tr ng-repeat="brandArry in brandsData | filter:searchText">
+        <td>   <label>
+                 <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="{{brandArry.selected}}"
+                ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')"> 
 
+                 <!-- <input type="checkbox" class="branCheck checkbox"  name="brandArry" ng-model="selected" 
+                ng-value="{{brandArry}}" ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"> -->
+                {{brandArry.brand}}({{brandArry.count}})
+              </label>
+                         </td>
+     
+
+  </tr>
+</table>
          
                             
 
