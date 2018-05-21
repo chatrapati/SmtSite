@@ -2710,8 +2710,25 @@ padding-left: 11px;
     padding-left: 5px;
     padding: 3px 20px !important;
 }
-.proclick{
+.proclick123{
     margin: 5%;
   font-weight: bold;
-  color: #000000;
+  color: red;
+
 }
+.reecntclass1{
+        height: 136px !important;
+}
+  
+.reecntclass2{
+        height: 191px !important;    
+}
+
+.reecntclass3{
+        height: 247px !important;   
+}
+
+.reecntclass4{
+        height: 301px !important;  
+}
+
