@@ -246,6 +246,19 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 if(data.data.status == 'success'){
                      $scope.prod_info=data.data.prod_info;
                     $scope.prod_infocount=$scope.prod_info.length;
+                    if($scope.prod_infocount==1){
+                        $scope.recentclass="reecntclass1";
+                    }
+                    else if($scope.prod_infocount==2){
+                        $scope.recentclass="reecntclass2";
+                    } 
+                    else if($scope.prod_infocount==3){
+                        $scope.recentclass="reecntclass3";
+                    }
+                     else if($scope.prod_infocount==4){
+                        $scope.recentclass="reecntclass4";
+                    }
+
                     // alert($scope.prod_infocount)
                
                 }else if(data.data.status == 'fail'){
