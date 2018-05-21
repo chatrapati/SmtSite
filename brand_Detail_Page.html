@@ -1,5 +1,15 @@
 <!--   Product Detail & zoom effect start here -->
-
+<style>
+.caption {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: #333;
+   
+}
+</style>
 <div ng-controller="product_detailed_controller" id="edit_row">
 
     <div loading ng-if="showData == 'false'"></div>
@@ -78,8 +88,18 @@
                                         <!-- <img ng-src="{{imgArray.img}}" class="img-responsive" alt="{{brandDetailDescArray.upload_name}}"  ng-click="openImg(imgArray.img)"/>  -->
 
                                         <!-- <img ng-elevate-zoom zoom-image={{imgArray.img.replace('530X400','1000X1000')}}  ng-src="{{brandDetailDescArray.upload_photo}}" class="img-responsive" ng-click="openImg(imgArray.img)" alt="{{brandDetailDescArray.upload_name}}" style="height: 350px !important; width: 100%;"/>   -->
+
                                     </a>
-                                    <div class="proclick123">Click to open expanded view</div>
+                                   
+                                   <p class="caption">
+											<span ng-click="openImg(brandDetailDescArray)">
+											Click to open expanded view																				
+											</span>
+										  </p>
+								  </a>
+									
+                                    <!-- <div class="proclick">Click to open expanded view</div> -->
+
                                     <div class="selectors">
                                         <!-- <a ng-repeat="zimages in brandDetailDescArray.extraimages track by $index| limitTo : 4" id="img_effects">
                        -->
