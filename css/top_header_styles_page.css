@@ -1,6 +1,22 @@
+html,body {
+    background: #fff !important;
+}
+.forgetpas{
+height: 50.80%;
+}
+.forgot-password {
+    color: #000;
+    font-size: 14px !important;
+}
 #ftr_ss div:nth-child(4) ul #footer_links_valuess{
 
 display:inline-block;
+}
+.dashboard_billing_addr{
+    cursor: inherit !important;
+}
+#cards .fa{
+    cursor:inherit;
 }
 
 #ftr_ss ul li{
@@ -18,8 +34,6 @@ display:inline-block;
 }
 }
 
-	display:inline-block;
-}
 
 #ftr_ss ul li{
 	cursor:context-menu !important;
@@ -119,7 +133,7 @@ input[type="number"]:focus {
 }
 
 #wish_Items3 {
-    margin: 11px 4px 10px;
+    margin: 11px 0px 10px;
     /*text-align: right;*/
 }
 
@@ -493,9 +507,13 @@ input[type="number"]:focus {
     .collections-wrap .block-title span {
         padding-right: 2px !important;
     }
+    #footer_links_valuessn .fa{
+        cursor:inherit !important;
+    }
     #catwishcompdiv {
         margin-top: -3px !important;
     }
+    
     .coupon {
         padding: 5px 3px !important;
         font-size: 10px !important;
@@ -2128,6 +2146,7 @@ a.whishlist_lak {
     border-right: 3px solid #cacdce;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
+    font-weight: 700;
 }
 
 .bredcrumb_li a:hover {
@@ -2686,3 +2705,13 @@ padding-left: 11px;
 }
 
 /* 04-5-2018 styles end here */
+
+.dropdown-menu > li.kopie > a {
+    padding-left: 5px;
+    padding: 3px 20px !important;
+}
+.proclick{
+    margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
