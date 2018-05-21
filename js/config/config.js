@@ -32,3 +32,4 @@ shopMyToolsApp.constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005')
  shopMyToolsApp.constant('DOMAIN_URL','http://localhost/SmtSiteAngular/SmtSite/');
 
 
+
