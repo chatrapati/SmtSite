@@ -1,17 +1,8 @@
 <!--   Product Detail & zoom effect start here -->
 <style>
-img {
-    display: block;
-}
-
-.thumbnail {
-    position: relative;
-    display: inline-block;
-}
-
 .caption {
     position: absolute;
-    top: 64%;
+    top: 77%;
     left: 50%;
     transform: translate( -50%, -50% );
     text-align: center;
@@ -98,7 +89,7 @@ img {
 
                                         <!-- <img ng-elevate-zoom zoom-image={{imgArray.img.replace('530X400','1000X1000')}}  ng-src="{{brandDetailDescArray.upload_photo}}" class="img-responsive" ng-click="openImg(imgArray.img)" alt="{{brandDetailDescArray.upload_name}}" style="height: 350px !important; width: 100%;"/>   -->
                                    <p class="caption">
-											<span>
+											<span ng-click="openImg(brandDetailDescArray)">
 											Click to open expanded view																				
 											</span>
 										  </p>
