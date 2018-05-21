@@ -1,5 +1,24 @@
 <!--   Product Detail & zoom effect start here -->
+<style>
+img {
+    display: block;
+}
 
+.thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+.caption {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: #333;
+   
+}
+</style>
 <div ng-controller="product_detailed_controller" id="edit_row">
 
     <div loading ng-if="showData == 'false'"></div>
@@ -76,9 +95,15 @@
                                         <img ng-if="!showVideo" ng-click="openImg(brandDetailDescArray)" ng-src="{{brandDetailDescArray.upload_photo.replace('100X100','530X400')}}"
                                             class="img-responsive" alt="{{brandDetailDescArray.upload_name}}"  />
                                         <!-- <img ng-src="{{imgArray.img}}" class="img-responsive" alt="{{brandDetailDescArray.upload_name}}"  ng-click="openImg(imgArray.img)"/>  -->
-Click to open expanded view
+
                                         <!-- <img ng-elevate-zoom zoom-image={{imgArray.img.replace('530X400','1000X1000')}}  ng-src="{{brandDetailDescArray.upload_photo}}" class="img-responsive" ng-click="openImg(imgArray.img)" alt="{{brandDetailDescArray.upload_name}}" style="height: 350px !important; width: 100%;"/>   -->
-                                    </a>
+                                   <p class="caption">
+											<span>
+											Click to open expanded view																				
+											</span>
+										  </p>
+								  </a>
+									
                                     <!-- <div class="proclick">Click to open expanded view</div> -->
                                     <div class="selectors">
                                         <!-- <a ng-repeat="zimages in brandDetailDescArray.extraimages track by $index| limitTo : 4" id="img_effects">
