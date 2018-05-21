@@ -24,16 +24,14 @@ shopMyToolsApp.constant('SERVER_URL1', 'http://157.119.108.142:8002');
 
 // shopMyToolsApp.constant('LOGIN_URL', ' http://157.119.108.135:8005');
 
-<<<<<<< HEAD
 
 shopMyToolsApp.constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005');
 // shopMyToolsApp.constant('PRODUCT_CATEGORY_SERVICE', 'http://157.119.108.137:80');
- shopMyToolsApp.constant('DOMAIN_URL','http://localhost/smtsitewithangular/SmtSite/');
-=======
+
 shopMyToolsApp.constant('LOGIN_URL', ' http://157.119.108.135:8005');
 
 shopMyToolsApp.constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005');
 shopMyToolsApp.constant('PRODUCT_CATEGORY_SERVICE', 'http://157.119.108.137:80');
- shopMyToolsApp.constant('DOMAIN_URL','http://localhost/SmtSiteAngular/SmtSite/');
->>>>>>> cd222347e613670e019095c9356c90452d3fa98b
+shopMyToolsApp.constant('DOMAIN_URL','http://localhost/SmtSiteAngular/SmtSite/');
+
 
