@@ -1,3 +1,11 @@
+.shopcardiv{
+	padding-left: 5px !important;
+}
+@media(max-width: 1280px) and (min-width: 1024px)
+.shopcardiv{
+	padding-left: 0px !important;
+}
+}
 html,body {
     background: #fff !important;
 }
@@ -485,6 +493,7 @@ input[type="number"]:focus {
     #wish_Items3 {
         margin-right: 10px !important;
         margin: 8px 8px 10px;
+		margin-left: -13px;
     }
     #wish_Items2 {
         padding: 10px 9px 10px !important;
@@ -1534,10 +1543,11 @@ ul #footer_links_valuess a:hover {
 }
 
 .btn_get_pickup {
-    height: 40px;
+	margin-top :27px !important;
+    height: 37px;
     width: 60px;
     background: #0487a1;
-    color: #fff
+    color: #fff	
 }
 
 .btn_get_pickup:hover {
