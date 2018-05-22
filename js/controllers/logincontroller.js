@@ -563,7 +563,7 @@ $scope.toggleShowPassword3=function(){
            
           })
         } else {
-          alert('Passwords do not matched');
+          alert('The password and confirm password do not match');
         }
       }
 
@@ -574,7 +574,7 @@ $scope.toggleShowPassword3=function(){
     $scope.checkpass=function(confirm){
       if(confirm.confirmPassword.length >0){
         if(confirm.newPassword!=confirm.confirmPassword){
-        $scope.checkmsz="Passwords do not matched";
+        $scope.checkmsz="The password and confirm password do not match";
         
       }
       else{

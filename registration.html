@@ -699,7 +699,7 @@
                                                             <!-- <p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number</p> -->
                                                             <p class="validationError errorMsg" ng-message="minlength"> </p>
                                                             <p class="validationError errorMsg" ng-message="maxlength"></p>
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid GST Number</p>
 
                                                         </div>
                                                         <!--<input type="text" class="form-control" id="eai_firstNmae" placeholder="Enter First Name" name="eai_firstNmae">-->
@@ -718,7 +718,7 @@
                                                         <label for="email">
 															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Email </label>
 
-                                                        <input type="email" name="email" ng-change="mobilenumbercheck(registrationData.email)" class="form-control" id="eai_firstNmae" id="email" ng-model="registrationData.email" placeholder="Enter Email ID" required ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
+                                                        <input type="email" name="email" ng-change="mobilenumbercheck(registrationData.email)" class="form-control" id="eai_firstNmae" id="email" ng-model="registrationData.email" placeholder="Enter Email" required ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
                                                         <span id="emailExisted" class="validationError errorMsg"></span>   
                                                         <div ng-messages="registerForm.email.$error ">
                                                             <p class="validationError errorMsg" ng-if="submitted" ng-message="required">Enter Email </p>
@@ -758,7 +758,7 @@
                                                         <label for="password">
 															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Confirm Password</label>
                                                         <div class="input-group add-on">
-                                                            <input type="{{inputType}}" name="confirm_password" class="form-control" id="eai_firstNmae" id="confirm_password" data-ng-match="registrationData.password" ng-model="registrationData.confirm_password" placeholder="Enter Password" required ng-minlength="6">
+                                                            <input type="{{inputType}}" name="confirm_password" class="form-control" id="eai_firstNmae" id="confirm_password" data-ng-match="registrationData.password" ng-model="registrationData.confirm_password" placeholder="Enter Confirm Password" required ng-minlength="6">
                                                             <div class="input-group-btn">
                                                                 <div class="btn btn-default"> <i ng-click="toggleShowPassword()" class="{{eye}}" style="cursor: pointer;"></i></div>
                                                             </div>

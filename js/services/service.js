@@ -673,6 +673,29 @@ shopMyToolsApp.service('headerSliderService', function ($q, $http, SERVER_URL) {
 
 })
 
+
+shopMyToolsApp.service('redeemService', function ($q, $http, LOGIN_URL) {
+	this.redemAmount = function (customermobile,redeemamount) {
+		var deferred = $q.defer();
+
+		$http({
+			method: 'POST',
+			url: LOGIN_URL + '/checkredeemcash',
+			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' },
+            data: { "customermobile": customermobile, "req_redeem_cash": redeemamount }
+		}).then(function success(data) {
+			deferred.resolve(data);
+
+		}, function error(data) {
+			deferred.reject(data);
+
+		});
+
+		return deferred.promise;
+	};
+
+})
+
 // shopMyToolsApp.service('userdataUpdateService', function ($q, $http, SERVER_URL1) {
 // 	this.updateuserData = function (editData, userId) {
 // 		var deferred = $q.defer();

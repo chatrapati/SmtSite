@@ -2,12 +2,12 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
     'getpayuDetailsService', 'viewCartService', 'getDealersListService', '$window', '$filter',
 
-    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL','getRedeemPointsService',
+    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL','getRedeemPointsService','redeemService',
 
     function ($scope, $http, $location, $rootScope, getpayuDetailsService,
 
         viewCartService, getDealersListService, $window, $filter, saveOrderService, 
-        getPincodeStatusService,getCouponService,DOMAIN_URL,getRedeemPointsService) {
+        getPincodeStatusService,getCouponService,DOMAIN_URL,getRedeemPointsService,redeemService) {
 
         $window.scrollTo(0, 0);
 
@@ -133,11 +133,21 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             
         }
 
-
+// $rootScope.redeemApplicable = true;
       $scope.getRedeem=function(redamount){
-          $rootScope.redeemamount=redamount;
-           $rootScope.amount=$rootScope.amount-redamount;
-          
+         
+           redeemService.redemAmount(window.localStorage['mobile'],redamount).then(function(data){
+                 if(data.data.status=="success"){
+                     $rootScope.redeemApplicable = true;
+            $rootScope.redeemamount=redamount;
+            $rootScope.amount2=$rootScope.amount-parseInt($rootScope.redeemamount);
+
+                 }else if(data.data.status == 'The amount which you have entered in the Redeem cash column is less than the amount you have in your account.'){
+                     $rootScope.redeemNotApplicable = true;
+                 }
+            //console.log(data.data)
+           })
+         // console.log($rootScope.amount);
       }
 
             $scope.IsVisible = false;
@@ -166,7 +176,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             })
         }
 
-        $scope.getRedeemPoints(); 
+        //$scope.getRedeemPoints(); 
 
         $scope.nextStepPayment = function (shippingData,gstnumber) {
            
@@ -371,9 +381,11 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
         }
 
+        
+
         if(window.localStorage['token']){
               $scope.viewCartItems();
-
+$scope.getRedeemPoints(); 
         $scope.getPayuDetails();
         }else{
             $location.path("/")
@@ -549,6 +561,14 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                 $rootScope.grandTotal = $rootScope.amount;
             }
 
+            if($rootScope.redeemamount){
+                $scope.redeemCash = $rootScope.redeemamount;
+                $rootScope.grandTotal = $rootScope.amount2;
+            }else{
+                 $scope.redeemCash = 0;
+                $rootScope.grandTotal = $rootScope.amount;
+            }
+
             if ($scope.shippingType == 'Pickup') {
                
                     $scope.customermobile = $scope.customermobile;
@@ -571,7 +591,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "paymenttype": $scope.paymenttype,
                     "total_items": JSON.stringify($scope.totalquantity),
                     "user_id": window.localStorage['user_id'],
-                    "gst_number":$scope.gst_number
+                    "gst_number":$scope.gst_number,
+                    "redeem_amount":$scope.redeemCash
                 }
             } else {
                
@@ -593,7 +614,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "paymenttype": $scope.paymenttype,
                     "total_items": JSON.stringify($scope.totalquantity),
                     "user_id": window.localStorage['user_id'],
-                     "gst_number":$scope.gst_number
+                     "gst_number":$scope.gst_number,
+                      "redeem_amount":$scope.redeemCash
                 }
             }
 
@@ -704,7 +726,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
 
         $scope.getPincodeStatus = function (pincode, altMobile,gstnumber) {
-
+            if($rootScope.cartArray.length > 0 ){
+                if($scope.dealersList.length == 0){
             $scope.altMobile = altMobile;
 
              $scope.gst_number=gstnumber;
@@ -743,7 +766,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                             $scope.latLongArray.push(longitude,latitude);
 
+                           
                             $scope.getDealersList($scope.latLongArray)
+                            
 
                         } else {
 
@@ -762,10 +787,14 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             })
             }
-
-          
+            }
+        }else{
+            $location.path('/')
+        }
 
         }
+
+        $scope.dealersList = [];
 
         $scope.pincodeChange = function(pincode){
           //  if(pincode.length == 0){
