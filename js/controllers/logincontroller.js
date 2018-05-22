@@ -316,7 +316,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
               window.location.href = $scope.currentUrl;
             }else{
                // window.location.href = "./index.html";
-               window.location.href = DOMAIN_URL +"#!/dashboard";
+            window.location.href = DOMAIN_URL +"#!/dashboard";
             }
            
 
@@ -375,7 +375,9 @@ if(!registrationData.gstnumber){
     }
 
     $scope.gotoLogin = function () {
-      $location.path("login");
+      // $location.path("login");
+      // window.location.href=DOMAIN_URL+"#!/login"
+       window.location.href = "./login.html";
     }
 
     $scope.goToHome = function () {
@@ -561,7 +563,7 @@ $scope.toggleShowPassword3=function(){
            
           })
         } else {
-          alert('New Password and Confirm Password should be same');
+          alert('Passwords do not matched');
         }
       }
 
@@ -572,7 +574,7 @@ $scope.toggleShowPassword3=function(){
     $scope.checkpass=function(confirm){
       if(confirm.confirmPassword.length >0){
         if(confirm.newPassword!=confirm.confirmPassword){
-        $scope.checkmsz="New Password and Confirm Password should be same";
+        $scope.checkmsz="Passwords do not matched";
         
       }
       else{

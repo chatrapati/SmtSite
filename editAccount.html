@@ -100,7 +100,10 @@
 													<label for="mobile">
 														<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
 
-													<input type="text" name="mobile" class="form-control" ng-blur="mobilenumbercheck(customerData.mobile)" id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
+													<!-- <input type="text" name="mobile" class="form-control" ng-blur="mobilenumbercheck(customerData.mobile)" id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
+													 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/"> -->
+
+													 	<input type="text" name="mobile" class="form-control"  id="user_mobile" id="eai_firstNmae" ng-model="customerData.mobile" placeholder="Enter Mobile Number"
 													 ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
 
 													<!-- <span class="validationError errorMsg" style="color:red" ng-if="editForm.user_mobile.$dirty && editForm.user_mobile.$invalid" class="ng-hide">

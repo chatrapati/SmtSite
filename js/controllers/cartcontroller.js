@@ -376,6 +376,22 @@ shopMyToolsApp.controller('cartController', ['$scope', '$http', '$location', '$r
 
         }
 
+        	$scope.decreaseValue = function (cartItem,index) {
+			if (cartItem.qty > 1) {
+				cartItem.qty--;
+            }
+              $scope.changeQty(cartItem,index);
+
+		}
+
+		$scope.increaseValue = function (cartItem,index) {
+			// alert(typeof(cartItem.qty))
+            cartItem.qty++;
+            
+            $scope.changeQty(cartItem,index);
+			//alert(cartItem.qty)
+		}
+
 
 
     }])

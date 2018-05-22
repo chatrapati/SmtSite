@@ -48,11 +48,27 @@
 												<!-- <td style="text-align:center;"><a href="#">Move</a></td> -->
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price | currency:'&#8377;'}}</td>
 												<td style="text-align:center;padding-top: 45px;">
+									<a href="javascript:void(0)">
+                                                    <span class="fa-stack fa-sm decbutton">
+                            <i class="fa fa-square fa-stack-2x light-grey"></i>
+                            <i class="fa fa-minus fa-stack-1x fa-inverse white" id="decrease" ng-click="decreaseValue(cartItem,$index)"></i>
+                          </span>
+                                                </a>			
+
+
+												
 													<input type="text" min="1" name="qty" 
 													value="{{cartItem.qty}}" id="cartQty{{$index+1}}" ng-model="cartItem.qty" ng-change="changeQty(cartItem,$index)" title="Quantity" class="" maxlength="12" 
 													style="text-align:center;width:60px;"  ng-enter="doBlur($event)" 
 													ng-blur="leavingInput(cartItem,$event)" 
-													ng-keypress="restrictMinus($event,$index)" ng-keyup="restrictMinus($event,$index)" custom-autofocus="$index == focusIndex"></td>
+													ng-keypress="restrictMinus($event,$index)" ng-keyup="restrictMinus($event,$index)" custom-autofocus="$index == focusIndex">
+                              <a href="javascript:void(0)">
+                                                    <span class="fa-stack fa-sm incbutton">
+                            <i class="fa fa-square fa-stack-2x light-grey"></i>
+                            <i class="fa fa-plus fa-stack-1x fa-inverse white" id="increase" ng-click="increaseValue(cartItem,$index)"></i>
+                          </span>
+                                                </a></td>
+
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.offer_price*cartItem.qty | currency:'&#8377;'}}</td>
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax}}</td>
 												<td style="text-align:right;padding-top: 50px;">{{cartItem.tax_amount | currency:'&#8377;'}}</td>

@@ -2436,7 +2436,7 @@ a.compare_hover:hover {
     /* box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);
      -moz-box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);
     -webkit-box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);   */
-    background: url(https://s3.ap-south-1.amazonaws.com/gstbucket1/recently.png) center center no-repeat;
+    background: url(https://s3.ap-south-1.amazonaws.com/gstbucket1/recently-viewed.png) center center no-repeat;
     
 }
 #tabOne{
