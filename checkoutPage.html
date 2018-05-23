@@ -765,15 +765,17 @@
 									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
 								</tr> -->
 
-								<tr ng-if="couponAmt">
-									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
-									<td class="cart_des tft_head">{{amount-couponAmt|currency:'&#8377;'}}</td>
+								<tr ng-if="redeemamount">
+									<td colspan="6" class="cart_head tft_head">Redeem Cash</td>
+									<td class="cart_des tft_head">{{redeemamount|currency:'&#8377;'}}</td>
 								</tr>
 
-								<tr ng-if="redeemamount">
+								<tr ng-if="couponAmt || redeemamount">
 									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
-									<td class="cart_des tft_head">{{amount-redeemamount|currency:'&#8377;'}}</td>
+									<td class="cart_des tft_head">{{amount-couponAmt-redeemamount|currency:'&#8377;'}}</td>
 								</tr>
+
+								
 
 							</tbody>
 						</table>
