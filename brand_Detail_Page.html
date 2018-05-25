@@ -1,5 +1,23 @@
 <!--   Product Detail & zoom effect start here -->
+<style>
+.caption {
+    position: absolute;
+    top: 73%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    color: #333;
+   
+}
+@media only screen and (max-width: 480px) and (min-width: 320px){
 
+.caption {
+top: 62%;
+    left: 41%;
+	}
+	
+}
+</style>
 <div ng-controller="product_detailed_controller" id="edit_row">
 
     <div loading ng-if="showData == 'false'"></div>
@@ -74,12 +92,22 @@
                                         </video>
 
                                         <img ng-if="!showVideo" ng-click="openImg(brandDetailDescArray)" ng-src="{{brandDetailDescArray.upload_photo.replace('100X100','530X400')}}"
-                                            class="img-responsive" alt="{{brandDetailDescArray.upload_name}}" />
+                                            class="img-responsive" alt="{{brandDetailDescArray.upload_name}}"  />
                                         <!-- <img ng-src="{{imgArray.img}}" class="img-responsive" alt="{{brandDetailDescArray.upload_name}}"  ng-click="openImg(imgArray.img)"/>  -->
 
                                         <!-- <img ng-elevate-zoom zoom-image={{imgArray.img.replace('530X400','1000X1000')}}  ng-src="{{brandDetailDescArray.upload_photo}}" class="img-responsive" ng-click="openImg(imgArray.img)" alt="{{brandDetailDescArray.upload_name}}" style="height: 350px !important; width: 100%;"/>   -->
+
                                     </a>
-                                    <div class="proclick">Click to open expanded view</div>
+                                   
+                                   <p class="caption">
+											<span ng-click="openImg(brandDetailDescArray)">
+											Click to open expanded view																				
+											</span>
+										  </p>
+								  </a>
+									
+                                    <!-- <div class="proclick">Click to open expanded view</div> -->
+
                                     <div class="selectors">
                                         <!-- <a ng-repeat="zimages in brandDetailDescArray.extraimages track by $index| limitTo : 4" id="img_effects">
                        -->
@@ -262,7 +290,7 @@
                                   <span class="cart_style_new">ADD TO CART</span>
                                                                 </span>
                                                             </a>
-                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(brandDetailDescArray)" style="margin-left:0px !important;"></a>
+                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(brandDetailDescArray)" style="margin-left:0px !important;"></a>
                                                             <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(brandDetailDescArray)" style="margin-left:3px !important;"></a>
                                                             <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReviewMethod(brandDetailDescArray, 'review')"
                                                                 style="margin-left:1px !important;">
@@ -930,7 +958,7 @@
                         <div class="info_lak">
                             <div class="row">
                                 <div class="price_lak col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                    <div ng-init="limit = 32">
+                                    <div ng-init="limit = 40">
                                         <h5 class="product_name_lak">
                                             <a ng-click="getProductDetailsaa(RelatedProductArray)" title="{{RelatedProductArray.upload_name}}">{{RelatedProductArray.upload_name | limitTo: limit}}{{RelatedProductArray.upload_name .length > limit ? ' . . .' : ''}}</a>
                                         </h5>
@@ -983,7 +1011,7 @@
                       <span class="cart_style_new">ADD TO CART</span>
                                         </span>
                                     </a>
-                                    <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
+                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
                                     <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
                                     <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(RelatedProductArray, 'review')"
                                         style="margin-right: 0px;margin-left: 2px;">
@@ -1040,7 +1068,7 @@
                         <div class="info_lak">
                             <div class="row">
                                 <div class="price_lak col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                    <div ng-init="limit = 32">
+                                    <div ng-init="limit = 40">
                                         <h5 class="product_name_lak">
                                             <a title="{{upsellProductArray.upload_name}}" ng-click="getProductDetailsaa(upsellProductArray)">{{upsellProductArray.upload_name | limitTo: limit}}{{upsellProductArray.upload_name .length > limit
                         ? ' . . .' : ''}}</a>
@@ -1093,7 +1121,7 @@
                       <span class="cart_style_new">ADD TO CART</span>
                                         </span>
                                     </a>
-                                    <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(upsellProductArray)" style="margin-right: 0px;"></a>
+                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(upsellProductArray)" style="margin-right: 0px;"></a>
                                     <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(upsellProductArray)" style="margin-right: 0px;"></a>
                                     <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(upsellProductArray, 'review')"
                                         style="margin-right: 0px;margin-left:3px !important;">
@@ -1149,7 +1177,7 @@
                         <div class="info_lak">
                             <div class="row">
                                 <div class="price_lak col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                    <div ng-init="limit = 32">
+                                    <div ng-init="limit = 40">
                                         <h5 class="product_name_lak">
                                             <a ng-click="getProductDetailsaa(RelatedProductArray)" title="{{RelatedProductArray.upload_name}}">{{RelatedProductArray.upload_name | limitTo: limit}}{{RelatedProductArray.upload_name .length > limit ? ' . . .' : ''}}</a>
                                         </h5>
@@ -1202,7 +1230,7 @@
                       <span class="cart_style_new">ADD TO CART</span>
                                         </span>
                                     </a>
-                                    <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
+                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
                                     <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(RelatedProductArray)" style="margin-right: 0px;margin-left: 1px;"></a>
                                     <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" ng-click="productReview(RelatedProductArray, 'review')"
                                         style="margin-right: 0px;margin-left: 2px;">

@@ -404,7 +404,7 @@
                             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-7" id="all_accounts_header">
                                  <a href="" onclick="window.open('http://care.shopmytools.com/cust_order_tracking')" style="padding: 8px;border: 1px solid;" ng-if="token" title="Order Tracking"> <i class="fa fa-truck hidden-lg hidden-sm hidden-md"></i><img src="https://s3.ap-south-1.amazonaws.com/gstbucket1/favicon.png" class="hidden-xs"></a>
                                 <a href="" ng-click="goToDashboard()" style="padding: 8px;border: 1px solid;" ng-if="token" title="My Account"><i class="fa fa-user" aria-hidden="true"></i></a>
-                                <a style="padding: 8px;border: 1px solid;" ng-if="token" title="My Wishlist" ng-click="goToWishList()"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                                <a style="padding: 8px;border: 1px solid;" ng-if="token" title="My Wish List" ng-click="goToWishList()"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                 <a href="" style="padding: 8px;border: 1px solid;" ng-click="goToCheckout()" ng-if="token" title="Checkout"><i class="fa fa-check-square-o" aria-hidden="true"></i></a>
                                 <a href="login.html" style="padding: 8px;border: 1px solid;" ng-if="!token" title="Login"><i class="fa fa-unlock-alt" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Login / Signup</a>
                                 <a href="" ng-click="goToLogout()" style="padding: 8px;border: 1px solid;" ng-if="token" title="Logout"><i class="fa fa-lock" aria-hidden="true"></i></a>
@@ -488,7 +488,7 @@
                             <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" id="whish_compare">
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" id="cart-padding">
                                     <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6 shopCartDiv">
-                                        <div class="col-md-3 col-xs-3 padding-col">
+                                        <div class="col-md-3 col-xs-3 padding-col shopcardiv">
                                             <div class="dropdown">
                                                 <a class="btn  dropdown-toggle cancelBtn" type="button" data-toggle="dropdown" id="#whissshhh" style="margin-left: -15px;">
                                                     <span><i class="fa fa-shopping-basket" aria-hidden="true"></i></span></a>
@@ -645,6 +645,8 @@
 
   
     <footer class="footerbar footer">
+
+  
       
         <div class="container">
             <div class="row">
@@ -808,6 +810,23 @@
         </div>
     </footer>
 
+
+    <!-- Start of Tawk.to Script-->
+ <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5a0c31d4198bd56b8c03b452/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script> 
+<!--End of Tawk.to Script -->
+
+
+
     <script>
         var amountScrolled = 300;
         $(window).scroll(function() {
@@ -836,3 +855,24 @@
 </body>
 
 </html>
+
+
+<!-- <script>
+     document.getElementsByClassName("theme-background-color").style.backgroundColor = "red";
+</script> -->
+
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+  
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5a0c31d4198bd56b8c03b452/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+console.log(s1.getAttribute("tawkchat-minified-container"));
+console.log(s0)
+s0.parentNode.insertBefore(s1,s0);
+
+})();
+</script> -->

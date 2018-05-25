@@ -20,16 +20,16 @@
 								<div class="row">
 									<div class="dashboard_billing_addr" id="dashbord_Address">
 										<p><span>Name : </span><span> {{customerData.first_name}} {{customerData.last_name}} </span></p>
-										<p><span>Mobile : </span><span>{{customerData.mobile}}  </span></p>
+										<p><span>Mobile Number : </span><span>{{customerData.mobile}}  </span></p>
 										<p><span>Email : </span><span> {{customerData.email}} </span></p>
 										<!-- <p><span>Address : </span><span> {{addressInfo.street_address}} </span>,<br>
 											<span style="margin-left:24%;"> {{addressInfo.city}}</span>,<br>
 											<span style="margin-left:24%;">{{addressInfo.state}}</span>,<br>
 											<span style="margin-left:24%;">{{addressInfo.country}}</span>,<br>
 											<span style="margin-left:24%;">{{addressInfo.postal_code}} </span>. </span></p> -->
-										<button type="submit" style="float:left !important;" id="change_pwd" ng-click="changePassword()">Change Password</button>
+										<button type="submit" style="float:left !important;" id="change_pwd" ng-click="changePassword()">Reset Password</button>
 											<button type="submit" id="edit_add" ng-click="goToEdit()">Edit Account Info</button><br><br><br>
-											<a href="" class="editaddressdashboard" ng-click="editaddress()" id="" ><u>Update Shipping & billing address</u></a>
+											 <a href="" class="editaddressdashboard" ng-click="editaddress()" id="" ><u>Update Shipping & billing address</u></a> 
 									</div>
 										
 								
@@ -39,13 +39,13 @@
 								<div class="dashboard_billing_addr" id="your_orders_dashbord" ng-click="getOrders()">
 									<div class="ord">
 										<p style="margin-top:50px;">{{yourOrdersCountItems}}</p>
-										<p>Your Orders</p>
+										<p>Your Order(s)</p>
 									</div>
 								</div>
 								<div class="dashboard_billing_addr" id="pending_orders_dashbord" ng-click="gotoPendingOrders()">
 									<div class="ord">
 										<p style="margin-top:50px;">{{pendingOrderCountItems}}</p>
-										<p>Pending Orders</p>
+										<p>Pending Order(s)</p>
 									</div>
 								</div>
 							</div>
@@ -53,13 +53,13 @@
 								<div class="dashboard_billing_addr" id="invoices_dashbord" ng-click="gotoInvoice()">
 									<div class="ord">
 										<p style="margin-top:50px;">{{invoiceCountItems}}</p>
-										<p>Invoices</p>
+										<p>Invoice(s)</p>
 									</div>
 								</div>
 								<div class="dashboard_billing_addr" id="whishlist_dashbord" ng-click="gotoWishList()">
 									<div class="ord">
 										<p style="margin-top:50px;">{{wishListCountItems}}</p>
-										<p>Wishlist</p>
+										<p>Wish List</p>
 									</div>
 								</div>
 							</div>
@@ -67,16 +67,20 @@
 							<div class="row">
 								<div class="dashboard_billing_addr" id="offer_reward">
 									<div class="reward_points_dahbord">
-										<p style="margin-bottom:0px;">{{rewardPoints}}</p>
-										<p>Reward Points</p>
-										<p style="font-size: 12px;">You can redeem points from coupon code</p>
+										<p style="margin-bottom:0px;">Reward Point(s):{{rewardPoints}}</p>
+										<p style="font-size: 12px;height: 15px;">You can redeem points from coupon code</p>
+										</div>
+									<div class="reward_points_dahbord">
+										<p style="margin-top: 12px;" >Redeem Point(s):{{availRedeemCash}}</p>
+									
+										<!-- <p style="margin-top: 12px;" ng-if="availRedeemCash == 0">Redeem Point(s):{{availRedeemCash}}</p> -->
 									</div>
 									<h3> Offer only for you </h3>
 									<div class="smt_div_bord" ng-if="couponCode != ''">
 										{{couponCode}}
 									</div>
 									<div class="smt_div_bord" ng-if="couponCode == ''">
-									<p>...</p>
+									<p style="margin-bottom:0px;">...</p>
 									</div>
 								</div>
 							</div>

@@ -436,7 +436,7 @@
                         <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12" id="whish_compare">
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" id="cart-padding">
                                 <div class="form-group col-md-6 col-lg-6 col-sm-6 col-xs-6 shopCartDiv">
-                                    <div class="col-md-3 col-xs-3 padding-col">
+                                    <div class="col-md-3 col-xs-3 padding-col shopcardiv">
                                         <div class="dropdown">
                                             <a class="btn  dropdown-toggle cancelBtn" type="button" data-toggle="dropdown" id="#whissshhh" style="margin-left: -15px;">
                                                 <span><i class="fa fa-shopping-basket" aria-hidden="true"></i></span></a>
@@ -631,11 +631,11 @@
 
                                                         <input type="text" name="firstname" required id="eai_firstNmae" class="form-control" id="firstname" ng-model="registrationData.firstname" placeholder="Enter First Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/"
                                                             autofocus="true">
-                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.firstname.$error.required">Enter first name</p>
+                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.firstname.$error.required">Enter First Name</p>
 
                                                         <div ng-messages="registerForm.firstname.$error ">
 
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter valid first name</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid First Name</p>
                                                             <p class="validationError errorMsg" ng-message="minlength">Enter minimum 3 characters</p>
                                                             <p class="validationError errorMsg" ng-message="maxlength">Enter maximum 50 characters</p>
                                                         </div><br>
@@ -653,11 +653,11 @@
 															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Last Name</label>
 
                                                         <input type="text" name="lastname" required="" id="eai_firstNmae" class="form-control" id="lastname" ng-model="registrationData.lastname" placeholder="Enter Last Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
-                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.lastname.$error.required">Enter last name</p>
+                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.lastname.$error.required">Enter Last Name</p>
 
                                                         <div ng-messages="registerForm.lastname.$error ">
 
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter valid last name</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid Last Name</p>
                                                             <p class="validationError errorMsg" ng-message="minlength">Enter minimum 3 characters</p>
                                                             <p class="validationError errorMsg" ng-message="maxlength">Enter maximum 50 characters</p>
                                                         </div><br>
@@ -674,10 +674,10 @@
                                                         <label for="user_mobile">
 															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Mobile Number</label>
 
-                                                        <input type="text" name="user_mobile" class="form-control" id="user_mobile" ng-blur="mobilenumbercheck(registrationData.user_mobile)" id="eai_firstNmae" ng-model="registrationData.user_mobile" placeholder="Enter Mobile Number" ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
+                                                        <input type="text" name="user_mobile" class="form-control" id="user_mobile" ng-change="mobilenumbercheck(registrationData.user_mobile)" id="eai_firstNmae" ng-model="registrationData.user_mobile" placeholder="Enter Mobile Number" ng-minlength="10" ng-maxlength="10" maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
                                                         <p class="validationError errorMsg" ng-if="submitted && registerForm.user_mobile.$error.required">Enter Mobile Number</p>
 
-
+                                                            <span id="mobileexisted" class="validationError errorMsg"></span>                
                                                         <div ng-messages="registerForm.user_mobile.$error ">
                                                             <p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number</p>
                                                             <p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 digits</p>
@@ -699,7 +699,7 @@
                                                             <!-- <p class="validationError errorMsg" ng-message="pattern">Enter Valid Mobile Number</p> -->
                                                             <p class="validationError errorMsg" ng-message="minlength"> </p>
                                                             <p class="validationError errorMsg" ng-message="maxlength"></p>
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid GST Number</p>
 
                                                         </div>
                                                         <!--<input type="text" class="form-control" id="eai_firstNmae" placeholder="Enter First Name" name="eai_firstNmae">-->
@@ -716,12 +716,12 @@
                                                     <div class="form-group col-md-4 col-xs-12 col-lg-4 col-sm-12">
 
                                                         <label for="email">
-															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Email Address</label>
+															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Email </label>
 
-                                                        <input type="email" name="email" ng-blur="mobilenumbercheck(registrationData.email)" class="form-control" id="eai_firstNmae" id="email" ng-model="registrationData.email" placeholder="Enter Email ID" required ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
-
+                                                        <input type="email" name="email" ng-change="mobilenumbercheck(registrationData.email)" class="form-control" id="eai_firstNmae" id="email" ng-model="registrationData.email" placeholder="Enter Email" required ng-pattern="/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/">
+                                                        <span id="emailExisted" class="validationError errorMsg"></span>   
                                                         <div ng-messages="registerForm.email.$error ">
-                                                            <p class="validationError errorMsg" ng-if="submitted" ng-message="required">Enter Email Id</p>
+                                                            <p class="validationError errorMsg" ng-if="submitted" ng-message="required">Enter Email </p>
 
 
                                                             <p class="validationError errorMsg" ng-message="pattern">Enter Valid Email</p>
@@ -756,9 +756,9 @@
                                                     <div class="form-group col-md-4 col-xs-12 col-lg-4 col-sm-12">
 
                                                         <label for="password">
-															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Confirm New Password</label>
+															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Confirm Password</label>
                                                         <div class="input-group add-on">
-                                                            <input type="{{inputType}}" name="confirm_password" class="form-control" id="eai_firstNmae" id="confirm_password" data-ng-match="registrationData.password" ng-model="registrationData.confirm_password" placeholder="Enter Password" required ng-minlength="6">
+                                                            <input type="{{inputType}}" name="confirm_password" class="form-control" id="eai_firstNmae" id="confirm_password" data-ng-match="registrationData.password" ng-model="registrationData.confirm_password" placeholder="Enter Confirm Password" required ng-minlength="6">
                                                             <div class="input-group-btn">
                                                                 <div class="btn btn-default"> <i ng-click="toggleShowPassword()" class="{{eye}}" style="cursor: pointer;"></i></div>
                                                             </div>
@@ -786,7 +786,7 @@
 
 
 
-                                                <button type="submit" class="btn btn-default register_submit" id="back_edit_info" ng-click="gotoLogin()">&lt;&lt; Back</button>
+                                                <button type="submit" class="btn btn-default register_submit" id="back_edit_info" ng-click="gotoLogin()"> Back</button>
 
                                                 <button type="submit" class="btn btn-default register_submit" id="save_edit_info" ng-click="submitted=true;registerForm.$valid && register(registrationData)">Save</button>
 

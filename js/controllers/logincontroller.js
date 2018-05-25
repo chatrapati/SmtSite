@@ -2,6 +2,8 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
   '$rootScope', 'loginService', 'registrationService', '$window', 'resetPaswdService', 'forgotPaswdService','DOMAIN_URL','getIPService',
   function ($scope, $http, $location, $rootScope, loginService, registrationService, $window, resetPaswdService,
      forgotPaswdService,DOMAIN_URL,getIPService) {
+
+       $scope.var1=false;
     
 
     if(localStorage.getItem('previousUrl')){
@@ -11,33 +13,59 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
       $scope.previousUrl = $scope.previousUrlArray[1];
     
     }
-
+ 
     $scope.mobilenumbercheck=function(mobile){
-    // alert(mobile)
-      registrationService.mobilecheck(mobile).then(function(data){
+     // alert(mobile.length)
+      document.getElementById("mobileexisted").innerHTML="";
+          document.getElementById("emailExisted").innerHTML="";
+
+      if(mobile.length >= 10){
+          registrationService.mobilecheck(mobile).then(function(data){
         if(data.data.status=="email exists"){
-          alert("Email id is already exists");
+          // alert("Email id is already exists");
+          document.getElementById("emailExisted").innerHTML="Email id is already exists ";
           $scope.registrationData.email="";
 
           var name =document.getElementById('email');
-           if (name.value != ''){
-
-               name.focus();
-           }
+          //  if (name.value != ''){
+          //   alert("hai")
+          //      name.focus();
+          //        document.getElementById("emailExisted").innerHTML="";
+          //  }
                 
         }else if(data.data.status=="mobile exists" ){
-          alert("Mobile number is already exists");
+         //  alert("Mobile number is already exists");
+           $scope.var1=true;
+           document.getElementById("mobileexisted").innerHTML="Mobile number is  already exists ";
+          
           $scope.registrationData.user_mobile="";
            var mobileno = document.getElementById('user_mobile');
-           if (mobileno.value != ''){
+//            if (mobileno.value != ''){
+//  $scope.var1=false;
+//                mobileno.focus();
+              
+//                 //  document.getElementById("mobileexisted").innerHTML="";
+             
+//            }
+              
 
-               mobileno.focus();
-           }
         }
+          else{
+              document.getElementById("mobileexisted").innerHTML="";
+               document.getElementById("emailExisted").innerHTML="";
+          }
       
       })
+      }else if(mobile.length <= 0){
+         document.getElementById("mobileexisted").innerHTML="";
+          document.getElementById("emailExisted").innerHTML="";
+      }
+    // alert(mobile)
+    
     }
-
+  //  $scope.mobexist=function(){
+  //     document.getElementById("mobileexisted").innerHTML="";
+  //  }
     $scope.forgetpasscheck=function(mobile){
 
       registrationService.mobilecheck(mobile).then(function(data){
@@ -240,6 +268,19 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
   }
 
   $scope.getIpAddress();
+
+  if(window.localStorage['token']){
+    $scope.token = window.localStorage['token'];
+  }
+
+  $scope.pageNavigate = function(){
+               window.location.href=DOMAIN_URL+"#!/dashboard";
+            }
+
+             $scope.goToHome = function(){
+                $location.path("/");
+            }
+
  
   
 
@@ -275,7 +316,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
               window.location.href = $scope.currentUrl;
             }else{
                // window.location.href = "./index.html";
-               window.location.href = DOMAIN_URL +"#!/dashboard";
+            window.location.href = DOMAIN_URL +"#!/dashboard";
             }
            
 
@@ -323,7 +364,10 @@ if(!registrationData.gstnumber){
             $("#otpmodal").modal('show');
            
           } else {
-            alert(data.data.status)
+            if(data.data.status=="password and confirm_password does not matched"){
+               alert("Passwords do not match")
+            }
+            // alert(data.data.status)
           }
         })
      
@@ -331,7 +375,9 @@ if(!registrationData.gstnumber){
     }
 
     $scope.gotoLogin = function () {
-      $location.path("login");
+      // $location.path("login");
+      // window.location.href=DOMAIN_URL+"#!/login"
+       window.location.href = "./login.html";
     }
 
     $scope.goToHome = function () {
@@ -517,9 +563,28 @@ $scope.toggleShowPassword3=function(){
            
           })
         } else {
-          alert('New Password and Confirm Password should be same');
+          alert('The password and confirm password do not match');
         }
       }
+
+    }
+
+     $scope.checkmsz="";
+
+    $scope.checkpass=function(confirm){
+      if(confirm.confirmPassword.length >0){
+        if(confirm.newPassword!=confirm.confirmPassword){
+        $scope.checkmsz="The password and confirm password do not match";
+        
+      }
+      else{
+           $scope.checkmsz="";
+      }
+      }else{
+          $scope.checkmsz="";
+      }
+      
+
 
     }
 

@@ -2,12 +2,12 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
     'getpayuDetailsService', 'viewCartService', 'getDealersListService', '$window', '$filter',
 
-    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL','getRedeemPointsService',
+    'saveOrderService', 'getPincodeStatusService','getCouponService','DOMAIN_URL','getRedeemPointsService','redeemService',
 
     function ($scope, $http, $location, $rootScope, getpayuDetailsService,
 
         viewCartService, getDealersListService, $window, $filter, saveOrderService, 
-        getPincodeStatusService,getCouponService,DOMAIN_URL,getRedeemPointsService) {
+        getPincodeStatusService,getCouponService,DOMAIN_URL,getRedeemPointsService,redeemService) {
 
         $window.scrollTo(0, 0);
 
@@ -16,11 +16,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         $rootScope.couponApplied = 'false';
         $scope.couponShopMsg = 'false';
        
-            if(window.localStorage['customermobile'].length == 12){
-                $scope.alt_mobile = window.localStorage['customermobile'].slice(2);
-            }else{
-                $scope.alt_mobile = window.localStorage['customermobile'];
-            }
+           
        
 
        $scope.gstnumber = localStorage.getItem('gstNumber')
@@ -30,6 +26,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                  $scope.dealersList = [];
             }
            }
+
 
         $scope.getCoupon = function (coupon) {
           //  alert(coupon)
@@ -44,10 +41,20 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     getCouponService.brandBasedCouponMethod(coupon, window.localStorage['user_id'], $scope.itemList).then(function (data) {
                         if (data.data.status == 'cupon applicable') {
                             $scope.couponData = data.data.coupon_details;
-                            $rootScope.couponApplied = 'true';
-                            $scope.couponNotApplicable = 'false';
-                            $rootScope.couponAmt = $scope.couponData.maxvalue;
-                             $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
+                           if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
+                                      $rootScope.couponApplied = 'true';
+                                $scope.couponNotApplicable = 'false';
+                                $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
+                                }else{
+                                     $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                 $scope.couponFail = 'true';
+                                $rootScope.amount = $rootScope.amount
+                                }
+                             if(!$rootScope.redeemamount1){
+                                 $rootScope.redeemamount1 = 0;
+                             }
                            // localStorage.setItem('couponAmt', $rootScope.couponAmt);
                         } else {
                             $scope.couponNotApplicable = 'true';
@@ -61,10 +68,22 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                      getCouponService.maxPurchasedCouponMethod(coupon, window.localStorage['user_id'], $rootScope.amount).then(function (data) {
                         if (data.data.status == 'cupon applicable') {
                             $scope.couponData = data.data.coupon_details;
-                            $rootScope.couponApplied = 'true';
-                            $scope.couponNotApplicable = 'false';
-                            $rootScope.couponAmt = $scope.couponData.maxvalue;
-                             $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
+
+                             if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
+                                      $rootScope.couponApplied = 'true';
+                                $scope.couponNotApplicable = 'false';
+                                $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
+                                }else{
+                                     $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                 $scope.couponFail = 'true';
+                                $rootScope.amount = $rootScope.amount
+                                }
+                          
+                              if(!$rootScope.redeemamount1){
+                                 $rootScope.redeemamount1 = 0;
+                             }
                         } else {
                             $scope.couponNotApplicable = 'true';
                             $rootScope.couponApplied = 'false';
@@ -78,10 +97,21 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                         getCouponService.maxPurchasedCouponMethod(coupon, window.localStorage['user_id'], $rootScope.amount).then(function (data) {
                             if (data.data.status == 'coupon value applicable') {
                                 $scope.couponData = data.data.coupon_details;
-                                $rootScope.couponApplied = 'true';
+                                if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
+                                      $rootScope.couponApplied = 'true';
                                 $scope.couponNotApplicable = 'false';
                                 $rootScope.couponAmt = $scope.couponData.maxvalue;
-                                $rootScope.amount1 = $rootScope.amount - $rootScope.couponAmt;
+                                $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
+                                }else{
+                                     $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                 $scope.couponFail = 'true';
+                                $rootScope.amount = $rootScope.amount;
+                                }
+                              
+                                 if(!$rootScope.redeemamount1){
+                                 $rootScope.redeemamount1 = 0;
+                             }
                                 // alert($rootScope.amount1)
                             } else {
                                 //alert("else")
@@ -98,24 +128,38 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                         // alert(JSON.stringify(data))
                         if (data.data.status == 'cupon applicable') {
                             $scope.couponData = data.data.coupon_details;
-                              $rootScope.couponAmt = $scope.couponData.maxvalue;
                             if ($scope.couponData.shop) {
+                                
                                 $rootScope.couponShop = $scope.couponData.shop;
-                                if($scope.dealerAddress == $rootScope.couponShop ){
-                                     $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
+                                //alert(parseInt($rootScope.amount) > parseInt($rootScope.couponAmt))
+                                if($scope.dealerAddress == $rootScope.couponShop && parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
+                                 
+                                   
+                            $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                    $rootScope.amount =  $rootScope.amount-$rootScope.couponAmt;
+                                    $scope.couponShopMsg = 'true';
+                                $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                    
                                 }else{
+                                     $scope.couponShopMsg = 'true';
+                                $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                   $scope.couponFail = 'true';
                                     $rootScope.amount =  $rootScope.amount;
                                 }
                                 localStorage.setItem('couponShop',$rootScope.couponShop);
-                                $scope.couponShopMsg = 'true';
-                                $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
+                               
+                                
                             } else {
                                 $rootScope.couponApplied = 'true';
                                 $scope.couponNotApplicable = 'false';
                                 $scope.couponShopMsg = 'false';
                                  $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
                             }
+                                 if(!$rootScope.redeemamount1){
+                                 $rootScope.redeemamount1 = 0;
+                             }
                          //   localStorage.setItem('couponAmt', $rootScope.couponAmt);
                         } else {
                             $scope.couponNotApplicable = 'true';
@@ -133,11 +177,61 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             
         }
 
-
+// $rootScope.redeemApplicable = true;
       $scope.getRedeem=function(redamount){
-          $rootScope.redeemamount=redamount;
-           $rootScope.amount=$rootScope.amount-redamount;
-          
+         if(redamount>0){
+           redeemService.redemAmount(window.localStorage['mobile'],redamount).then(function(data){
+                 if(data.data.status=="success"){
+                   
+           // console.log(typeof($rootScope.amount))
+           
+            if(parseInt($rootScope.amount) >= parseInt(redamount)){
+                  $rootScope.redeemApplicable = true;
+            $rootScope.redeemamount1=redamount;
+              $rootScope.redeemNotApplicable = false;
+               $rootScope.redeemFail = false;
+            $rootScope.amount=$rootScope.amount-parseInt($rootScope.redeemamount1);
+            }else{
+                $rootScope.redeemFail = true;
+                 $rootScope.redeemNotApplicable = false;
+                  $rootScope.redeemApplicable=false;
+            }
+                    if(!$rootScope.couponAmt){
+                        $rootScope.couponAmt = 0;
+                    }
+                   
+                  
+                 }else if(data.data.status == 'The amount which you have entered in the Redeem cash column is less than the amount you have in your account.'){
+                     $rootScope.redeemNotApplicable = true;
+                     $rootScope.redeemApplicable=false;
+                      $rootScope.redeemFail = false;
+                    
+                 }
+            //console.log(data.data)
+           })
+         }
+        
+        else{
+            alert("Enter Valid Redeem points");
+        }
+
+           
+         // console.log($rootScope.amount);
+      }
+
+      $scope.redeemerror=function(err){
+         
+        if(err==null){
+          $rootScope.redeemFail = false;
+           $rootScope.redeemApplicable=false;
+           $rootScope.redeemNotApplicable = false;
+           if($rootScope.couponAmt){
+            $rootScope.amount = $rootScope.grandTotal-$rootScope.couponAmt;
+           }else{
+               $rootScope.amount = $rootScope.grandTotal;
+           }
+           
+        }
       }
 
             $scope.IsVisible = false;
@@ -157,6 +251,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         $scope.disablePaymentbtn = true;
 
 
+        
         $scope.getRedeemPoints = function(){
             getRedeemPointsService.getRedeemPointsMethod(window.localStorage['user_id']).then(function(data){
                 //console.log(data)
@@ -166,7 +261,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             })
         }
 
-        $scope.getRedeemPoints(); 
+        //$scope.getRedeemPoints(); 
 
         $scope.nextStepPayment = function (shippingData,gstnumber) {
            
@@ -323,15 +418,17 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                     $rootScope.amount = data.data.grand_total;
 
+                    $rootScope.grandTotal =  data.data.grand_total;
+
                      if ($rootScope.couponAmt) {
                          $rootScope.amount = $rootScope.amount-$rootScope.couponAmt;
                      }
-                        if( $rootScope.redeemamount){
-                          $rootScope.amount= $rootScope.amount- $rootScope.redeemamount;
+                        if( $rootScope.redeemamount1){
+                          $rootScope.amount= $rootScope.amount- $rootScope.redeemamount1;
 
                         }
                    
-
+                      //  alert($rootScope.amount)
                     $scope.orderId = data.data.orderid;
 
                     window.localStorage['orderId'] = $scope.orderId;
@@ -371,10 +468,17 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
         }
 
+        
+
         if(window.localStorage['token']){
               $scope.viewCartItems();
-
+$scope.getRedeemPoints(); 
         $scope.getPayuDetails();
+         if(window.localStorage['customermobile'].length == 12){
+                $scope.alt_mobile = window.localStorage['customermobile'].slice(2);
+            }else{
+                $scope.alt_mobile = window.localStorage['customermobile'];
+            }
         }else{
             $location.path("/")
         }
@@ -452,11 +556,11 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             // alert($scope.amount)
 
-            if ($scope.paymentType == 'payu') {
+            // if ($scope.paymentType == 'payu') {
 
-                $location.path("payu");
+            //     $location.path("payu");
 
-            }
+            // }
 
             $scope.billingaddress = [];
 
@@ -538,16 +642,26 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             if ($rootScope.couponAmt) {
                     $scope.couponId = localStorage.getItem('coupon');
                     $scope.couponAmt = $rootScope.couponAmt;
-                    if($rootScope.amount1){
-                        $rootScope.grandTotal = $rootScope.amount1;
-                    }else{
-                        $rootScope.grandTotal = $rootScope.amount;
-                    }      
+                 
+                  //      $rootScope.grandTotal = $rootScope.amount;
+                    
             } else {
                 $scope.couponId = "";
                 $scope.couponAmt = "0";
-                $rootScope.grandTotal = $rootScope.amount;
+              //  $rootScope.grandTotal = $rootScope.amount;
             }
+
+            if($rootScope.redeemamount1){
+                $scope.redeemCash = $rootScope.redeemamount1;
+               // $rootScope.grandTotal = $rootScope.amount;
+            }else{
+                 $scope.redeemCash = 0;
+               // $rootScope.grandTotal = $rootScope.amount;
+            }
+
+            // if($rootScope.grandTotal < 1){
+            //     $rootScope.grandTotal = 1;
+            // }
 
             if ($scope.shippingType == 'Pickup') {
                
@@ -559,7 +673,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "alt_mobile": $scope.altMobile,
                     "pic_alt_mobile":$scope.altMobile,
                     "customermobile": $scope.customermobile,
-                    "totalamount": JSON.stringify($rootScope.grandTotal),
+                    "totalamount": JSON.stringify($rootScope.amount),
                     "orderitems": $scope.orderItemArray,
                     "cupon_id": $scope.couponId,
                     "discount": $scope.couponAmt,
@@ -571,7 +685,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "paymenttype": $scope.paymenttype,
                     "total_items": JSON.stringify($scope.totalquantity),
                     "user_id": window.localStorage['user_id'],
-                    "gst_number":$scope.gst_number
+                    "gst_number":$scope.gst_number,
+                    "redeem_amount":$scope.redeemCash
                 }
             } else {
                
@@ -581,7 +696,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "status": $scope.status,
                     "shop": $scope.shop,
                     "customermobile": $scope.customermobile,
-                    "totalamount": JSON.stringify($rootScope.grandTotal),
+                    "totalamount": JSON.stringify($rootScope.amount),
                     "orderitems": $scope.orderItemArray,
                     "cupon_id": $scope.couponId,
                     "discount": $scope.couponAmt,
@@ -593,7 +708,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     "paymenttype": $scope.paymenttype,
                     "total_items": JSON.stringify($scope.totalquantity),
                     "user_id": window.localStorage['user_id'],
-                     "gst_number":$scope.gst_number
+                     "gst_number":$scope.gst_number,
+                      "redeem_amount":$scope.redeemCash
                 }
             }
 
@@ -611,6 +727,10 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     if ($scope.paymentType == 'cashondelivery') {
                        window.location.href = "success.html";
                       
+                    }else if($rootScope.amount > 1 && $scope.paymentType == 'payu'){
+                          $location.path("payu");
+                    }else if($rootScope.amount < 1 && $scope.paymentType == 'payu'){
+                         window.location.href = "success.html";
                     }
                 }
             })
@@ -704,7 +824,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
 
         $scope.getPincodeStatus = function (pincode, altMobile,gstnumber) {
-
+            if($rootScope.cartArray.length > 0 ){
+                if($scope.dealersList.length == 0){
             $scope.altMobile = altMobile;
 
              $scope.gst_number=gstnumber;
@@ -743,7 +864,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                             $scope.latLongArray.push(longitude,latitude);
 
+                           
                             $scope.getDealersList($scope.latLongArray)
+                            
 
                         } else {
 
@@ -762,10 +885,14 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
             })
             }
-
-          
+            }
+        }else{
+            $location.path('/')
+        }
 
         }
+
+        $scope.dealersList = [];
 
         $scope.pincodeChange = function(pincode){
           //  if(pincode.length == 0){
@@ -919,6 +1046,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
                 $rootScope.paymenttype = $rootScope.custDetails.paymenttype;
                 $rootScope.orderDetails = data.data.user_info.order_data;
                 $rootScope.discountAmt = $rootScope.custDetails.discount_amount;
+                $rootScope.redeem_amount = $rootScope.custDetails.redeem_amount;
                 $rootScope.netTotal = JSON.parse($rootScope.grandTotal)+JSON.parse($rootScope.discountAmt);
             }
         });

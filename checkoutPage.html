@@ -78,19 +78,19 @@
 										<input type="text" ng-model="gstnumber" ng-pattern="/^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[1-9A-Z]{1}[0-9A-Za-z]{1}[0-9A-Za-z]{1}$/"
 										 placeholder="Enter GST Number" name="gstnumber" id="gstnumber">
 										<div ng-messages="pickupForm.gstnumber.$error">
-											<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number</p>
+											<p class="validationError errorMsg" ng-message="pattern">Enter Valid GST Number</p>
 										</div>
 
 									</div>
 									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12" id="c_page_bottom">
 
-										<div><label for="alt_mobile"><sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Enter Mobile</label></div>
+										<div><label for="alt_mobile"><sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Enter Mobile Number</label></div>
 
 										<input type="text" ng-model="alt_mobile" placeholder="Enter Mobile" name="alt_mobile" id="alt_mobile" ng-minlength="10" ng-maxlength="10"
 										 maxlength="10" required ng-pattern="/^[6-9][0-9]{9}$/">
 										<p class="validationError errorMsg" style="color:red;" ng-if="pickupForm.alt_mobile.$dirty && pickupForm.alt_mobile.$invalid"
 										 class="ng-hide">
-											Please Enter Valid Mobile.
+											Please Enter Valid Mobile Number.
 										</p>
 
 									</div>
@@ -99,11 +99,11 @@
 
 										<div><label for="postal_code"><sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>PINCODE</label></div>
 
-										<input type="text" name="postal_code" ng-model="postal_code" ng-change="pincodeChange(postal_code)" placeholder="Enter Postal code"
+										<input type="text" name="postal_code" ng-model="postal_code" ng-change="pincodeChange(postal_code)" placeholder="Enter Pincode"
 										 id="postal_code_chekot" required maxlength="6" ng-pattern="/^[1-9][0-9]{5}$/">
 										<p class="validationError errorMsg" style="color:red" ng-if="pickupForm.postal_code.$dirty && pickupForm.postal_code.$invalid"
 										 class="ng-hide">
-											Please Enter postal code.
+											Please Enter Pincode.
 										</p>
 
 									</div>
@@ -118,7 +118,7 @@
 										Please Enter postal_code.
 									</p> -->
 									<div class="form-group col-md-3 col-xs-12 col-lg-3 col-sm-12">
-										<button class="btn btn_get_pickup ad_cart" id="checkout_page_shipping_btn" ng-disabled="pickupForm.$invalid" ng-click="getPincodeStatus(postal_code,alt_mobile,gstnumber)">GET</button>
+										<button class="btn btn_get_pickup ad_cart btn-sm" id="checkout_page_shipping_btn" ng-disabled="pickupForm.$invalid" ng-click="getPincodeStatus(postal_code,alt_mobile,gstnumber)">GET</button>
 									</div>
 								</div>
 
@@ -158,7 +158,7 @@
 
 
 
-								<button type="submit" class="btn btn-default register_submit ad_cart" style="margin-top:-30px;margin-right: 20px;" ng-disabled="disableShippingbtn"
+								<button type="submit" ng-if="dealersList.length>0 || checkoutData.shippingType == 'Delivery' " class="btn btn-default register_submit ad_cart" style="margin-top:-30px;margin-right: 20px;" ng-disabled="disableShippingbtn"
 								 id="save_edit_info" ng-click="nextStepPayment(checkoutData.shippingType)">Continue</button>
 							</div>
 
@@ -393,7 +393,7 @@
 
 											<div ng-messages="deliveryAddressForm.gstnumber.$error ">
 
-												<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number </p>
+												<p class="validationError errorMsg" ng-message="pattern">Enter Valid GST Number </p>
 
 											</div>
 											<br>
@@ -653,7 +653,7 @@
 
 												<div ng-messages="billindAddressForm.gstnumber.$error ">
 
-													<p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number </p>
+													<!-- <p class="validationError errorMsg" ng-message="pattern">Enter Valid Gst Number </p> -->
 													<p class="validationError errorMsg" ng-message="minlength">Mobile Number should be 10 degits</p>
 
 													<p class="validationError errorMsg" ng-message="maxlength">Mobile Number should be 10 degits</p>
@@ -745,7 +745,7 @@
 								</tr>
 								<tr>
 									<td colspan="6" class="cart_head tft_head">Grand Total</td>
-									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
+									<td class="cart_des tft_head">{{grandTotal|currency:'&#8377;'}}</td>
 								</tr>
 								<tr ng-if="couponAmt">
 									<td colspan="6" class="cart_head tft_head">Coupon Amount</td>
@@ -765,10 +765,17 @@
 									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
 								</tr> -->
 
-								<tr ng-if="couponAmt">
-									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
-									<td class="cart_des tft_head">{{amount-couponAmt|currency:'&#8377;'}}</td>
+								<tr ng-if="redeemamount1">
+									<td colspan="6" class="cart_head tft_head">Redeem Cash</td>
+									<td class="cart_des tft_head">{{redeemamount1|currency:'&#8377;'}}</td>
 								</tr>
+
+								<tr ng-if="couponAmt || redeemamount1">
+									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
+									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
+								</tr>
+
+								
 
 							</tbody>
 						</table>
@@ -788,25 +795,37 @@
 										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
 										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+									<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponFail == true"> Redeem cash should be less than the total amount </p>
+								
 									</div>
 								</div>
 								
 
-								<!-- <div class="productShipping" ng-if="paymentType=='payu'">
+								 <div class="productShipping" ng-if="paymentType=='payu' && availRedeemCash > 0">
 									<div class="discCodes">
 										<p class="discCodes_head">
 											<i class="fa fa-star" aria-hidden="true" style="padding-right:5px;color:red;"></i>Redeem</p>
-										<p class="discCodes_text">Enter Amount to redeem.</p>
-										<input type="text" ng-model="redeemamount" placeholder="Enter Coupon Code"  class="cart_code">
-										<button type="submit" class="btn btn-default pull-right"  id="discCodesBtn" ng-click="getRedeem(redeemamount)">Apply Redeem</button>
+											<p>Available Redeem cash:<strong>{{availRedeemCash}}</strong></p>
+										<form name="redeemForm">
+											<p class="discCodes_text">Enter Amount to redeem.</p>
+										<input type="number"  autofocus="true" ng-pattern="/^[0-9]/" ng-change="redeemerror(redeemamount)" id="redeemamount" name="redeemamount" min ng-model="redeemamount" placeholder="Enter Redeem Amount"  class="cart_code">
+										 <button type="submit" class="btn btn-default pull-right"  id="discCodesBtn" ng-click="getRedeem(redeemamount)">Apply Redeem</button>
+										<div ng-messages="redeemForm.redeemamount.$error">
+										<p class="validationError errorMsg" ng-message="pattern">Enter Valid Amount</p>
+										 <!-- <p class="validationError errorMsg" ng-if="submitted && redeemForm.redeemamount.$error.pattern">Enter Valid Amount</p> -->
+										<br>
+										</div>
+									
+										</form>
+										
 									</div>
 									<div style="margin-left: 10px;">
-										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
-										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
-										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
-										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+										<p style="color: green;" ng-if="redeemApplicable == true">Success! {{redeemamount1}} is deducted</p>
+										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemNotApplicable == true">Amount should be less than the available Redeem cash  </p>
+								<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemFail == true"> Redeem cash should be less than the total amount </p>
+								
 									</div>
-								</div> -->
+								</div> 
 							</div>
 						</div>
 						<a class="btn btn-default ad_cart" role="button" ng-click="proceed(cartItem)" style="float:right;margin: 10px;">Proceed to Checkout</a>

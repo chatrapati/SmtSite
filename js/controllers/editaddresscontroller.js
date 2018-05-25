@@ -37,6 +37,16 @@ shopMyToolsApp.controller('editaddresscontroller', ['$scope', '$http', '$locatio
 
                $scope.saveBillingAddress = function (shipping,billing) {
                 //    alert("hai")
+                console.log(shipping)
+                if(!shipping.alt_mobile){
+                    shipping.alt_mobile='';
+                    
+                }
+
+                 if(!billing.alt_mobile){
+                    billing.alt_mobile='';
+                    
+                }
                 localStorage.setItem('shippingAddressInfo',JSON.stringify(shipping));
                  localStorage.setItem('billingAddressInfo',JSON.stringify(billing));
 

@@ -51,7 +51,7 @@
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" ng-if="toggleval==true" id="subcategory" class="subcatcheck">
                                 <div ng-repeat="category in categories track by $index" >
                                     <!-- <input type="checkbox" value="value"> -->
-                                    <label>
+                                    <label style="font-weight:inherit !important;">
                   <input type="checkbox" id="checkBox_{{$index}}" class="branCheck" ng-selected="category.subcategory"  ng-checked="{{category.selected}}"
                  ng-click="getCategorywiseProductcheck('cat',category.subcategory,'left')" ng-model="selected">{{category.subcategory}}({{category.count}})</label>  
                                 <!-- <input type="checkbox" class="branCheck checkbox"   name="category" ng-value="'{{category}}'" 
@@ -139,7 +139,7 @@
 
                             <div style="margin-top: 8px;border-bottom: 1px solid #eee;" id="brandid" ng-if="toggleval3==true">
                                 <div ng-repeat="brandArry in brandsData track by $index">
-                                    <label>
+                                    <label style="font-weight:inherit;">
                  <input type="checkbox" class="branCheck checkbox"   ng-model="selected" ng-selected="brandArry.brand" ng-checked="selectedArray.brand.indexOf(brandArry.brand) > -1"
                 ng-click="getCategorywiseProductcheck('brand',brandArry.brand,'left')"> 
 
@@ -186,7 +186,7 @@
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 subcatSortheaddiv">
                                         <div class="form-group">
-                                            <label for="name" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 pagesortlabel">Sort</label>
+                                            <label for="name" class="col-lg-2 col-md-2 col-xs-4 col-sm-4 pagesortlabel">Sort</label>
                                             <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
                                                 <select ng-model="sort_by" ng-change="sortby(sort_by)">
                       <option value="popularty">Popularity</option>
@@ -284,7 +284,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="product-info">
-                                                        <div class="product-name" ng-init="limit = 30;" style="margin-bottom: -15px;">
+                                                        <div class="product-name" ng-init="limit = 37;" style="margin-bottom: -15px;">
                                                             <a ng-click="getProductDetailsCat(productsdata)" href="" ng-right-click="newTab(productsdata)" title="{{productsdata.upload_name}}">
                             {{productsdata.upload_name | limitTo: limit}}{{productsdata.upload_name .length > limit ? ' . . .' : ''}}
                             <!-- <span ng-repeat="attribute in product.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span>  -->
@@ -348,7 +348,7 @@
                                 <span class="cart_style_new">ADD TO CART</span>
                                                                     </span>
                                                                 </a>
-                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(productsdata)"></a>
                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
                                                                 <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
                                                                     <span>
@@ -452,7 +452,7 @@
                               <span class="cart_style_new">ADD TO CART</span>
                                                                 </span>
                                                             </a>
-                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(productsdata)"></a>
                                                             <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
                                                             <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
                                                                 <span>
@@ -506,7 +506,7 @@
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 subcatSortheaddiv">
                                         <div class="form-group">
-                                            <label for="name" class="col-lg-4 col-md-4 col-xs-4 col-sm-4 pagesortlabel">Sort</label>
+                                            <label for="name" class="col-lg-2 col-md-2 col-xs-4 col-sm-4 pagesortlabel">Sort</label>
                                             <div class="col-lg-5 col-md-5 col-xs-5 col-sm-5">
                                                 <select ng-model="sort_by" ng-change="sortby(sort_by)">
                       <option value="popularty">Popularity</option>

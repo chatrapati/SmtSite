@@ -893,6 +893,34 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
       window.location.href = "./index.html";
     }
 
+     $scope.brandchange=function(sub){
+
+      $scope.subCatList=[];
+      $scope.brandList=[];
+       $scope.pricerange="";
+       $scope.warranty="";
+       $scope.percent="";
+      $scope.subCatList.push(sub);
+       $scope.brandList.push(localStorage.getItem('brandName'));
+          product_subcategories_filter.getAllCategoriesFilterOfProduct($rootScope.selectedCategory, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by,$scope.warranty,$scope.percent).then(function (data) {
+ console.log(data.data);
+ if (data.data.status == 'Success') {
+          $rootScope.products = data.data.products;
+          // $rootScope.catArray= data.data.category;
+          $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($rootScope.products.length / $scope.pagination.perPage);
+        } else if (data.data.status == 'No data avialbale') {
+          $rootScope.products = [];
+        }
+        else {
+         // alert('Categories not available');
+        }
+
+            }
+        )
+        }
+
     $scope.closeModal = function () {
 
       $("#addedToCart").modal('hide');
@@ -916,6 +944,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
         // alert(JSON.stringify(data))
         if (data.data.status == 'Success') {
           $rootScope.products = data.data.products_info;
+          $rootScope.catArray= data.data.category;
           $scope.pageList = [0, 1, 2, 3, 4];
           $scope.pagination = Pagination.getNew($scope.viewby);
           $scope.pagination.numPages = Math.ceil($rootScope.products.length / $scope.pagination.perPage);
@@ -927,6 +956,56 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
         }
       });
     }
+
+    $scope.getSubCat = function(catObj){
+    //  console.log(catObj)
+    $rootScope.selectedCategory=catObj;
+    $scope.subCatList=[""];
+      $rootScope.catArray.forEach(function(element){
+        if(element.category == catObj){
+           $scope.subCategories = element.subcategory;
+        }
+      })
+      //$scope.selectedCat = catObj.category;
+
+       $scope.pricerange="";
+         $scope.brandList=[];
+       $scope.warranty="";
+       $scope.percent="";
+      // $scope.subCatList.push();
+       $scope.brandList.push(localStorage.getItem('brandName'));
+
+         product_subcategories_filter.getAllCategoriesFilterOfProduct($rootScope.selectedCategory, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by,$scope.warranty,$scope.percent).then(function (data) {
+ console.log(data.data);
+ if (data.data.status == 'Success') {
+          $rootScope.products = data.data.products;
+          // $rootScope.catArray= data.data.category;
+          $scope.pageList = [0, 1, 2, 3, 4];
+          $scope.pagination = Pagination.getNew($scope.viewby);
+          $scope.pagination.numPages = Math.ceil($rootScope.products.length / $scope.pagination.perPage);
+        } else if (data.data.status == 'No data avialbale' || data.data.status =='Products Not avialbale') {
+          $rootScope.products = [];
+        }
+        else {
+         // alert('Categories not available');
+        }
+
+            }
+        )
+
+
+
+
+    }
+
+
+    // $scope.searchCatSubCat = function(searchText){
+    //   $rootScope.products.forEach(function(element){
+    //      $rootScope.products = $filter('orderBy')($rootScope.products, 'upload_category');
+    //   })
+
+    //   console.log($rootScope.products)
+    // }
 
     $scope.abstractProcessPagination = function (position, pagination, list) {
       //next button

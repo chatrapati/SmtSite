@@ -804,6 +804,10 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
       $location.path("/")
     }
 
+    $scope.brandchange=function(){
+      alert("heli")
+    }
+
     $scope.getCategorywiseProductcheck = function (fromVal, toVal) {
       $scope.nextBtn = 'true';
       $scope.brandName = localStorage.getItem('brandName');

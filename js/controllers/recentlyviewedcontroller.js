@@ -4,7 +4,7 @@ shopMyToolsApp.controller('recentlyviewedcontroller', ['$scope', '$http', '$loca
 
     '$rootScope','searchProductsService','Pagination',function ($scope, $http, $location, $rootScope,
         searchProductsService,Pagination) {
-
+ $scope.loading = true;
             $scope.viewby = 12;
         $scope.viewmore=function(){
             if (window.localStorage['user_id']) {
@@ -14,6 +14,7 @@ shopMyToolsApp.controller('recentlyviewedcontroller', ['$scope', '$http', '$loca
             }
             $scope.status = 'viewmore';
        searchProductsService.recentlyviewdprodcuts($scope.userId,$scope.status).then(function(data){
+          $scope.loading = false;
         //    console.log(data.data)
         $scope.searchedMoreProducts = data.data.prod_info;
          $scope.pageList = [0, 1, 2, 3, 4];

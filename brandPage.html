@@ -2,7 +2,7 @@
     .product-image a {
         cursor: pointer;
     }
-    
+
     .mg-image a {
         cursor: pointer;
     }
@@ -21,6 +21,48 @@
         </li>
 
     </ul>
+
+    <div align="right">
+          <label for="name" >Category</label>
+<!-- 
+          <select ng-model="sel_attr"  ng-options="cat.category for cat in catArray"></select> -->
+
+<!-- <select ng-model="customer.Category"                
+    ng-options="obj.category for obj in catArray"
+    ng-change="getSubCat()"
+    class="form-control" 
+  
+    >
+    <option value="">Choose Category</option>
+</select>   -->
+         <select ng-model="category"  ng-change="getSubCat(category)">
+
+                    <option ng-repeat="cat in catArray" >{{cat.category}}</option>
+
+                  
+
+                  </select> 
+
+                  <label for="name" >Sub-Category</label>
+<!-- <select ng-model="key_attr"  ng-options="subcat for subcat in catArray |filter:{subcat:sel_attr['subcat']}" ng-change="sel()"></select> -->
+
+<!-- <select ng-model="customer.SubCat" 
+    ng-options="x.subcat for x in subCategories"
+    ng-change = "getStateCities()"
+    class="form-control"
+    ng-required="true"
+    id="state">
+    <option value="">Choose Sub-Category </option>
+</select>  -->
+
+         <select ng-model="x"  ng-change="brandchange(x)" >
+
+                    <option ng-repeat="subcat in subCategories">{{subcat.subcat}}</option>
+
+                 
+
+                  </select> 
+    </div>
 
     <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
         <img src="images/noproducts.png">
@@ -58,7 +100,7 @@
 
                                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6" style="margin-top:5px;">
 
-                                    <label for="name" class="col-lg-4 col-xs-4 col-sm-2 pageshowlabel">Show</label>
+                                    <label for="name" class="col-lg-2 col-xs-4 col-sm-2 pageshowlabel">Show</label>
 
                                     <div class="col-lg-5 col-xs-5 col-sm-5">
 
@@ -112,7 +154,7 @@
 
                         </div>
                         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
-                            <div class="row">                              
+                            <div class="row">
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top:0px;padding-right: 10px;">
                                     <div class="pull-right" style="margin-top: -7px;">
                                         <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
@@ -125,14 +167,16 @@
                                                 <li>
                                                     <label ng-if="pageList[0] > 0 ">...</label>
                                                 </li>
-                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
+                                                    class="pagenumbers">
                                                     <a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
                                                 </li>
                                                 <li>
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
+                                                        ng-click="processPagination(5)">
                             Next
                           </button>
                                                 </li>
@@ -157,7 +201,8 @@
 
                             <div class="carousel-inner ">
 
-                                <div id="{{productsdata}}" class="col-sm-3 col-xs-12 col-lg-3 col-sm-6" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;">
+                                <div id="{{productsdata}}" class="col-sm-3 col-xs-12 col-lg-3 col-sm-6" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage "
+                                    style="margin-top:10px;">
 
                                     <div class="sub-item respl-item" style="opacity: 1;">
 
@@ -179,7 +224,7 @@
 
                                             <div class="product-info">
 
-                                                <div class="product-name" ng-init="limit = 32;" style="margin-bottom: -15px;">
+                                                <div class="product-name" ng-init="limit = 37;" style="margin-bottom: -15px;">
 
                                                     <a ng-click="getProductDetails(productsdata)" href="" ng-right-click="newTab(productsdata)" title="{{productsdata.upload_name}}">
 
@@ -236,29 +281,30 @@
 
                                                 </div>
 
-												<div id="barndCartDiv">
-                                                <div class="clear-left_detailed" id="homecarts">
-                                                    <div class="cartdiv">
-                                                        <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(productsdata)">
+                                                <div id="barndCartDiv">
+                                                    <div class="clear-left_detailed" id="homecarts">
+                                                        <div class="cartdiv">
+                                                            <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(productsdata)">
                                                             <span>
                                 <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                 <span class="cart_style_new">ADD TO CART</span>
                                                             </span>
                                                         </a>
-                                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
-                                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
-                                                        <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
+                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(productsdata)"></a>
+                                                            <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
+                                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
+                                                                ng-click="productReview(productsdata, 'review')">
                                                             <span>
                                 <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                 <span class="hidden-xs">REVIEW</span>
                                                             </span>
                                                         </a>
-                                                        <a class="btn addreview" id="strRev" ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
-                                                            <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
-                                                        </a>
+                                                            <a class="btn addreview" id="strRev" ng-click="productReview(productsdata, 'review')" title="Write Your Review" ng-if="productsdata.avgrating != 0">
+                                                                <star-rating ng-model="productsdata.avgrating" readonly="isReadonly"></star-rating>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
-											</div>
 
 
 
@@ -288,7 +334,8 @@
 
                         <!-- <div style="margin-top: 10px;" ng-switch-when="List" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list"> -->
                         <div ng-if="layout == 'List'" style="margin-top: 10px;" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list">
-                            <div ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-bottom:10px;">
+                            <div ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage"
+                                style="margin-bottom:10px;">
                                 <div style="margin-top: 10px;" class="list">
                                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list_bottom">
                                         <div style="margin-bottom:10px;">
@@ -318,7 +365,7 @@
 
                                                     <div class="product-info">
 
-                                                        <div class="product-name" ng-init="limit = 35;">
+                                                        <div class="product-name" ng-init="limit = 37;">
 
                                                             <a ng-click="getProductDetails(productsdata)" href="" ng-right-click="newTab(productsdata)" title="{{productsdata.brand_name}}">
 
@@ -385,9 +432,10 @@
                                     <span class="cart_style_new">ADD TO CART</span>
                                                                     </span>
                                                                 </a>
-                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(productsdata)"></a>
+                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(productsdata)"></a>
                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(productsdata)"></a>
-                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0" ng-click="productReview(productsdata, 'review')">
+                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="productsdata.avgrating == 0"
+                                                                    ng-click="productReview(productsdata, 'review')">
                                                                     <span>
                                     <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                     <span class="hidden-xs">REVIEW</span>
@@ -439,7 +487,7 @@
 
                                 <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6" style="margin-top:5px;">
 
-                                    <label for="name" class="col-lg-4 col-xs-4 col-sm-2 pageshowlabel">Show</label>
+                                    <label for="name" class="col-lg-2 col-xs-4 col-sm-2 pageshowlabel">Show</label>
 
                                     <div class="col-lg-5 col-xs-5 col-sm-5">
 
@@ -494,7 +542,7 @@
                         </div>
                         <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12">
                             <div class="row">
-                              
+
                                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top:0px;padding-right: 10px;">
                                     <div class="pull-right" style="margin-top: -7px;">
                                         <div class="pagination" ng-if="pagination.numPages > 0" id="pagin">
@@ -507,14 +555,16 @@
                                                 <li>
                                                     <label ng-if="pageList[0] > 0 ">...</label>
                                                 </li>
-                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}" class="pagenumbers">
+                                                <li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
+                                                    class="pagenumbers">
                                                     <a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
                                                 </li>
                                                 <li>
                                                     <label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
                                                 </li>
                                                 <li>
-                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages" ng-click="processPagination(5)">
+                                                    <button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
+                                                        ng-click="processPagination(5)">
                             Next
                           </button>
                                                 </li>
@@ -617,4 +667,5 @@
         x.classList.toggle("fa-chevron-down");
 
     }
+
 </script>

@@ -9,7 +9,7 @@
 			<a>Dashboard</a>
 		</li>
     	<li  class="bredcrumb_li">
-			<a>Wishlist</a>
+			<a>Wish List</a>
 		</li>
 	</ul>
 	<div class="row" id="edit_row">
@@ -23,7 +23,7 @@
 							<div class="basic_dashboard">
 
 								<div class="box-head">
-									<h2>MY WISHLIST</h2>
+									<h2>MY WISH LIST</h2>
 								</div>
 
 								<!-- my whishlist page start here -->
@@ -41,10 +41,10 @@
 										<tbody  align="middle" id="myWhishlistData" ng-repeat="list in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
 
 											<tr >
-												<td>
-													<img src="{{list.upload_photo}}" style="max-width:30%;"/>
+												<td style="width:200px;">
+													<img src="{{list.upload_photo}}" class="img-responsive" style="max-width:50%;     margin-left: 20%;"/>
 												</td>
-												<td style="text-align:left;">
+												<td style="text-align:left;width:300px;">
 													<h3 class="product-name">
 														<a ng-click="productDetails(list)" title="" style="font-weight:normal;"> {{list.upload_name}} </a>
 													</h3>
@@ -53,7 +53,7 @@
 													</div> -->
 													<!-- <textarea placeholder="Please Enter your Comments..." style="width:100%;font-size:12px;padding:5px;"></textarea> -->
 												</td>
-												<td style="" >
+												<td style="width:150px;">
 													<div class="price_box_whishlist" >
 														<div class="offer">
 															<div class="detail_page_price" ng-repeat="price in list.prices" align="middle">
@@ -73,13 +73,13 @@
 													</div>
 													
 												</td>
-												<td>
+											<td style="width:100px;">
 													<div class="cart_items">
 														<a ng-click="addToCart(list)" class="ad_cart_whishlist" title="Add To Cart">
 															<span class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:10px;"></span> ADD TO CART</a>
 													</div>
 												</td>
-												<td id="wishlistRemoveIcon">
+												<td id="wishlistRemoveIcon" style="width:50px;">
 													<span class="glyphicon glyphicon-remove" ng-click="removeWishListItem(list)"></span>
 												</td>
 											</tr>

@@ -223,17 +223,17 @@
           <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode hidden-xs hidden-sm" id="recent"></div>
 <section layout="row" flex="" >
     
-           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp hidden-xs hidden-sm" style="position:fixed;" md-component-id="right">
+           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp hidden-xs hidden-sm {{recentclass}}" style="position:fixed;" md-component-id="right">
 
       <md-toolbar class="md-theme-light">
         <div><h1 class="md-toolbar-tools">Recently Viewed Products  <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
        </div>
       </md-toolbar>
-      <md-content  layout-padding="" class="resent_content" style="overflow: hidden;">
+      <md-content  layout-padding="" class="resent_content " style="overflow: hidden;">
        
           <md-input-container >
            <div class="row">
-     <div class="col-md-12 latest_popupBox" ng-repeat="recently in prod_info |limitTo:5">
+     <div class="col-md-12 latest_popupBox " ng-repeat="recently in prod_info |limitTo:5">
     <div class="col-md-4">
  <a href="" ng-click="getProductDetails(recently)" target="_blank">
  <img  class="img-responsive  img-thumbnail" alt="{{recently.upload_name}}" src="{{recently.upload_photo.replace('gifs','100X100').replace('.gif','_1.jpg')}}" style="height:49px;padding:0;"> 
@@ -378,7 +378,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32" style="margin-bottom: -5px;">
+                                                                        <div class="product-name" ng-init="limit = 40" style="margin-bottom: -5px;">
 
                                                                             <a ng-click="getProductDetails(product)" href="" ng-right-click="newTab(product)" title="{{product.upload_name}}">{{product.upload_name | limitTo: limit}}{{product.upload_name .length > limit ? ' .
                                         . .' : ''}}
@@ -448,7 +448,7 @@
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(product)"></a>
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(product)"></a>
                                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
                                                                                 <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="product.avgrating == 0" ng-click="productReview(product, 'review')">
                                                                                     <span>
@@ -534,7 +534,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32">
+                                                                        <div class="product-name" ng-init="limit = 40">
 
                                                                             <a ng-click="getProductDetails(electricdrill)" title="{{electricdrill.upload_name}}">
 
@@ -598,7 +598,7 @@
                                               <span class="cart_style_new">ADD TO CART</span>
                                                                                         </span>
                                                                                     </a>
-                                                                                    <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(electricdrill)"></a>
+                                                                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(electricdrill)"></a>
                                                                                     <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(electricdrill)"></a>
                                                                                     <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="electricdrill.avgrating == 0" ng-click="productReview(electricdrill, 'review')">
                                                                                         <span>
@@ -687,7 +687,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32">
+                                                                        <div class="product-name" ng-init="limit = 40">
 
                                                                             <a ng-click="getProductDetails(anglegrinder)" title="{{anglegrinder.upload_name}}">
 
@@ -750,7 +750,7 @@
                                               <span class="cart_style_new">ADD TO CART</span>
                                                                                         </span>
                                                                                     </a>
-                                                                                    <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(anglegrinder)"></a>
+                                                                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(anglegrinder)"></a>
                                                                                     <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(anglegrinder)"></a>
                                                                                     <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="anglegrinder.avgrating == 0" ng-click="productReview(anglegrinder, 'review')">
                                                                                         <span>
@@ -832,7 +832,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32">
+                                                                        <div class="product-name" ng-init="limit = 40">
 
                                                                             <a ng-click="getProductDetails(impactdrill)" title="{{impactdrill.upload_name}}">
 
@@ -899,7 +899,7 @@
                                                 <span class="cart_style_new">ADD TO CART</span>
                                                                                             </span>
                                                                                         </a>
-                                                                                        <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(impactdrill)"></a>
+                                                                                        <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(impactdrill)"></a>
                                                                                         <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(impactdrill)"></a>
                                                                                         <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="impactdrill.avgrating == 0" ng-click="productReview(impactdrill, 'review')">
                                                                                             <span>
@@ -988,7 +988,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32">
+                                                                        <div class="product-name" ng-init="limit = 40">
 
 
 
@@ -1057,7 +1057,7 @@
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(newarrival)"></a>
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(newarrival)"></a>
                                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>
                                                                                 <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="newarrival.avgrating == 0" ng-click="productReview(newarrival, 'review')">
                                                                                     <span>
@@ -1143,7 +1143,7 @@
 
                                                                     <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 32">
+                                                                        <div class="product-name" ng-init="limit = 40">
 
 
 
@@ -1212,7 +1212,7 @@
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Whishlist" ng-click="addToWishList(demolitionhammer)"></a>
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(demolitionhammer)"></a>
                                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(demolitionhammer)"></a>
                                                                                 <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="demolitionhammer.avgrating == 0" ng-click="productReview(demolitionhammer, 'review')">
                                                                                     <span>
@@ -1250,7 +1250,7 @@
             <!-- tab content -->
         </div>
         <!-- DEALS  -->
-
+ 
         <!-- <div class='row'>
 
       <div class="collections-wrap">
@@ -1407,7 +1407,7 @@
 
  
 
- -->
+ --> 
 
 
         <!-- <script>
