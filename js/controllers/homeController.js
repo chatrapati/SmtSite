@@ -12,7 +12,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
     'product_categories_service', 
 
-    'headerSliderService', '$window', 'DOMAIN_URL','$mdSidenav','$log',
+    'headerSliderService', '$window', 'DOMAIN_URL','$mdSidenav','$log','$interval',
 
     function ($scope, $http, $location, $rootScope, getHeaderService, getFooterService,
 
@@ -26,7 +26,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         product_categories_service,
 
-        headerSliderService, $window, DOMAIN_URL,$mdSidenav,$log) {
+        headerSliderService, $window, DOMAIN_URL,$mdSidenav,$log,$interval) {
 
         $window.scrollTo(0, 0);
         $scope.isReadonly = true;
@@ -82,6 +82,40 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             });
         }
 
+        $scope.showIndex = 0;
+
+        $scope.changeIndex = function(){
+         
+                 $scope.showIndex = $scope.showIndex+4;
+             if($scope.showIndex >= $rootScope.offersArray.length){
+                 $scope.showIndex = 0;
+            }
+            
+         
+        }
+
+        $scope.showIndexNewArrivals = 0;
+
+         $scope.changeIndexForNewArrivals = function(){
+         
+                 $scope.showIndexNewArrivals = $scope.showIndexNewArrivals+4;
+             if($scope.showIndexNewArrivals >= $rootScope.newarrivalsArray.length){
+                 $scope.showIndexNewArrivals = 0;
+            }
+            
+         
+        }
+
+           $interval(function () {
+       $scope.changeIndex();
+    }, 10000);
+
+     $interval(function () {
+       $scope.changeIndexForNewArrivals();
+    }, 20000);
+
+
+
         $scope.homePageDetails = function () {
             if (!$rootScope.collections) {
                 $scope.loading = true;
@@ -114,7 +148,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                                 }
                             }
                         }
-                      
+                     // alert($rootScope.offersArray.length)
 
                     } else {
 

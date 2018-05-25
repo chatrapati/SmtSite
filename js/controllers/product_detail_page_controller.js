@@ -1,6 +1,7 @@
 shopMyToolsApp.controller('product_detailed_controller',
 	function ($scope, $location, product_detailed_service, notify_service, reviews_service,
-		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope, addToWishListService,addCompareProductsService) {
+		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope,
+		 addToWishListService,addCompareProductsService,$interval) {
 		//alert('1')
 		 $rootScope.showHintFlag = 'false';
          $rootScope.showHintMsg = 'false';
@@ -27,6 +28,58 @@ shopMyToolsApp.controller('product_detailed_controller',
 			}, 'slow');
 
 		}
+
+
+
+		  $scope.showIndex = 0;
+
+        $scope.changeIndex = function(){
+        // alert($scope.brandDetailRelatedProductsArray.length)
+                 $scope.showIndex = $scope.showIndex+4;
+             if($scope.showIndex  >= $scope.brandDetailRelatedProductsArray.length){
+                 $scope.showIndex = 0;
+            }
+            
+         console.log('1'+$scope.showIndex)
+        }
+
+        $scope.showIndexUpsell = 0;
+
+         $scope.changeIndexUpsell = function(){
+         
+                 $scope.showIndexUpsell = $scope.showIndexUpsell+4;
+             if( $scope.showIndexUpsell >= $scope.brandDetailUpsellProductsArray.length){
+                 $scope.showIndexUpsell = 0;
+            }
+            
+         console.log('2'+$scope.showIndexUpsell)
+		}
+
+		$scope.showIndexRecent = 0;
+
+         $scope.changeIndexRecent = function(){
+         
+                 $scope.showIndexRecent = $scope.showIndexRecent+4;
+             if($scope.showIndexRecent >= $scope.brandDetailRecentlyProductsArray.length){
+                 $scope.showIndexRecent = 0;
+            }
+            console.log('3'+$scope.showIndexRecent)
+         
+		}
+		
+		
+
+    //        $interval(function () {
+    //    $scope.changeIndex();
+    // }, 10000);
+
+    //  $interval(function () {
+    //    $scope.changeIndexUpsell();
+    // }, 15000);
+
+	//  $interval(function () {
+    //    $scope.changeIndexRecent();
+    // }, 20000);
 
 		$rootScope.addToCompare = function (productObj) {
             if (window.localStorage['user_id']) {

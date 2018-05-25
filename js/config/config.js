@@ -22,7 +22,7 @@ shopMyToolsApp.constant('SERVER_URL', 'http://157.119.108.142:8002');
 
 shopMyToolsApp.constant('SERVER_URL1', 'http://157.119.108.142:8002');
 
-// shopMyToolsApp.constant('LOGIN_URL', ' http://157.119.108.135:8005');
+shopMyToolsApp.constant('LOGIN_URL', ' http://157.119.108.135:8005');
 
 
 
