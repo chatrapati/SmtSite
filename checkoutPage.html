@@ -745,7 +745,7 @@
 								</tr>
 								<tr>
 									<td colspan="6" class="cart_head tft_head">Grand Total</td>
-									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
+									<td class="cart_des tft_head">{{grandTotal|currency:'&#8377;'}}</td>
 								</tr>
 								<tr ng-if="couponAmt">
 									<td colspan="6" class="cart_head tft_head">Coupon Amount</td>
@@ -765,14 +765,14 @@
 									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
 								</tr> -->
 
-								<tr ng-if="redeemamount">
+								<tr ng-if="redeemamount1">
 									<td colspan="6" class="cart_head tft_head">Redeem Cash</td>
-									<td class="cart_des tft_head">{{redeemamount|currency:'&#8377;'}}</td>
+									<td class="cart_des tft_head">{{redeemamount1|currency:'&#8377;'}}</td>
 								</tr>
 
-								<tr ng-if="couponAmt || redeemamount">
+								<tr ng-if="couponAmt || redeemamount1">
 									<td colspan="6" class="cart_head tft_head">Amount Payable</td>
-									<td class="cart_des tft_head">{{amount-couponAmt-redeemamount|currency:'&#8377;'}}</td>
+									<td class="cart_des tft_head">{{amount|currency:'&#8377;'}}</td>
 								</tr>
 
 								
@@ -795,6 +795,8 @@
 										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
 										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
+									<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponFail == true"> Redeem cash should be less than the total amount </p>
+								
 									</div>
 								</div>
 								
@@ -804,13 +806,24 @@
 										<p class="discCodes_head">
 											<i class="fa fa-star" aria-hidden="true" style="padding-right:5px;color:red;"></i>Redeem</p>
 											<p>Available Redeem cash:<strong>{{availRedeemCash}}</strong></p>
-										<p class="discCodes_text">Enter Amount to redeem.</p>
-										<input type="text" ng-model="redeemamount" placeholder="Enter Coupon Code"  class="cart_code">
-										<button type="submit" class="btn btn-default pull-right"  id="discCodesBtn" ng-click="getRedeem(redeemamount)">Apply Redeem</button>
+										<form name="redeemForm">
+											<p class="discCodes_text">Enter Amount to redeem.</p>
+										<input type="number"  autofocus="true" ng-pattern="/^[0-9]/" ng-change="redeemerror(redeemamount)" id="redeemamount" name="redeemamount" min ng-model="redeemamount" placeholder="Enter Redeem Amount"  class="cart_code">
+										 <button type="submit" class="btn btn-default pull-right"  id="discCodesBtn" ng-click="getRedeem(redeemamount)">Apply Redeem</button>
+										<div ng-messages="redeemForm.redeemamount.$error">
+										<p class="validationError errorMsg" ng-message="pattern">Enter Valid Amount</p>
+										 <!-- <p class="validationError errorMsg" ng-if="submitted && redeemForm.redeemamount.$error.pattern">Enter Valid Amount</p> -->
+										<br>
+										</div>
+									
+										</form>
+										
 									</div>
 									<div style="margin-left: 10px;">
-										<p style="color: green;" ng-if="redeemApplicable == true">Success! {{redeemamount}} is deducted</p>
+										<p style="color: green;" ng-if="redeemApplicable == true">Success! {{redeemamount1}} is deducted</p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemNotApplicable == true">Amount should be less than the available Redeem cash  </p>
+								<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemFail == true"> Redeem cash should be less than the total amount </p>
+								
 									</div>
 								</div> 
 							</div>

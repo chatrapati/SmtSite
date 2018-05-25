@@ -169,6 +169,7 @@ $scope.orderId = window.localStorage['orderId'];
                 $rootScope.shop_name = data.data.user_info.cust_details.shop;
                 $rootScope.shippingtype = $rootScope.custDetails.shippingtype;
                 $rootScope.discountAmt = $rootScope.custDetails.discount_amount;
+                 $rootScope.redeem_amount = $rootScope.custDetails.redeem_amount;
                 $rootScope.paymenttype = $rootScope.custDetails.paymenttype;
                 $rootScope.orderDetails = data.data.user_info.order_data;
                 $rootScope.amtPayable = JSON.parse($rootScope.grandTotal) + JSON.parse($rootScope.discountAmt);

@@ -631,11 +631,11 @@
 
                                                         <input type="text" name="firstname" required id="eai_firstNmae" class="form-control" id="firstname" ng-model="registrationData.firstname" placeholder="Enter First Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/"
                                                             autofocus="true">
-                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.firstname.$error.required">Enter first name</p>
+                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.firstname.$error.required">Enter First Name</p>
 
                                                         <div ng-messages="registerForm.firstname.$error ">
 
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter valid first name</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid First Name</p>
                                                             <p class="validationError errorMsg" ng-message="minlength">Enter minimum 3 characters</p>
                                                             <p class="validationError errorMsg" ng-message="maxlength">Enter maximum 50 characters</p>
                                                         </div><br>
@@ -653,11 +653,11 @@
 															<sub style="color:red;font-weight:bolder;font-size: 21px;">*</sub>Last Name</label>
 
                                                         <input type="text" name="lastname" required="" id="eai_firstNmae" class="form-control" id="lastname" ng-model="registrationData.lastname" placeholder="Enter Last Name" ng-minlength="3" ng-maxlength="50" maxlength="50" ng-pattern="/^[a-zA-Z. ]*[a-zA-Z]{1,50}$/">
-                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.lastname.$error.required">Enter last name</p>
+                                                        <p class="validationError errorMsg" ng-if="submitted && registerForm.lastname.$error.required">Enter Last Name</p>
 
                                                         <div ng-messages="registerForm.lastname.$error ">
 
-                                                            <p class="validationError errorMsg" ng-message="pattern">Enter valid last name</p>
+                                                            <p class="validationError errorMsg" ng-message="pattern">Enter Valid Last Name</p>
                                                             <p class="validationError errorMsg" ng-message="minlength">Enter minimum 3 characters</p>
                                                             <p class="validationError errorMsg" ng-message="maxlength">Enter maximum 50 characters</p>
                                                         </div><br>

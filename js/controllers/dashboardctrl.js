@@ -1,6 +1,6 @@
 shopMyToolsApp.controller('dashboardController',
-    ['$scope', '$http', '$location', '$rootScope', 'registrationService','dashBoardOrdersCountService', '$window', 'wishListService', 'userdataUpdateService',
-        function ($scope, $http, $location, $rootScope,registrationService, dashBoardOrdersCountService, $window, wishListService, userdataUpdateService) {
+    ['$scope', '$http', '$location', '$rootScope', 'registrationService','dashBoardOrdersCountService', '$window', 'wishListService', 'userdataUpdateService','getRedeemPointsService',
+        function ($scope, $http, $location, $rootScope,registrationService, dashBoardOrdersCountService, $window, wishListService, userdataUpdateService,getRedeemPointsService) {
             $window.scrollTo(0, 0);
 
             $scope.changePassword = function(){
@@ -58,7 +58,8 @@ shopMyToolsApp.controller('dashboardController',
 
             if(window.localStorage['token']){
                  $scope.getDashBoardServiceDetails();
-            }else{
+            }
+                else{
               //  window.location.href = "./login.html";
               $location.path("/")
             }
@@ -137,6 +138,18 @@ shopMyToolsApp.controller('dashboardController',
             $scope.goToEdit = function () {
                 $location.path("editAccount");
             }
+            
+
+             $scope.getRedeemPoints = function(){
+            getRedeemPointsService.getRedeemPointsMethod(window.localStorage['user_id']).then(function(data){
+                //console.log(data)
+                if(data.data.status == 'success'){
+                    $scope.availRedeemCash = data.data.redeem_cash;
+                }
+            })
+        } 
+
+         $scope.getRedeemPoints();
 
             $scope.updateEditDetails = function (userInfo) {
                 window.localStorage['user_name'] = userInfo.first_name;

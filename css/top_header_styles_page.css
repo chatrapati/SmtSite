@@ -58,10 +58,27 @@ display:inline-block;
 }
 
 }
+.theme-background-color.theme-text-color.border-corner {
+    background-color: #e45301 !important;
+}
+.footerbar .fa {
+    cursor: inherit !important;
+}
+
 
  .pointer {
            cursor: context-menu !important;
         }
+.reward_points_dahbord{
+    height: 66px !important;
+        width: 275px !important;
+        margin-top: 14px !important;
+}
+.smt_div_bord{
+     width:275px !important;
+     height:66px !important;
+    margin-top: -6px !important;
+    }
 
 /*.cancelBtn {
      margin-top:2px !important;

@@ -520,7 +520,6 @@ document.onmousemove = function(){
 }
 
 
-
         $scope.goToHome = function () {
        
             $location.path("/");
@@ -627,6 +626,9 @@ document.onmousemove = function(){
                         window.localStorage['orderId'] = $scope.orderId;
 
                         localStorage.removeItem('randomNumber');
+                        //   if($rootScope.cartArray.length == 0){
+                        //     $location.path("/");
+                        // }
 
                     } else {
 
@@ -648,7 +650,13 @@ document.onmousemove = function(){
 
                         $scope.orderId = data.data.orderid;
 
+                        $rootScope.grandTotal = data.data.grand_total;
+
                         window.localStorage['orderId'] = $scope.orderId;
+
+                        // if($rootScope.cartArray.length == 0){
+                        //     $location.path("/");
+                        // }
 
                     } else {
 
