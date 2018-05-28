@@ -108,11 +108,11 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
            $interval(function () {
        $scope.changeIndex();
-    }, 10000);
+    }, 8000);
 
      $interval(function () {
        $scope.changeIndexForNewArrivals();
-    }, 20000);
+    }, 12000);
 
 
 
