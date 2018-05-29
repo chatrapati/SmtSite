@@ -1,3 +1,62 @@
+/* safari hack csss */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+   ::i-block-chrome,body {
+      /* 	-webkit-font-smoothing: antialiased;   on Safari and Chrome  */
+		 -webkit-font-smoothing:antialiased;
+		 font-family: sans-serif;
+    }
+	
+::i-block-chrome.caption {
+left: 33% !important;
+}
+	 ::i-block-chrome,#compareDiv2 {
+       padding-right: 2px;
+    padding-left: 2px;	   /* on Safari and Chrome  */
+    }	
+	::i-block-chrome,#compareDiv {
+      padding-right: 3px;
+    }
+	 ::i-block-chrome,#compareDiv .dropdown .col-md-3 {
+     
+     padding-left: 4px;	   /* on Safari and Chrome  */
+    }
+	
+	::i-block-chrome,#data_ctrl_search{
+		margin-top: 39px;
+		margin-left: 5px;
+	}
+	::i-block-chrome, .data_ctrl_search3 {
+margin-top: 39px;
+margin-left: 5px;
+}
+	::i-block-chrome, .data_ctrl_search7 {
+margin-top: 39px !important;
+margin-left: 5px;
+}
+::i-block-chrome, .suggestionsCls1 {
+margin-top: 39px !important;
+margin-left: 5px;
+}
+::i-block-chrome, #srach_textt {
+margin-left: 4px;
+}
+::i-block-chrome, .product-name a{
+
+
+}
+::i-block-chrome, .product_name_lak a{
+
+	}
+}
+
+/* end safari css */
+ 
+.product-name {
+height: 38px;
+}
+.product_name_lak {
+height: 38px;
+}
 .subcatdiv {
     padding-bottom: 15px;
 }
@@ -11,6 +70,7 @@
 }
 html,body {
     background: #fff !important;
+	 -webkit-font-smoothing: subpixel-antialiased;
 }
 .forgetpas{
 height: 50.80%;
