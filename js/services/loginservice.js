@@ -44,7 +44,7 @@ shopMyToolsApp.service('getIPService', function ($q, $http) {
 
 })
 
-shopMyToolsApp.service('registrationService', function ($q, $http, LOGIN_URL,) {
+shopMyToolsApp.service('registrationService', function ($q, $http, LOGIN_URL) {
 	this.userRegistration = function (registrationData) {
 		var deferred = $q.defer();
 

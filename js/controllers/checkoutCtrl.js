@@ -1053,7 +1053,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
     }
 
     $scope.checkPaymentStatus = function () {
-        paymentStatusService.paymentStatusMethod($scope.finalOrderId,window.localStorage['user_id'],).then(function (data) {
+        paymentStatusService.paymentStatusMethod($scope.finalOrderId,window.localStorage['user_id']).then(function (data) {
             if (data.data.status == 'status changed') {
                 $scope.gotoOrderDetails();
             $rootScope.viewCartItems();
