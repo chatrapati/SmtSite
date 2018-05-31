@@ -305,13 +305,37 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = subCategory;
             location.reload();
             $scope.categoryURL = document.URL.split("#!/");
-           if ($scope.categoryURL[1] == 'categoryPage') {
-                $(".dropdown-menu.multi-level").css("display", "none");
-               $location.path("categoryPage1");
-            } else {
+
+                     if(navigator.userAgent.indexOf("Firefox") != -1 ){
+           // alert('1')
+            if ($scope.categoryURL[1] == 'categoryPage') {
+
                  $(".dropdown-menu.multi-level").css("display", "none");
-                $location.path("categoryPage");
+              window.location.href = DOMAIN_URL+"#!/categoryPage1";
+               window.location.reload();
+            } else {
+                window.location.href = DOMAIN_URL+"#!/categoryPage";
+                $(".dropdown-menu.multi-level").css("display", "none");
+                window.location.reload();
             }
+         }else{
+           
+            window.location.reload();
+            if ($scope.categoryURL[1] == 'categoryPage') {
+                 $(".dropdown-menu.multi-level").css("display", "none");
+              $location.path("categoryPage1");
+            } else {
+                $location.path("categoryPage");
+                $(".dropdown-menu.multi-level").css("display", "none");
+            }
+         }
+        //    if ($scope.categoryURL[1] == 'categoryPage') {
+        //         $(".dropdown-menu.multi-level").css("display", "none");
+        //        $location.path("categoryPage1");
+        //     } else {
+        //          $(".dropdown-menu.multi-level").css("display", "none");
+        //         $location.path("categoryPage");
+        //     }
         }
 
         $scope.loginsubCategoryMethod = function(subCategory, categoryName){

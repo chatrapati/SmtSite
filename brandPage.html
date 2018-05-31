@@ -38,6 +38,7 @@
          <select ng-model="category"  ng-change="getSubCat(category)">
 
                     <option ng-repeat="cat in catArray" >{{cat.category}}</option>
+                    <option>All</option>
 
                   
 
@@ -58,7 +59,7 @@
          <select ng-model="x"  ng-change="brandchange(x)" >
 
                     <option ng-repeat="subcat in subCategories">{{subcat.subcat}}</option>
-
+            <option >All</option>
                  
 
                   </select> 

@@ -894,7 +894,12 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
     }
 
      $scope.brandchange=function(sub){
-
+      if(sub=='All'&& $rootScope.selectedCategory=='All'){
+          $scope.getCategorywiseProductcheck($scope.fromVal,$scope.toVal);
+      }else if(sub=='All'){
+        $scope.getSubCat($rootScope.selectedCategory);
+      }
+        else{
       $scope.subCatList=[];
       $scope.brandList=[];
        $scope.pricerange="";
@@ -919,6 +924,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
 
             }
         )
+        }
         }
 
     $scope.closeModal = function () {
@@ -958,8 +964,14 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
     }
 
     $scope.getSubCat = function(catObj){
+$rootScope.selectedCategory=catObj;
+      if(catObj=='All'){
+$scope.subCategories=[ ];
+        $scope.getCategorywiseProductcheck($scope.fromVal,$scope.toVal);
+      }
+      else{
     //  console.log(catObj)
-    $rootScope.selectedCategory=catObj;
+   // $rootScope.selectedCategory=catObj;
     $scope.subCatList=[""];
       $rootScope.catArray.forEach(function(element){
         if(element.category == catObj){
@@ -995,7 +1007,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
 
 
 
-
+      }
     }
 
 
@@ -1006,6 +1018,8 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
 
     //   console.log($rootScope.products)
     // }
+
+  
 
     $scope.abstractProcessPagination = function (position, pagination, list) {
       //next button
@@ -1090,6 +1104,8 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
       $scope.getCategorywiseProductcheck($scope.fromVal, $scope.toVal);
     }
   }])
+
+
 
 
 
