@@ -4,6 +4,13 @@ min-width: 100%;
 }
 
 /* safari hack csss */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.caption {
+top: 65%;
+}
+}
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	
 ::i-block-chrome,#main_img_effects .caption {
