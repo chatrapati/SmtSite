@@ -523,7 +523,7 @@ shopMyToolsApp.service('deleteCartService', function ($q, $http, LOGIN_URL) {
 
 });
 
-shopMyToolsApp.service('myOrdersService', function ($q, $http, SERVER_URL1) {
+shopMyToolsApp.service('myOrdersService', function ($q, $http, SERVER_URL1,LOGIN_URL) {
 	this.myOrdersMethod = function (userid) {
 		var deferred = $q.defer();
 
@@ -548,7 +548,7 @@ shopMyToolsApp.service('myOrdersService', function ($q, $http, SERVER_URL1) {
 
 		$http({
 			method: 'GET',
-			url: SERVER_URL1 + '/cancel_order?orderid=' + orderid,
+			url: LOGIN_URL + '/cancel_order?orderid=' + orderid,
 			headers: { 'Content-Type': 'application/json', 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8', 'secret_key': '4r5t@W' }
 
 		}).then(function success(data) {

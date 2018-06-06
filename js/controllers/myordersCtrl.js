@@ -227,11 +227,13 @@ $scope.orderId = window.localStorage['orderId'];
         if ($window.confirm("Sure, Are you want to cancel?")) {
             myOrdersService.cancelOrderMethod($rootScope.orderId).then(function (data) {
                 // alert(JSON.stringify(data))
+                console.log(data)
                 if (data.data.status == 'success') {
                     $("#cancelOrderModal").modal('show');
                     // $location.path("myorders")
-                } else {
-                    alert(data.data.status);
+                } else if(data.data.status == 'please contact customer support') {
+                  //  alert(data.data.status);
+                  $("#cancelOrderDelayModal").modal('show');
                 }
             })
         }
@@ -240,6 +242,7 @@ $scope.orderId = window.localStorage['orderId'];
 
     $scope.closeCancelModal = function () {
         $("#cancelOrderModal").modal('hide');
+         $("#cancelOrderDelayModal").modal('hide');
         $location.path("myorders");
     }
 
