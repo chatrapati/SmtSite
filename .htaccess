@@ -1,5 +1,6 @@
-<IfModule mod_headers.c>
-  <FilesMatch ".(js|css|xml|gz|html)$">
-    Header append Vary: Accept-Encoding
-  </FilesMatch>
-</IfModule>
+RewriteEngine On  
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]  
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d  
+RewriteRule ^ - [L]
+RewriteRule ^ ./index.html

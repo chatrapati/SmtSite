@@ -524,7 +524,11 @@ $scope.toggleShowPassword3=function(){
 }
 
 
-
+$scope.resetPasswordcancel=function(){
+  // alert("fadf")
+      window.location.href = DOMAIN_URL +"#!/dashboard";
+//  $location.path("/dashboard")
+}
 
     $scope.resetPassword = function (data) {
  

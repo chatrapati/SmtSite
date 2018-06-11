@@ -81,6 +81,33 @@
 					</div>
 					<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
 				</div>
+				<div class="">
+				<div class="pagination" id="paginOrders">
+					<ul>
+						<li>
+							<button class="pagination-prev-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page == 0" ng-click="processPagination(-1)">
+                   Previous           
+                    </button>
+						</li>
+						<li>
+							<label ng-if="pageList[0] > 0 ">...</label>
+						</li>
+						<li ng-repeat="n in [] | range: pagination.numPages > 5 ? 5 : pagination.numPages" ng-class="{active: pageList[n] == pagination.page}"
+						 class="pagenumbers">
+							<a href="" ng-click="processPagination(n)">{{pageList[n]+1}}</a>
+						</li>
+						<li>
+							<label ng-if="pagination.numPages > 5 && pageList[4] != pagination.numPages-1 ">...</label>
+						</li>
+						<li>
+							<button class="pagination-next-button btn  btn-sm pull-right brand_pagi" ng-disabled="pagination.page + 1 >= pagination.numPages"
+							 ng-click="processPagination(5)">
+                     Next
+                    </button>
+						</li>
+					</ul>
+				</div>
+			</div>
 			</div>
 		</div>
 	

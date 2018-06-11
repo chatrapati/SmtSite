@@ -18,6 +18,12 @@ shopMyToolsApp.controller('editaddresscontroller', ['$scope', '$http', '$locatio
             $location.path("dashboard");
         }
 
+
+        $scope.canceladdress=function(){
+           
+             $location.path("dashboard")
+        }
+
       $scope.sameaddress=function(checkoutData){
         //   alert("hai");
           console.log(checkoutData.remember);

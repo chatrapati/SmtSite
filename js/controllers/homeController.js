@@ -82,37 +82,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             });
         }
 
-        $scope.showIndex = 0;
-
-        $scope.changeIndex = function(){
-         
-                 $scope.showIndex = $scope.showIndex+4;
-             if($scope.showIndex >= $rootScope.offersArray.length){
-                 $scope.showIndex = 0;
-            }
-            
-         
-        }
-
-        $scope.showIndexNewArrivals = 0;
-
-         $scope.changeIndexForNewArrivals = function(){
-         
-                 $scope.showIndexNewArrivals = $scope.showIndexNewArrivals+4;
-             if($scope.showIndexNewArrivals >= $rootScope.newarrivalsArray.length){
-                 $scope.showIndexNewArrivals = 0;
-            }
-            
-         
-        }
-
-           $interval(function () {
-       $scope.changeIndex();
-    }, 25000);
-
-     $interval(function () {
-       $scope.changeIndexForNewArrivals();
-    }, 20000);
+     
 
 
 
@@ -129,6 +99,10 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         $rootScope.deals = data.data.deals;
                         $rootScope.dealsCount = $scope.deals.length;
                         $scope.newarrivals = data.data.newarrivalcats;
+                       // console.log($scope.newarrivals)
+                         $scope.Offers = data.data.offerscats;
+                        //  alert("hai"+ $scope.Offers.length)
+                        // console.log($scope.Offers)
                         $rootScope.newarrivalsArray = [];
                         for (i = 0; i < $scope.newarrivals.length; i++) {
                             $scope.newarrivalsObj = $scope.newarrivals[i];
@@ -139,6 +113,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                             }
                         }
                         $scope.Offers = data.data.offerscats;
+                      // console.log($scope.Offers);
                         $rootScope.offersArray = [];
                         for (i = 0; i < $scope.Offers.length; i++) {
                             $scope.offersObj = $scope.Offers[i];
@@ -159,6 +134,45 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             }
 
         }
+
+
+
+   $scope.showIndex = 0;
+//   alert( $scope.Offers.length)
+        $scope.changeIndex = function(){
+         
+                 $scope.showIndex = $scope.showIndex+4;
+             if($scope.showIndex >= $scope.Offers.length){
+                 $scope.showIndex = 0;
+            }
+            
+         
+        }
+
+        $scope.showIndexNewArrivals = 0;
+
+         $scope.changeIndexForNewArrivals = function(){
+         
+                 $scope.showIndexNewArrivals = $scope.showIndexNewArrivals+4;
+             if($scope.showIndexNewArrivals >= $scope.newarrivals.length){
+                 $scope.showIndexNewArrivals = 0;
+            }
+            
+         
+        }
+
+           $interval(function () {
+       $scope.changeIndex();
+    }, 25000);
+
+     $interval(function () {
+       $scope.changeIndexForNewArrivals();
+    }, 20000);
+
+
+
+
+
 
 
         $scope.gotomoredeal = function () {

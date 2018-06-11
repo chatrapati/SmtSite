@@ -560,11 +560,13 @@ margin-top:6px;
 				<!--   billing address end here -->
 			</div>
 		</div>
-		  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 btnsave">
-		<div class="form-group col-md-offset-5 col-md-7 col-xs-12">
-					  <a class="btn btn-default ad_cart cancelBtn col-md-2" role="button" ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(checkoutData,billingAddress)">Save</a>
+		  
+			  <div >
+					<button class="btn btn-default editaddress_cancel"  ng-click="canceladdress()">Cancel</button>
+			
+					  <button class="btn btn-default editaddress_submit"   ng-click="submitted=true;billindAddressForm.$valid && saveBillingAddress(checkoutData,billingAddress)">Save</button>
 					</div>
-					</div>
+					
 	</div>
 </div>
 <!---------------------------------------  end   ------------------------------------------------------>

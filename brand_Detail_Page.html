@@ -481,9 +481,15 @@ top: 62%;
 
                             <div class="tab-content">
 
-                                <div class="tab-pane  text-style" id="tab1" ng-class="isReview == undefined ? 'active' : ''">
+                                <div class="tab-pane  text-style" id="tab1" ng-if="brandDetailDescArray.description!=''" ng-class="isReview == undefined ? 'active' : ''">
 
                                     <p>{{brandDetailDescArray.description}}</p>
+
+                                </div>
+
+                                <div class="tab-pane  text-style" id="tab1" ng-if="brandDetailDescArray.description ==''" ng-class="isReview == undefined ? 'active' : ''">
+
+                                    <h2 style="color:gray;">No data Available</h2>
 
                                 </div>
 

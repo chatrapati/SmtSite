@@ -2851,4 +2851,60 @@ padding-left: 11px;
 .reecntclass4{
         height: 301px !important;  
 }
-
+.dropdown-toggle.dropDownToggle:hover{
+background: gray;
+color:white;
+}
+.dropsub.ng-binding:hover{
+   background: gray;
+color:white; 
+}
+.box-head.wishlistdashboard{
+margin-top: -11px;
+}
+.btn.btn-default.editaddress_submit{
+    float: right;
+    margin-right: 14px;
+    width: 77px;
+}
+.btn.btn-default.editaddress_submit:hover{
+  background:#0487a1;
+color:white;
+}
+.btn.btn-default.editaddress_cancel{
+margin-left: 14px;
+}
+.btn.btn-default.editaddress_cancel:hover{
+background:#0487a1;
+color:white;
+}
+.btn.btn-default.cancelpass:hover{
+background:#0487a1;
+color:white;
+}
+.dashboard_billing_addr.points{
+cursor:inherit!important;
+}
+.inp{
+    text-transform: lowercase;
+}
+.special{
+    color:green !important;
+    font-weight: bold;
+}
+.offer{
+    color:red !important;
+    /* font-weight: bold; */
+}
+.end{
+     color:red !important;
+    /* font-weight: bold;   */
+}
+.price.specialof{
+color:green;
+    font-weight: bold;
+}
+ 
+.listendprice{
+    text-decoration: line-through;  
+} 

@@ -11,15 +11,19 @@
     	<li  class="bredcrumb_li">
 			<a>Invoice Orders</a>
 		</li>
+		<div style="float:right;">
+			<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+	 </div>
 	</ul>
+	
 			<!--  account dashboard Invoice orders page start here -->
 			<div class="block_account_dashboard" id="edit_row">
 					<div loading   style="margin-right: 600px;"></div>
 				<div class="row" ng-if="invoiceOrderlist!=''">
-					<div class="box-head" style="margin-top: 25px;"><h2>Orders</h2></div>
+					<div class="box-head" style="margin-top: 6px;"><h2>Orders</h2></div>
 					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">	
 						<div class="row">
-						<div class="table-responsive" style="height: 281px;">
+						<div class="table-responsive" ">
 							<table class="table table-bordered" id="smt_Orders_table">
 								<thead>
 									<tr>
@@ -41,7 +45,11 @@
 										
 								</tbody>										
 							</table>
-							<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+
+							<div style="float:right;">
+								<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+							 </div>
+							<!-- <pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination> -->
 							</div>
 						</div>
 					</div>
