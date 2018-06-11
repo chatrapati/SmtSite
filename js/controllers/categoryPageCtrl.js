@@ -301,7 +301,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
     }
 
     $scope.goToHome = function () {
-      window.location.href = "./index.html";
+      window.location.href = "./";
     }
 
 
@@ -892,7 +892,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
     }
     $scope.goToHome = function () {
       // $location.path("/")
-      window.location.href = "./index.html";
+      window.location.href = "./";
     }
 
      $scope.brandchange=function(sub){
