@@ -2781,3 +2781,127 @@ color:green;
 
         /*--  end login page edited css--*/
 
+
+
+
+   .sprintrFeedbackNode {
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    vertical-align: bottom;
+    width: 35px;
+    z-index: 9999;
+    top: 25%;
+    height: 170px;
+    border-top-left-radius: 3px;
+     border-bottom-left-radius: 3px;
+    /* box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);
+     -moz-box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);
+    -webkit-box-shadow: -1px 0 5px rgba(28, 59, 86, 0.2);   */
+    background: url(https://s3.ap-south-1.amazonaws.com/gstbucket1/recently-viewed.png) center center no-repeat;
+    
+}
+#tabOne{
+margin-right:29%;
+}
+#offer_arrows .slick-prev {
+background: #717272;
+       left: -21px;
+    top: 48%;
+    z-index: 1;
+    border-radius:50%
+}
+#offer_arrows .slick-prev:hover,#offer_arrows .slick-next:hover{
+background: black;
+      
+}
+
+#offer_arrows .slick-next{
+        background: #717272;
+        right: -20px;
+    top: 48%;
+      border-radius:50%
+}
+md-toolbar._md-toolbar-transitions {
+    min-height: 38px;
+}
+.md-toolbar-tools{
+    font-size: 18px !important;
+    position:fixed;
+    height: 38px !important;
+    max-height: 38px !important;
+}
+.latest_popupBox{
+    border-bottom: 1px dotted;
+    margin-left: 1px;
+    margin-bottom: 25px;
+    margin-top: -22px;
+}
+.resentBtn_home{
+        margin-top: -19px;
+    margin-left: 6px;
+    background: #ccc;
+}
+.resentBtn_home:hover{
+    background: #0587a1;
+    color:#fff;
+    border-color:#0587a1;
+}
+.resent_content{
+    margin-top: -8px;
+}
+.editadd{
+        margin-right: 80px;
+    margin-top: 38px;
+}
+.md-sidenav-right.md-whiteframe-4dp{
+  position: fixed;
+    height: 357px;
+    /* overflow-x: hidden; */
+    margin-top: 176px;
+    overflow-y: hidden;
+}
+.md-scroll-shrink{
+    width: 85px;
+    float: right;
+    border-radius: 7%;
+    font-size: 73%;
+        margin-top: 11px;
+    /* margin-right: 21px; */
+    margin-left: 22px;
+}
+.editaddressdashboard{
+    color:white;
+      
+}
+.editaddressdashboard:hover{
+    color:yellow;
+    
+
+}
+
+
+md-backdrop.md-opaque {
+    opacity: 0 !important;
+}
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: rgb(5, 135, 161);
+    color: rgba(255,255,255,0.87);
+}
+
+#img_effects img {
+    height: 100px !important;
+    width: 100px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    margin: 0 8px;
+}
+
+#img_effects img:hover {
+    border: 1px solid #0487a1;
+}
+
+#homecarts a.ad_cart_lak :hover {
+    color: #fff;
+}

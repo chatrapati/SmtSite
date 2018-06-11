@@ -41,8 +41,14 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             
 
         $scope.todaydeals=function(){
-            $location.path("todaydeals")
+
+            $location.path("todaydeals");
+             // $scope.deals();
         }
+
+
+
+       
 
         $scope.goToWishList = function () {
             if (window.localStorage['token']) {
@@ -55,7 +61,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             if (window.localStorage['user_id']) {
                 if ($rootScope.cartArray.length != 0) {
-                   window.location.href = DOMAIN_URL+"#!/checkout";
+                   window.location.href = DOMAIN_URL+"/checkout";
                 }
 
             }
@@ -103,6 +109,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
 
         $rootScope.addToCompare = function (productObj) {
+            // alert(productObj)
             if (window.localStorage['user_id']) {
                 for (var i = 0; i < $rootScope.compareProducts.length; i++) {
                     if ($rootScope.compareProducts[i] == productObj.upload_name) {
@@ -171,7 +178,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
          $rootScope.getProductDetails = function (productObj) {
-           // alert('1')
+           //alert('1')
        
             window.localStorage['productName'] = productObj.upload_name;
 
@@ -185,9 +192,9 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             location.reload();
 
-            window.location.href = DOMAIN_URL+"#!/productDetailPage";
+            window.location.href = DOMAIN_URL+"/productDetailPage";
 
-      
+        //    alert("hai")
 
         }
 
@@ -196,8 +203,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             localStorage.setItem('isReviewStatus', isReview);
             window.localStorage['productName'] = productObj.upload_name;
             $rootScope.showHintFlag = 'false';
-            $scope.productDetailedUrl = document.URL.split("#!/");
-            if ($scope.productDetailedUrl[1] == 'productDetailPage') {
+            $scope.productDetailedUrl = document.URL.split("/");
+            if ($scope.productDetailedUrl[$rootScope.productReview.length-1] == 'productDetailPage') {
                // window.localStorage['productName'] = productObj.upload_name;
                 location.reload();
                 $window.scrollTo(0, 0);
@@ -288,10 +295,10 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 $rootScope.showHintFlag = 'false';
                 $scope.searchPageURL = document.URL.split("/");
                 if ($scope.searchPageURL[$scope.searchPageURL.length - 1] == 'searchPage') {
-                  window.location.href =DOMAIN_URL+"#!/searchPage1";
+                  window.location.href =DOMAIN_URL+"/searchPage1";
                 }
                 else {
-                    window.location.href =DOMAIN_URL+"#!/searchPage";
+                    window.location.href =DOMAIN_URL+"/searchPage";
                 }
             } else if (searchKey.length == '0') {
                 $rootScope.showHintFlag = 'false';

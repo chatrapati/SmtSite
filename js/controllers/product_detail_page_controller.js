@@ -19,7 +19,7 @@ shopMyToolsApp.controller('product_detailed_controller',
 
 			$location.path("/")
 		}
-
+   
 		$scope.productReviewMethod = function (productObj, isReview) {
 			// localStorage.setItem('isReviewStatus', isReview);
 			$scope.isReview = isReview;
