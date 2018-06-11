@@ -1,3 +1,7 @@
+body{
+	background:#fff !important;
+}
+
 #ftr_ss div:nth-child(4) ul #footer_links_valuess{
 display:inline-block;
 }
@@ -2632,10 +2636,6 @@ color:green;
 .listendprice{
     text-decoration: line-through;  
 } 
-
-
-
-
 /*--   login page edited css--*/
 
      .yt-menu-nav>#nav>li>a>span,
