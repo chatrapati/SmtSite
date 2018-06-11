@@ -36,7 +36,12 @@
     </div>
 
     <div class="row" id="catPage">
-        <div ng-switch="x">
+
+        <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
+                                <img src="images/noproducts.png">
+                                <br>
+                            </div><br>
+        <div ng-switch="x" ng-if="products.length > 0">
             <div style="margin-top:10px;">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -262,10 +267,7 @@
                                 </div>
                             </div>
 
-                            <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
-                                <img src="images/noproducts.png">
-                                <br>
-                            </div>
+                            
                             <!-- grid row -->
                             <div loading style="margin-right: 446px;margin-top: 190px;"></div>
                             <div class="row">
