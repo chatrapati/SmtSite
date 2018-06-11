@@ -12,6 +12,9 @@
 			<a>Wish List</a>
 		</li>
 	</ul>
+	<div style="float:right;">
+		<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+	</div>
 	<div class="row" id="edit_row">
 		<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 	
@@ -20,12 +23,13 @@
 				<div class="row" ng-if="yourWishlist!=''">
 					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 						<div class="row">
+								
 							<div class="basic_dashboard">
 
-								<div class="box-head">
+								<div class="box-head wishlistdashboard">
 									<h2>MY WISH LIST</h2>
 								</div>
-
+							
 								<!-- my whishlist page start here -->
 								<div class="table-responsive">
 									<table class="table table-bordered" id="myWhishlist">
@@ -87,7 +91,9 @@
 										</tbody>
 									</table>									
 								</div>
+								<div style="float:right;">
 								<pagination total-items="totalItems" page="currentPage" class="pagination-sm" items-per-page="itemsPerPage"></pagination>
+							 </div>
 							</div>
 						</div>
 					</div>

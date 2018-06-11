@@ -171,10 +171,10 @@
 
             </div>
             <!-- <div class="regular slider"> -->
-          
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right: 31px;padding-left: 18px;">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-right: 31px;padding-left: 18px;">
                 <slick settings="slickConfigBrands" slides-to-show="6" ng-if="topbrands" slides-to-scroll="1">
-				
+
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 top-brandbox" ng-repeat="brand in topbrands">
 
                         <div class="emerging-item emerging-gallery">
@@ -206,10 +206,10 @@
                         </div>
 
                     </div>
-             
-				</slick>
-				   </div>
-            
+
+                </slick>
+            </div>
+
 
             <div id="all-collections-shoe-more-btn" ng-click="goToTopBrands()" class="allhomebtn">
                 <a style="margin-top:1px !important;">All Top Brands</a>
@@ -220,43 +220,49 @@
         <!-- /top brand -->
 
 
-          <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode hidden-xs hidden-sm" id="recent"></div>
-<section layout="row" flex="" >
-    
-           <md-sidenav  outside-click="close()" class="md-sidenav-right md-whiteframe-4dp hidden-xs hidden-sm {{recentclass}}" style="position:fixed;" md-component-id="right">
+        <div ng-click="toggleRight()" ng-if="recentlyviewd==false && token && prod_infocount > 0" class="sprintrFeedbackNode hidden-xs hidden-sm"
+            id="recent"></div>
+        <section layout="row" flex="">
 
-      <md-toolbar class="md-theme-light">
-        <div><h1 class="md-toolbar-tools">Recently Viewed Products  <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
-       </div>
-      </md-toolbar>
-      <md-content  layout-padding="" class="resent_content " style="overflow: hidden;">
-       
-          <md-input-container >
-           <div class="row">
-     <div class="col-md-12 latest_popupBox " ng-repeat="recently in prod_info |limitTo:5">
-    <div class="col-md-4">
- <a href="" ng-click="getProductDetails(recently)" target="_blank">
+            <md-sidenav outside-click="close()" class="md-sidenav-right md-whiteframe-4dp hidden-xs hidden-sm {{recentclass}}" style="position:fixed;"
+                md-component-id="right">
+
+                <md-toolbar class="md-theme-light">
+                    <div>
+                        <h1 class="md-toolbar-tools">Recently Viewed Products <i style="margin-left: 54px;" ng-click="close()" class="fa fa-times" aria-hidden="true"></i></h1>
+                    </div>
+                </md-toolbar>
+                <md-content layout-padding="" class="resent_content " style="overflow: hidden;">
+
+                    <md-input-container>
+                        <div class="row">
+                            <div class="col-md-12 latest_popupBox " ng-repeat="recently in prod_info |limitTo:5">
+                                <div class="col-md-4">
+                                    <a href="" ng-click="getProductDetails(recently)" target="_blank">
  <img  class="img-responsive  img-thumbnail" alt="{{recently.upload_name}}" src="{{recently.upload_photo.replace('gifs','100X100').replace('.gif','_1.jpg')}}" style="height:49px;padding:0;"> 
  </a>
-</div>
- <div class="col-md-8"><p class="resent_prodname">{{recently.upload_name}} <br/> <a href="" ng-click="getProductDetails(recently)" class="pull-right" style="color: #0587a1;">More</a></p>
- </div>	
- </div>
-<div class="row">
-    <div class="col-md-offset-7 col-md-4" style="margin-left: 60.333333%;">
-    <button class="btn btn-default btn-sm resentBtn_home col-md-12" layout="row" ng-click="gotoviewmore()" layout-align="center center" flex>
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="resent_prodname">{{recently.upload_name}} <br/> <a href="" ng-click="getProductDetails(recently)" class="pull-right"
+                                            style="color: #0587a1;">More</a></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-offset-7 col-md-4" style="margin-left: 60.333333%;">
+                                    <button class="btn btn-default btn-sm resentBtn_home col-md-12" layout="row" ng-click="gotoviewmore()" layout-align="center center"
+                                        flex>
           View More
-    </button>   
-        </div>
-   </div>
-   
-   
-   </div>
-          </md-input-container>
-       
-       
-      </md-content>
-        <!-- <footer>
+    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </md-input-container>
+
+
+                </md-content>
+                <!-- <footer>
       <md-toolbar ng-if="prod_infocount>4" class="md-scroll-shrink">
         <div class="" layout="row" ng-click="gotoviewmore()" layout-align="center center" flex>
           View More
@@ -264,9 +270,9 @@
       </md-toolbar>
     </footer> -->
 
-    </md-sidenav>
-  
-</section>
+            </md-sidenav>
+
+        </section>
 
         <!-- emerging brand -->
 
@@ -355,7 +361,8 @@
 
                                                     <div class="row">
 
-                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="product in offersArray |startFrom : showIndex | limitTo : 4 track by $index" style="padding-right: 7px;
+                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="product in Offers |startFrom : showIndex | limitTo : 4 track by $index"
+                                                            style="padding-right: 7px;
                                                         padding-left: 5px;">
 
                                                             <div class="sub-item respl-item" style="opacity: 1;">
@@ -368,7 +375,8 @@
 
                                                                     <div class="product-image">
 
-                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(product)" ng-right-click="rightClickTab(product)" class="product-img" title="{{product.upload_name}}">
+                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(product)" ng-right-click="rightClickTab(product)" class="product-img"
+                                                                            title="{{product.upload_name}}">
 
                                                                             <img class="small-image pdt-img-small" ng-src="{{product.upload_photo}}" alt="{{product.upload_name}}" title="{{product.upload_name}}">
                                                                             
@@ -389,54 +397,116 @@
 
                                                                         </div>
 
-                                                                        <div class="product-price">
+                                                                        <div ng-if="product.special_offer =='0'" class="product-price">
 
 
 
-                                                                            <div class="price-box" ng-repeat="price in product.prices">
+                                                                            <!-- <div class="price-box" ng-repeat="price in product.prices"> -->
 
-                                                                                <div class="offer home_offer">
+                                                                            <div class="offer home_offer">
 
-                                                                                    <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+                                                                                <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
-                                                                                    <br>
+                                                                                <br>
 
-                                                                                    <p class="special-price yousave disPrice">
+                                                                                <p class="special-price yousave disPrice">
 
-                                                                                        {{price.percentage+0.00|number:2}} %
+                                                                                    {{product.percentage+0.00|number:2}} %
 
-                                                                                    </p>
+                                                                                </p>
 
 
 
-                                                                                    <span class="special-price">
+                                                                                <span class="special-price">
 
                                             <span class="special-price" id="product-price-507_b">
 
-                                              <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                              <span class="price special ">{{product.offer_price | currency:'&#8377;'}}</span>
 
-                                                                                    </span>
+                                                                                </span>
 
-                                                                                    </span>
+                                                                                </span>
 
-                                                                                    <span class="old-price">
+                                                                                <span class="old-price">
 
-                                            <span class="price" id="old-price-507_b">
+                                            <span class="price listendprice end" id="old-price-507_b">
 
-                                              {{price.enduser_price | currency:'&#8377;'}}
+                                              {{product.enduser_price | currency:'&#8377;'}}
 
                                             </span>
 
-                                                                                    </span>
+                                                                                </span>
 
-                                                                                    <p id="exclgstttt">(Excluding-GST)</p>
-
-                                                                                </div>
+                                                                                <p id="exclgstttt">(Excluding-GST)</p>
 
                                                                             </div>
 
+                                                                            <!-- </div> -->
+
                                                                         </div>
 
+
+                                                                        <div ng-if="product.special_offer !='0'" class="product-price">
+
+
+
+                                                                            <!-- <div class="price-box" ng-repeat="price in product.prices"> -->
+
+                                                                            <div class="offer home_offer">
+
+                                                                                <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+                                                                                <br>
+
+                                                                                <p class="special-price yousave disPrice">
+
+                                                                                    {{product.special_percentage+0.00|number:2}} %
+
+                                                                                </p>
+
+
+
+                                                                                <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price special">{{product.special_offer | currency:'&#8377;'}}</span>
+
+                                                                                </span>
+
+                                                                                </span>
+
+
+
+
+
+                                                                                <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price listendprice end">{{product.offer_price | currency:'&#8377;'}}</span>
+
+                                                                                </span>
+
+                                                                                </span>
+
+                                                                                <span class="old-price">
+
+                                            <span class="price listendprice end" id="old-price-507_b">
+
+                                              {{product.enduser_price | currency:'&#8377;'}}
+
+                                            </span>
+
+                                                                                </span>
+
+                                                                                <p id="exclgstttt">(Excluding-GST)</p>
+
+                                                                            </div>
+
+                                                                            <!-- </div> -->
+
+                                                                        </div>
 
 
 
@@ -450,7 +520,8 @@
                                                                                 </a>
                                                                                 <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(product)"></a>
                                                                                 <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(product)"></a>
-                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="product.avgrating == 0" ng-click="productReview(product, 'review')">
+                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="product.avgrating == 0"
+                                                                                    ng-click="productReview(product, 'review')">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                             <span class="hidden-xs">REVIEW</span>
@@ -497,7 +568,7 @@
                                 <div class="container">
 
                                     <div class="row">
-                                        <div ng-if="offersArray.length == 0" style="text-align: center;margin-top: 25px;">
+                                        <div ng-if="Offers.length == 0" style="text-align: center;margin-top: 25px;">
                                             <img src="images/noproducts.png">
                                             <br>
                                         </div>
@@ -511,7 +582,8 @@
 
                                                     <div class="row">
 
-                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="electricdrill in offersArray |startFrom : showIndex |limitTo :4 track by $index " style="padding-right: 7px;
+                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="electricdrill in Offers |startFrom : showIndex |limitTo :4 track by $index "
+                                                            style="padding-right: 7px;
                                                         padding-left: 5px;">
 
                                                             <div class="sub-item respl-item" style="opacity: 1;">
@@ -545,9 +617,9 @@
 
                                                                         </div>
 
-                                                                        <div class="product-price">
+                                                                        <div ng-if="electricdrill.special_offer =='0'" class="product-price">
 
-                                                                            <div class="price-box" ng-repeat="price in electricdrill.prices">
+                                                                            <!-- <div class="price-box" ng-repeat="price in electricdrill.prices"> -->
 
                                                                                 <div class="offer home_offer">
 
@@ -557,7 +629,7 @@
 
                                                                                     <p class="special-price yousave disPrice">
 
-                                                                                        {{price.percentage+0.00|number:2}} %
+                                                                                        {{electricdrill.percentage+0.00|number:2}} %
 
                                                                                     </p>
 
@@ -567,7 +639,7 @@
 
                                             <span class="special-price" id="product-price-507_b">
 
-                                              <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                              <span class="price special">{{electricdrill.offer_price | currency:'&#8377;'}}</span>
 
                                                                                     </span>
 
@@ -575,9 +647,9 @@
 
                                                                                     <span class="old-price">
 
-                                            <span class="price" id="old-price-507_b">
+                                            <span class="price listendprice end" id="old-price-507_b">
 
-                                              {{price.enduser_price | currency:'&#8377;'}}
+                                              {{electricdrill.enduser_price | currency:'&#8377;'}}
 
                                             </span>
 
@@ -586,36 +658,96 @@
                                                                                     <p id="exclgstttt">(Excluding-GST)</p>
                                                                                 </div>
 
-                                                                            </div>
+                                                                            <!-- </div> -->
+                                                                        </div>
 
 
 
-                                                                            <div class="clear-left_detailed homecrt" id="homecarts">
-                                                                                <div class="cartdiv">
-                                                                                    <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(electricdrill)">
+
+                                                                        <div ng-if="electricdrill.special_offer !='0'" class="product-price">
+
+                                                                            <!-- <div class="price-box" ng-repeat="price in electricdrill.prices"> -->
+
+                                                                                <div class="offer home_offer">
+
+                                                                                    <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                                                                    <p class="special-price yousave disPrice">
+
+                                                                                        {{electricdrill.special_percentage+0.00|number:2}} %
+
+                                                                                    </p>
+
+
+
+                          <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price special">{{electricdrill.special_offer | currency:'&#8377;'}}</span>
+
+                                                                                    </span>
+
+                                                                                    </span>
+
+
+
+
+                                                                                    <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price listendprice end">{{electricdrill.offer_price | currency:'&#8377;'}}</span>
+
+                                                                                    </span>
+
+                                                                                    </span>
+
+                                                                                    <span class="old-price">
+
+                                            <span class="price listendprice end" id="old-price-507_b">
+
+                                              {{electricdrill.enduser_price | currency:'&#8377;'}}
+
+                                            </span>
+
+                                                                                    </span>
+
+                                                                                    <p id="exclgstttt">(Excluding-GST)</p>
+                                                                                </div>
+
+                                                                            <!-- </div> -->
+                                                                        </div>
+
+
+
+                                                                        <div class="clear-left_detailed homecrt" id="homecarts">
+                                                                            <div class="cartdiv">
+                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(electricdrill)">
                                                                                         <span>
                                               <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                               <span class="cart_style_new">ADD TO CART</span>
                                                                                         </span>
                                                                                     </a>
-                                                                                    <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(electricdrill)"></a>
-                                                                                    <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(electricdrill)"></a>
-                                                                                    <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="electricdrill.avgrating == 0" ng-click="productReview(electricdrill, 'review')">
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(electricdrill)"></a>
+                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(electricdrill)"></a>
+                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="electricdrill.avgrating == 0"
+                                                                                    ng-click="productReview(electricdrill, 'review')">
                                                                                         <span>
                                               <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                               <span class="hidden-xs">REVIEW</span>
                                                                                         </span>
                                                                                     </a>
-                                                                                    <a class="btn addreview" id="strRev" ng-click="productReview(electricdrill, 'review')" title="Write Your Review" ng-if="electricdrill.avgrating != 0">
-                                                                                        <star-rating ng-model="electricdrill.avgrating" readonly="isReadonly"></star-rating>
-                                                                                    </a>
-                                                                                </div>
+                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(electricdrill, 'review')" title="Write Your Review" ng-if="electricdrill.avgrating != 0">
+                                                                                    <star-rating ng-model="electricdrill.avgrating" readonly="isReadonly"></star-rating>
+                                                                                </a>
                                                                             </div>
-
-
-
-
                                                                         </div>
+
+
+
 
                                                                     </div>
 
@@ -627,9 +759,9 @@
 
                                                     </div>
 
-
-
                                                 </div>
+
+
 
                                             </div>
 
@@ -637,22 +769,23 @@
 
                                     </div>
 
-
-
                                 </div>
+
+
 
                             </div>
 
-                        </tab>
+                
 
-                        <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="" ng-click="getOffers('Angle Grinder')" id="tabThree">
+                        </tab>
+                    <tab heading="ANGLE GRINDER" class="pull-right tabPane" style="" ng-click="getOffers('Angle Grinder')" id="tabThree">
 
                             <div class="tab-pane" id="anglegrinder">
 
                                 <div>
 
                                     <div class="row">
-                                        <div ng-if="offersArray.length == 0" style="text-align: center;margin-top: 25px;">
+                                        <div ng-if="Offers.length == 0" style="text-align: center;margin-top: 25px;">
                                             <img src="images/noproducts.png">
                                             <br>
                                         </div>
@@ -666,7 +799,7 @@
 
                                                     <div class="">
 
-                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="anglegrinder in offersArray |startFrom : showIndex |limitTo:4 track by $index " style="padding-right: 7px;
+                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="anglegrinder in Offers |startFrom : showIndex |limitTo:4 track by $index " style="padding-right: 7px;
                                                         padding-left: 5px;">
 
                                                             <div class="sub-item respl-item" style="opacity: 1;">
@@ -700,9 +833,9 @@
 
                                                                         <div class="product- ">
 
-                                                                            <div class="price-box" ng-repeat="price in anglegrinder.prices">
+                                                                            <!-- <div class="price-box" ng-repeat="price in anglegrinder.prices"> -->
 
-                                                                                <div class="offer home_offer">
+                                                                                <div ng-if="anglegrinder.special_offer=='0'" class="offer home_offer">
 
                                                                                     <!-- <div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
@@ -710,7 +843,7 @@
 
                                                                                     <p class="special-price yousave disPrice">
 
-                                                                                        {{price.percentage+0.00|number:2}} %
+                                                                                        {{anglegrinder.percentage+0.00|number:2}} %
 
                                                                                     </p>
 
@@ -720,7 +853,7 @@
 
                                             <span class="special-price" id="product-price-507_b">
 
-                                              <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                              <span class="price special">{{anglegrinder.offer_price | currency:'&#8377;'}}</span>
 
                                                                                     </span>
 
@@ -728,9 +861,9 @@
 
                                                                                     <span class="old-price">
 
-                                            <span class="price" id="old-price-507_b">
+                                            <span class="price listendprice end" id="old-price-507_b">
 
-                                              {{price.enduser_price | currency:'&#8377;'}}
+                                              {{anglegrinder.enduser_price | currency:'&#8377;'}}
 
                                             </span>
 
@@ -740,7 +873,68 @@
 
                                                                                 </div>
 
-                                                                            </div>
+                                                                            <!-- </div> -->
+
+
+
+                                                <!-- <div class="price-box" ng-repeat="price in anglegrinder.prices"> -->
+
+                                                                                <div  ng-if="anglegrinder.special_offer !='0'" class="offer home_offer">
+
+                                                                                    <!-- <div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                                                                    <p class="special-price yousave disPrice">
+
+                                                                                        {{anglegrinder.special_percentage+0.00|number:2}} %
+
+                                                                                    </p>
+
+
+
+
+                                                             <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price special">{{anglegrinder.special_offer | currency:'&#8377;'}}</span>
+
+                                                                                    </span>
+
+                                                                                    </span>
+
+                                                                                    <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price listendprice end">{{anglegrinder.offer_price | currency:'&#8377;'}}</span>
+
+                                                                                    </span>
+
+                                                                                    </span>
+
+                                                                                    <span class="old-price">
+
+                                            <span class="price listendprice end" id="old-price-507_b">
+
+                                              {{anglegrinder.enduser_price | currency:'&#8377;'}}
+
+                                            </span>
+
+                                                                                    </span>
+
+                                                                                    <p id="exclgstttt">(Excluding-GST)</p>
+
+                                                                                </div>
+
+                                                                            <!-- </div> -->
+
+
+
+
+
+
 
                                                                             <div class="clear-left_detailed homecrt" id="homecarts">
                                                                                 <div class="cartdiv">
@@ -792,131 +986,192 @@
 
                         </tab>
 
-                        <tab heading="HAMMERS" class="pull-right tabPane"  ng-click="getOffers('Hammers')" id="tabFour">
 
-                            <div class="tab-pane" id="impactdrill">
+                <tab heading="HAMMERS" class="pull-right tabPane" ng-click="getOffers('Hammers')" id="tabFour">
 
-                                <div class="container">
+                    <div class="tab-pane" id="impactdrill">
 
-                                    <div class="row">
-                                        <div ng-if="offersArray.length == 0" style="text-align: center;margin-top: 25px;">
-                                            <img src="images/noproducts.png">
-                                            <br>
-                                        </div>
+                        <div class="container">
+
+                            <div class="row">
+                                <div ng-if="Offers.length == 0" style="text-align: center;margin-top: 25px;">
+                                    <img src="images/noproducts.png">
+                                    <br>
+                                </div>
+                                <div>
+
+                                    <!-- Wrapper for slides -->
+
+                                    <div class="carousel-inner" style="padding:10px;">
+
                                         <div>
 
-                                            <!-- Wrapper for slides -->
+                                            <div class="row">
 
-                                            <div class="carousel-inner" style="padding:10px;">
-
-                                                <div>
-
-                                                    <div class="row">
-
-                                                        <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="impactdrill in offersArray |startFrom : showIndex |limitTo:4 track by $index" style="padding-right: 7px;
+                                                <div class="col-sm-6 col-md-3 col-xs-12 col-lg-3" ng-repeat="impactdrill in Offers |startFrom : showIndex |limitTo:4 track by $index"
+                                                    style="padding-right: 7px;
                                                         padding-left: 5px;">
 
-                                                            <div class="sub-item respl-item" style="opacity: 1;">
+                                                    <div class="sub-item respl-item" style="opacity: 1;">
 
-                                                                <div class="item-inner">
+                                                        <div class="item-inner">
 
-                                                                    <div class="product-image">
+                                                            <div class="product-image">
 
-                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(impactdrill)" class="product-img" title="{{impactdrill.upload_name}}">
+                                                                <a style="padding:10px 0;" ng-click="getProductDetails(impactdrill)" class="product-img" title="{{impactdrill.upload_name}}">
 
                                                                             <img class="small-image pdt-img-small" ng-src="{{impactdrill.upload_photo}}" alt="{{impactdrill.upload_name}}" title="{{impactdrill.upload_name}}">
 
                                                                         </a>
 
-                                                                    </div>
+                                                            </div>
 
-                                                                    <div class="product-info">
+                                                            <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 40">
+                                                                <div class="product-name" ng-init="limit = 40">
 
-                                                                            <a ng-click="getProductDetails(impactdrill)" title="{{impactdrill.upload_name}}">
+                                                                    <a ng-click="getProductDetails(impactdrill)" title="{{impactdrill.upload_name}}">
 
                                         {{impactdrill.upload_name | limitTo: limit}}{{impactdrill.upload_name .length > limit ? ' . . .' : ''}}
                                         <!-- <span ng-repeat="attribute in impactdrill.attributes|limitTo:2" style="padding-left:1px;color:#666666;"> {{attribute.atrname}}{{attribute.atrvalue}} </span> -->
 
                                       </a>
 
-                                                                        </div>
+                                                                </div>
 
-                                                                        <div class="product-info">
+                                                                <div class="product-info">
 
-                                                                            <div class="product-price">
+                                                                    <div class="product-price">
 
-                                                                                <div class="price-box" ng-repeat="price in impactdrill.prices">
+                                                                        <!-- <div class="price-box" ng-repeat="price in impactdrill.prices"> -->
 
-                                                                                    <div class="offer home_offer">
+                                                                            <div  ng-if="impactdrill.special_offer=='0'" class="offer home_offer">
 
-                                                                                        <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-
-
-
-                                                                                        <p class="special-price yousave disPrice">
-
-                                                                                            {{price.percentage+0.00|number:2}} %
+                                                                                <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
 
 
-                                                                                        </p>
+                                                                                <p class="special-price yousave disPrice">
+
+                                                                                    {{price.percentage+0.00|number:2}} %
 
 
 
-                                                                                        <span class="special-price">
+                                                                                </p>
+
+
+
+                                                                                <span class="special-price">
 
                                               <span class="special-price" id="product-price-507_b">
 
-                                                <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                                <span class="price special">{{price.offer_price | currency:'&#8377;'}}</span>
 
-                                                                                        </span>
+                                                                                </span>
 
-                                                                                        </span>
+                                                                                </span>
 
-                                                                                        <span class="old-price">
+                                                                                <span class="old-price">
 
-                                              <span class="price" id="old-price-507_b">
+                                              <span class="price listendprice end" id="old-price-507_b">
 
                                                 {{price.enduser_price | currency:'&#8377;'}}
 
                                               </span>
 
-                                                                                        </span>
+                                                                                </span>
 
-                                                                                        <p id="exclgstttt">(Excluding-GST)</p>
+                                                                                <p id="exclgstttt">(Excluding-GST)</p>
 
-                                                                                    </div>
-                                                                                </div>
+                                                                            </div>
+                                                                        <!-- </div> -->
 
 
-                                                                                <div class="clear-left_detailed homecrt" id="homecarts">
-                                                                                    <div class="cartdiv">
-                                                                                        <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(impactdrill)">
+
+
+                                                                         <!-- <div class="price-box" ng-repeat="price in impactdrill.prices"> -->
+
+                                                                            <div ng-if="impactdrill.special_offer!='0'"  class="offer home_offer">
+
+                                                                                <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                                                                <p class="special-price yousave disPrice">
+
+                                                                                    {{impactdrill.special_percentage+0.00|number:2}} %
+
+
+
+                                                                                </p>
+
+
+                                                                <span class="special-price">
+
+                                              <span class="special-price" id="product-price-507_b">
+
+                                                <span class="price special">{{impactdrill.special_offer | currency:'&#8377;'}}</span>
+
+                                                                                </span>
+
+                                                                                </span>
+
+
+
+
+                                                                                <span class="special-price">
+
+                                              <span class="special-price" id="product-price-507_b">
+
+                                                <span class="price listendprice end">{{impactdrill.offer_price | currency:'&#8377;'}}</span>
+
+                                                                                </span>
+
+                                                                                </span>
+
+                                                                                <span class="old-price">
+
+                                              <span class="price listendprice end" id="old-price-507_b">
+
+                                                {{impactdrill.enduser_price | currency:'&#8377;'}}
+
+                                              </span>
+
+                                                                                </span>
+
+                                                                                <p id="exclgstttt">(Excluding-GST)</p>
+
+                                                                            </div>
+                                                                        <!-- </div> -->
+
+
+
+
+                                                                        <div class="clear-left_detailed homecrt" id="homecarts">
+                                                                            <div class="cartdiv">
+                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(impactdrill)">
                                                                                             <span>
                                                 <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                                 <span class="cart_style_new">ADD TO CART</span>
                                                                                             </span>
                                                                                         </a>
-                                                                                        <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(impactdrill)"></a>
-                                                                                        <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(impactdrill)"></a>
-                                                                                        <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="impactdrill.avgrating == 0" ng-click="productReview(impactdrill, 'review')">
+                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(impactdrill)"></a>
+                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(impactdrill)"></a>
+                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="impactdrill.avgrating == 0"
+                                                                                    ng-click="productReview(impactdrill, 'review')">
                                                                                             <span>
                                                 <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                                 <span class="hidden-xs">REVIEW</span>
                                                                                             </span>
                                                                                         </a>
-                                                                                        <a class="btn addreview" id="strRev" ng-click="productReview(impactdrill, 'review')" title="Write Your Review" ng-if="impactdrill.avgrating != 0">
-                                                                                            <star-rating ng-model="impactdrill.avgrating" readonly="isReadonly"></star-rating>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-
-
-
+                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(impactdrill, 'review')" title="Write Your Review" ng-if="impactdrill.avgrating != 0">
+                                                                                    <star-rating ng-model="impactdrill.avgrating" readonly="isReadonly"></star-rating>
+                                                                                </a>
                                                                             </div>
                                                                         </div>
+
+
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -927,155 +1182,222 @@
                                         </div>
                                     </div>
                                 </div>
-                        </tab>
-                    </tabset>
-                    </div>
-
+                            </div>
+                        </div>
+                </tab>
+                </tabset>
                 </div>
 
             </div>
 
+        </div>
 
 
-            <div class="collections-wrap">
 
-                <div class="block-title">
-                    <!-- <h1 id="all_ofersNewArrivals">NEW ARRIVALS</h1> -->
-                    <h1 id="all_ofers">NEW ARRIVALS</h1>
+        <div class="collections-wrap">
 
-                    <tabset class="nav nav-tabs">
+            <div class="block-title">
+                <!-- <h1 id="all_ofersNewArrivals">NEW ARRIVALS</h1> -->
+                <h1 id="all_ofers">NEW ARRIVALS</h1>
 
-                        <tab class="active pull-right tabPane" style="margin-right: 17%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
+                <tabset class="nav nav-tabs">
 
-                            <div class="tab-pane fade in active" id="allProducts1">
+                    <tab class="active pull-right tabPane" style="margin-right: 17%;" heading="ALL PRODUCTS" ng-click="getNewArrivals('')">
 
-                                <div class="container">
+                        <div class="tab-pane fade in active" id="allProducts1">
 
-                                    <div class="row">
+                            <div class="container">
 
-                                        <div>
+                                <div class="row">
 
-                                            <!-- Wrapper for slides -->
+                                    <div>
 
-                                            <div class="carousel-inner" style="padding:10px;">
+                                        <!-- Wrapper for slides -->
 
-                                                <div>
+                                        <div class="carousel-inner" style="padding:10px;">
 
-                                                    <div class="row">
+                                            <div>
 
-                                                        <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="newarrival in newarrivalsArray |startFrom:showIndexNewArrivals | limitTo:4 track by $index " style="padding-right: 7px;
+                                                <div class="row">
+
+                                                    <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="newarrival in newarrivals |startFrom:showIndexNewArrivals | limitTo:4 track by $index "
+                                                        style="padding-right: 7px;
                                                         padding-left: 5px;">
 
-                                                            <div class="sub-item respl-item" style="opacity: 1;">
+                                                        <div class="sub-item respl-item" style="opacity: 1;">
 
-                                                                <div class="item-inner">
+                                                            <div class="item-inner">
 
-                                                                    <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                                                <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <div class="product-image">
+                                                                <div class="product-image">
 
 
 
-                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(newarrival)" class="product-img" title="{{newarrival.upload_name}}">
+                                                                    <a style="padding:10px 0;" ng-click="getProductDetails(newarrival)" class="product-img" title="{{newarrival.upload_name}}">
 
                                                                             <img class="small-image pdt-img-small" ng-src="{{newarrival.upload_photo}}" alt="{{newarrival.upload_name}}" title="{{newarrival.upload_name}}">
 
                                                                         </a>
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <div class="product-info">
+                                                                <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 40">
+                                                                    <div class="product-name" ng-init="limit = 40">
 
 
 
-                                                                            <a ng-click="getProductDetails(newarrival)" title="{{newarrival.upload_name}}">
+                                                                        <a ng-click="getProductDetails(newarrival)" title="{{newarrival.upload_name}}">
 
                                         {{newarrival.upload_name | limitTo: limit}}{{newarrival.upload_name .length > limit ? ' . . .' : ''}}
                                         <!--{{newarrival.atrname}} {{newarrival.atrvalue}} -->
 
                                       </a>
 
-                                                                        </div>
+                                                                    </div>
 
-                                                                        <div class="product-price">
+                                                                    <div ng-if="newarrival.special_offer =='0'" class="product-price">
 
-                                                                            <div class="price-box" ng-repeat="price in newarrival.prices">
+                                                                        <!-- <div class="price-box" ng-repeat="price in newarrival.prices"> -->
 
-                                                                                <div class="offer home_offer">
+                                                                        <div class="offer home_offer">
 
-                                                                                    <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-
-
-
-                                                                                    <p class="special-price yousave disPrice">
-
-                                                                                        {{price.percentage+0.00|number:2}} %
-
-                                                                                    </p>
+                                                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
 
 
-                                                                                    <span class="special-price">
+                                                                            <p class="special-price yousave disPrice">
+
+                                                                                {{newarrival.percentage+0.00|number:2}} %
+
+                                                                            </p>
+
+
+
+                                                                            <span class="special-price">
 
                                             <span class="special-price" id="product-price-507_b">
 
-                                              <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                              <span class="price special">{{newarrival.offer_price | currency:'&#8377;'}}</span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    <span class="old-price">
+                                                                            <span class="old-price">
 
-                                            <span class="price" id="old-price-507_b">
+                                            <span class="price listendprice end" id="old-price-507_b">
 
-                                              {{price.enduser_price | currency:'&#8377;'}}
+                                              {{newarrival.enduser_price | currency:'&#8377;'}}
 
                                             </span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    <p id="exclgstttt">(Excluding-GST)</p>
-
-                                                                                </div>
-
-                                                                            </div>
+                                                                            <p id="exclgstttt">(Excluding-GST)</p>
 
                                                                         </div>
 
+                                                                        <!-- </div> -->
+
+                                                                    </div>
 
 
-                                                                        <div class="clear-left_detailed homecrt" id="homecarts">
-                                                                            <div class="cartdiv">
-                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(newarrival)">
+                                                                    <!--  special offer-->
+
+                                                                    <div ng-if="newarrival.special_offer!='0'" class="product-price">
+
+                                                                        <!-- <div class="price-box" ng-repeat="price in newarrival.prices"> -->
+
+                                                                        <div class="offer home_offer">
+
+                                                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                                                            <p class="special-price yousave disPrice">
+
+                                                                                {{newarrival.percentage+0.00|number:2}} %
+
+                                                                            </p>
+
+
+
+
+                                                                            <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price special">{{newarrival.special_offer | currency:'&#8377;'}}</span>
+
+                                                                            </span>
+
+                                                                            </span>
+
+
+
+                                                                            <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price offer listendprice">{{newarrival.offer_price | currency:'&#8377;'}}</span>
+
+                                                                            </span>
+
+                                                                            </span>
+
+                                                                            <span class="old-price">
+
+                                            <span class="price end listendprice" id="old-price-507_b">
+
+                                              {{newarrival.enduser_price | currency:'&#8377;'}}
+
+                                            </span>
+
+                                                                            </span>
+
+                                                                            <p id="exclgstttt">(Excluding-GST)</p>
+
+                                                                        </div>
+
+                                                                        <!-- </div> -->
+
+                                                                    </div>
+
+
+
+
+
+
+                                                                    <div class="clear-left_detailed homecrt" id="homecarts">
+                                                                        <div class="cartdiv">
+                                                                            <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(newarrival)">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(newarrival)"></a>
-                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>
-                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="newarrival.avgrating == 0" ng-click="productReview(newarrival, 'review')">
+                                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(newarrival)"></a>
+                                                                            <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(newarrival)"></a>
+                                                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="newarrival.avgrating == 0"
+                                                                                ng-click="productReview(newarrival, 'review')">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-star" style="font-size: 13px;"></i>
                                             <span class="hidden-xs">REVIEW</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(newarrival, 'review')" title="Write Your Review" ng-if="newarrival.avgrating != 0">
-                                                                                    <star-rating ng-model="newarrival.avgrating" readonly="isReadonly"></star-rating>
-                                                                                </a>
-                                                                            </div>
+                                                                            <a class="btn addreview" id="strRev" ng-click="productReview(newarrival, 'review')" title="Write Your Review" ng-if="newarrival.avgrating != 0">
+                                                                                <star-rating ng-model="newarrival.avgrating" readonly="isReadonly"></star-rating>
+                                                                            </a>
                                                                         </div>
-
-
-
-
-
                                                                     </div>
+
+
+
+
 
                                                                 </div>
 
@@ -1084,152 +1406,214 @@
                                                         </div>
 
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
 
                             </div>
 
-                        </tab>
+                        </div>
+
+                    </tab>
 
 
-                        <tab heading="DEMOLITION HAMMER" class="pull-right tabPane" style="margin-right: -27%;" ng-click="getNewArrivals('Demolition Hammer')">
+                    <tab heading="Angle Grinder Machine" class="pull-right tabPane" style="margin-right: -27%;" ng-click="getNewArrivals('Angle Grinder Machine')">
 
-                            <div class="tab-pane " id="demoltionHammer">
+                        <div class="tab-pane " id="demoltionHammer">
 
-                                <div class="container">
+                            <div class="container">
 
-                                    <div class="row">
-                                        <div ng-if="newarrivalsArray.length == 0" style="text-align: center;margin-top: 25px;">
-                                            <img src="images/noproducts.png">
-                                            <br>
-                                        </div>
+                                <div class="row">
+                                    <div ng-if="newarrivals.length == 0" style="text-align: center;margin-top: 25px;">
+                                        <img src="images/noproducts.png">
+                                        <br>
+                                    </div>
 
-                                        <div>
+                                    <div>
 
-                                            <!-- Wrapper for slides -->
+                                        <!-- Wrapper for slides -->
 
-                                            <div class="carousel-inner" style="padding:10px;">
+                                        <div class="carousel-inner" style="padding:10px;">
 
-                                                <div>
+                                            <div>
 
-                                                    <div class="row">
+                                                <div class="row">
 
-                                                        <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="demolitionhammer in newarrivalsArray |startFrom:showIndexNewArrivals| limitTo:4 track by $index " style="padding-right: 7px;
+                                                    <div class="col-sm-6 col-xs-12 col-lg-3 col-md-3" ng-repeat="demolitionhammer in newarrivals |startFrom:showIndexNewArrivals| limitTo:4 track by $index "
+                                                        style="padding-right: 7px;
                                                         padding-left: 5px;">
 
-                                                            <div class="sub-item respl-item" style="opacity: 1;">
+                                                        <div class="sub-item respl-item" style="opacity: 1;">
 
-                                                                <div class="item-inner">
+                                                            <div class="item-inner">
 
-                                                                    <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
+                                                                <div class="prod-modelNo prod-modelNo-warrt-list prod-modelNo-list">
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <div class="product-image">
+                                                                <div class="product-image">
 
 
 
-                                                                        <a style="padding:10px 0;" ng-click="getProductDetails(demolitionhammer)" class="product-img" title="{{demolitionhammer.upload_name}}">
+                                                                    <a style="padding:10px 0;" ng-click="getProductDetails(demolitionhammer)" class="product-img" title="{{demolitionhammer.upload_name}}">
 
                                                                             <img class="small-image pdt-img-small" ng-src="{{demolitionhammer.upload_photo}}" alt="{{demolitionhammer.upload_name}}" title="{{demolitionhammer.upload_name}}">
 
                                                                         </a>
 
-                                                                    </div>
+                                                                </div>
 
-                                                                    <div class="product-info">
+                                                                <div class="product-info">
 
-                                                                        <div class="product-name" ng-init="limit = 40">
+                                                                    <div class="product-name" ng-init="limit = 40">
 
 
 
-                                                                            <a ng-click="getProductDetails(demolitionhammer)" title="{{demolitionhammer.upload_name}}">
+                                                                        <a ng-click="getProductDetails(demolitionhammer)" title="{{demolitionhammer.upload_name}}">
 
                                         {{demolitionhammer.upload_name | limitTo: limit}}{{demolitionhammer.upload_name .length > limit ? ' . . .' : ''}}
                                         <!--{{demolitionhammer.atrname}} {{demolitionhammer.atrvalue}} -->
 
                                       </a>
 
-                                                                        </div>
+                                                                    </div>
 
-                                                                        <div class="product-price">
+                                                                    <div ng-if="demolitionhammer.special_offer=='0'" class="product-price">
 
-                                                                            <div class="price-box" ng-repeat="price in demolitionhammer.prices">
+                                                                        <!-- <div class="price-box" ng-repeat="price in demolitionhammer.prices"> -->
 
-                                                                                <div class="offer home_offer">
+                                                                        <div class="offer home_offer">
 
-                                                                                    <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-
-
-
-                                                                                    <p class="special-price yousave disPrice">
-
-                                                                                        {{price.percentage|number:'2'}} %
-
-                                                                                    </p>
+                                                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
 
 
 
-                                                                                    <span class="special-price">
+                                                                            <p class="special-price yousave disPrice">
+
+                                                                                {{demolitionhammer.percentage|number:'2'}} %
+
+                                                                            </p>
+
+
+
+                                                                            <span class="special-price">
 
                                             <span class="special-price" id="product-price-507_b">
 
-                                              <span class="price">{{price.offer_price | currency:'&#8377;'}}</span>
+                                              <span class="price special">{{demolitionhammer.offer_price | currency:'&#8377;'}}</span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    <span class="old-price">
+                                                                            <span class="old-price">
 
-                                            <span class="price" id="old-price-507_b">
+                                            <span class="price listendprice" id="old-price-507_b">
 
-                                              {{price.enduser_price | currency:'&#8377;'}}
+                                              {{demolitionhammer.enduser_price | currency:'&#8377;'}}
 
                                             </span>
 
-                                                                                    </span>
+                                                                            </span>
 
-                                                                                    <p id="exclgstttt">(Excluding-GST)</p>
-
-                                                                                </div>
-
-                                                                            </div>
+                                                                            <p id="exclgstttt">(Excluding-GST)</p>
 
                                                                         </div>
 
+                                                                        <!-- </div> -->
+
+                                                                    </div>
 
 
-                                                                        <div class="clear-left_detailed homecrt" id="homecarts">
-                                                                            <div class="cartdiv">
-                                                                                <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(demolitionhammer)">
+
+
+                                                                    <div ng-if="demolitionhammer.special_offer!='0'" class="product-price">
+
+                                                                        <!-- <div class="price-box" ng-repeat="price in demolitionhammer.prices"> -->
+
+                                                                        <div class="offer home_offer">
+
+                                                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
+
+
+
+                                                                            <p class="special-price yousave disPrice">
+
+                                                                                {{demolitionhammer.percentage|number:'2'}} %
+
+                                                                            </p>
+
+                                                                            <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price special">{{demolitionhammer.special_offer | currency:'&#8377;'}}</span>
+
+                                                                            </span>
+
+                                                                            </span>
+
+
+
+                                                                            <span class="special-price">
+
+                                            <span class="special-price" id="product-price-507_b">
+
+                                              <span class="price listendprice offer">{{demolitionhammer.offer_price | currency:'&#8377;'}}</span>
+
+                                                                            </span>
+
+                                                                            </span>
+
+                                                                            <span class="old-price">
+
+                                            <span class="price listendprice end" id="old-price-507_b">
+
+                                              {{demolitionhammer.enduser_price | currency:'&#8377;'}}
+
+                                            </span>
+
+                                                                            </span>
+
+                                                                            <p id="exclgstttt">(Excluding-GST)</p>
+
+                                                                        </div>
+
+                                                                        <!-- </div> -->
+
+                                                                    </div>
+
+
+
+                                                                    <div class="clear-left_detailed homecrt" id="homecarts">
+                                                                        <div class="cartdiv">
+                                                                            <a href="" class="ad_cart_lak btn addcartbtn" id="newcart_style" title="Add To Cart" ng-click="addToCart(demolitionhammer)">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-shopping-cart" style="padding-right:5px;font-size:13px"></i>
                                             <span class="cart_style_new">ADD TO CART</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(demolitionhammer)"></a>
-                                                                                <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(demolitionhammer)"></a>
-                                                                                <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="demolitionhammer.avgrating == 0" ng-click="productReview(demolitionhammer, 'review')">
+                                                                            <a href="" class="whishlist_lak wishbtn" title="Add To Wish List" ng-click="addToWishList(demolitionhammer)"></a>
+                                                                            <a href="" class="compare_lak wishbtn" title="Add To Compare" ng-click="addToCompare(demolitionhammer)"></a>
+                                                                            <a href="" class="ad_cart_lak btn addreview" title="Write Your Review" id="new_rev_ad_cart" ng-if="demolitionhammer.avgrating == 0"
+                                                                                ng-click="productReview(demolitionhammer, 'review')">
                                                                                     <span>
                                             <i class="glyphicon glyphicon-star"></i>
                                             <span class="hidden-xs">REVIEW</span>
                                                                                     </span>
                                                                                 </a>
-                                                                                <a class="btn addreview" id="strRev" ng-click="productReview(demolitionhammer, 'review')" title="Write Your Review" ng-if="demolitionhammer.avgrating != 0">
-                                                                                    <star-rating ng-model="demolitionhammer.avgrating" readonly="isReadonly"></star-rating>
-                                                                                </a>
-                                                                            </div>
+                                                                            <a class="btn addreview" id="strRev" ng-click="productReview(demolitionhammer, 'review')" title="Write Your Review" ng-if="demolitionhammer.avgrating != 0">
+                                                                                <star-rating ng-model="demolitionhammer.avgrating" readonly="isReadonly"></star-rating>
+                                                                            </a>
                                                                         </div>
-
-
-
-
                                                                     </div>
+
+
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1238,20 +1622,21 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
 
                             </div>
 
-                        </tab>
-                    </tabset>
-                </div>
+                        </div>
+
+                    </tab>
+                </tabset>
             </div>
-            <!-- tab content -->
         </div>
-        <!-- DEALS  -->
- 
-        <!-- <div class='row'>
+        <!-- tab content -->
+    </div>
+    <!-- DEALS  -->
+
+    <!-- <div class='row'>
 
       <div class="collections-wrap">
 
@@ -1407,10 +1792,10 @@
 
  
 
- --> 
+ -->
 
 
-        <!-- <script>
+    <!-- <script>
  $(document).ready(function(){
   $('.slider').slick({
   autoplay:true,
@@ -1427,84 +1812,27 @@
 </script> -->
 
 
-        <div id="addedToCart" class="modal fade">
+    <div id="addedToCart" class="modal fade">
 
-            <div class="modal-dialog">
+        <div class="modal-dialog">
 
-                <div class="modal-content">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
 
-                    <div class="modal-body" align="middle">
+                <div class="modal-body" align="middle">
 
-                        Added to Cart Successfully!
-
-                    </div>
-
-
-
-                    <div class="modal-footer">
-
-                        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
-                    </div>
+                    Added to Cart Successfully!
 
                 </div>
 
-            </div>
-
-        </div>
-
-        <div id="addedToCompareProducts" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header"></div>
-                    <div class="modal-body" align="middle">
-                        Added to Compare Products Successfully!
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="outOfQty" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header"></div>
-                    <div class="modal-body" align="middle">
-                        Only {{avlQty}} are left!
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="addedToWishList" class="modal fade">
-
-            <div class="modal-dialog">
-
-                <div class="modal-content">
-
-                    <div class="modal-header"></div>
-
-                    <div class="modal-body" align="middle">
-
-                        Added to Wish List Successfully!
-
-                    </div>
 
 
+                <div class="modal-footer">
 
-                    <div class="modal-footer">
-
-                        <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
-                    </div>
-
+                    <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
                 </div>
 
             </div>
@@ -1513,7 +1841,64 @@
 
     </div>
 
-    <!-- <div class="modal fade" id="addedToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" cache="false">
+    <div id="addedToCompareProducts" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body" align="middle">
+                    Added to Compare Products Successfully!
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="outOfQty" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body" align="middle">
+                    Only {{avlQty}} are left!
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="addedToWishList" class="modal fade">
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header"></div>
+
+                <div class="modal-body" align="middle">
+
+                    Added to Wish List Successfully!
+
+                </div>
+
+
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-primary modalBtn" ng-click="closeModal()">OK</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <div class="modal fade" id="addedToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" cache="false">
 
 							<div class="modal-dialog" role="document">
 

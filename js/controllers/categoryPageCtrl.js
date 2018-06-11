@@ -139,8 +139,10 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           localStorage.setItem('brandsData', JSON.stringify($scope.brandsData))
           localStorage.setItem('subCategories', JSON.stringify($scope.categories))
           $scope.products = data.data.products;
+          
           $rootScope.totalcount = data.data.totalcount;
           $scope.productsprice = $scope.products.prices;
+          // $scope.special_offer=data.data.special_offer;
           $scope.totalItems = data.data.products.length;
           $scope.datalists = data.data.products;
           $scope.pageList = [0, 1, 2, 3, 4];
