@@ -124,3 +124,27 @@ shopMyToolsApp.service('contactUsService', function ($q, $http,SERVER_URL1) {
         return deferred.promise;
     };	
 });
+
+
+
+shopMyToolsApp.service('todaydeals', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
+
+    this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
+        var deferred = $q.defer();
+		
+        $http({
+            method: 'GET',
+            url: PRODUCT_CATEGORY_SERVICE+'/dealsproducts?deals=Enable',
+            headers: {'Content-Type': 'application/json','Content-type': 'application/x-www-form-urlencoded;charset=utf-8','secret_key':'4r5t@W'}
+			
+        }).then(function success(data) {
+            deferred.resolve(data);
+        }, function error(data) {
+            // if(data.status == 500){
+            //     alert('Some issue')
+            // }
+            deferred.reject(data);
+        });
+        return deferred.promise;
+    };	
+
