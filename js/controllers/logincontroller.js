@@ -8,9 +8,9 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
     if(localStorage.getItem('previousUrl')){
     //  alert(localStorage.getItem('previousUrl'))
-      $scope.previousUrlArray = localStorage.getItem('previousUrl').split("#!/");
+      $scope.previousUrlArray = localStorage.getItem('previousUrl').split("/");
 
-      $scope.previousUrl = $scope.previousUrlArray[1];
+      $scope.previousUrl = $scope.previousUrlArray[$scope.previousUrlArray.length-1];
     
     }
  
@@ -274,7 +274,7 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
   }
 
   $scope.pageNavigate = function(){
-               window.location.href=DOMAIN_URL+"#!/dashboard";
+               window.location.href=DOMAIN_URL+"/dashboard";
             }
 
              $scope.goToHome = function(){
@@ -311,12 +311,12 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
             localStorage.setItem('billingAddressInfo', JSON.stringify(data.data.billing_address));
             window.localStorage['user_name'] = $scope.userName;
             if($scope.previousUrl == 'viewCart'){
-             $scope.currentUrl =  $scope.previousUrlArray[0].concat("#!/checkout");
+             $scope.currentUrl =  $scope.previousUrlArray[0].concat("/checkout");
              //alert($scope.currentUrl)
               window.location.href = $scope.currentUrl;
             }else{
-               // window.location.href = "./index.html";
-            window.location.href = DOMAIN_URL +"#!/dashboard";
+               window.location.href = "./";
+            // window.location.href = DOMAIN_URL +"./dashboard";
             }
            
 
@@ -468,7 +468,7 @@ if(!registrationData.gstnumber){
        if(data.data.status == 'success'){
       
       localStorage.setItem('userId',data.data.user_id); 
-         window.location.href = DOMAIN_URL+"resetPassword.html#!/";
+         window.location.href = DOMAIN_URL+"resetPassword.html/";
        }else{
          alert(data.data.status)
        }
@@ -526,7 +526,7 @@ $scope.toggleShowPassword3=function(){
 
 $scope.resetPasswordcancel=function(){
   // alert("fadf")
-      window.location.href = DOMAIN_URL +"#!/dashboard";
+      window.location.href = DOMAIN_URL +"/dashboard";
 //  $location.path("/dashboard")
 }
 
@@ -541,10 +541,10 @@ $scope.resetPasswordcancel=function(){
       }else{
          $rootScope.urlString = window.location.href;
       $rootScope.url = $rootScope.urlString;
-      $scope.userArray = $rootScope.url.split("#!/");
+      $scope.userArray = $rootScope.url.split("/");
          
-         if($scope.userArray[1] != ''){
-          $scope.userId = $scope.userArray[1];
+         if($scope.userArray[$scope.userArray.length-1] != ''){
+          $scope.userId = $scope.userArray[$scope.userArray.length-1];
           $scope.mobile = '';
           $scope.timeStamp = window.localStorage['time_stamp'];
          }else{
