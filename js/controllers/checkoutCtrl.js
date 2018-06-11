@@ -1063,7 +1063,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
 
      $scope.coupons=function(){
             //   window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/coupons";
-              window.location.href = DOMAIN_URL+"#!/coupons";
+              window.location.href = DOMAIN_URL+"/coupons";
               // $window.open("DOMAIN_URLproductDetailPage");
 		}
 
@@ -1071,7 +1071,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             if (window.localStorage['token']) {
                 // $location.path("wishlist");
                 //   window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/wishlist";
-                window.location.href = DOMAIN_URL+"#!/wishlist";
+                window.location.href = DOMAIN_URL+"/wishlist";
             } else {
                 window.location.href = "./login.html"
             }
@@ -1083,7 +1083,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
                 if ($rootScope.cartArray.length != 0) {
                     //  $location.path("checkout");
                     // window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/checkout";
-                   window.location.href = DOMAIN_URL+"#!/checkout";
+                   window.location.href = DOMAIN_URL+"/checkout";
                 }
             }
         }
@@ -1109,7 +1109,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             if ($rootScope.compareProducts.length > 1) {
                // $location.path("compareProducts");
             //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/compareProducts";
-            window.location.href =DOMAIN_URL+"#!/compareProducts"
+            window.location.href =DOMAIN_URL+"/compareProducts"
             } else {
                 alert('Please add one more Product to Compare')
             }
@@ -1119,7 +1119,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
         //    $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-            $window.open(DOMAIN_URL+"#!/productDetailPage");
+            $window.open(DOMAIN_URL+"/productDetailPage");
             //  $location.path("productDetailPage")
         }
 
@@ -1129,7 +1129,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
             //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/categoryPage";
-           window.location.href = DOMAIN_URL+"#!/categoryPage";
+           window.location.href = DOMAIN_URL+"/categoryPage";
         }
 
          $rootScope.getProductDetailsFromCart = function (productObj) {
@@ -1138,7 +1138,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
             // $window.open("http://localhost/smtwithpython/SmtSite/index.html#!/productDetailPage");
-             $window.open(DOMAIN_URL+"#!/productDetailPage");
+             $window.open(DOMAIN_URL+"/productDetailPage");
             //  $location.path("productDetailPage")
         }
 
@@ -1173,7 +1173,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             window.localStorage['productName'] = productObj.productdescription;
             localStorage.removeItem('isReviewStatus');
             $rootScope.showHintFlag = 'false';
-            window.location.href = DOMAIN_URL+"#!/productDetailPage"
+            window.location.href = DOMAIN_URL+"/productDetailPage"
      
         }
 
@@ -1209,13 +1209,13 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
               
-                $scope.searchPageURL = document.URL.split("#!/");
-                if ($scope.searchPageURL[1] == 'searchPage') {
+                $scope.searchPageURL = document.URL.split("/");
+                if ($scope.searchPageURL[$scope.searchPageURL.length - 1] == 'searchPage') {
                   //  $location.path("searchPage1");
-                  window.location.href =DOMAIN_URL+"#!/searchPage1";
+                  window.location.href =DOMAIN_URL+"/searchPage1";
                 }
                 else {
-                    window.location.href =DOMAIN_URL+"#!/searchPage";
+                    window.location.href =DOMAIN_URL+"/searchPage";
                 }
             } else if (searchKey.length == '0') {
                 $rootScope.showHintFlag = 'false';
@@ -1233,7 +1233,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['subCategoryName'] = subCategory;
             //  window.location.href ="http://localhost/smtwithpython/SmtSite/index.html#!/categoryPage";
-           window.location.href = DOMAIN_URL+"#!/categoryPage";
+           window.location.href = DOMAIN_URL+"/categoryPage";
         }
         $rootScope.showHintFlag = 'false';
         $rootScope.showHint = function (searchKey) {
@@ -1292,7 +1292,7 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             // alert("hai")
             if (window.localStorage['token']) {
                 //    window.location.href="http://localhost/smtwithpython/SmtSite/index.html#!/dashboard";
-               window.location.href = DOMAIN_URL+"#!/dashboard";
+               window.location.href = DOMAIN_URL+"/dashboard";
             }
             else {
                 window.location.href = "./login.html";
@@ -1320,28 +1320,28 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
          $scope.gotoFooterPage = function(page){
             if(page == 'aboutus'){
                // $location.path("aboutus")
-               window.location.href = DOMAIN_URL+"#!/aboutus";
+               window.location.href = DOMAIN_URL+"/aboutus";
             }else if(page == 'contactus'){
                 //  $location.path("contact")
-                   window.location.href = DOMAIN_URL+"#!/contact";
+                   window.location.href = DOMAIN_URL+"/contact";
             }else if(page == 'termofuse'){
                 //  $location.path("termsofuse")
-                   window.location.href = DOMAIN_URL+"#!/termsofuse";
+                   window.location.href = DOMAIN_URL+"/termsofuse";
             }else if(page == 'returnpolicy'){
                 // $location.path("returnpolicy")
-                  window.location.href = DOMAIN_URL+"#!/returnpolicy";
+                  window.location.href = DOMAIN_URL+"/returnpolicy";
             }else if(page == 'privacypolicy'){
                 // $location.path("privacypolicy")
-                  window.location.href = DOMAIN_URL+"#!/privacypolicy";
+                  window.location.href = DOMAIN_URL+"/privacypolicy";
             }else if(page == 'shipping'){
                 // $location.path("shipping")
-                  window.location.href = DOMAIN_URL+"#!/shipping";
+                  window.location.href = DOMAIN_URL+"/shipping";
             }else if(page == 'netbanking'){
                 // $location.path("netbanking")
-                  window.location.href = DOMAIN_URL+"#!/netbanking";
+                  window.location.href = DOMAIN_URL+"/netbanking";
             }else {
                 // $location.path("emi")
-                 window.location.href = DOMAIN_URL+"#!/emi";
+                 window.location.href = DOMAIN_URL+"/emi";
             }
             
         }

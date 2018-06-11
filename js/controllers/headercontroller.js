@@ -304,30 +304,31 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['subCategoryName'] = subCategory;
             location.reload();
-            $scope.categoryURL = document.URL.split("#!/");
+            $scope.categoryURL = document.URL.split("/");
 
                      if(navigator.userAgent.indexOf("Firefox") != -1 ){
+                         $location.path("categoryPage");
            // alert('1')
-            if ($scope.categoryURL[1] == 'categoryPage') {
-
-                 $(".dropdown-menu.multi-level").css("display", "none");
-              window.location.href = DOMAIN_URL+"#!/categoryPage1";
-               window.location.reload();
-            } else {
-                window.location.href = DOMAIN_URL+"#!/categoryPage";
-                $(".dropdown-menu.multi-level").css("display", "none");
-                window.location.reload();
-            }
+            // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
+ //window.location.reload();
+            //      $(".dropdown-menu.multi-level").css("display", "none");
+            //  window.location.href = DOMAIN_URL+"/categoryPage";
+              
+            // } else {
+            //     window.location.href = DOMAIN_URL+"#!/categoryPage";
+            //     $(".dropdown-menu.multi-level").css("display", "none");
+            //     window.location.reload();
+            // }
          }else{
            
             window.location.reload();
-            if ($scope.categoryURL[1] == 'categoryPage') {
-                 $(".dropdown-menu.multi-level").css("display", "none");
-              $location.path("categoryPage1");
-            } else {
-                $location.path("categoryPage");
-                $(".dropdown-menu.multi-level").css("display", "none");
-            }
+            // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
+            //      $(".dropdown-menu.multi-level").css("display", "none");
+              $location.path("categoryPage");
+            // } else {
+            //     $location.path("categoryPage");
+            //     $(".dropdown-menu.multi-level").css("display", "none");
+            // }
          }
         //    if ($scope.categoryURL[1] == 'categoryPage') {
         //         $(".dropdown-menu.multi-level").css("display", "none");
@@ -344,15 +345,15 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = "";
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['subCategoryName'] = subCategory;
-            $scope.categoryURL = document.URL.split("#!/");
-           if ($scope.categoryURL[1] == 'categoryPage') {
+            $scope.categoryURL = document.URL.split("/");
+           if ($scope.categoryURL[$scope.categoryURL.length-1] == 'categoryPage') {
                 $(".dropdown-menu.multi-level").css("display", "none");
               
-               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+               window.location.href = DOMAIN_URL+"/categoryPage1";
             } else {
                  $(".dropdown-menu.multi-level").css("display", "none");
                
-               window.location.href = DOMAIN_URL+"#!/categoryPage";
+               window.location.href = DOMAIN_URL+"/categoryPage";
             }
         }
         $rootScope.showHintFlag = 'false';
@@ -550,7 +551,10 @@ document.onmousemove = function(){
         }
 
         $scope.goToHomeFromLogin = function(){
-            window.location.href = "./index.html";
+            window.location.href = "./";
+        }
+        $scope.goToLogin=function(){
+            window.location.href = "./login.html";
         }
 
        
@@ -768,7 +772,7 @@ document.onmousemove = function(){
 
         $scope.compareProductsMethod = function () {
             if ($rootScope.compareProducts.length > 1) {
-            window.location.href =DOMAIN_URL+"#!/compareProducts"
+            window.location.href =DOMAIN_URL+"/compareProducts"
             } else {
                 alert('Please add one more Product to Compare')
             }
@@ -782,13 +786,13 @@ document.onmousemove = function(){
 
         $scope.searchProductsMore = function (searchKey) {
             localStorage.setItem('searchkey', searchKey);
-            window.location.href = DOMAIN_URL+"#!/searchPage";
+            window.location.href = DOMAIN_URL+"/searchPage";
         }
 
         $scope.goToDashboard = function () {
 
             if (window.localStorage['token']) {
-                window.location.href = DOMAIN_URL+"#!/dashboard";
+                window.location.href = DOMAIN_URL+"/dashboard";
             }
             else {
 
@@ -805,32 +809,37 @@ document.onmousemove = function(){
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
-         $scope.categoryURL = document.URL.split("#!/");
+         $scope.categoryURL = document.URL.split("/");
        //  console.log($scope.categoryURL)
          
           localStorage.removeItem('selectedArray')
          if(navigator.userAgent.indexOf("Firefox") != -1 ){
            // alert('1')
-            if ($scope.categoryURL[1] == 'categoryPage') {
+           $(".dropdown-menu.multi-level").css("display", "none");
+          //  window.location.reload();
+            $location.path("categoryPage");
+            // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
 
-                 $(".dropdown-menu.multi-level").css("display", "none");
-              window.location.href = DOMAIN_URL+"#!/categoryPage1";
-               window.location.reload();
-            } else {
-                window.location.href = DOMAIN_URL+"#!/categoryPage";
-                $(".dropdown-menu.multi-level").css("display", "none");
-                window.location.reload();
-            }
+            //      $(".dropdown-menu.multi-level").css("display", "none");
+            //   window.location.href = DOMAIN_URL+"/categoryPage1";
+            //    window.location.reload();
+            // } else {
+            //     window.location.href = DOMAIN_URL+"/categoryPage";
+            //     $(".dropdown-menu.multi-level").css("display", "none");
+            //     window.location.reload();
+            // }
          }else{
            
-            window.location.reload();
-            if ($scope.categoryURL[1] == 'categoryPage') {
-                 $(".dropdown-menu.multi-level").css("display", "none");
-              $location.path("categoryPage1");
-            } else {
-                $location.path("categoryPage");
+           // window.location.reload();
+              $location.path("categoryPage");
                 $(".dropdown-menu.multi-level").css("display", "none");
-            }
+            // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
+            //      $(".dropdown-menu.multi-level").css("display", "none");
+            //   $location.path("categoryPage1");
+            // } else {
+            //     $location.path("categoryPage");
+            //     $(".dropdown-menu.multi-level").css("display", "none");
+            // }
          }
 
         }
@@ -844,16 +853,16 @@ document.onmousemove = function(){
             window.localStorage['brandName'] = "";
             window.localStorage['subCategoryName'] = "";
            
-         $scope.categoryURL = document.URL.split("#!/");
+         $scope.categoryURL = document.URL.split("/");
             localStorage.removeItem('selectedArray')
-            if ($scope.categoryURL[1] == 'categoryPage') {
+            if ($scope.categoryURL[$scope.categoryURL.length-1] == 'categoryPage') {
                  $(".dropdown-menu.multi-level").css("display", "none");
-               window.location.href = DOMAIN_URL+"#!/categoryPage1";
+               window.location.href = DOMAIN_URL+"/categoryPage1";
              
             } else {
                
                 $(".dropdown-menu.multi-level").css("display", "none");
-               window.location.href = DOMAIN_URL+"#!/categoryPage";
+               window.location.href = DOMAIN_URL+"/categoryPage";
             }
         }
 
@@ -921,28 +930,28 @@ document.onmousemove = function(){
         $scope.gotoFooterPage = function(page){
             if(page == 'aboutus'){
               $window.scrollTo(0, 0);
-               window.location.href = DOMAIN_URL+"#!/aboutus";
+               window.location.href = DOMAIN_URL+"/aboutus";
             }else if(page == 'contactus'){
                $window.scrollTo(0, 0);
-                   window.location.href = DOMAIN_URL+"#!/contact";
+                   window.location.href = DOMAIN_URL+"/contact";
             }else if(page == 'termofuse'){
               $window.scrollTo(0, 0);
-                   window.location.href = DOMAIN_URL+"#!/termsofuse";
+                   window.location.href = DOMAIN_URL+"/termsofuse";
             }else if(page == 'returnpolicy'){
                $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"#!/returnpolicy";
+                  window.location.href = DOMAIN_URL+"/returnpolicy";
             }else if(page == 'privacypolicy'){
                $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"#!/privacypolicy";
+                  window.location.href = DOMAIN_URL+"/privacypolicy";
             }else if(page == 'shipping'){
                 $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"#!/shipping";
+                  window.location.href = DOMAIN_URL+"/shipping";
             }else if(page == 'netbanking'){
              $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"#!/netbanking";
+                  window.location.href = DOMAIN_URL+"/netbanking";
             }else {
                $window.scrollTo(0, 0);
-                 window.location.href = DOMAIN_URL+"#!/emi";
+                 window.location.href = DOMAIN_URL+"/emi";
             }
             
         }

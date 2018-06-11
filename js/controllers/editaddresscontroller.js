@@ -61,7 +61,7 @@ shopMyToolsApp.controller('editaddresscontroller', ['$scope', '$http', '$locatio
                     //    console.log(data.data)
                     if(data.data.status="updated successfully"){
                         alert("Address Updated Successfully")
-                   window.location.href = "#!/dashboard";
+                   window.location.href = "/dashboard";
                     }
 
                    })

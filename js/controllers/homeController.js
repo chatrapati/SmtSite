@@ -184,19 +184,19 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
         }
 
 
-        $scope.subCategoryMethod = function (subCategory, categoryName) {
-            localStorage.removeItem('selectedArray');
-            window.localStorage['categoryName'] = "";
-            window.localStorage['subCategoryName'] = "";
-            window.localStorage['categoryName'] = categoryName;
-            window.localStorage['subCategoryName'] = subCategory;
-            $scope.categoryURL = document.URL.split("#!/");
-            if ($scope.categoryURL[1] == 'categoryPage') {
-                $location.path("categoryPage1");
-            } else {
-                $location.path("categoryPage");
-            }
-        }
+        // $scope.subCategoryMethod = function (subCategory, categoryName) {
+        //     localStorage.removeItem('selectedArray');
+        //     window.localStorage['categoryName'] = "";
+        //     window.localStorage['subCategoryName'] = "";
+        //     window.localStorage['categoryName'] = categoryName;
+        //     window.localStorage['subCategoryName'] = subCategory;
+        //     $scope.categoryURL = document.URL.split("#!/");
+        //     if ($scope.categoryURL[1] == 'categoryPage') {
+        //         $location.path("categoryPage1");
+        //     } else {
+        //         $location.path("categoryPage");
+        //     }
+        // }
 
         $scope.myInterval = 5000;
 
@@ -261,20 +261,20 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
         }
 
-        $scope.categoryBasedProducts = function (categoryName) {
-            localStorage.removeItem('selectedArray');
-            window.localStorage['categoryName'] = "";
-            window.localStorage['categoryName'] = categoryName;
-            window.localStorage['brandName'] = "";
-            window.localStorage['subCategoryName'] = "";
-            $scope.categoryURL = document.URL.split("#!/");
-            localStorage.removeItem('selectedArray')
-            if ($scope.categoryURL[1] == 'categoryPage') {
-                $location.path("categoryPage1");
-            } else {
-                $location.path("categoryPage");
-            }
-        }
+        // $scope.categoryBasedProducts = function (categoryName) {
+        //     localStorage.removeItem('selectedArray');
+        //     window.localStorage['categoryName'] = "";
+        //     window.localStorage['categoryName'] = categoryName;
+        //     window.localStorage['brandName'] = "";
+        //     window.localStorage['subCategoryName'] = "";
+        //     $scope.categoryURL = document.URL.split("#!/");
+        //     localStorage.removeItem('selectedArray')
+        //     if ($scope.categoryURL[1] == 'categoryPage') {
+        //         $location.path("categoryPage1");
+        //     } else {
+        //         $location.path("categoryPage");
+        //     }
+        // }
 
   $scope.toggleRight = buildToggler('right');
 
