@@ -394,7 +394,7 @@
 
 
 
-                                                            <div class="price-box" ng-repeat="price in productsdata.prices">
+                                                            <div class="price-box" >
 
                                                                 <div class="offer">
 
@@ -404,31 +404,36 @@
 
                                                                     <p class="special-price yousave">
 
-                                                                        {{price.percentage+0.00|number:2}} %
+                                                                        {{productsdata.percentage+0.00|number:2}} %
 
                                                                     </p>
 
 
 
-                                                                    <span class="special-price">
+                                                                                 <span class="special-price">
 
-                              <span class="special-price" id="product-price-507_b">
+                                <span class="special-price" id="product-price-507_b">
 
-                                <span class="price">{{price.offer_price | currency:'&#8377;' }}</span>
+                                  <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer > 0">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+                                     <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer == 0">{{productsdata.offer_price | currency:'&#8377;' }}</span>
 
-                                                                    </span>
+                                                            </span>
 
-                                                                    </span>
+                                                            </span>
 
-                                                                    <span class="old-price">
+                                                            <span class="old-price">
 
-                              <span class="price" id="old-price-507_b">
+                                <span class="price" id="old-price-507_b" ng-if="productsdata.special_offer > 0">
 
-                                {{price.enduser_price | currency:'&#8377;' }}
+                                  {{productsdata.offer_price | currency:'&#8377;' }}
 
-                              </span>
+                                </span>
+                                           <span class="price" id="old-price-507_b" ng-if="productsdata.special_offer == 0">
 
-                                                                    </span>
+                                  {{productsdata.enduser_price | currency:'&#8377;' }}
+
+                                </span>
+                                                            </span>
                                                                    
 
                                                                     <p id="exclgstttt" class="list_GstExcl">(Excluding-GST)</p>
