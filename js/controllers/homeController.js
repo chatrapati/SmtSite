@@ -560,12 +560,17 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = "";
 
             // alert(window.localStorage['categoryName'])
-
-            localStorage.removeItem('selectedArray');
+             localStorage.removeItem('selectedArray');
             location.reload();
+  if(navigator.userAgent.indexOf("Firefox") != -1 ){
+      window.location.href = DOMAIN_URL+"categoryPage";
+  }else{
+ $location.path("categoryPage");
 
-            $location.path("categoryPage");
+  }
+           
 
+           
         }
 
 
