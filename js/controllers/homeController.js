@@ -87,6 +87,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
         $scope.homePageDetails = function () {
+            // alert("sussu")
             if (!$rootScope.collections) {
                 $scope.loading = true;
                 homePageService.homePageMethod().then(function (data) {

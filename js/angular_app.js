@@ -552,6 +552,11 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
 
         templateUrl: 'coupons.html'
 
+      })
+       .when('/todaydeals', {
+
+        templateUrl: 'todaydeals.html'
+
       });
 
     // .otherwise({

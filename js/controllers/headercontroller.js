@@ -37,7 +37,12 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
          $scope.coupons=function(){
           
               window.location.href = DOMAIN_URL+"/coupons";
-		}
+        }
+            
+
+        $scope.todaydeals=function(){
+            $location.path("todaydeals")
+        }
 
         $scope.goToWishList = function () {
             if (window.localStorage['token']) {
