@@ -328,11 +328,7 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
 
   function ($routeProvider, $locationProvider) {
 
-<<<<<<< HEAD
-    // $locationProvider.html5Mode(true);
-=======
 
->>>>>>> 9ff4be6e9541b34bd36683ea4a445c6be284a81b
 
     $routeProvider
 
@@ -557,9 +553,6 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
         templateUrl: 'coupons.html'
 
       });
-<<<<<<< HEAD
-   
-=======
 
     // .otherwise({
 
@@ -582,7 +575,6 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
     $locationProvider.hashPrefix('');
 
 
->>>>>>> 9ff4be6e9541b34bd36683ea4a445c6be284a81b
 
   }]);
 
