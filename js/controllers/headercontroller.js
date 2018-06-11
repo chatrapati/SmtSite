@@ -228,7 +228,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         $scope.gotoCartPage = function () {
       
-             window.location.href = DOMAIN_URL+"index.html#!/viewCart";
+             window.location.href = DOMAIN_URL+"viewCart";
       
         }
 
@@ -269,8 +269,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
                 $location.path("searchPage");
-                $scope.searchPageURL = document.URL.split("#!/");
-                if ($scope.searchPageURL[1] == 'searchPage') {
+                $scope.searchPageURL = document.URL.split("/");
+                if ($scope.searchPageURL[$scope.searchPageURL.length - 1] == 'searchPage') {
                     $location.path("searchPage1");
                 }
                 else {
@@ -286,8 +286,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
               if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
-                $scope.searchPageURL = document.URL.split("#!/");
-                if ($scope.searchPageURL[1] == 'searchPage') {
+                $scope.searchPageURL = document.URL.split("/");
+                if ($scope.searchPageURL[$scope.searchPageURL.length - 1] == 'searchPage') {
                   window.location.href =DOMAIN_URL+"#!/searchPage1";
                 }
                 else {
@@ -312,6 +312,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             $scope.categoryURL = document.URL.split("/");
 
                      if(navigator.userAgent.indexOf("Firefox") != -1 ){
+                          window.location.reload();
                          $location.path("categoryPage");
            // alert('1')
             // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
@@ -821,7 +822,7 @@ document.onmousemove = function(){
          if(navigator.userAgent.indexOf("Firefox") != -1 ){
            // alert('1')
            $(".dropdown-menu.multi-level").css("display", "none");
-          //  window.location.reload();
+            window.location.reload();
             $location.path("categoryPage");
             // if ($scope.categoryURL[$scope.categoryURL.length - 1] == 'categoryPage') {
 

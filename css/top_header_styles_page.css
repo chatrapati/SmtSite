@@ -439,6 +439,7 @@ input[type="number"]:focus {
     }
     .reward_points_dahbord {
         width: 89% !important;
+        height: 63px !important;
     }
     #invoice_mbl_padd {
         margin-bottom: 10px;
