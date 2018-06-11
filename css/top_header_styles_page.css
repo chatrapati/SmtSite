@@ -2905,3 +2905,9 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 #homecarts a.ad_cart_lak :hover {
     color: #fff;
 }
+
+.resent_prodname{
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+}

@@ -824,7 +824,7 @@ document.onmousemove = function(){
             window.localStorage['subCategoryName'] = "";
          $scope.categoryURL = document.URL.split("/");
        //  console.log($scope.categoryURL)
-         
+         location.reload();
           localStorage.removeItem('selectedArray')
          if(navigator.userAgent.indexOf("Firefox") != -1 ){
            // alert('1')
