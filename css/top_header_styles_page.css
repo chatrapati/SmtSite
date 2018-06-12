@@ -2817,144 +2817,6 @@ color:green;
 } 
 /*--   login page edited css--*/
 
-     .yt-menu-nav>#nav>li>a>span,
-        .language-currency ul li a,
-        .sm-serachbox-pro .sm-searbox-content,
-        .sm-serachbox-pro .jqTransformInputWrapper input.input-text,
-        #custom_popular_search .sm-searchbox-popular-title,
-        .banner-policy a,
-        .yt-header-bottom .more-wrap .more-view,
-        .toolbar .select-inner ul li a.selected,
-        .category-products .item .product-name a,
-        .yt-product-detail .tab-product-detail .yt-tab-navi>li>a,
-        .yt-product-detail .tab-product-detail .yt-tab-navi>li>a:hover,
-        .sm_quickview_handler,
-        .yt-tab-listing .respl-tabs-wrap ul li.respl-tab .respl-tab-label,
-        .yt-tab-listing .title-text,
-        .block-title span,
-        .spotlight .block-title,
-        .spotlight4,
-        .footer-links-w,
-        .toolbar,
-        .sm-categories .cat-title,
-        .breadcrumbs,
-        #narrow-by-list dt,
-        .yt-product-detail .product-name h1,
-        .yt-product-detail .short-description h2,
-        .postTitle h2 a,
-        #yt_wrapper h1.page-title,
-        #yt_wrapper .page-title h1 {
-            color: #444444;
-        }
-        
-        body.sm_market {
-            color: #666666;
-        }
-        
-        body.sm_market {
-            background-color: #FFFFFF;
-        }
-        
-        a {
-            color: #666666;
-        }
-        
-        a:focus,
-        a:hover {
-            color: #0487A1;
-        }
-        /*titleColor  hover*/
-        
-        .more-wrap .more-view:hover,
-        .postTitle h2 a:hover,
-        .category-products .item .product-name a:hover,
-        .yt-tab-listing .respl-tabs-wrap ul li.respl-tab .respl-tab-label:hover,
-        .yt-product-detail .tab-product-detail .yt-tab-navi>li>a:hover {
-            color: #0487A1;
-        }
-        
-        #yt_header .head-quicklink_links .inner {
-            float: right;
-        }
-        
-        .cloud-zoom-big {
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-        }
-        
-        #yttotop {
-            background: url(images/backtotop.png) no-repeat scroll center center;
-            -moz-transition: all .3s;
-            -webkit-transition: all .3s;
-            bottom: 15px;
-            color: #fff;
-            height: 9px;
-            padding: 53px 0 35px;
-            position: fixed;
-            text-align: center;
-            text-decoration: none;
-            transition: all .3s;
-            width: 49px;
-            z-index: 1040;
-            right: 0px;
-        }
-        
-        .product-name {
-            margin-top: 5px;
-            margin-bottom: 7px;
-            line-height: 100%;
-            padding-right: 15px;
-            height: 50px !important;
-        }
-        
-        #img_effects {
-            height: 50px;
-            margin: 0 5px;
-        }
-        
-        #img_effects img {
-            height: 100%;
-        }
-        
-        #main_img_effects {
-            height: 200px !important;
-        }
-        
-        #main_img_effects img {
-            height: 100%;
-        }
-        
-        .input-group-btn {
-            float: right;
-            margin-top: -45px;
-            margin-right: 39px;
-        }
-        
-        .input-group-btn .btn {
-            background: transparent;
-            border: transparent;
-        }
-        
-        .input-group-btn>.btn:active,
-        .input-group-btn>.btn:focus,
-        .input-group-btn>.btn:hover {
-            background: transparent;
-            border: transparent;
-        }
-        
-        .input-group-btn>.btn:active {
-            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0);
-            box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0);
-        }
-        
-        #menu_cat {
-            margin-left: -15px !important;
-        }
-
-
-
 
 
         /*--  end login page edited css--*/
@@ -3089,3 +2951,165 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
     font-weight: bold;
     color: #666;
 }
+/* 04-5-2018 styles start here added 12-06-2018*/
+.m-row {
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+@-moz-document url-prefix('') {
+	.m-row {
+    padding-top: 5px;
+    padding-bottom: 4px;
+}
+
+}
+@-moz-document url-prefix('') {
+.data_ctrl_search6 {
+    margin-top: 344px !important;
+}
+}
+@-moz-document url-prefix('') {
+.data_ctrl_search7 {
+    margin-top: 344px !important;
+}
+}
+@-moz-document url-prefix('') {
+.data_ctrl_search8 {
+    margin-top: 313px;
+    
+}
+
+}
+@-moz-document url-prefix('') {
+.suggestionsCls5 {
+    margin-top: 217px !important;
+}
+}
+@-moz-document url-prefix('') {
+.suggestionsCls6 {
+    margin-top: 244px !important;
+}
+}
+
+@-moz-document url-prefix('') {
+.suggestionsCls1 {
+    margin-top: 103px;
+}
+}
+@-moz-document url-prefix('') {
+.suggestionsCls2 {
+    margin-top: 131px;
+}
+}
+@media (min-width: 992px){
+.compareDiv2{
+	    padding-left: 11px !important
+}
+}
+
+
+@-moz-document url-prefix('') {
+	
+.list_GstExcl{
+	margin: 1px 0px 0px 0px !important;
+}
+
+}
+@-moz-document url-prefix('') {
+	
+.priceBox{
+		margin-left: -6px;
+	}
+	
+}
+
+.priceBox{
+		margin-left: -6px;
+	}
+	
+.list_bottom{
+	margin-bottom: -26px;
+}
+
+@-moz-document url-prefix('') {
+	
+.data_ctrl_search4 {
+	
+  margin-top: 229px !important; 
+  
+}
+
+}
+
+@-moz-document url-prefix('') {
+	
+.priceBox_firefox {
+	
+ margin-left: 7px;
+  
+}
+
+}
+
+@-moz-document url-prefix('') {
+	
+.priceOne{
+	
+display: inline-block;
+margin-left: -4px;
+
+}
+}
+
+.priceOne{
+	
+display: inline-block;
+margin-left: -5px;
+
+}
+
+.list .price-box .price {
+    margin-top: 2px !important;
+    padding-left: 0px;
+}
+
+.col-item #old-price-507_b{
+padding-left: 11px;
+}
+
+#categoryPage a.whishlist_lak {
+    margin-left: 1px !important;
+}
+
+#catPage #homecarts .wishbtn {
+    margin-bottom: -11px !important;
+    height: 30px !important;
+}
+
+#catCartDiv .wishbtn {
+   margin-bottom: -11px !important;
+    height: 30px !important;
+}
+
+#barndCartDiv .wishbtn {
+   margin-bottom: -11px !important;
+    height: 30px !important;
+}
+
+/*.collections-wrap .sub-item .item-inner .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+}  */
+
+#carousel-example .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+}
+
+#slide_new .wishbtn {
+   margin-bottom: -10px !important;
+    height: 30px !important;
+}
+
+/* 04-5-2018 styles end here  added 12-06-2018*/
