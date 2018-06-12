@@ -12,9 +12,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
         $window.scrollTo(0, 0);
 
         localStorage.removeItem('coupon');
-        $scope.couponNotApplicable = 'false';
+      
         $rootScope.couponApplied = 'false';
-        $scope.couponShopMsg = 'false';
+     
        
            
        
@@ -44,22 +44,25 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                             $scope.couponData = data.data.coupon_details;
                            if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
                                       $rootScope.couponApplied = 'true';
-                                $scope.couponNotApplicable = 'false';
+                              
                                 $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                 $scope.successMsg = 'Success! Coupon code is applied.Discount of ₹'+$rootScope.couponAmt+'is deducted'
+                            
                                 $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
                                 }else{
                                      $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
-                                 $scope.couponFail = 'true';
-                                $rootScope.amount = $rootScope.amount
+                            
+                                $rootScope.amount = $rootScope.amount;
+                                $scope.failMsg = 'Coupon cash should be less than the total amount';
                                 }
                              if(!$rootScope.redeemamount1){
                                  $rootScope.redeemamount1 = 0;
                              }
                            // localStorage.setItem('couponAmt', $rootScope.couponAmt);
                         } else {
-                            $scope.couponNotApplicable = 'true';
+                          
                             $rootScope.couponApplied = 'false';
+                             $scope.failMsg = 'Enter valid Coupon';
                         }
                     })
                 }
@@ -72,22 +75,25 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                              if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
                                       $rootScope.couponApplied = 'true';
-                                $scope.couponNotApplicable = 'false';
+                            
                                 $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                 $scope.successMsg = 'Success! Coupon code is applied.Discount of ₹'+$rootScope.couponAmt+'is deducted'
+                            
                                 $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
                                 }else{
                                      $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
-                                 $scope.couponFail = 'true';
-                                $rootScope.amount = $rootScope.amount
+                              
+                                $rootScope.amount = $rootScope.amount;
+                                 $scope.failMsg = 'Coupon cash should be less than the total amount';
                                 }
                           
                               if(!$rootScope.redeemamount1){
                                  $rootScope.redeemamount1 = 0;
                              }
                         } else {
-                            $scope.couponNotApplicable = 'true';
+                           
                             $rootScope.couponApplied = 'false';
+                             $scope.failMsg = 'Enter valid Coupon';
                         }
                     })
                      }
@@ -101,14 +107,16 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                
                                 if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
                                       $rootScope.couponApplied = 'true';
-                                $scope.couponNotApplicable = 'false';
+                              
                                 $rootScope.couponAmt = $scope.couponData.maxvalue;
+                                 $scope.successMsg = 'Success! Coupon code is applied.Discount of ₹'+$rootScope.couponAmt+'is deducted'
+                            
                                 $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
                                 }else{
                                      $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
-                                 $scope.couponFail = 'true';
+                              
                                 $rootScope.amount = $rootScope.amount;
+                                 $scope.failMsg = 'Coupon cash should be less than the total amount';
                                 }
                             
                               
@@ -118,8 +126,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                 // alert($rootScope.amount1)
                             } else {
                                 //alert("else")
-                                $scope.couponNotApplicable = 'true';
+                              
                                 $rootScope.couponApplied = 'false';
+                                 $scope.failMsg = 'Enter valid Coupon';
                             }
                         })
                     }
@@ -134,14 +143,21 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                 if($scope.selShippingType == 'Pickup' && parseInt($rootScope.amount) > parseInt($scope.couponData.discount)){
                     
                                       $rootScope.couponApplied = 'true';
-                                $scope.couponNotApplicable = 'false';
-                                $rootScope.couponAmt = $scope.couponData.discount;
+                                      $rootScope.couponAmt = JSON.stringify($scope.couponData.discount);
+                                      $scope.successMsg = 'Success! Coupon code is applied.Discount of ₹'+$rootScope.couponAmt+'is deducted'
+                              
+                                
                                 $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
+                                }else if($scope.selShippingType != 'Pickup'){
+                                     $rootScope.couponApplied = 'false';
+                              
+                                   $rootScope.amount = $rootScope.amount;
+                                 $scope.failMsg = 'This coupon is applicable only for Pickup';
                                 }else{
                                      $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
-                                 $scope.couponFail = 'true';
+                             
                                 $rootScope.amount = $rootScope.amount;
+                                 $scope.failMsg = 'Coupon cash should be less than the total amount';
                                 }
                                
                                    
@@ -151,10 +167,17 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                  $rootScope.redeemamount1 = 0;
                              }
                                 // alert($rootScope.amount1)
+                            }else if(data.data.status == 'cupon not applicable'){
+                                $scope.couponData = data.data.coupon_details;
+                                $scope.minOrderValue = $scope.couponData.min_order_value;
+                             
+                                 $rootScope.couponApplied = 'false';
+                                 $scope.failMsg = 'This coupon will be applicable only for minimum purchase value of '+$scope.minOrderValue;
                             } else {
                                 //alert("else")
-                                $scope.couponNotApplicable = 'true';
+                               
                                 $rootScope.couponApplied = 'false';
+                                 $scope.failMsg = 'Enter valid Coupon';
                             }
                         })
                     }
@@ -175,34 +198,42 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                    
                             $rootScope.couponAmt = $scope.couponData.maxvalue;
                                     $rootScope.amount =  $rootScope.amount-$rootScope.couponAmt;
-                                    $scope.couponShopMsg = 'true';
+                                 
                                 $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
+                             
+                                 $scope.successMsg = 'Success! Coupon code is applied.Discount of ₹'+$rootScope.couponAmt+'is deducted'
+                             
                                     
-                                }else{
-                                     $scope.couponShopMsg = 'true';
+                                }else if($scope.dealerAddress != $rootScope.couponShop){
+                                  
                                 $rootScope.couponApplied = 'false';
-                                $scope.couponNotApplicable = 'false';
-                                   $scope.couponFail = 'true';
+                            
                                     $rootScope.amount =  $rootScope.amount;
+                                      $scope.failMsg = 'This coupon is applicable for "'+$rootScope.couponShop+'" Shop';
+                                }
+                            else{
+                                   
+                                $rootScope.couponApplied = 'false';
+                              
+                                    $rootScope.amount =  $rootScope.amount;
+                                     $scope.failMsg = 'Coupon cash should be less than the total amount';
                                 }
                                 localStorage.setItem('couponShop',$rootScope.couponShop);
                                
                                 
                             } else {
                                 $rootScope.couponApplied = 'true';
-                                $scope.couponNotApplicable = 'false';
-                                $scope.couponShopMsg = 'false';
-                                 $rootScope.amount1 =  $rootScope.amount-$rootScope.couponAmt;
+                                 $rootScope.amount =  $rootScope.amount-$rootScope.couponAmt;
                             }
                                  if(!$rootScope.redeemamount1){
                                  $rootScope.redeemamount1 = 0;
                              }
                          //   localStorage.setItem('couponAmt', $rootScope.couponAmt);
                         } else {
-                            $scope.couponNotApplicable = 'true';
+                         
                             $rootScope.couponApplied = 'false';
-                            $scope.couponShopMsg = 'false';
+                         
+                             $scope.failMsg = 'Enter valid Coupon';
                         }
                     })
                      }
@@ -226,23 +257,24 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
             if(parseInt($rootScope.amount) >= parseInt(redamount)){
                   $rootScope.redeemApplicable = true;
             $rootScope.redeemamount1=redamount;
-              $rootScope.redeemNotApplicable = false;
-               $rootScope.redeemFail = false;
+             
             $rootScope.amount=$rootScope.amount-parseInt($rootScope.redeemamount1);
+             $scope.redeemSuccessMsg = 'Success! '+$rootScope.redeemamount1 +'is deducted'
             }else{
-                $rootScope.redeemFail = true;
-                 $rootScope.redeemNotApplicable = false;
+            
                   $rootScope.redeemApplicable=false;
+                  $scope.redeemFailMsg = 'Redeem cash should be less than the total amount';
             }
                     if(!$rootScope.couponAmt){
                         $rootScope.couponAmt = 0;
                     }
                    
-                  
+                 
                  }else if(data.data.status == 'The amount which you have entered in the Redeem cash column is less than the amount you have in your account.'){
-                     $rootScope.redeemNotApplicable = true;
+                   
                      $rootScope.redeemApplicable=false;
-                      $rootScope.redeemFail = false;
+                     
+                      $scope.redeemFailMsg = 'Amount should be less than the available Redeem cash';
                     
                  }
             //console.log(data.data)
@@ -260,9 +292,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
       $scope.redeemerror=function(err){
          
         if(err==null){
-          $rootScope.redeemFail = false;
+        
            $rootScope.redeemApplicable=false;
-           $rootScope.redeemNotApplicable = false;
+         
            if($rootScope.couponAmt){
             $rootScope.amount = $rootScope.grandTotal-$rootScope.couponAmt;
            }else{
@@ -481,9 +513,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
          $scope.getCouponText = function(coupon){
                 if(coupon.length == 0){
-                    $scope.couponNotApplicable = 'false';
+                  
         $rootScope.couponApplied = 'false';
-        $scope.couponShopMsg = 'false';
+       
         $rootScope.couponAmt = 0;
         $scope.viewCartItems();
                 }
@@ -951,11 +983,11 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
 
     $scope.finalOrderId = window.localStorage['finalOrderId'];
     $scope.goToHomeFromCart = function () {
-        window.location.href = "./index.html";
+        window.location.href = "./";
     }
 
      $scope.goToHomeFromLogin = function(){
-            window.location.href = "./index.html";
+            window.location.href = "./";
         }
 
      $rootScope.logincategoryBasedProducts = function(categoryName){

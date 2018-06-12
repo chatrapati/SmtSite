@@ -44,11 +44,8 @@
 
     <div class="row" id="catPage">
 
-        <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
-                                <img src="images/noproducts.png">
-                                <br>
-                            </div><br>
-        <div ng-switch="x" ng-if="products.length > 0">
+        
+        <div ng-switch="x" >
             <div style="margin-top:10px;">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -274,7 +271,10 @@
                                 </div>
                             </div>
 
-                            
+                            <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
+                                <img src="images/noproducts.png">
+                                <br>
+                            </div><br>
                             <!-- grid row -->
                             <div loading style="margin-right: 446px;margin-top: 190px;"></div>
                             <div class="row">
@@ -339,7 +339,7 @@
                                                                 <div class="offer">
 
                                                                     <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-                                                                    <br>
+                                                               
                                                                     <p class="special-price yousave" id="spyousave">
                                                                         {{productsdata.percentage+0.00|number:2}} %
                                                                     </p>
