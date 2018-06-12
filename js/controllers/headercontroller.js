@@ -55,7 +55,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             if (window.localStorage['user_id']) {
                 if ($rootScope.cartArray.length != 0) {
-                   window.location.href = DOMAIN_URL+"#!/checkout";
+                   window.location.href = DOMAIN_URL+"/checkout";
                 }
 
             }

@@ -147,4 +147,4 @@ shopMyToolsApp.service('todaydeals', function ($q, $http,PRODUCT_CATEGORY_SERVIC
         });
         return deferred.promise;
     };	
-
+})
