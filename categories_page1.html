@@ -284,9 +284,14 @@
                                     <div class="carousel-inner ">
                                              <!-- <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products " style="margin-top:10px;"> -->
                                        
-                                         <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;"> 
+                                         <div id="{{productsdata}}" class="col-md-4 col-lg-4 col-sm-6 col-xs-12 " ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-top:10px;"> 
+                                          
+                                           
                                             <div class="sub-item respl-item" style="opacity: 1;">
+                                                 <div ng-if="productsdata.special_offer != 0" style="float: right;margin-right: 43px;"><img style="width: 43px;position: absolute;" src="images/deal.png"></div>
                                                 <div class="item-inner">
+
+                                                    
                                                     <div class="product-image">
                                                         <a style="padding:10px 0;" ng-click="getProductDetailsCat(productsdata)" class="product-img" title="{{productsdata.brand_name}}">
                                                             <img class="small-image pdt-img-small" ng-src="{{productsdata.upload_photo}}" alt="{{productsdata.brand_name}}">
@@ -304,7 +309,7 @@
                                                                 <div class="offer">
 
                                                                     <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-                                                                    <br>
+                                                                
                                                                     <p class="special-price yousave" id="spyousave">
                                                                         {{productsdata.special_percentage+0.00|number:2}} %
                                                                     </p>
@@ -314,11 +319,11 @@
                                                                     </span>
                                                                     </span>
 
-                                 <span class="special-price">
+                                 <!-- <span class="special-price">
                                 <span class="special-price" id="product-price-507_b">
                                  <strike> <span class="price offer"  style="padding-left: 0px;padding-right: 3px;">{{productsdata.offer_price | currency:'&#8377;' }}</span></strike>
                                                                     </span>
-                                                                    </span>                                    
+                                                                    </span>                                     -->
                                                                     <span class="old-price">
                                <strike> <span class="price end" id="old-price-507_b">
                                   {{productsdata.enduser_price | currency:'&#8377;' }}
@@ -423,8 +428,10 @@
                                 <div style="margin-top: 10px;" ng-if="layout == 'List'" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list">
                                     <div ng-repeat="productsdata in products| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-bottom:10px;">
                                         <div class="col-item carousel-inner">
+                                            <div ng-if="productsdata.special_offer != 0" style="float: right;margin-right: 43px;"><img style="width: 43px;position: absolute;" src="images/deal.png"></div>
                                             <div class="col-md-4">
                                                 <div class="listitem-inner">
+                                                    
                                                     <div class="product-image">
                                                         <a style="padding:10px 0;" ng-click="getProductDetailsCat(productsdata)" class="product-img" title="{{productsdata.brand_name}}">
                                                             <img class="small-image pdt-img-small" ng-src="{{productsdata.upload_photo}}" alt="{{productsdata.brand_name}}">
@@ -444,7 +451,7 @@
                                                         <!-- <div class="price-box" ng-repeat="price in productsdata.prices"> -->
                                                             <div class="offer">
                                                                 <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-                                                                <br>
+                                                             
                                                                 <p class="special-price yousave">
                                                                     {{productsdata.percentage+0.00|number:2}} %
                                                                 </p>
@@ -471,7 +478,7 @@
                                                          <!-- <div class="price-box" ng-repeat="price in productsdata.prices">  -->
                                                             <div class="offer">
                                                                 <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-                                                                <br>
+                                                                
                                                                 <p class="special-price yousave">
                                                                     {{productsdata.special_percentage+0.00|number:2}} %
                                                                 </p>
@@ -481,11 +488,11 @@
                                 <span class="price specialof">{{productsdata.special_offer | currency:'&#8377;' }}</span>
                                                                 </span>
                                                                 </span>
-                                                                <span class="special-price">
+                                                                <!-- <span class="special-price">
                               <span class="special-price" id="product-price-507_b">
                             <strike>  <span class="price listendprice">{{productsdata.offer_price | currency:'&#8377;' }}</span></strike>
                                                                 </span>
-                                                                </span>
+                                                                </span> -->
                                                                 <span class="old-price">
                               <strike><span class="price listendprice" id="old-price-507_b">
                                 {{productsdata.enduser_price | currency:'&#8377;' }}
