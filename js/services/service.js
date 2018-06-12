@@ -242,6 +242,7 @@ shopMyToolsApp.service('allNewArrivalsService', function ($q, $http, SERVER_URL)
 
 shopMyToolsApp.service('compareProductsService', function ($q, $http, SERVER_URL1) {
 	this.compareProductsMethod = function (compareProductList,userID) {
+		// alert("hai")
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',
@@ -289,6 +290,7 @@ shopMyToolsApp.service('editaddressservice', function ($q, $http, SERVER_URL1) {
 
 shopMyToolsApp.service('addCompareProductsService', function ($q, $http, SERVER_URL1) {
 	this.compareProductsMethod = function (compareProductList,userID) {
+	//	alert("hai")
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',

@@ -291,10 +291,11 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
     }
     $scope.status = '';
             searchProductsService.recentlyviewdprodcuts($scope.userId,$scope.status).then(function(data){
-                  
+                
                 if(data.data.status == 'success'){
                      $scope.prod_info=data.data.prod_info;
                     $scope.prod_infocount=$scope.prod_info.length;
+                    //alert($scope.prod_infocount)
                     if($scope.prod_infocount==1){
                         $scope.recentclass="reecntclass1";
                     }
@@ -368,11 +369,12 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
     }
     $scope.status = '';
             searchProductsService.recentlyviewdprodcuts($scope.userId,$scope.status).then(function(data){
-                  
+                 // alert("asd")
                 if(data.data.status == 'success'){
                      $scope.prod_info=data.data.prod_info;
                     $scope.prod_infocount=$scope.prod_info.length;
-                    // alert($scope.prod_infocount)
+                  //  alert($scope.prod_infocount)
+                    
                   $rootScope.recentlyviewd=true;
                    $rootScope.sidenavopen =  true;
                 }else if(data.data.status == 'fail'){
@@ -415,19 +417,19 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
 
 
-        $rootScope.getProductDetails = function (productObj) {
+        // $rootScope.getProductDetails = function (productObj) {
           
-            window.localStorage['productName'] = productObj.upload_name;
-            localStorage.removeItem('isReviewStatus');
-            $rootScope.showHintFlag = 'false';
-            window.localStorage['subCategoryName'] = "";
-            localStorage.setItem('breadCrumb', productObj.upload_category);
-            localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
+        //     window.localStorage['productName'] = productObj.upload_name;
+        //     localStorage.removeItem('isReviewStatus');
+        //     $rootScope.showHintFlag = 'false';
+        //     window.localStorage['subCategoryName'] = "";
+        //     localStorage.setItem('breadCrumb', productObj.upload_category);
+        //     localStorage.setItem('breadCrumb1', productObj.upload_subcategory);
           
-           // location.reload();
-             window.location.href = DOMAIN_URL+"/productDetailPage";
+        //    // location.reload();
+        //      window.location.href = DOMAIN_URL+"/productDetailPage";
            
-        }
+        // }
 
         $scope.rightClickTab = function (productObj) {
             window.localStorage['productName'] = productObj.upload_name;
@@ -558,12 +560,17 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = "";
 
             // alert(window.localStorage['categoryName'])
-
-            localStorage.removeItem('selectedArray');
+             localStorage.removeItem('selectedArray');
             location.reload();
+  if(navigator.userAgent.indexOf("Firefox") != -1 ){
+      window.location.href = DOMAIN_URL+"categoryPage";
+  }else{
+ $location.path("categoryPage");
 
-            $location.path("categoryPage");
+  }
+           
 
+           
         }
 
 

@@ -796,7 +796,8 @@
 										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
 									<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponFail == true"> Redeem cash should be less than the total amount </p>
-								
+									<p style="color: green;" ng-if="couponFail == 'true' && couponName != checkoutData.shippingType">This coupon is applicable only for Pickup </p>
+									
 									</div>
 								</div>
 								

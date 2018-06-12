@@ -126,10 +126,9 @@ shopMyToolsApp.service('contactUsService', function ($q, $http,SERVER_URL1) {
 });
 
 
+shopMyToolsApp.service('todayDealsservice', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
 
-shopMyToolsApp.service('todaydeals', function ($q, $http,PRODUCT_CATEGORY_SERVICE) {
-
-    this.getAllCategoriesOfProduct = function (categoryName,subCategoryName,fromVal,toVal) {
+    this.todaydeals = function () {
         var deferred = $q.defer();
 		
         $http({
@@ -140,11 +139,15 @@ shopMyToolsApp.service('todaydeals', function ($q, $http,PRODUCT_CATEGORY_SERVIC
         }).then(function success(data) {
             deferred.resolve(data);
         }, function error(data) {
-            // if(data.status == 500){
-            //     alert('Some issue')
-            // }
             deferred.reject(data);
         });
         return deferred.promise;
     };	
+<<<<<<< HEAD
 })
+=======
+});	
+
+
+
+>>>>>>> c4c6608573c227716351cdd1d7b7bb982ad2bbb5

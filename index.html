@@ -373,7 +373,11 @@
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgd9IE_rsGr_bR0LADm48V282JQOSKpSM"></script>
 
-   <base href="{{BASE_URL}}" />
+
+   <!-- <base href="{{BASE_URL}}" /> -->
+
+   <base href="/smt/SmtSite/" />
+
 
 
 
@@ -861,7 +865,7 @@
 
                             <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12" id="header_searchhh">
 
-                                <input class="smt-navbar-input col-xs-11 " type="text" ng-model="searchKey" placeholder="Search for Products, Brands and more" id="srach_textt"  ng-change="showHint(searchKey)" my-enter="test(searchKey)">
+                                <input class="smt-navbar-input col-xs-11 " type="text" ng-model="searchKey"  placeholder="Search for Products, Brands and more" id="srach_textt"  ng-change="showHint(searchKey)" my-enter="test(searchKey)">
 
                                 <button class="smt-navbar-button col-xs-1 pull-right" ng-click="test(searchKey)" id="serch_btnnn"><span class="glyphicon glyphicon-search"></span></button>
 
@@ -885,18 +889,22 @@
 
                                 </ul>
 
-                                 <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintMsg == 'true' && searchedProducts == null">
+                                 <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintMsg == 'true' && searchedProducts == null || showHintMsg == 'true' && searchedProducts.length == 0">
 
                                      <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;"><b>No Products Found</b>
 
                                         <br>
 
                                     </li>
+                                </ul>
 
-                                   
+                              <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintFlag == 'true' && searchedProducts.length == 0">
 
-                                  
+                                     <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;"><b>No Products Found</b>
 
+                                        <br>
+
+                                    </li>
                                 </ul>
 
                                 <ul class="data-ctrl {{searchClass}}" id="data_ctrl_search" outside-click="hideDiv();" ng-style="{{myObj}}" 

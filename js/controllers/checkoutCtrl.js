@@ -22,6 +22,7 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
        $scope.gstnumber = localStorage.getItem('gstNumber')
 
            $scope.shippingMethod = function(method){
+               $scope.selShippingType = method;
             if(method == 'Pickup'){
                  $scope.dealersList = [];
             }
@@ -95,8 +96,9 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                     localStorage.setItem('coupon', coupon);
                     if ($rootScope.couponApplied == 'false') {
                         getCouponService.maxPurchasedCouponMethod(coupon, window.localStorage['user_id'], $rootScope.amount).then(function (data) {
-                            if (data.data.status == 'coupon value applicable') {
+                            if (data.data.status == 'coupon value applicable' || data.data.status == 'cupon applicable') {
                                 $scope.couponData = data.data.coupon_details;
+                               
                                 if(parseInt($rootScope.amount) > parseInt($scope.couponData.maxvalue)){
                                       $rootScope.couponApplied = 'true';
                                 $scope.couponNotApplicable = 'false';
@@ -108,6 +110,42 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
                                  $scope.couponFail = 'true';
                                 $rootScope.amount = $rootScope.amount;
                                 }
+                            
+                              
+                                 if(!$rootScope.redeemamount1){
+                                 $rootScope.redeemamount1 = 0;
+                             }
+                                // alert($rootScope.amount1)
+                            } else {
+                                //alert("else")
+                                $scope.couponNotApplicable = 'true';
+                                $rootScope.couponApplied = 'false';
+                            }
+                        })
+                    }
+                }
+                else if(coupon.charAt(0) == 'P'){
+                     localStorage.setItem('coupon', coupon);
+                    if ($rootScope.couponApplied == 'false') {
+                        getCouponService.maxPurchasedCouponMethod(coupon, window.localStorage['user_id'], $rootScope.amount).then(function (data) {
+                            if (data.data.status == 'coupon value applicable' || data.data.status == 'cupon applicable') {
+                                $scope.couponData = data.data.coupon_details;
+                                $scope.couponName = $scope.couponData.coupon_name;
+                                if($scope.selShippingType == 'Pickup' && parseInt($rootScope.amount) > parseInt($scope.couponData.discount)){
+                    
+                                      $rootScope.couponApplied = 'true';
+                                $scope.couponNotApplicable = 'false';
+                                $rootScope.couponAmt = $scope.couponData.discount;
+                                $rootScope.amount = $rootScope.amount - $rootScope.couponAmt;
+                                }else{
+                                     $rootScope.couponApplied = 'false';
+                                $scope.couponNotApplicable = 'false';
+                                 $scope.couponFail = 'true';
+                                $rootScope.amount = $rootScope.amount;
+                                }
+                               
+                                   
+                                
                               
                                  if(!$rootScope.redeemamount1){
                                  $rootScope.redeemamount1 = 0;

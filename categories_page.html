@@ -17,6 +17,13 @@
   
     content: "\e114";   
 } */
+#listView #exclgstttt {
+    font-weight: bold;
+    color: #0487A1;
+    font-size: 11px;
+	display: inline-block;
+    margin-left: -138px;
+}
 </style>
 <!--<meta http-equiv="refresh" content= "0" />-->
 
@@ -36,7 +43,12 @@
     </div>
 
     <div class="row" id="catPage">
-        <div ng-switch="x">
+
+        <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
+                                <img src="images/noproducts.png">
+                                <br>
+                            </div><br>
+        <div ng-switch="x" ng-if="products.length > 0">
             <div style="margin-top:10px;">
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
@@ -262,10 +274,7 @@
                                 </div>
                             </div>
 
-                            <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
-                                <img src="images/noproducts.png">
-                                <br>
-                            </div>
+                            
                             <!-- grid row -->
                             <div loading style="margin-right: 446px;margin-top: 190px;"></div>
                             <div class="row">
@@ -330,7 +339,7 @@
                                                                 <div class="offer">
 
                                                                     <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-                                                                    <br>
+                                                               
                                                                     <p class="special-price yousave" id="spyousave">
                                                                         {{productsdata.percentage+0.00|number:2}} %
                                                                     </p>
@@ -410,7 +419,7 @@
                             <!-- /grid row -->
 
                             <!-- list row -->
-                            <div class="row">
+                            <div class="row" id="listView">
                                 <div style="margin-top: 10px;" ng-if="layout == 'List'" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 list">
                                     <div ng-repeat="productsdata in products| startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" style="margin-bottom:10px;">
                                         <div class="col-item carousel-inner">
