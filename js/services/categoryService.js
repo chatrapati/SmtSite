@@ -143,7 +143,11 @@ shopMyToolsApp.service('todayDealsservice', function ($q, $http,PRODUCT_CATEGORY
         });
         return deferred.promise;
     };	
+<<<<<<< HEAD
+})
+=======
 });	
 
 
 
+>>>>>>> c4c6608573c227716351cdd1d7b7bb982ad2bbb5

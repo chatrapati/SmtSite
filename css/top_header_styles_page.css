@@ -868,6 +868,7 @@ input[type="number"]:focus {
     }
     .reward_points_dahbord {
         width: 89% !important;
+        height:63px !important;
     }
     #invoice_mbl_padd {
         margin-bottom: 10px;
@@ -1003,6 +1004,7 @@ input[type="number"]:focus {
     }
     .reward_points_dahbord {
         width: 150px !important;
+         height:63px !important;
     }
     #invoice_mbl_padd {
         margin-bottom: 10px;
@@ -1106,6 +1108,7 @@ input[type="number"]:focus {
     }
     .reward_points_dahbord {
         width: 200px !important;
+         height:63px !important;
     }
     .price-box_lak .price_lak {
         font-size: 11px !important;
