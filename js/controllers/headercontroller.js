@@ -272,6 +272,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
         }
 
           $rootScope.test = function (searchKey) {
+              //alert("hai12")
             if (searchKey.length > 0) {
                 localStorage.setItem('searchkey', searchKey);
                 $rootScope.showHintFlag = 'false';
@@ -284,6 +285,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                     $location.path("searchPage");
                 }
             } else if (searchKey.length == '0') {
+               // alert("hai")
                 $rootScope.showHintFlag = 'false';
                 $location.path("/")
             }
@@ -425,6 +427,8 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                             }
                         }
                     }
+
+                  //  alert($rootScope.searchedProducts.length)
                         if ($rootScope.searchedProducts.length == 1 ) {
                             $rootScope.searchClass = "data_ctrl_search3";
                            
@@ -457,7 +461,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                      else if (data.data.status == 'fail') {
 
                         $rootScope.searchedProducts = JSON.parse(localStorage.getItem('searchedProducts'));
-                       
+                      // alert($rootScope.searchedProducts.length)
                       
                         $rootScope.showHintMsg = 'true';
                          $rootScope.showHintFlag = 'false';
@@ -488,7 +492,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                     }
                 })
             } else if (searchKey.length == '0') {
-             
+            //  alert('1')
                 $rootScope.showHintFlag = 'false';
                  $rootScope.showHintMsg = 'false';
                
@@ -814,6 +818,7 @@ document.onmousemove = function(){
         }
 
         $rootScope.hideDiv = function () {
+         //   alert("hide")
             $rootScope.showHintFlag = !$rootScope.showHintFlag;
         }
 

@@ -902,6 +902,8 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
         $scope.getSubCat($rootScope.selectedCategory);
       }
         else{
+           $scope.layout = $scope.x;
+         // alert($scope.x)
       $scope.subCatList=[];
       $scope.brandList=[];
        $scope.pricerange="";
@@ -910,7 +912,7 @@ shopMyToolsApp.controller('brandProductsCtrl', ['$scope', '$rootScope',
       $scope.subCatList.push(sub);
        $scope.brandList.push(localStorage.getItem('brandName'));
           product_subcategories_filter.getAllCategoriesFilterOfProduct($rootScope.selectedCategory, $scope.subCatList, $scope.brandList, $scope.pricerange, $scope.fromVal, $scope.toVal, $scope.sort_by,$scope.warranty,$scope.percent).then(function (data) {
- console.log(data.data);
+//  console.log(data.data);
  if (data.data.status == 'Success') {
           $rootScope.products = data.data.products;
           // $rootScope.catArray= data.data.category;

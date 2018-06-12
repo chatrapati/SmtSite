@@ -1249,7 +1249,7 @@ ul #footer_links_valuess a:hover {
 }
 
 #cards {
-    text-align: right;
+    /* text-align: right; */
 }
 
 #cards_styleee {
@@ -1366,7 +1366,7 @@ ul #footer_links_valuess a:hover {
 .data_ctrl_search6{
     display: block;
   
-     margin-top: 127px; 
+     margin-top: 105px; 
   
     z-index: 999;
 }
@@ -1377,6 +1377,9 @@ ul #footer_links_valuess a:hover {
      margin-top: 155px; 
   
     z-index: 999;
+}
+.data_ctrl_search0{
+    background-color:red;
 }
 
 #login_headerrr {
@@ -2010,7 +2013,7 @@ a.whishlist_lak {
 
 .coupon {
     border: 1px solid lightgrey;
-    background: #343333d6;
+    background: gray;
     color: #fff;
     padding: 5px 30px;
     text-align: center;

@@ -24,53 +24,12 @@
             <a ng-click="goToHome()"> Home</a>
         </li>
         <li class="bredcrumb_li">
-            <a>{{brandBreadCrumb}}</a>
+            <a>Today Deals</a>
         </li>
 
     </ul>
 
-    <div align="right">
-          <label for="name" >Category</label>
-<!-- 
-          <select ng-model="sel_attr"  ng-options="cat.category for cat in catArray"></select> -->
-
-<!-- <select ng-model="customer.Category"                
-    ng-options="obj.category for obj in catArray"
-    ng-change="getSubCat()"
-    class="form-control" 
-  
-    >
-    <option value="">Choose Category</option>
-</select>   -->
-         <select ng-model="category"  ng-change="getSubCat(category)">
-
-                    <option ng-repeat="cat in catArray" >{{cat.category}}</option>
-                    <option>All</option>
-
-                  
-
-                  </select> 
-
-                  <label for="name" >Sub-Category</label>
-<!-- <select ng-model="key_attr"  ng-options="subcat for subcat in catArray |filter:{subcat:sel_attr['subcat']}" ng-change="sel()"></select> -->
-
-<!-- <select ng-model="customer.SubCat" 
-    ng-options="x.subcat for x in subCategories"
-    ng-change = "getStateCities()"
-    class="form-control"
-    ng-required="true"
-    id="state">
-    <option value="">Choose Sub-Category </option>
-</select>  -->
-
-         <select ng-model="x"  ng-change="brandchange(x)" >
-
-                    <option ng-repeat="subcat in subCategories">{{subcat.subcat}}</option>
-            <option >All</option>
-                 
-
-                  </select> 
-    </div>
+   
 
     <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
         <img src="images/noproducts.png">
@@ -209,6 +168,10 @@
 
                             <div class="carousel-inner ">
 
+                                <div ng-if="products.length == 0" style="text-align: center;margin-top: 25px;width:25%; margin-left: 40%;" align="middle">
+                              <img src="https://www.shopmytools.com/images/noproducts.png">
+                            </div>
+
                                 <div id="{{productsdata}}" class="col-sm-3 col-xs-12 col-lg-3 col-sm-6" ng-repeat="productsdata in products | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage "
                                     style="margin-top:10px;">
 
@@ -272,6 +235,9 @@
                                                             </span>
 
                                                             <span class="old-price">
+
+
+                                                    
 
                                 <span class="price" id="old-price-507_b">
 
@@ -393,7 +359,7 @@
 
 
 
-                                                            <div class="price-box" ng-repeat="price in productsdata.prices">
+                                                            <div class="price-box">
 
                                                                 <div class="offer">
 
@@ -403,17 +369,28 @@
 
                                                                     <p class="special-price yousave">
 
-                                                                        {{price.percentage+0.00|number:2}} %
+                                                                        {{productsdata.special_percentage+0.00|number:2}} %
 
                                                                     </p>
 
 
 
+
+                                                                     <span class="special-price">
+
+                              <span class="special-price" id="product-price-507_b">
+
+                                <span class="price">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+
+                                                                    </span>
+
+                                                                    </span>
+
                                                                     <span class="special-price">
 
                               <span class="special-price" id="product-price-507_b">
 
-                                <span class="price">{{price.offer_price | currency:'&#8377;' }}</span>
+                                <span class="price listendprice end">{{productsdata.offer_price | currency:'&#8377;' }}</span>
 
                                                                     </span>
 
@@ -423,7 +400,7 @@
 
                               <span class="price" id="old-price-507_b">
 
-                                {{price.enduser_price | currency:'&#8377;' }}
+                                {{productsdata.enduser_price | currency:'&#8377;' }}
 
                               </span>
 
