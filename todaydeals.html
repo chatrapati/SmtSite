@@ -212,49 +212,22 @@
 
                                                     <div class="price-box priceBox_firefox" >
 
-                                                        <div class="offer">
-
-                                                            <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-
-                                                            <br>
-
-                                                            <p class="special-price yousave" id="spyousave">
-
-                                                                {{productsdata.special_percentage+0.00|number:2}} %
-
-                                                            </p>
-
-                                                            <span class="special-price">
-
+                                                                 <div class="offer">
+                                                                    <p class="special-price yousave" id="spyousave">
+                                                                        {{productsdata.special_percentage+0.00|number:2}} %
+                                                                    </p>
+                                                                    <span class="special-price">
                                 <span class="special-price" id="product-price-507_b">
-
-                                  <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;">{{productsdata.special_offer | currency:'&#8377;' }}</span>
-
-                                                            </span>
-
-                                                            </span>
-
-                                                            <span class="old-price">
-
-
-                                                    
-
-                                <span class="price" id="old-price-507_b">
-
-                                  {{productsdata.offer_price | currency:'&#8377;' }}
-
-                                </span>
-                                  <span class="price" id="old-price-507_b">
-
+                                  <span class="price special" style="padding-left: 0px;padding-right: 3px;">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+                                                                    </span>
+                                                                    </span>
+                                                                    <span class="old-price">
+                               <strike> <span class="price end" id="old-price-507_b">
                                   {{productsdata.enduser_price | currency:'&#8377;' }}
-
-                                </span>
-
-                                                            </span>
-
-                                                            <p id="exclgstttt">(Excluding-GST)</p>
-
-                                                        </div>
+                                </span></strike>
+                                                                    </span>
+                                                                    <p id="exclgstttt">(Excluding-GST)</p>
+                                                                </div>
 
                                                     </div>
 
@@ -361,54 +334,24 @@
 
                                                             <div class="price-box">
 
-                                                                <div class="offer">
+                                                               <div class="offer">
 
                                                                     <!--<div style="padding-bottom: 10px;"><span style="float:left;font-weight:bold;color:#0487A1;font-size:11px;">(Excluding-GST)</span></div>-->
-
-                                                                    <br>
-
-                                                                    <p class="special-price yousave">
-
-                                                                        {{productsdata.special_percentage+0.00|number:2}} %
-
+                                                               
+                                                                    <p class="special-price yousave" id="spyousave">
+                                                                        {{productsdata.percentage+0.00|number:2}} %
                                                                     </p>
-
-
-
-
-                                                                     <span class="special-price">
-
-                              <span class="special-price" id="product-price-507_b">
-
-                                <span class="price">{{productsdata.special_offer | currency:'&#8377;' }}</span>
-
-                                                                    </span>
-
-                                                                    </span>
-
                                                                     <span class="special-price">
-
-                              <span class="special-price" id="product-price-507_b">
-
-                                <span class="price listendprice end">{{productsdata.offer_price | currency:'&#8377;' }}</span>
-
+                                <span class="special-price" id="product-price-507_b">
+                                  <span class="price specialof" style="padding-left: 0px;padding-right: 3px;">{{productsdata.special_offer | currency:'&#8377;' }}</span>
                                                                     </span>
-
                                                                     </span>
-
                                                                     <span class="old-price">
-
-                              <span class="price" id="old-price-507_b">
-
-                                {{productsdata.enduser_price | currency:'&#8377;' }}
-
-                              </span>
-
+                              <strike>  <span class="price" id="old-price-507_b">
+                                  {{productsdata.enduser_price | currency:'&#8377;' }}
+                                </span></strike>
                                                                     </span>
-                                                                   
-
-                                                                    <p id="exclgstttt" class="list_GstExcl">(Excluding-GST)</p>
-
+                                                                    <p id="exclgstttt">(Excluding-GST)</p>
                                                                 </div>
 
                                                             </div>
