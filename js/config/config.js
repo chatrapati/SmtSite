@@ -40,7 +40,7 @@ shopMyToolsApp.constant('PRODUCT_CATEGORY_SERVICE', 'http://157.119.108.137:80')
 
  shopMyToolsApp.constant('PRODUCT_DETAIL_SERVICE', 'http://192.168.20.107:8090');
 // shopMyToolsApp.constant('PRODUCT_DETAIL_SERVICE', 'http://157.119.108.139:8005');
-shopMyToolsApp.constant('DOMAIN_URL','http://localhost/smt/SmtSite/');
+shopMyToolsApp.constant('DOMAIN_URL','http://localhost/smtsitenew/SmtSite/');
 
 shopMyToolsApp.constant('BASE_URL','/smtsitenew/SmtSite/');
 
