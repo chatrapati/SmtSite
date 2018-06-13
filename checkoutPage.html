@@ -791,13 +791,18 @@
 										<button type="submit" class="btn btn-default pull-right" ng-disabled="couponShopMsg == 'true'" id="discCodesBtn" ng-click="getCoupon(coupon)">Apply Coupon</button>
 									</div>
 									<div style="margin-left: 10px;">
-										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
+										<p style="color: green;" ng-if="successMsg">{{successMsg}}</p>
+										<p style="color: red;" ng-if="failMsg">{{failMsg}}</p>
+										
+										<!-- <p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop != dealerAddress">This coupon is applicable for "{{couponShop}}" Shop</p>
 										<p style="color: green;" ng-if="couponShopMsg == 'true' && couponShop == dealerAddress">Success! Coupon code is applied.Discount of ₹{{couponAmt}} is deducted</p>
 										<p style="color: green;" ng-if="couponApplied == 'true'">Success! Coupon code is applied.Discount Amount ₹{{couponAmt}} is deducted </p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponNotApplicable == 'true'">Enter valid Coupon</p>
 									<p style="color:red;font-size:12px;font-weight:bold;" ng-if="couponFail == true"> Redeem cash should be less than the total amount </p>
 									<p style="color: green;" ng-if="couponFail == 'true' && couponName != checkoutData.shippingType">This coupon is applicable only for Pickup </p>
 									
+									<p style="color: green;" ng-if="minOrderValueFlag == 'true'">This coupon will be applicable only for minimum purchase value of {{minOrderValue}} </p> -->
+								
 									</div>
 								</div>
 								
@@ -821,10 +826,12 @@
 										
 									</div>
 									<div style="margin-left: 10px;">
-										<p style="color: green;" ng-if="redeemApplicable == true">Success! {{redeemamount1}} is deducted</p>
+											<p style="color: green;" ng-if="redeemSuccessMsg">{{redeemSuccessMsg}}</p>
+										<p style="color: red;font-size:12px;font-weight:bold;" ng-if="redeemFailMsg">{{redeemFailMsg}}</p>
+										<!-- <p style="color: green;" ng-if="redeemApplicable == true">Success! {{redeemamount1}} is deducted</p>
 										<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemNotApplicable == true">Amount should be less than the available Redeem cash  </p>
 								<p style="color:red;font-size:12px;font-weight:bold;" ng-if="redeemFail == true"> Redeem cash should be less than the total amount </p>
-								
+								 -->
 									</div>
 								</div> 
 							</div>

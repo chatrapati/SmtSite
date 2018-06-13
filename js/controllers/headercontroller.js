@@ -317,7 +317,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
             window.localStorage['subCategoryName'] = "";
             window.localStorage['categoryName'] = categoryName;
             window.localStorage['subCategoryName'] = subCategory;
-            location.reload();
+            // location.reload();
             $scope.categoryURL = document.URL.split("/");
 
                      if(navigator.userAgent.indexOf("Firefox") != -1 ){
