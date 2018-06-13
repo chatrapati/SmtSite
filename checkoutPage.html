@@ -57,7 +57,7 @@
 						<div class="" style="padding:10px;" ng-if="showShippingDetails">
 							<input type="radio" ng-change="shippingMethod('Pickup')" name="method" ng-model="checkoutData.shippingType" ng-value="'Pickup'"
 							/>
-							<p>Pick Up</p>
+							<p>Pick Up&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;" >(Select Pick Up with minimum purchase value of &#8377;{{pickUpAmt}} and get 2% discount)</span></p>
 
 							<input type="radio" ng-change="shippingMethod('Delivery')" name="method" ng-model="checkoutData.shippingType" ng-value="'Delivery'"
 							/>
