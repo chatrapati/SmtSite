@@ -1442,6 +1442,12 @@ $scope.checkPaymentStatus();
 $location.path("/")
 }
 
+ $scope.todaydeals=function(){
+
+            $location.path("todaydeals");
+             // $scope.deals();
+        }
+
 
 
 })

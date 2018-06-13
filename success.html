@@ -478,12 +478,22 @@
                                     </li>
                                   
                                 </ul>
-                                 <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintMsg == 'true' && searchedProducts == null">
+                                 <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintMsg == 'true' && searchedProducts == null || showHintMsg == 'true' && searchedProducts.length == 0">
+
                                      <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;"><b>No Products Found</b>
+
                                         <br>
+
                                     </li>
-                                   
-                                  
+                                </ul>
+
+                              <ul class="data-ctrl" style="margin-top: 36px;" id="data_ctrl_search1" outside-click="hideDiv();" ng-if="showHintFlag == 'true' && searchedProducts.length == 0">
+
+                                     <li style="background-color: #ccc;padding: 3px 10px;font-size: 12px;color: #4c4b4b;"><b>No Products Found</b>
+
+                                        <br>
+
+                                    </li>
                                 </ul>
                                 <ul class="data-ctrl {{searchClass}}" id="data_ctrl_search" outside-click="hideDiv();" ng-style="{{myObj}}" 
                                 ng-if="showHintFlag == 'true'  && searchedProducts.length >= 1 && searchedProducts.length <= 3">
@@ -702,6 +712,7 @@
                   </ul>
                 </li>
                 <li><a href="" ng-click="coupons()" id="couponLink">Coupons</a></li>
+                 <li><a href="" ng-click="todaydeals()" id="couponLink">Today Deals</a></li>
                 <!-- <li><a href="" ng-click="coupons()" id="couponLink"><marquee>This is basic example of marquee</marquee></a></li> -->
               </ul>
             </div>

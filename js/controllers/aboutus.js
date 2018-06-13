@@ -12,12 +12,12 @@ shopMyToolsApp.controller('aboutuscontroller',['$scope','$rootScope',function($s
 }])
 
 
-shopMyToolsApp.controller('todaydealscontroller',['$scope','$rootScope','todayDealsservice','Pagination',function($scope,$rootScope,todayDealsservice,Pagination){
-        $scope.viewby = 10;
+shopMyToolsApp.controller('todaydealscontroller',['$scope','$rootScope','todayDealsservice','Pagination',
+'$filter',function($scope,$rootScope,todayDealsservice,Pagination,$filter){
+        $scope.viewby = "12";
+        $scope.x = "Grid";
+    $scope.sort_by = "popularty";
         $scope.deals=function(){
-
-         
-          
         todayDealsservice.todaydeals().then(function(data){
             // console.log(data.data)
         //    alert(JSON.stringify(data))
@@ -31,8 +31,38 @@ shopMyToolsApp.controller('todaydealscontroller',['$scope','$rootScope','todayDe
         }
      $scope.deals();
 
- $scope.x = "Grid";
   $scope.layout = "Grid";
+
+  $scope.setpage = function (page) {
+      $scope.currentPageNumber = 1;
+      $scope.pageList = [0, 1, 2, 3, 4];
+      $scope.pagination = Pagination.getNew($scope.viewby);
+      $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+
+    }
+
+       $scope.sortby = function (val123) {
+      $scope.sort_by = val123; 
+      $scope.pageList = [0, 1, 2, 3, 4];
+      $scope.pagination = Pagination.getNew($scope.viewby);
+      $scope.pagination.numPages = Math.ceil($rootScope.products.length / $scope.pagination.perPage);
+      $rootScope.products.forEach(function (element) {
+        if ($scope.sort_by == 'price_low_high') {
+          element.special_offer = parseInt(element.special_offer);
+          $rootScope.products = $filter('orderBy')($rootScope.products, 'special_offer');
+        }
+        else if ($scope.sort_by == 'namefilter') {
+          $rootScope.products = $filter('orderBy')($rootScope.products, 'upload_name');
+        } else if ($scope.sort_by == 'popularty') {
+          $rootScope.products = $filter('orderBy')($rootScope.products, '-avgrating');
+        } else if ($scope.sort_by == 'price_high_low') {
+          element.special_offer = parseInt(element.special_offer);
+          $rootScope.products = $filter('orderBy')($rootScope.products, '-special_offer');
+        } else if ($scope.sort_by == 'topselling') {
+          $rootScope.products = $filter('orderBy')($rootScope.products, 'salesqty');
+        }
+      })
+    }
 
 
     $scope.selectLayout = function (x) {

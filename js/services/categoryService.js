@@ -145,10 +145,6 @@ shopMyToolsApp.service('todayDealsservice', function ($q, $http,PRODUCT_CATEGORY
     };	
 
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 0bae4ea9a646bdb8cc2c15c55fe2357aeafa99d1
 
 
 
