@@ -506,6 +506,8 @@ shopMyToolsApp.controller('checkOutController', ['$scope', '$http', '$location',
 
                     $rootScope.grandTotal =  data.data.grand_total;
 
+                    $rootScope.pickUpAmt = data.data.pickup_min_val;
+
                      if ($rootScope.couponAmt) {
                          $rootScope.amount = $rootScope.amount-$rootScope.couponAmt;
                      }
