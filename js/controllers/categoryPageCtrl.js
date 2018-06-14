@@ -148,6 +148,9 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           $scope.pageList = [0, 1, 2, 3, 4];
           $scope.pagination = Pagination.getNew($scope.viewby);
           $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
+          // $scope.products.forEach(function(obj){
+          //   console.log(obj.todaydeals)
+          // })
           // location.reload();
           // $location.path('categoryPage')
         } else {

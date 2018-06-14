@@ -33,7 +33,7 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
 
       
 
-        $scope.firstCarouselImages = ["images/banners/powertex.jpg", "images/banners/sunflower.jpg", "images/banners/bostec.jpg", "images/banners/bosch.jpg", "images/banners/jasic.jpg"];
+        $scope.firstCarouselImages = ["images/banners/powertex.jpg", "images/banners/sunflower.jpg", "images/banners/bostec.jpg", "images/banners/bosch.jpg", "images/banners/jasic.jpg","images/banners/dis.jpg"];
 
         $scope.secondCarouselImages = ["images/banners/banner0.png", "images/banners/banner1.jpg", "images/banners/banner2.jpg", "images/banners/banner3.jpg", "images/banners/banner4.png"];
 
