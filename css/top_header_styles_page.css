@@ -17,6 +17,13 @@ top: 65%;
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	
+::i-block-chrome,#header_searchhh input {
+margin-left: 4px !important;
+}
+
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	
 ::i-block-chrome,#main_img_effects .caption {
 left: 33% !important;
 }
