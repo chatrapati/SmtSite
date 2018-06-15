@@ -1209,16 +1209,16 @@ input[type="number"]:focus {
   }
   #header_logooo {
     padding: 3px 0;
-    width: 50%;
+    width: 53%;
     cursor: pointer;
-    margin-top: -1px !important;
+    margin-top: -3px !important;
   }
   @-moz-document url-prefix('') {
     #header_logooo {
-      padding: 1px 0;
-      width: 50%;
-      cursor: pointer;
-      margin-top: -1px !important;
+    width: 52%;
+	cursor: pointer;
+	margin-top: -1px !important;
+	padding-bottom: 0px;
     }
   }
   #header_searchhh {
@@ -2766,8 +2766,17 @@ input[type="number"]:focus {
   
    @media screen and (-webkit-min-device-pixel-ratio:0) {
    ::i-block-chrome, #barndCartDiv .wishbtn {
-    margin-bottom: -13px !important;
+    margin-bottom: -1px !important;
     height: 31px !important;
    }
 }
+ @media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* ::i-block-chrome,#header_logooo {
+	margin-left: 12px;
+  } */
+ }
+ .login_headerNav #header_logooo {
+	margin-left: 12px;
+  }
+
   /* 15-06-2018 end css */
