@@ -3126,3 +3126,11 @@ padding-left: 11px;
 }
 
 /* 04-5-2018 styles end here  added 12-06-2018*/
+
+/* 15-06-2018 css start */
+.old-price .price{
+	color:red !important;
+}
+
+
+/* 15-06-2018 end css */
