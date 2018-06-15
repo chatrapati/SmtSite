@@ -12,7 +12,7 @@ body {
 /* safari hack csss */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-  .caption {
+   ::i-block-chrome,.caption {
     top: 65%;
   }
 }
@@ -2757,4 +2757,17 @@ input[type="number"]:focus {
   .old-price .price {
     color: red !important;
   }
+   @-moz-document url-prefix('') {
+  #barndCartDiv .wishbtn {
+    margin-bottom: -12px !important;
+    height: 31px !important;
+   }
+   }
+  
+   @media screen and (-webkit-min-device-pixel-ratio:0) {
+   ::i-block-chrome, #barndCartDiv .wishbtn {
+    margin-bottom: -13px !important;
+    height: 31px !important;
+   }
+}
   /* 15-06-2018 end css */
