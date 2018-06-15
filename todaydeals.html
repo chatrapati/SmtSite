@@ -13,6 +13,37 @@
 	   display:flex;
 		
 	}
+	.special-price{
+	float:left;
+	}
+	.product-name{
+	margin-bottom: -6px;
+	height:46px !important;
+	}
+	.dealsExclGst{
+	    margin-left: 6px;
+    width: 150px;
+	}
+	.item-inner:hover img{
+  /*  border-bottom: 3px solid #0487A1; 
+    -ms-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);*/
+    /* box-shadow: 0px 0px 150px #000000; */
+    z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.15);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.15);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.15); 
+    transition: all 200ms ease-in;
+    transform: scale(1.15) !imoprtant;
+   
+}
+.item-inner:hover {
 </style>
 
 <!--<meta http-equiv="refresh" content= "0" />-->
@@ -295,7 +326,7 @@
 
                                             <div class="col-item carousel-inner">
             <div ng-if="productsdata.special_offer != 0" style="float: right;margin-right: 43px;"><img style="width: 43px;position: absolute;" src="images/deal.png"></div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
 
                                                     <div class="listitem-inner">
 
@@ -343,7 +374,7 @@
                                                                     </p>
                                                                     <span class="special-price">
                                 <span class="special-price" id="product-price-507_b">
-                                  <span class="price specialof" style="padding-left: 0px;padding-right: 3px;">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+                                  <span class="price specialof" style="padding-left: 4px;padding-right: 3px;">{{productsdata.special_offer | currency:'&#8377;' }}</span>
                                                                     </span>
                                                                     </span>
                                                                     <span class="old-price">
@@ -351,7 +382,7 @@
                                   {{productsdata.enduser_price | currency:'&#8377;' }}
                                 </span></strike>
                                                                     </span>
-                                                                    <p id="exclgstttt">(Excluding-GST)</p>
+                                                                    <p id="exclgstttt" class="dealsExclGst">(Excluding-GST)</p>
                                                                 </div>
 
                                                             </div>
