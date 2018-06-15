@@ -7,12 +7,14 @@
         cursor: pointer;
     }
 	#brandList .list_GstExcl{
-	margin:0;
+	margin-left: 5px;
 	}
 		#brandList .old-price{
 	   display:flex !important;		
 	}
-	
+	.price-box .old-price .price, .item .item-price .old-price .price, .item .product-price .old-price .price {
+    color: red;
+	}
 </style>
 
 <!--<meta http-equiv="refresh" content= "0" />-->
@@ -265,8 +267,8 @@
 
                                 <span class="special-price" id="product-price-507_b">
 
-                                  <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer > 0">{{productsdata.special_offer | currency:'&#8377;' }}</span>
-                                     <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer == 0">{{productsdata.offer_price | currency:'&#8377;' }}</span>
+                                  <span class="price priceOne" style="padding-left: 4px;padding-right: 3px;" ng-if="productsdata.special_offer > 0">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+                                     <span class="price priceOne" style="padding-left: 4px;padding-right: 3px;" ng-if="productsdata.special_offer == 0">{{productsdata.offer_price | currency:'&#8377;' }}</span>
 
                                                             </span>
 
@@ -357,7 +359,7 @@
 
                                             <div class="col-item carousel-inner">
 
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
 
                                                     <div class="listitem-inner">
 
@@ -414,8 +416,8 @@
 
                                 <span class="special-price" id="product-price-507_b">
 
-                                  <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer > 0">{{productsdata.special_offer | currency:'&#8377;' }}</span>
-                                     <span class="price priceOne" style="padding-left: 0px;padding-right: 3px;" ng-if="productsdata.special_offer == 0">{{productsdata.offer_price | currency:'&#8377;' }}</span>
+                                  <span class="price priceOne" style="padding-left: 9px;padding-right: 3px;" ng-if="productsdata.special_offer > 0">{{productsdata.special_offer | currency:'&#8377;' }}</span>
+                                     <span class="price priceOne" style="padding-left: 9px;padding-right: 3px;" ng-if="productsdata.special_offer == 0">{{productsdata.offer_price | currency:'&#8377;' }}</span>
 
                                                             </span>
 
