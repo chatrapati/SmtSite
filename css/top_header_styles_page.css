@@ -2770,11 +2770,6 @@ input[type="number"]:focus {
     height: 31px !important;
    }
 }
- @media screen and (-webkit-min-device-pixel-ratio:0) {
-  /* ::i-block-chrome,#header_logooo {
-	margin-left: 12px;
-  } */
- }
  .login_headerNav #header_logooo {
 	margin-left: 12px;
   }
