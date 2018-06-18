@@ -2770,13 +2770,63 @@ input[type="number"]:focus {
     height: 31px !important;
    }
 }
- @media screen and (-webkit-min-device-pixel-ratio:0) {
-  /* ::i-block-chrome,#header_logooo {
-	margin-left: 12px;
-  } */
- }
  .login_headerNav #header_logooo {
 	margin-left: 12px;
   }
-
+	.item-inner:hover img{
+  /*  border-bottom: 3px solid #0487A1; 
+    -ms-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);*/
+    /* box-shadow: 0px 0px 150px #000000; */
+    z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1); 
+    transition: all 200ms ease-in;
+    transform: scale(1.1) !imoprtant;
+   
+}
+.listitem-inner:hover img{
+  /*  border-bottom: 3px solid #0487A1; 
+    -ms-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);*/
+    /* box-shadow: 0px 0px 150px #000000; */
+    z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1); 
+    transition: all 200ms ease-in;
+    transform: scale(1.1) !imoprtant;
+   
+}
+.col-item_lak:hover img{
+  /*  border-bottom: 3px solid #0487A1; 
+    -ms-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);*/
+    /* box-shadow: 0px 0px 150px #000000; */
+    z-index: 2;
+ -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1); 
+    transition: all 200ms ease-in;
+    transform: scale(1.1) !imoprtant;
+}
   /* 15-06-2018 end css */
