@@ -328,6 +328,11 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
 
     }
 
+    $scope.gotoforgetpass=function(){
+      // alert("asdf")
+          window.location.href="forgotPassword.html";
+    }
+
     $scope.backToLogin = function () {
       window.location.href = "login.html";
     }
@@ -336,6 +341,9 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
       window.location.href = "registration.html";
 
     }
+     $scope.goToLogin=function(){
+            window.location.href = "./login.html";
+        }
 
  
 

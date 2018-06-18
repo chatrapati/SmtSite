@@ -36,7 +36,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
          $scope.coupons=function(){
           
-              window.location.href = DOMAIN_URL+"/coupons";
+              window.location.href = DOMAIN_URL+"coupons";
         }
             
 
@@ -61,7 +61,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             if (window.localStorage['user_id']) {
                 if ($rootScope.cartArray.length != 0) {
-                   window.location.href = DOMAIN_URL+"/checkout";
+                   window.location.href = DOMAIN_URL+"checkout";
                 }
 
             }
@@ -192,7 +192,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             location.reload();
 
-            window.location.href = DOMAIN_URL+"/productDetailPage";
+            window.location.href = DOMAIN_URL+"productDetailPage";
 
         //    alert("hai")
 
@@ -297,10 +297,10 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
                 $rootScope.showHintFlag = 'false';
                 $scope.searchPageURL = document.URL.split("/");
                 if ($scope.searchPageURL[$scope.searchPageURL.length - 1] == 'searchPage') {
-                  window.location.href =DOMAIN_URL+"/searchPage1";
+                  window.location.href =DOMAIN_URL+"searchPage1";
                 }
                 else {
-                    window.location.href =DOMAIN_URL+"/searchPage";
+                    window.location.href =DOMAIN_URL+"searchPage";
                 }
             } else if (searchKey.length == '0') {
                 $rootScope.showHintFlag = 'false';
@@ -364,11 +364,11 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
            if ($scope.categoryURL[$scope.categoryURL.length-1] == 'categoryPage') {
                 $(".dropdown-menu.multi-level").css("display", "none");
               
-               window.location.href = DOMAIN_URL+"/categoryPage1";
+               window.location.href = DOMAIN_URL+"categoryPage1";
             } else {
                  $(".dropdown-menu.multi-level").css("display", "none");
                
-               window.location.href = DOMAIN_URL+"/categoryPage";
+               window.location.href = DOMAIN_URL+"categoryPage";
             }
         }
         $rootScope.showHintFlag = 'false';
@@ -789,7 +789,7 @@ document.onmousemove = function(){
 
         $scope.compareProductsMethod = function () {
             if ($rootScope.compareProducts.length > 1) {
-            window.location.href =DOMAIN_URL+"/compareProducts"
+            window.location.href =DOMAIN_URL+"compareProducts"
             } else {
                 alert('Please add one more Product to Compare')
             }
@@ -803,13 +803,13 @@ document.onmousemove = function(){
 
         $scope.searchProductsMore = function (searchKey) {
             localStorage.setItem('searchkey', searchKey);
-            window.location.href = DOMAIN_URL+"/searchPage";
+            window.location.href = DOMAIN_URL+"searchPage";
         }
 
         $scope.goToDashboard = function () {
 
             if (window.localStorage['token']) {
-                window.location.href = DOMAIN_URL+"/dashboard";
+                window.location.href = DOMAIN_URL+"dashboard";
             }
             else {
 
@@ -875,12 +875,12 @@ document.onmousemove = function(){
             localStorage.removeItem('selectedArray')
             if ($scope.categoryURL[$scope.categoryURL.length-1] == 'categoryPage') {
                  $(".dropdown-menu.multi-level").css("display", "none");
-               window.location.href = DOMAIN_URL+"/categoryPage1";
+               window.location.href = DOMAIN_URL+"categoryPage1";
              
             } else {
                
                 $(".dropdown-menu.multi-level").css("display", "none");
-               window.location.href = DOMAIN_URL+"/categoryPage";
+               window.location.href = DOMAIN_URL+"categoryPage";
             }
         }
 
@@ -948,28 +948,28 @@ document.onmousemove = function(){
         $scope.gotoFooterPage = function(page){
             if(page == 'aboutus'){
               $window.scrollTo(0, 0);
-               window.location.href = DOMAIN_URL+"/aboutus";
+               window.location.href = DOMAIN_URL+"aboutus";
             }else if(page == 'contactus'){
                $window.scrollTo(0, 0);
-                   window.location.href = DOMAIN_URL+"/contact";
+                   window.location.href = DOMAIN_URL+"contact";
             }else if(page == 'termofuse'){
               $window.scrollTo(0, 0);
-                   window.location.href = DOMAIN_URL+"/termsofuse";
+                   window.location.href = DOMAIN_URL+"termsofuse";
             }else if(page == 'returnpolicy'){
                $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"/returnpolicy";
+                  window.location.href = DOMAIN_URL+"returnpolicy";
             }else if(page == 'privacypolicy'){
                $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"/privacypolicy";
+                  window.location.href = DOMAIN_URL+"privacypolicy";
             }else if(page == 'shipping'){
                 $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"/shipping";
+                  window.location.href = DOMAIN_URL+"shipping";
             }else if(page == 'netbanking'){
              $window.scrollTo(0, 0);
-                  window.location.href = DOMAIN_URL+"/netbanking";
+                  window.location.href = DOMAIN_URL+"netbanking";
             }else {
                $window.scrollTo(0, 0);
-                 window.location.href = DOMAIN_URL+"/emi";
+                 window.location.href = DOMAIN_URL+"emi";
             }
             
         }

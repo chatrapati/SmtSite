@@ -1008,6 +1008,10 @@ function ($scope, $window, $rootScope, inVoiceService,viewCartService,logoutServ
             window.location.href = "./";
         }
 
+         $scope.goToLogin=function(){
+            window.location.href = "./login.html";
+        }
+
      $rootScope.logincategoryBasedProducts = function(categoryName){
              window.localStorage['categoryName'] = "";
             window.localStorage['categoryName'] = categoryName;

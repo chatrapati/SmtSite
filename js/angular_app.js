@@ -481,6 +481,9 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
         templateUrl: 'resetPassword.html'
 
       })
+      .when('/forgetpass',{
+        templateUrl:'forgotPassword.html'
+      })
 
       .when('/deals', {
 

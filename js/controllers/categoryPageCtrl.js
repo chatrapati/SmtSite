@@ -142,6 +142,7 @@ shopMyToolsApp.controller('productCategoriesCtrl', ['$scope', '$rootScope',
           
           $rootScope.totalcount = data.data.totalcount;
           $scope.productsprice = $scope.products.prices;
+          $scope.todaydeals=$scope.products.todaydeals;
           // $scope.special_offer=data.data.special_offer;
           $scope.totalItems = data.data.products.length;
           $scope.datalists = data.data.products;
@@ -798,16 +799,16 @@ if (window.localStorage['categoryName'] != "") {
       $scope.pagination.numPages = Math.ceil($scope.products.length / $scope.pagination.perPage);
       $scope.products.forEach(function (element) {
         if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, 'prices[0].offer_price');
+          element.offer_price = parseInt(element.offer_price);
+          $scope.products = $filter('orderBy')($scope.products, 'offer_price');
         }
         else if ($scope.sort_by == 'namefilter') {
           $scope.products = $filter('orderBy')($scope.products, 'upload_name');
         } else if ($scope.sort_by == 'popularty') {
           $scope.products = $filter('orderBy')($scope.products, '-avgrating');
         } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $scope.products = $filter('orderBy')($scope.products, '-prices[0].offer_price');
+          element.offer_price = parseInt(element.offer_price);
+          $scope.products = $filter('orderBy')($scope.products, '-offer_price');
         } else if ($scope.sort_by == 'topselling') {
           $scope.products = $filter('orderBy')($scope.products, 'salesqty');
         }
@@ -1079,16 +1080,16 @@ $scope.subCategories=[ ];
       $scope.sort_by = val123;
       $rootScope.products.forEach(function (element) {
         if ($scope.sort_by == 'price_low_high') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $rootScope.products = $filter('orderBy')($rootScope.products, 'prices[0].offer_price');
+          element.offer_price = parseInt(element.offer_price);
+          $rootScope.products = $filter('orderBy')($rootScope.products, 'offer_price');
         }
         else if ($scope.sort_by == 'namefilter') {
           $rootScope.products = $filter('orderBy')($rootScope.products, 'upload_name');
         } else if ($scope.sort_by == 'popularty') {
           $rootScope.products = $filter('orderBy')($rootScope.products, '-avgrating');
         } else if ($scope.sort_by == 'price_high_low') {
-          element.prices[0].offer_price = parseInt(element.prices[0].offer_price);
-          $rootScope.products = $filter('orderBy')($rootScope.products, '-prices[0].offer_price');
+          element.offer_price = parseInt(element.offer_price);
+          $rootScope.products = $filter('orderBy')($rootScope.products, '-offer_price');
         } else if ($scope.sort_by == 'topselling') {
           $rootScope.products = $filter('orderBy')($rootScope.products, 'salesqty');
         }
