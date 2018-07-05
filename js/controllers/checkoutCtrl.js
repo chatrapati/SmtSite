@@ -898,7 +898,12 @@ $scope.getRedeemPoints();
     //   })
          
 
-                } else {
+                }
+else if(data.data.message){
+      $scope.loading = false;
+    alert(data.data.message)
+  
+} else {
 
                     alert(data.data.status);
                  //   $scope.dealersList=[];

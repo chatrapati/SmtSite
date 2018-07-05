@@ -63,12 +63,13 @@
                                 <p class="validationError errorMsg" ng-message="pattern">Enter valid email</p>
                             </div>
                             <br/>
-                            <select ng-model="contactus.usertype" name="usertype" id="usertype" class="form-control" required>
-              <!-- <option selected="selected">Select usertype</option> -->
+                            <select ng-model="contactus.usertype" name="usertype" placeholder="halo" id="usertype" class="form-control" required>
+               <!-- <option selected="selected">Select usertype</option>  -->
+               <option value="" disabled hidden selected>Select usertype</option>
               <option value="admin">Admin</option>
               <option value="supplier">Supplier</option>
               <option value="dealer">Dealer</option>
-              <option value="enduser">End User</option>
+              <option value="enduser">Customer</option>
             </select>
 
                             <p class="validationError errorMsg" ng-if="submitted&&contactusform.usertype.$error.required">Select user type</p>
@@ -99,8 +100,7 @@
                     </form>
                 </div>
                 <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xs-12">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.233971948627!2d78.36098271496571!3d17.44851208804198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93c0ee7c0057%3A0xe9deedff1c89bf70!2sThe+Platina!5e0!3m2!1sen!2sin!4v1495437571678"
-                        frameborder="0" style="border:0" allowfullscreen></iframe>
+                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.233666731767!2d78.36103021481219!3d17.448526705631647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93c0c18e6139%3A0x8c2dec464310a408!2sGolden+Sun+Technology+Pvt+Ltd!5e0!3m2!1sen!2sin!4v1530594530672" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>

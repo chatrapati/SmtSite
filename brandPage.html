@@ -30,20 +30,10 @@
         </li>
 
     </ul>
-
+<!-- 
     <div align="right">
           <label for="name" >Category</label>
-<!-- 
-          <select ng-model="sel_attr"  ng-options="cat.category for cat in catArray"></select> -->
 
-<!-- <select ng-model="customer.Category"                
-    ng-options="obj.category for obj in catArray"
-    ng-change="getSubCat()"
-    class="form-control" 
-  
-    >
-    <option value="">Choose Category</option>
-</select>   -->
          <select ng-model="category"  ng-change="getSubCat(category)">
 
                     <option ng-repeat="cat in catArray" >{{cat.category}}</option>
@@ -54,16 +44,7 @@
                   </select> 
 
                   <label for="name" >Sub-Category</label>
-<!-- <select ng-model="key_attr"  ng-options="subcat for subcat in catArray |filter:{subcat:sel_attr['subcat']}" ng-change="sel()"></select> -->
 
-<!-- <select ng-model="customer.SubCat" 
-    ng-options="x.subcat for x in subCategories"
-    ng-change = "getStateCities()"
-    class="form-control"
-    ng-required="true"
-    id="state">
-    <option value="">Choose Sub-Category </option>
-</select>  -->
 
          <select ng-model="x1"  ng-change="brandchange(x1)" >
 
@@ -72,7 +53,7 @@
                  
 
                   </select> 
-    </div>
+    </div> -->
 
     <div ng-if="products.length == 0" style="color: #7d7575;text-align: center;margin-top: 25px;font-size: 37px;">
         <img src="images/noproducts.png">

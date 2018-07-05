@@ -171,6 +171,7 @@ shopMyToolsApp.controller('dashboardController',
                 })
             }
             $scope.editaddress=function(){
+               // window.location.reload();
                 $location.path("editaddress");
             }
 

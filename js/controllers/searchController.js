@@ -99,10 +99,11 @@ shopMyToolsApp.controller('contactUsCtrl', function ($scope, $window, $location,
     $rootScope.pagetitle=$rootScope.seo.metatitle;
     $rootScope.metadescription=$rootScope.seo.metadescription;
     $rootScope.keywords=$rootScope.seo.keywords;
+    // $scope.email = localStorage.getItem('emailid');
+    // $scope.firstname = localStorage.getItem('firstname');
+    // $scope.usertype = "12";
 
-
-
-    $scope.contactus = {"email":localStorage.getItem('userEmail')};
+    $scope.contactus = {"email":localStorage.getItem('emailid'),"firstname":localStorage.getItem('firstname')};
 
     $scope.submitContactData = function (contactus) {
         //  alert(JSON.stringify(contactData))

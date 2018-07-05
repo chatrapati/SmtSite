@@ -539,7 +539,7 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
 
       })
 
-       .when('/recentlyviewd', {
+       .when('/recentlyviewed', {
 
         templateUrl: 'recentlyviewed.html'
 
@@ -578,9 +578,9 @@ shopMyToolsApp.config(['$routeProvider', '$locationProvider',
 
 
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
 
-    $locationProvider.hashPrefix('');
+    // $locationProvider.hashPrefix('');
 
 
 

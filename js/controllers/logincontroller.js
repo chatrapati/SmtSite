@@ -302,6 +302,9 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
             // alert(data.data.GSTnumber)
             if(data.data.GSTnumber != null){
                localStorage.setItem('gstNumber',data.data.GSTnumber);
+               localStorage.setItem('emailid',data.data.userinfo.email);
+               localStorage.setItem('firstname',data.data.userinfo.firstname);
+              //  alert(data.data.userinfo.email)
             }else if(data.data.GSTnumber==null){
               // alert("sruthi")
               localStorage.setItem('gstNumber','');

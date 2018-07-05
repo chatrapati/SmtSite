@@ -2076,7 +2076,7 @@ input[type="number"]:focus {
   }
   .bredcrumb_li a {
     color: #5d5959;
-    font-size: 10px;
+    font-size: 12px;
     border: 1px solid #d7dbdc;
     padding: 5px 10px;
     border-radius: 3px;
@@ -2600,7 +2600,7 @@ input[type="number"]:focus {
     margin-left: 22px;
   }
   .editaddressdashboard {
-    color: white;
+    color: white !important;
   }
   .editaddressdashboard:hover {
     color: yellow;
