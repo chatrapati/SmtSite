@@ -479,10 +479,10 @@ input[type="number"]:focus {
     text-align: center !important;
   } */
     /*22-03-2018 changes */
-    #all_accounts_header {
+    /* #all_accounts_header {
       margin-top: 9px !important;
       text-align: center !important;
-    }
+    } */
     .supp-reg-link {
       padding: 8px 5px !important;
     }
@@ -647,7 +647,7 @@ input[type="number"]:focus {
       margin: 0 10px;
     }
     #pageshowsort {
-      margin-bottom: 20px;
+      margin-bottom: -20px;
     }
     #paginationBottom {
       margin-bottom: 28px;
@@ -1602,6 +1602,7 @@ input[type="number"]:focus {
       padding-right: 0 !important; 
  padding-left: 0 !important; ; 
     }
+
     @-moz-document url-prefix('') {
       #data_ctrl_search {
         margin-top: 439px !important;
@@ -2842,5 +2843,16 @@ input[type="number"]:focus {
   #all_accounts_header .fa{
     font-size: 15px !important;
   }
-
+  .recentviewDiv{
+    padding-left:0 !important;
+    padding-right:0 !important;
+    padding-bottom: 6px !important;
+  }
+  .recentprodtDiv{
+    padding-left: 0 !important;
+  }
+  .recentprdImage{
+    padding-right: 8px !important;
+    padding-left: 11px !important;
+  }
   /* ends 05-06-2018 css */
