@@ -482,10 +482,9 @@ input[type="number"]:focus {
     #all_accounts_header {
       margin-top: 9px !important;
       text-align: center !important;
-      padding-right: 0px;
     }
     .supp-reg-link {
-      padding: 8px 20px !important;
+      padding: 8px 5px !important;
     }
     /* 22-03-2018 changes */
     /* #smt_top_header {
@@ -1599,6 +1598,10 @@ input[type="number"]:focus {
     }
   }
   @media (min-width:320px) and (max-width:480px) {
+    #all_accounts_header{
+      padding-right: 0 !important; 
+ padding-left: 0 !important; ; 
+    }
     @-moz-document url-prefix('') {
       #data_ctrl_search {
         margin-top: 439px !important;
@@ -2076,7 +2079,7 @@ input[type="number"]:focus {
   }
   .bredcrumb_li a {
     color: #5d5959;
-    font-size: 12px;
+    font-size: 13px;
     border: 1px solid #d7dbdc;
     padding: 5px 10px;
     border-radius: 3px;
@@ -2830,3 +2833,14 @@ input[type="number"]:focus {
     transform: scale(1.1) !imoprtant;
 }
   /* 15-06-2018 end css */
+
+  /* 05-06-2018 css */
+
+  .ordertitle{
+    font-size: 15px !important;
+  }
+  #all_accounts_header .fa{
+    font-size: 15px !important;
+  }
+
+  /* ends 05-06-2018 css */
