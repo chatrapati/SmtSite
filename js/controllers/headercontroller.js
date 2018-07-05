@@ -237,7 +237,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
         $scope.gotoCartPage = function () {
       
-             window.location.href = DOMAIN_URL+"viewCart";
+             window.location.href = DOMAIN_URL+"#!/viewCart";
       
         }
 
@@ -800,7 +800,7 @@ document.onmousemove = function(){
         $scope.goToDashboard = function () {
 
             if (window.localStorage['token']) {
-                window.location.href = DOMAIN_URL+"dashboard";
+                window.location.href = DOMAIN_URL+"#!dashboard";
             }
             else {
 

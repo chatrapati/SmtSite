@@ -237,14 +237,14 @@
 
                     <md-input-container>
                         <div class="row">
-                            <div class="col-md-12 latest_popupBox " ng-repeat="recently in prod_info |limitTo:5">
-                                <div class="col-md-4">
+                            <div class="col-md-12 latest_popupBox recentviewDiv" ng-repeat="recently in prod_info |limitTo:5">
+                                <div class="col-md-4 recentprdImage">
                                     <a href="" ng-click="getProductDetails(recently)" target="_blank">
  <!-- <img  class="img-responsive  img-thumbnail" alt="{{recently.upload_name}}" src="{{recently.upload_photo.replace('gifs','100X100').replace('.gif','_1.jpg')}}" style="height:49px;padding:0;">  -->
   <img  class="img-responsive  img-thumbnail" alt="{{recently.upload_name}}" src="{{recently.upload_photo}}" style="height:49px;padding:0;"> 
  </a>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8 recentprodtDiv">
                                     <p class="resent_prodname">{{recently.upload_name}} <br/> <a href="" ng-click="getProductDetails(recently)" class="pull-right"
                                             style="color: #0587a1;">More</a></p>
                                 </div>
