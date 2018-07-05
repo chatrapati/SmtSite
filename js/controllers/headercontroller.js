@@ -192,7 +192,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
             // location.reload();
 
-            window.location.href = DOMAIN_URL+"productDetailPage";
+            window.location.href = DOMAIN_URL+"#!/productDetailPage";
              window.location.reload();
 
         //    alert("hai")
@@ -201,6 +201,7 @@ shopMyToolsApp.controller('headerController', ['$scope', '$http', '$location',
 
 
           $rootScope.productReview = function (productObj, isReview) {
+               localStorage.setItem('productPageUrl', document.URL);
             localStorage.setItem('isReviewStatus', isReview);
             window.localStorage['productName'] = productObj.upload_name;
             $rootScope.showHintFlag = 'false';
@@ -561,6 +562,8 @@ document.onmousemove = function(){
             if (window.localStorage['token']) {
                 $scope.productObj = {};
                 $scope.productObj = productObj;
+                 $scope.CurrentDate = new Date();
+                 console.log($scope.CurrentDate);
                 if ($rootScope.cartArray.length > 0) {
                     $scope.orderArray = [];
                     $scope.orderArray.push({ "productdescription": $scope.productObj.upload_name, "qty": "1" })
@@ -648,6 +651,10 @@ document.onmousemove = function(){
 
                         $rootScope.cartArray = data.data.total_item_list;
 
+                        // $rootScope.cartArray = $rootScope.cartArray.reverse();
+
+
+
                         $scope.orderId = data.data.orderid;
 
                         window.localStorage['orderId'] = $scope.orderId;
@@ -674,6 +681,7 @@ document.onmousemove = function(){
                     if (data.data.status == 'success') {
 
                         $rootScope.cartArray = data.data.item_list;
+                        //  $rootScope.cartArray = $rootScope.cartArray.reverse();
 
                         $scope.orderId = data.data.orderid;
 

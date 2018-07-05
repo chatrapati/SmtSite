@@ -1,7 +1,7 @@
 shopMyToolsApp.controller('product_detailed_controller',
 	function ($scope, $location, product_detailed_service, notify_service, reviews_service,
 		viewCartService, $scope, $window, referralEmailservice, addToCartService, $rootScope,
-		 addToWishListService,addCompareProductsService,$interval) {
+		 addToWishListService,addCompareProductsService,$interval,DOMAIN_URL) {
 		//alert('1')
 		 $rootScope.showHintFlag = 'false';
          $rootScope.showHintMsg = 'false';
@@ -32,6 +32,16 @@ shopMyToolsApp.controller('product_detailed_controller',
 
 
 		  $scope.showIndex = 0;
+
+		  $scope.reviewLogin = function(){
+			 localStorage.setItem('productPageUrl', document.URL);
+			  window.location.href = DOMAIN_URL+"login.html";
+		  }
+
+		  $scope.reviewRegister = function(){
+			 localStorage.setItem('productPageUrl', document.URL);
+			   window.location.href = DOMAIN_URL+"registration.html";
+		  }
 
         $scope.changeIndex = function(){
         // alert($scope.brandDetailRelatedProductsArray.length)

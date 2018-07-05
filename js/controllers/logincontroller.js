@@ -13,6 +13,15 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
       $scope.previousUrl = $scope.previousUrlArray[$scope.previousUrlArray.length-1];
     
     }
+
+     if(localStorage.getItem('productPageUrl')){
+
+       $scope.productPageUrlArray = localStorage.getItem('productPageUrl').split("#!/");
+
+      $scope.productPageUrl = $scope.productPageUrlArray[1];
+    
+     }
+
  
     $scope.mobilenumbercheck=function(mobile){
      // alert(mobile.length)
@@ -317,7 +326,12 @@ shopMyToolsApp.controller('loginController', ['$scope', '$http', '$location',
              $scope.currentUrl =  $scope.previousUrlArray[0].concat("/checkout");
              //alert($scope.currentUrl)
               window.location.href = $scope.currentUrl;
-            }else{
+            }else if($scope.productPageUrl == 'productDetailPage'){
+               $scope.currentUrl =  $scope.productPageUrlArray[0].concat("#!/productDetailPage");
+            
+              window.location.href = $scope.currentUrl;
+            }
+            else{
                window.location.href = "./";
             // window.location.href = DOMAIN_URL +"./dashboard";
             }

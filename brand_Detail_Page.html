@@ -329,8 +329,8 @@ top: 62%;
                                             </div>
                                             <div ng-if="showPlzLogin">
                                                 <p> Only registered users can refer friends. Please,
-                                                    <a href="login.html" id="review_login">Login</a> or
-                                                    <a href="login.html" id="review_reg">Register</a>
+                                                    <a href="" id="review_login" ng-click="reviewLogin()">Login</a> or
+                                                    <a href="" id="review_reg" ng-click="reviewRegister()">Register</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -496,8 +496,8 @@ top: 62%;
                                 <div class="tab-pane text-style" id="tab2" ng-class="isReview == 'review' ? 'active' : ''">
                                     <div ng-if="!token">
                                         <p> Only registered users can write reviews. Please,
-                                            <a href="login.html" id="review_login" ng-model="review_login">Login</a> or
-                                            <a href="registration.html" id="review_reg">Register</a>
+                                            <a href="" id="review_login" ng-model="review_login" ng-click="reviewLogin()">Login</a> or
+                                            <a href="" id="review_reg" ng-click="reviewRegister()">Register</a>
                                         </p>
                                     </div>
 

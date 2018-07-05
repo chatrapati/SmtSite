@@ -99,33 +99,11 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                         $rootScope.emergingbrands = data.data.emergingbrands;
                         $rootScope.deals = data.data.deals;
                         $rootScope.dealsCount = $scope.deals.length;
-                        $scope.newarrivals = data.data.newarrivalcats;
-                       // console.log($scope.newarrivals)
-                         $scope.Offers = data.data.offerscats;
-                        //  alert("hai"+ $scope.Offers.length)
-                        // console.log($scope.Offers)
-                        $rootScope.newarrivalsArray = [];
-                        for (i = 0; i < $scope.newarrivals.length; i++) {
-                            $scope.newarrivalsObj = $scope.newarrivals[i];
-                            for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
-                                if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
-                                    $rootScope.newarrivalsArray.push($scope.newarrivalsObj)
-                                }
-                            }
-                        }
-                        $scope.Offers = data.data.offerscats;
-                      // console.log($scope.Offers);
-                        $rootScope.offersArray = [];
-                        for (i = 0; i < $scope.Offers.length; i++) {
-                            $scope.offersObj = $scope.Offers[i];
-                            for (j = 0; j < $scope.offersObj.prices.length; j++) {
-                                if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                    $rootScope.offersArray.push($scope.offersObj)
-                                }
-                            }
-                        }
-                     // alert($rootScope.offersArray.length)
-
+                        $rootScope.newarrivals = data.data.newarrivalcats;
+                     
+                         $rootScope.Offers = data.data.offerscats;
+                     
+                    
                     } else {
 
                     }
@@ -208,18 +186,18 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
                 // alert(productsdata.avgrating)
                 if (data.data.status == 'Success') {
                     if (data.data.offerscats != []) {
-                        $scope.Offers = data.data.offerscats;
-                        $scope.offersArray = [];
-                        for (i = 0; i < $scope.Offers.length; i++) {
-                            $scope.offersObj = $scope.Offers[i];
-                            for (j = 0; j < $scope.offersObj.prices.length; j++) {
-                                if ($scope.offersObj.prices[j].enduser_price != 0) {
-                                    $scope.offersArray.push($scope.offersObj)
-                                }
-                            }
-                        }
+                        $rootScope.Offers = data.data.offerscats;
+                        // $scope.offersArray = [];
+                        // for (i = 0; i < $scope.Offers.length; i++) {
+                        //     $scope.offersObj = $scope.Offers[i];
+                        //     for (j = 0; j < $scope.offersObj.prices.length; j++) {
+                        //         if ($scope.offersObj.prices[j].enduser_price != 0) {
+                        //             $scope.offersArray.push($scope.offersObj)
+                        //         }
+                        //     }
+                        // }
                     } else {
-                        $rootScope.offersArray = [];
+                        $rootScope.Offers = [];
                     }
 
                 } else {
@@ -233,16 +211,16 @@ shopMyToolsApp.controller('homeController', ['$scope', '$http', '$location',
             allNewArrivalsService.allNewArrivalsMethod(categoryObj).then(function (data) {
                 $scope.loading = false;
                 if (data.data.status == 'Success') {
-                    $scope.newarrivals = data.data.newarrivalcats;
-                    $scope.newarrivalsArray = [];
-                    for (i = 0; i < $scope.newarrivals.length; i++) {
-                        $scope.newarrivalsObj = $scope.newarrivals[i];
-                        for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
-                            if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
-                                $scope.newarrivalsArray.push($scope.newarrivalsObj)
-                            }
-                        }
-                    }
+                    $rootScope.newarrivals = data.data.newarrivalcats;
+                    // $scope.newarrivalsArray = [];
+                    // for (i = 0; i < $scope.newarrivals.length; i++) {
+                    //     $scope.newarrivalsObj = $scope.newarrivals[i];
+                    //     for (j = 0; j < $scope.newarrivalsObj.prices.length; j++) {
+                    //         if ($scope.newarrivalsObj.prices[j].enduser_price != 0) {
+                    //             $scope.newarrivalsArray.push($scope.newarrivalsObj)
+                    //         }
+                    //     }
+                    // }
                 } else {
                     //  alert(data.data.status)
                 }

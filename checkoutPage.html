@@ -726,7 +726,7 @@
 								</tr>
 							</thead>
 							<tbody id="myViewOrdersData">
-								<tr ng-repeat="cartItem in cartArray">
+								<tr ng-repeat="cartItem in cartArray.reverse()">
 									<td style="text-align:left;">{{cartItem.productdescription}}</td>
 									<td style="text-align:right;">{{cartItem.offer_price | currency:'&#8377;'}}</td>
 									<td style="text-align:right;">{{cartItem.qty}}</td>
